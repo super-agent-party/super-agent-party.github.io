@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Super Agent Party</title>
+    <script src="languages.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007AFF',
+                        secondary: '#5856D6',
+                        accent: '#FF9500'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <a href="index.html" class="text-xl font-semibold text-gray-900">Super Agent Party</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-700 hover:text-gray-900 transition-colors duration-200" data-i18n="home">Home</a>
+                    <button id="lang-toggle" 
+                       onclick="toggleLanguage()"
+                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200">
+                       中文
+                    </button>
+                    <a href="https://github.com/heshengtao/super-agent-party" 
+                       target="_blank"
+                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span data-i18n="github">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <div class="relative overflow-hidden bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <!-- Logo/Icon -->
+                    <div class="mx-auto w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mb-8">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6" data-i18n="download_title">Download Super Agent Party</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
+                </div>
+
+                <!-- Auto-detect Download -->
+                <div class="mb-16">
+                    <div class="max-w-2xl mx-auto text-center">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+                            <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4" data-i18n="recommended_system">Recommended for Your System</h2>
+                            <p class="text-gray-600 mb-6" id="detected-system" data-i18n="detecting_system">Detecting your operating system...</p>
+                            <button id="auto-download-btn" 
+                                    class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gray-900 rounded-xl hover:bg-gray-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                                <span data-i18n="one_click_download">One-Click Download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Storage Downloads -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 text-center mb-8" data-i18n="cloud_storage_downloads">Cloud Storage Downloads</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <a href="https://pan.baidu.com/share/init?surl=VBSnq4Ga3fRX_NcyPwsV7Q&pwd=2333" 
+                           target="_blank"
+                           class="group bg-white rounded-2xl p-6 hover:bg-gray-50 transition-all duration-200 shadow-md border border-gray-200">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Baidu Cloud</h3>
+                                    <p class="text-gray-600 text-sm"><span data-i18n="password">Password</span>: 2333</p>
+                                </div>
+                                <svg class="w-5 h-5 text-gray-400 ml-auto group-hover:text-gray-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="https://drive.google.com/drive/folders/1xu8U1FCIZ5iqWpmf1w3TLX8AqGWft3zg?usp=sharing" 
+                           target="_blank"
+                           class="group bg-white rounded-2xl p-6 hover:bg-gray-50 transition-all duration-200 shadow-md border border-gray-200">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Google Drive</h3>
+                                    <p class="text-gray-600 text-sm" data-i18n="direct_access">Direct access</p>
+                                </div>
+                                <svg class="w-5 h-5 text-gray-400 ml-auto group-hover:text-gray-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Platform Downloads -->
+                <div class="space-y-12">
+                    <!-- Windows -->
+                    <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.351"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900">Windows</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center mb-4">
+                                    <span class="bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full mr-3" data-i18n="recommended">RECOMMENDED</span>
+                                    <h3 class="text-lg font-semibold text-gray-900" data-i18n="integrated_package">Integrated Package</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4" data-i18n="integrated_package_desc">No installation required, supports one-click updates to latest version</p>
+                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/super-agent-party-win-v0.3.1.zip" 
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span data-i18n="download_zip">Download ZIP</span>
+                                </a>
+                                <div class="mt-3 text-xs text-gray-500">
+                                    <p>⭐ Double-click <code class="bg-gray-800 px-1 rounded text-white">update.bat</code> to update</p>
+                                    <p>⭐ Double-click <code class="bg-gray-800 px-1 rounded text-white">start.bat</code> to launch</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="desktop_installer">Desktop Installer</h3>
+                                <p class="text-gray-600 text-sm mb-4" data-i18n="desktop_installer_desc">Traditional Windows installer with desktop integration</p>
+                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-Setup-0.3.1.exe" 
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span data-i18n="download_exe">Download EXE</span>
+                                </a>
+                                <div class="mt-3 text-xs text-gray-500">
+                                    <p>⭐ Install for current user only to avoid admin rights requirement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- macOS -->
+                    <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold text-gray-900">macOS</h2>
+                                <p class="text-sm text-gray-600" data-i18n="m_chip_only">M-chip only</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center mb-4">
+                                    <span class="bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full mr-3" data-i18n="recommended">RECOMMENDED</span>
+                                    <h3 class="text-lg font-semibold text-gray-900" data-i18n="integrated_package">Integrated Package</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4" data-i18n="integrated_package_desc">No installation required, supports one-click updates to latest version</p>
+                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/super-agent-party-mac-v0.3.1.zip" 
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span data-i18n="download_zip">Download ZIP</span>
+                                </a>
+                                <div class="mt-3 text-xs text-gray-500">
+                                    <p>⭐ Run in terminal:</p>
+                                    <code class="block bg-gray-100 p-2 rounded mt-1 text-xs text-gray-700">
+                                        chmod +x update.sh && ./update.sh<br>
+                                        chmod +x start.sh && ./start.sh
+                                    </code>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="desktop_app">Desktop App</h3>
+                                <p class="text-gray-600 text-sm mb-4" data-i18n="desktop_app_desc">Native macOS application with system integration</p>
+                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-0.3.1-Mac.dmg" 
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span data-i18n="download_dmg">Download DMG</span>
+                                </a>
+                                <div class="mt-3 text-xs text-gray-500">
+                                    <p>⭐ After installation, run:</p>
+                                    <code class="block bg-gray-100 p-2 rounded mt-1 text-xs text-gray-700">
+                                        sudo xattr -dr com.apple.quarantine /Applications/Super-Agent-Party.app
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linux -->
+                    <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333a.707.707 0 00-.3-.213 1.207 1.207 0 00-.539-.06c-.49.027-.913.32-1.262.687C12.258 6.249 12 7.03 12.002 7.759v.082c-.002.2.017.382.044.563.077.499.21.985.313 1.407.05.21.107.414.183.6.05.121.1.215.18.333.074.6.201 1.06.498 1.919.152.43.346.821.57 1.218.05.092.177.433.264.645.040.12.06.84.095.84.035 0 .087-.719.124-.84.04-.12.063-.64.112-.92.049-.28.098-.52.3-.92.22-.88.369-1.74.049-2.64-.51-1.4-.485-2.572-.16-3.99.329-1.418.754-2.856 1.5-4.05.746-1.194 1.814-2.14 3.094-2.14z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900">Linux</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="appimage">AppImage</h3>
+                                <p class="text-gray-600 text-sm mb-4" data-i18n="appimage_desc">Universal Linux format, no installation required</p>
+                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-0.3.1-Linux.AppImage" 
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span data-i18n="download_appimage">Download AppImage</span>
+                                </a>
+                                <div class="mt-3 text-xs text-gray-500">
+                                    <p>⭐ Make executable and run directly</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="deb_package">DEB Package</h3>
+                                <p class="text-gray-600 text-sm mb-4" data-i18n="deb_package_desc">For Ubuntu/Debian systems with package management</p>
+                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-0.3.1-Linux.deb" 
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span data-i18n="download_deb">Download DEB</span>
+                                </a>
+                                <div class="mt-3 text-xs text-gray-500">
+                                    <p>⭐ Install with: <code class="bg-gray-800 px-1 rounded text-white">sudo dpkg -i *.deb</code></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Docker -->
+                    <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m0 2.715h2.119a.185.185 0 00.185-.185v-1.888a.185.185 0 00-.184-.185h-2.12a.185.185 0 00-.185.185v1.888c0 .102.084.185.186.185m16.351-3.68v-1.4c0-.185-.148-.334-.334-.334h-1.635c-.102 0-.185-.084-.185-.186v-1.888c0-.102.083-.185.185-.185h1.635c.186 0 .334-.15.334-.334v-1.4c0-.186-.148-.335-.334-.335h-1.635c-.102 0-.185-.083-.185-.185V3.574c0-.102.083-.185.185-.185h1.635c.186 0 .334-.15.334-.334v-1.4c0-.185-.148-.334-.334-.334h-3.17c-.186 0-.335.149-.335.334v1.4c0 .185.149.334.334.334h.5c.102 0 .185.084.185.186v1.888c0 .102-.083.185-.185.185h-.5c-.185 0-.334.15-.334.334v1.4c0 .185.149.334.334.334h.5c.102 0 .185.084.185.186v1.888c0 .102-.083.185-.185.185h-.5c-.185 0-.334.15-.334.334v1.4c0 .186.149.334.334.334h3.17c.186 0 .334-.148.334-.334"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900">Docker</h2>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="container_deployment">Container Deployment</h3>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="container_deployment_desc">Run in any environment with Docker support. Web interface only.</p>
+                            <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                                <code class="text-gray-700 text-sm">
+                                    docker pull ailm32442/super-agent-party:latest<br>
+                                    docker run -d -p 3456:3456 -v ./super-agent-data:/app/data ailm32442/super-agent-party:latest
+                                </code>
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                <p>⭐ <span data-i18n="access_at">Access at</span>: <code class="bg-gray-800 px-1 rounded text-white">http://localhost:3456/</code></p>
+                                <p>⭐ <span data-i18n="data_persisted_in">Data persisted in</span> <code class="bg-gray-800 px-1 rounded text-white">./super-agent-data</code></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // System detection and auto-download functionality
+        function detectSystem() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const platform = navigator.platform.toLowerCase();
+            
+            let system = 'unknown';
+            let downloadUrl = '';
+            let systemName = '';
+            
+            if (userAgent.includes('windows') || platform.includes('win')) {
+                system = 'windows';
+                systemName = 'Windows';
+                downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-Setup-0.3.1.exe';
+            } else if (userAgent.includes('mac') || platform.includes('mac')) {
+                system = 'macos';
+                systemName = 'macOS';
+                downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-0.3.1-Mac.dmg';
+            } else if (userAgent.includes('linux') || platform.includes('linux')) {
+                system = 'linux';
+                systemName = 'Linux';
+                downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-0.3.1-Linux.AppImage';
+            }
+            
+            return { system, systemName, downloadUrl };
+        }
+        
+        // Handle system detection message based on language
+        function updateSystemDetectionMessage(systemName, lang) {
+            const systemElement = document.getElementById('detected-system');
+            if (!systemName || systemName === 'unknown') {
+                systemElement.textContent = getTranslation('detecting_system', lang);
+                return;
+            }
+            
+            if (lang === 'en') {
+                systemElement.textContent = `We detected you're using ${systemName}. Click below for the recommended download.`;
+            } else if (lang === 'zh') {
+                systemElement.textContent = `我们检测到您正在使用 ${systemName}。点击下方获取推荐下载。`;
+            }
+        }
+        
+        // Initialize system detection
+        document.addEventListener('DOMContentLoaded', function() {
+            const detection = detectSystem();
+            const downloadBtn = document.getElementById('auto-download-btn');
+            
+            // Get current language
+            const currentLang = localStorage.getItem('lang') || getBrowserLanguage();
+            
+            // Update system detection message
+            updateSystemDetectionMessage(detection.systemName, currentLang);
+            
+            if (detection.system !== 'unknown') {
+                downloadBtn.onclick = function() {
+                    window.open(detection.downloadUrl, '_blank');
+                };
+            } else {
+                downloadBtn.disabled = true;
+                if (currentLang === 'en') {
+                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">System Not Detected</span>';
+                } else {
+                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">无法检测系统</span>';
+                }
+            }
+        });
+        
+        // Listen for language changes and update the system detection message
+        document.addEventListener('languageChanged', function(e) {
+            const detection = detectSystem();
+            const downloadBtn = document.getElementById('auto-download-btn');
+            const lang = e.detail.language;
+            
+            updateSystemDetectionMessage(detection.systemName, lang);
+            
+            if (detection.system === 'unknown') {
+                downloadBtn.disabled = true;
+                if (lang === 'en') {
+                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">System Not Detected</span>';
+                } else {
+                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">无法检测系统</span>';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
