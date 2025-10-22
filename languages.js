@@ -25,7 +25,7 @@ const translations = {
     
     // download.html content
     "download_title": "Download Super Agent Party",
-    "download_subtitle": "Choose your platform and get started with AI automation in minutes",
+    "download_subtitle": "Choose your platform and have your own AI desktop companion in minutes",
     "recommended_system": "Recommended for Your System",
     "detecting_system": "Detecting your operating system...",
     "one_click_download": "One-Click Download",
@@ -56,7 +56,7 @@ const translations = {
     "system_not_detected": "System Not Detected",
     
     // Footer
-    "footer_copyright": "© 2024 Super Agent Party. Open source project available on GitHub."
+    "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
   zh: {
     // Navigation
@@ -83,7 +83,7 @@ const translations = {
     
     // download.html content
     "download_title": "下载 Super Agent Party",
-    "download_subtitle": "选择您的平台，几分钟内即可开始AI自动化体验",
+    "download_subtitle": "选择您的平台，几分钟内即可拥有你的专属AI桌面伴侣",
     "recommended_system": "推荐系统下载",
     "detecting_system": "正在检测您的操作系统...",
     "one_click_download": "一键下载",
@@ -114,7 +114,7 @@ const translations = {
     "system_not_detected": "无法检测系统",
     
     // Footer
-    "footer_copyright": "© 2024 Super Agent Party。开源项目，可在GitHub上获取。"
+    "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"
   }
 };
 

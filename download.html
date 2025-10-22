@@ -27,12 +27,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="img/icon.ico">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
+<style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
         .dark body {
             background-color: #0d1117;
             color: #f3f4f6;
         }
+        
+        /* 设置页面分块为整屏高度 */
+        .fullscreen-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 4rem; /* 顶部导航栏的高度 */
+            box-sizing: border-box;
+        }
+
+        /* 确保内容在中间区域 */
+        .fullscreen-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* 平滑滚动效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         .dark-icon { display: none; }
         .light-icon { display: block; }
         .dark .dark-icon { display: block; }
@@ -76,6 +103,43 @@
         }
         .dark .dark\:bg-gray-700:hover {
             background-color: #1f2937 !important;
+        }
+
+        /* 根据屏幕尺寸调整内容大小 */
+        @media (max-height: 600px) {
+            .section-heading {
+                margin-bottom: 0.5rem !important;
+            }
+            .section-subtitle {
+                margin-bottom: 0.75rem !important;
+            }
+            .compact-on-small {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+        }
+        
+        /* 下载页面特有样式 */
+        .download-section {
+            position: relative;
+            margin-bottom: 0;
+        }
+        
+        /* 确保内容适应性更强 */
+        .auto-fit-content {
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        /* 确保下载块在小屏幕上显示正确 */
+        @media (max-height: 700px) {
+            .download-card {
+                padding: 1rem !important;
+            }
+            .download-icon {
+                margin-bottom: 0.5rem !important;
+            }
         }
     </style>
 </head>
@@ -167,34 +231,34 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-16">
-        <div class="relative overflow-hidden bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+    <main>
+        <div class="relative overflow-hidden bg-gray-50 dark:bg-gray-800 transition-colors duration-300 fullscreen-section">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 fullscreen-content">
                 <!-- Header -->
-                <div class="text-center mb-16">
+                <div class="text-center mb-6 sm:mb-10 compact-on-small">
                     <!-- Logo/Icon -->
-                    <div class="mx-auto w-40 h-40 rounded-2xl flex items-center justify-center mb-8">
-                        <img src="img/logo.png" alt="Super Agent Party Logo" class="w-40 h-40">
+                    <div class="mx-auto w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 md:mb-8">
+                        <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full">
                     </div>
                     
-                    <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6" data-i18n="download_title">Download Super Agent Party</h1>
-                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 section-heading" data-i18n="download_title">Download Super Agent Party</h1>
+                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto section-subtitle" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
                 </div>
 
                 <!-- Auto-detect Download -->
-                <div class="mb-16">
-                    <div class="max-w-2xl mx-auto text-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div class="mb-8 sm:mb-10 download-section">
+                    <div class="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto text-center auto-fit-content">
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
                                 <svg class="w-8 h-8 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                 </svg>
                             </div>
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="recommended_system">Recommended for Your System</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mb-6" id="detected-system" data-i18n="detecting_system">Detecting your operating system...</p>
+                            <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="recommended_system">Recommended for Your System</h2>
+                            <p class="text-gray-600 dark:text-gray-400 mb-5 sm:mb-6" id="detected-system" data-i18n="detecting_system">Detecting your operating system...</p>
                             <button id="auto-download-btn" 
-                                    class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                 </svg>
                                 <span data-i18n="one_click_download">One-Click Download</span>
@@ -204,9 +268,9 @@
                 </div>
 
                 <!-- Cloud Storage Downloads -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8" data-i18n="cloud_storage_downloads">Cloud Storage Downloads</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="mb-6 sm:mb-10 download-section">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white text-center mb-4 sm:mb-6 section-heading" data-i18n="cloud_storage_downloads">Cloud Storage Downloads</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 max-w-xs sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-2 sm:px-4 auto-fit-content">
                         <a href="https://pan.baidu.com/share/init?surl=VBSnq4Ga3fRX_NcyPwsV7Q&pwd=2333" 
                            target="_blank"
                            class="group bg-white dark:bg-gray-900 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 shadow-md border border-gray-200 dark:border-gray-700">
@@ -248,39 +312,39 @@
                 </div>
 
                 <!-- Platform Downloads -->
-                <div class="space-y-12">
+                <div class="space-y-6 sm:space-y-10">
                     <!-- Windows -->
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-md border border-gray-200 dark:border-gray-700 download-card">
+                        <div class="flex items-center mb-3 sm:mb-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4 download-icon">
                             <i class="fab fa-windows text-2xl text-gray-700 dark:text-white"></i>
                         </div>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Windows</h2>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
+                                <div class="flex items-center mb-3 sm:mb-4">
                                     <span class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2 py-1 rounded-full mr-3" data-i18n="recommended">RECOMMENDED</span>
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
                                 </div>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="integrated_package_desc">No installation required, supports one-click updates to latest version</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4" data-i18n="integrated_package_desc">No installation required, supports one-click updates to latest version</p>
                                 <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/super-agent-party-win-v0.3.1.zip" 
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
+                                   class="inline-flex items-center justify-center w-full px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                     </svg>
                                     <span data-i18n="download_zip">Download ZIP</span>
                                 </a>
-                                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                                <div class="mt-2 sm:mt-3 text-xs text-gray-500 dark:text-gray-400">
                                     <p>⭐ Double-click <code class="bg-gray-800 px-1 rounded text-white">update.bat</code> to update</p>
                                     <p>⭐ Double-click <code class="bg-gray-800 px-1 rounded text-white">start.bat</code> to launch</p>
                                 </div>
                             </div>
 
                             <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4" data-i18n="desktop_installer">Desktop Installer</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="desktop_installer_desc">Traditional Windows installer with desktop integration</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="desktop_installer">Desktop Installer</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4" data-i18n="desktop_installer_desc">Traditional Windows installer with desktop integration</p>
                                 <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-Setup-0.3.1.exe" 
                                    class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -308,7 +372,7 @@
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <span class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2 py-1 rounded-full mr-3" data-i18n="recommended">RECOMMENDED</span>
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
@@ -404,8 +468,8 @@
                         <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4" data-i18n="container_deployment">Container Deployment</h3>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="container_deployment_desc">Run in any environment with Docker support. Web interface only.</p>
-                            <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 mb-4">
-                                <code class="text-gray-700 dark:text-gray-300 text-sm">
+                            <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
+                                <code class="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
                                     docker pull ailm32442/super-agent-party:latest<br>
                                     docker run -d -p 3456:3456 -v ./super-agent-data:/app/data ailm32442/super-agent-party:latest
                                 </code>
@@ -431,6 +495,31 @@
     </footer>
 
     <script>
+        // 调整高度确保整屏显示
+        function adjustSectionHeights() {
+            const sections = document.querySelectorAll('.fullscreen-section');
+            const vh = window.innerHeight;
+            
+            sections.forEach(section => {
+                // 确保内容不溢出视口
+                const contentHeight = section.querySelector('.fullscreen-content').offsetHeight;
+                const navHeight = 64; // 导航栏高度
+                
+                if (contentHeight + navHeight > vh) {
+                    // 内容过高，让它自然滚动
+                    section.style.height = 'auto';
+                    section.style.minHeight = '100vh';
+                } else {
+                    // 内容适合，精确设置高度
+                    section.style.height = vh + 'px';
+                }
+            });
+        }
+        
+        // 初始加载和窗口调整时调整高度
+        window.addEventListener('DOMContentLoaded', adjustSectionHeights);
+        window.addEventListener('resize', adjustSectionHeights);
+        
         // System detection and auto-download functionality
         function detectSystem() {
             const userAgent = navigator.userAgent.toLowerCase();
