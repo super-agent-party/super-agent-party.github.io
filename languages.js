@@ -4,6 +4,8 @@ const translations = {
     // Navigation
     "github": "GitHub",
     "home": "Home",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode",
     
     // index.html content
     "main_subtitle": "A 3D AI desktop companion with unlimited possibilities",
@@ -59,6 +61,8 @@ const translations = {
     // Navigation
     "github": "GitHub",
     "home": "首页",
+    "dark_mode": "深色模式",
+    "light_mode": "浅色模式",
     
     // index.html content
     "main_subtitle": "一款拥有无限可能的3D版AI桌面伴侣",
