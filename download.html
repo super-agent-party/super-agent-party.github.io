@@ -24,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { font-family: 'Inter', sans-serif; }
         .dark body {
@@ -192,11 +193,9 @@
                     <!-- Windows -->
                     <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.351"></path>
-                                </svg>
-                            </div>
+                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fab fa-windows text-2xl text-gray-700 dark:text-white"></i>
+                        </div>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Windows</h2>
                         </div>
                         
@@ -240,11 +239,9 @@
                     <!-- macOS -->
                     <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
-                                </svg>
-                            </div>
+                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fab fa-apple text-2xl text-gray-700 dark:text-white"></i>
+                        </div>
                             <div>
                                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">macOS</h2>
                                 <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="m_chip_only">M-chip only</p>
@@ -297,11 +294,9 @@
                     <!-- Linux -->
                     <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333a.707.707 0 00-.3-.213 1.207 1.207 0 00-.539-.06c-.49.027-.913.32-1.262.687C12.258 6.249 12 7.03 12.002 7.759v.082c-.002.2.017.382.044.563.077.499.21.985.313 1.407.05.21.107.414.183.6.05.121.1.215.18.333.074.6.201 1.06.498 1.919.152.43.346.821.57 1.218.05.092.177.433.264.645.040.12.06.84.095.84.035 0 .087-.719.124-.84.04-.12.063-.64.112-.92.049-.28.098-.52.3-.92.22-.88.369-1.74.049-2.64-.51-1.4-.485-2.572-.16-3.99.329-1.418.754-2.856 1.5-4.05.746-1.194 1.814-2.14 3.094-2.14z"></path>
-                                </svg>
-                            </div>
+                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fab fa-linux text-2xl text-gray-700 dark:text-white"></i>
+                        </div>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Linux</h2>
                         </div>
                         
@@ -341,11 +336,9 @@
                     <!-- Docker -->
                     <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m0 2.715h2.119a.185.185 0 00.185-.185v-1.888a.185.185 0 00-.184-.185h-2.12a.185.185 0 00-.185.185v1.888c0 .102.084.185.186.185m16.351-3.68v-1.4c0-.185-.148-.334-.334-.334h-1.635c-.102 0-.185-.084-.185-.186v-1.888c0-.102.083-.185.185-.185h1.635c.186 0 .334-.15.334-.334v-1.4c0-.186-.148-.335-.334-.335h-1.635c-.102 0-.185-.083-.185-.185V3.574c0-.102.083-.185.185-.185h1.635c.186 0 .334-.15.334-.334v-1.4c0-.185-.148-.334-.334-.334h-3.17c-.186 0-.335.149-.335.334v1.4c0 .185.149.334.334.334h.5c.102 0 .185.084.185.186v1.888c0 .102-.083.185-.185.185h-.5c-.185 0-.334.15-.334.334v1.4c0 .185.149.334.334.334h.5c.102 0 .185.084.185.186v1.888c0 .102-.083.185-.185.185h-.5c-.185 0-.334.15-.334.334v1.4c0 .186.149.334.334.334h3.17c.186 0 .334-.148.334-.334"></path>
-                                </svg>
-                            </div>
+                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fab fa-docker text-2xl text-gray-700 dark:text-white"></i>
+                        </div>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Docker</h2>
                         </div>
                         
