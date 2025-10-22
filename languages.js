@@ -4,6 +4,7 @@ const translations = {
     // Navigation
     "github": "GitHub",
     "home": "Home",
+    "download": "Download",
     "dark_mode": "Dark Mode",
     "light_mode": "Light Mode",
     
@@ -61,6 +62,7 @@ const translations = {
     // Navigation
     "github": "GitHub",
     "home": "首页",
+    "download": "下载",
     "dark_mode": "深色模式",
     "light_mode": "浅色模式",
     
