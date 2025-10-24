@@ -5,6 +5,7 @@ const translations = {
     "github": "GitHub",
     "home": "Home",
     "download": "Download",
+    "plugins": "Plugins",
     "dark_mode": "Dark Mode",
     "light_mode": "Light Mode",
     
@@ -55,6 +56,17 @@ const translations = {
     "m_chip_only": "M-chip only",
     "system_not_detected": "System Not Detected",
     
+    // Plugins page
+    "plugins_description": "Plugins that add new functionalities to Super Agent Party",
+    "plugin_author": "Author",
+    "adding_your_own_plugin": "Adding Your Own Plugin",
+    "add_plugin_description": "Want to add your plugin to this list? You can easily update the plugins by modifying the plugins configuration file.",
+    "plugin_development_info": "For more detailed information about plugin development and submission, please refer to the",
+    "copy": "Copy Link",
+    "copied": "Copied!",
+    "copy_error": "Cannot copy link: ",
+    "copy_failed": "Failed to copy link, please copy manually",
+    
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
@@ -63,6 +75,7 @@ const translations = {
     "github": "GitHub",
     "home": "首页",
     "download": "下载",
+    "plugins": "插件",
     "dark_mode": "深色模式",
     "light_mode": "浅色模式",
     
@@ -112,6 +125,17 @@ const translations = {
     "data_persisted_in": "数据保存在",
     "m_chip_only": "仅支持M芯片",
     "system_not_detected": "无法检测系统",
+    
+    // Plugins page
+    "plugins_description": "为 Super Agent Party 增添新功能的插件",
+    "plugin_author": "作者",
+    "adding_your_own_plugin": "添加您自己的插件",
+    "add_plugin_description": "想要将您的插件添加到此列表中？您可以通过修改插件配置文件轻松更新插件。",
+    "plugin_development_info": "有关插件开发和提交的更详细信息，请参阅",
+    "copy": "复制链接",
+    "copied": "已复制!",
+    "copy_error": "无法复制链接: ",
+    "copy_failed": "复制链接失败，请手动复制",
     
     // Footer
     "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"

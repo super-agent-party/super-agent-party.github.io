@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Super Agent Party Example Plugin",
+    "description": "This is the example plugin for Super Agent Party, demonstrating the plugin architecture and capabilities.",
+    "author": "heshengtao",
+    "version": "1.0.0",
+    "category": "Example",
+    "repository": "https://github.com/heshengtao/sap-example"
+  },
+  {
+    "name": "Web Preview Plugin",
+    "description": "A plugin that enables web previewing functionality for Super Agent Party.",
+    "author": "heshengtao",
+    "version": "1.0.0", 
+    "category": "Utility",
+    "repository": "https://github.com/heshengtao/sap-web-preview"
+  }
+]
