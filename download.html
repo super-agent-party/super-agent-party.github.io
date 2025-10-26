@@ -524,6 +524,12 @@
         window.addEventListener('DOMContentLoaded', adjustSectionHeights);
         window.addEventListener('resize', adjustSectionHeights);
         
+        // Check if the device is mobile
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(userAgent);
+        }
+        
         // System detection and auto-download functionality
         function detectSystem() {
             const userAgent = navigator.userAgent.toLowerCase();
@@ -532,8 +538,23 @@
             let system = 'unknown';
             let downloadUrl = '';
             let systemName = '';
+            let isMobile = isMobileDevice();
             
-            if (userAgent.includes('windows') || platform.includes('win')) {
+            if (isMobile) {
+                // Detect mobile OS
+                if (userAgent.includes('android')) {
+                    system = 'android';
+                    systemName = 'Android';
+                } else if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('ipod')) {
+                    system = 'ios';
+                    systemName = 'iOS';
+                } else {
+                    system = 'mobile';
+                    systemName = 'Mobile';
+                }
+                // No download URL for mobile devices as they're not supported
+                downloadUrl = '';
+            } else if (userAgent.includes('windows') || platform.includes('win')) {
                 system = 'windows';
                 systemName = 'Windows';
                 downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-Setup-0.3.1.exe';
@@ -547,21 +568,27 @@
                 downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.1/Super-Agent-Party-0.3.1-Linux.AppImage';
             }
             
-            return { system, systemName, downloadUrl };
+            return { system, systemName, downloadUrl, isMobile };
         }
         
         // Handle system detection message based on language
-        function updateSystemDetectionMessage(systemName, lang) {
+        function updateSystemDetectionMessage(systemName, lang, isMobile) {
             const systemElement = document.getElementById('detected-system');
             if (!systemName || systemName === 'unknown') {
                 systemElement.textContent = getTranslation('detecting_system', lang);
                 return;
             }
             
-            if (lang === 'en') {
-                systemElement.textContent = `We detected you're using ${systemName}. Click below for the recommended download.`;
-            } else if (lang === 'zh') {
-                systemElement.textContent = `我们检测到您正在使用 ${systemName}。点击下方获取推荐下载。`;
+            if (isMobile) {
+                // Show message for mobile devices
+                systemElement.innerHTML = `<strong>${getTranslation('mobile_detected', lang)}:</strong> ${systemName}<br>${getTranslation('mobile_not_supported', lang)}.<br>${getTranslation('mobile_recommendation', lang)}.`;
+            } else {
+                // Show message for desktop devices
+                if (lang === 'en') {
+                    systemElement.textContent = `We detected you're using ${systemName}. Click below for the recommended download.`;
+                } else if (lang === 'zh') {
+                    systemElement.textContent = `我们检测到您正在使用 ${systemName}。点击下方获取推荐下载。`;
+                }
             }
         }
         
@@ -574,9 +601,17 @@
             const currentLang = localStorage.getItem('lang') || getBrowserLanguage();
             
             // Update system detection message
-            updateSystemDetectionMessage(detection.systemName, currentLang);
+            updateSystemDetectionMessage(detection.systemName, currentLang, detection.isMobile);
             
-            if (detection.system !== 'unknown') {
+            if (detection.isMobile) {
+                // Disable download button for mobile devices
+                downloadBtn.disabled = true;
+                if (currentLang === 'en') {
+                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">Mobile Device Detected</span>';
+                } else {
+                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">检测到移动设备</span>';
+                }
+            } else if (detection.system !== 'unknown') {
                 downloadBtn.onclick = function() {
                     window.open(detection.downloadUrl, '_blank');
                 };
@@ -596,9 +631,17 @@
             const downloadBtn = document.getElementById('auto-download-btn');
             const lang = e.detail.language;
             
-            updateSystemDetectionMessage(detection.systemName, lang);
+            updateSystemDetectionMessage(detection.systemName, lang, detection.isMobile);
             
-            if (detection.system === 'unknown') {
+            if (detection.isMobile) {
+                // Update button for mobile devices when language changes
+                downloadBtn.disabled = true;
+                if (lang === 'en') {
+                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">Mobile Device Detected</span>';
+                } else {
+                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">检测到移动设备</span>';
+                }
+            } else if (detection.system === 'unknown') {
                 downloadBtn.disabled = true;
                 if (lang === 'en') {
                     downloadBtn.innerHTML = '<span data-i18n="system_not_detected">System Not Detected</span>';

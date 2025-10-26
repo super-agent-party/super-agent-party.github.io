@@ -55,6 +55,9 @@ const translations = {
     "data_persisted_in": "Data persisted in",
     "m_chip_only": "M-chip only",
     "system_not_detected": "System Not Detected",
+    "mobile_detected": "Mobile Device Detected",
+    "mobile_not_supported": "Super Agent Party is currently not available for mobile devices",
+    "mobile_recommendation": "Please use a desktop computer with Windows, macOS or Linux to download and use Super Agent Party",
     
     // Plugins page
     "plugins_description": "Plugins that add new functionalities to Super Agent Party",
@@ -125,6 +128,9 @@ const translations = {
     "data_persisted_in": "数据保存在",
     "m_chip_only": "仅支持M芯片",
     "system_not_detected": "无法检测系统",
+    "mobile_detected": "检测到移动设备",
+    "mobile_not_supported": "Super Agent Party 目前不支持移动设备",
+    "mobile_recommendation": "请使用 Windows、macOS 或 Linux 桌面系统下载并使用 Super Agent Party",
     
     // Plugins page
     "plugins_description": "为 Super Agent Party 增添新功能的插件",
