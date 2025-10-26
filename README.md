@@ -24,8 +24,8 @@ You can add new plugins in the [Plugin List File](/plugins.json) with the follow
 
 In the [super-agent-party](https://github.com/heshengtao/super-agent-party) project, you can use plugins in the following way:  
 
-1. Click on 【API Calls】 in the sidebar.  
-2. Click on 【Extensions】 in the secondary navigation bar.  
+1. Click on 【API Access】 in the sidebar.  
+2. Click on 【Extension】 in the secondary navigation bar.  
 3. Click on 【Add New Extension】.  
 4. Copy the plugin's GitHub URL (e.g., https://github.com/heshengtao/sap-example) into the pop-up input box and click 【Add】.  
 5. If the network is unstable and the plugin fails to install, you can directly download the plugin's ZIP package from GitHub and upload it in the pop-up input box.  
