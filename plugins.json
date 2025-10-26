@@ -1,6 +1,6 @@
 [
   {
-    "name": "Super Agent Party Example Plugin",
+    "name": "Super Agent Party Example",
     "description": "This is the example plugin for Super Agent Party, demonstrating the plugin architecture and capabilities.",
     "author": "heshengtao",
     "version": "1.0.0",
@@ -8,7 +8,7 @@
     "category": "Example"
   },
   {
-    "name": "Web Preview Plugin",
+    "name": "Web Preview",
     "description": "A plugin that enables web previewing functionality for Super Agent Party.",
     "author": "heshengtao",
     "version": "1.0.0", 
@@ -16,7 +16,7 @@
     "category": "Utility"
   },
   {
-    "name": "sap-story-adventure",
+    "name": "Story Adventure",
     "version": "1.0.0",
     "description": "An interactive story adventure plugin that generates story content and options using AI",
     "author": "super agent party",
