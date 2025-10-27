@@ -579,10 +579,14 @@
                 return;
             }
             
-            if (isMobile) {
-                // Show message for mobile devices
+        if (isMobile) {
+            // Show message for mobile devices
+            if (lang === 'en') {
                 systemElement.innerHTML = `<strong>${getTranslation('mobile_detected', lang)}:</strong> ${systemName}<br>${getTranslation('mobile_not_supported', lang)}.<br>${getTranslation('mobile_recommendation', lang)}.`;
-            } else {
+            } else if (lang === 'zh') {
+                systemElement.innerHTML = `<strong>${getTranslation('mobile_detected', lang)}:</strong> ${systemName}<br>${getTranslation('mobile_not_supported', lang)}<br>${getTranslation('mobile_recommendation', lang)}`;
+            }
+        } else {
                 // Show message for desktop devices
                 if (lang === 'en') {
                     systemElement.textContent = `We detected you're using ${systemName}. Click below for the recommended download.`;
