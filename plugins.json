@@ -22,5 +22,13 @@
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-story-adventure",
     "category": "Game"
+  },
+  {
+    "name": "sap-live2d",
+    "version": "1.0.0",
+    "description": "This is a Live 2D extension for the Super Agent Party",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-live2d",
+    "category": "Game"
   }
 ]

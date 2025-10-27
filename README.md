@@ -38,3 +38,4 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | Super Agent Party Example | heshengtao        | Example plugin for Super Agent Party, demonstrating plugin architecture and capabilities. | https://github.com/heshengtao/sap-example        |
 | Web Preview           | heshengtao        | A plugin enabling web previewing functionality for Super Agent Party. | https://github.com/heshengtao/sap-web-preview    |
 | Story Adventure       | heshengtao | An interactive story adventure plugin that generates story content and options using AI. | https://github.com/heshengtao/sap-story-adventure |
+| Live 2D      | heshengtao  | This is a Live 2D extension                   | https://github.com/heshengtao/sap-live2d  |
