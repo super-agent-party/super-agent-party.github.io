@@ -582,9 +582,9 @@
         if (isMobile) {
             // Show message for mobile devices
             if (lang === 'en') {
-                systemElement.innerHTML = `<strong>${getTranslation('mobile_detected', lang)}:</strong> ${systemName}<br>${getTranslation('mobile_not_supported', lang)}.<br>${getTranslation('mobile_recommendation', lang)}.`;
+                systemElement.innerHTML = `<strong>Mobile Device Detected:</strong> ${systemName}<br>Super Agent Party is currently not available for mobile devices<br>Please use a desktop computer with Windows, macOS or Linux to download and use Super Agent Party`;
             } else if (lang === 'zh') {
-                systemElement.innerHTML = `<strong>${getTranslation('mobile_detected', lang)}:</strong> ${systemName}<br>${getTranslation('mobile_not_supported', lang)}<br>${getTranslation('mobile_recommendation', lang)}`;
+                systemElement.innerHTML = `<strong>检测到移动设备:</strong> ${systemName}<br>Super Agent Party 目前不支持移动设备<br>请使用 Windows、macOS 或 Linux 桌面系统下载并使用 Super Agent Party`;
             }
         } else {
                 // Show message for desktop devices
