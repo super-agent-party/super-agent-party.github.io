@@ -30,3 +30,13 @@
 4. 复制插件的github地址，例如：https://github.com/heshengtao/sap-example 到弹出的输入框中并点击【添加】
 5. 如果网络不好，插件安装失败，可以直接从github上下载插件的zip包，并在弹出的输入框中上传zip包即可
 6. 等待插件加载完成，即可在侧边栏中看到新添加的插件
+
+## 已有插件
+
+| 名称                  | 作者               | 描述                                                                 | 仓库地址                                             |
+|-----------------------|--------------------|--------------------------------------------------------------------|----------------------------------------------------|
+| Super Agent Party Example | heshengtao         | Super Agent Party 的示例插件，用于演示插件架构和能力。                | https://github.com/heshengtao/sap-example          |
+| Web Preview           | heshengtao         | 为 Super Agent Party 提供网页预览功能的插件。                        | https://github.com/heshengtao/sap-web-preview      |
+| Story Adventure       | heshengtao  | 一款利用 AI 生成故事内容和选项的交互式故事冒险插件。                   | https://github.com/heshengtao/sap-story-adventure  |
+
+---

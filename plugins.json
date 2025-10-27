@@ -19,7 +19,7 @@
     "name": "Story Adventure",
     "version": "1.0.0",
     "description": "An interactive story adventure plugin that generates story content and options using AI",
-    "author": "super agent party",
+    "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-story-adventure",
     "category": "Game"
   }
