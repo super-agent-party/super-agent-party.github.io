@@ -24,7 +24,7 @@
 
 在[super-agent-party](https://github.com/heshengtao/super-agent-party)项目中，你可以通过以下方式使用插件：
 
-1. 点击侧边栏中的【接口调用】
+1. 点击侧边栏中的【开发者】
 2. 点击二级导航栏中的【扩展】
 3. 点击【添加新扩展】
 4. 复制插件的github地址，例如：https://github.com/heshengtao/sap-example 到弹出的输入框中并点击【添加】
