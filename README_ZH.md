@@ -40,3 +40,4 @@
 | Web Preview           | heshengtao         | 为 Super Agent Party 提供网页预览功能的插件。                        | https://github.com/heshengtao/sap-web-preview      |
 | Story Adventure       | heshengtao  | 一款利用 AI 生成故事内容和选项的交互式故事冒险插件。                   | https://github.com/heshengtao/sap-story-adventure  |
 | Live 2D      | heshengtao  | 一款live2d前端插件。                   | https://github.com/heshengtao/sap-live2d  |
+| AI Editor      | heshengtao  | 一款AI编辑器插件。                   | https://github.com/heshengtao/sap-aieditor  |

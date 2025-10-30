@@ -34,5 +34,14 @@
     "repository": "https://github.com/heshengtao/sap-live2d",
     "backupRepository": "https://gitee.com/heshengtao/sap-live2d",
     "category": "Game"
+  },
+  {
+    "name": "sap-aieditor",
+    "version": "1.0.0",
+    "description": "This is a AI Editor",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-aieditor",
+    "backupRepository": "https://gitee.com/heshengtao/sap-aieditor",
+    "category": "Utility"
   }
 ]
