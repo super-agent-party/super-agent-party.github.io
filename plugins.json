@@ -5,6 +5,7 @@
     "author": "heshengtao",
     "version": "1.0.0",
     "repository": "https://github.com/heshengtao/sap-example",
+    "backupRepository": "https://gitee.com/heshengtao/sap-example",
     "category": "Example"
   },
   {
@@ -13,6 +14,7 @@
     "author": "heshengtao",
     "version": "1.0.0", 
     "repository": "https://github.com/heshengtao/sap-web-preview",
+    "backupRepository": "https://gitee.com/heshengtao/sap-web-preview",
     "category": "Utility"
   },
   {
@@ -21,6 +23,7 @@
     "description": "An interactive story adventure plugin that generates story content and options using AI",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-story-adventure",
+    "backupRepository": "https://gitee.com/heshengtao/sap-story-adventure",
     "category": "Game"
   },
   {
@@ -29,6 +32,7 @@
     "description": "This is a Live 2D extension for the Super Agent Party",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-live2d",
+    "backupRepository": "https://gitee.com/heshengtao/sap-live2d",
     "category": "Game"
   }
 ]
