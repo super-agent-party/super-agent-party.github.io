@@ -40,4 +40,5 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | Web Preview           | heshengtao        | A plugin enabling web previewing functionality for Super Agent Party. | https://github.com/heshengtao/sap-web-preview    |
 | Story Adventure       | heshengtao | An interactive story adventure plugin that generates story content and options using AI. | https://github.com/heshengtao/sap-story-adventure |
 | Live 2D      | heshengtao  | This is a Live 2D extension                   | https://github.com/heshengtao/sap-live2d  |
-| AI Editor      | heshengtao  | This is a AI Editor                   | https://github.com/heshengtao/sap-aieditor  |
+| AI Editor      | heshengtao  | This is a AI Editor       | https://github.com/heshengtao/sap-aieditor  |
+| AI galgame      | heshengtao  | This is a AI galgame extension     | https://github.com/heshengtao/sap-aigalgame  |

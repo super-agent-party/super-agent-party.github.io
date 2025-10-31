@@ -43,5 +43,14 @@
     "repository": "https://github.com/heshengtao/sap-aieditor",
     "backupRepository": "https://gitee.com/heshengtao/sap-aieditor",
     "category": "Utility"
+  },
+  {
+    "name": "sap-aigalgame",
+    "version": "1.0.0",
+    "description": "This is a AI galgame extension for the Super Agent Party",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-aigalgame",
+    "backupRepository": "https://gitee.com/heshengtao/sap-aigalgame",
+    "category": "Game"
   }
 ]
