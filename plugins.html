@@ -128,6 +128,25 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
         }
+        /* 移动端：≥640px 以下生效 */
+        @media (max-width:639px){
+        /* 让搜索栏外层居中 */
+        .mb-4.relative{          /* 搜索框父级 */
+            display:flex;
+            justify-content:center;
+        }
+        #searchInput{
+            width:90vw;          /* 拉满屏幕，留左右边距 */
+            max-width:420px;     /* 防止过大 */
+        }
+        #clearSearch{
+            right:calc(50% - 45vw + 0.75rem); /* 让×始终贴在输入框右侧 */
+        }
+        /* 标签组居中 */
+        #tagContainer{
+            justify-content:center!important; /* 覆盖原来的 flex-start */
+        }
+        }
     </style>
     <!-- 搜索 & 标签栏 额外样式 -->
     <style>
