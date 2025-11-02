@@ -9,6 +9,15 @@
     "category": "Example"
   },
   {
+    "name": "sap-example-with-node",
+    "version": "1.0.0",
+    "description": "This is a chat frontend example with nodeJS environment",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-example-with-node",
+    "backupRepository": "https://gitee.com/heshengtao/sap-example-with-node",
+    "category": "Example"
+  },
+  {
     "name": "sap-web-preview",
     "description": "A plugin that enables web previewing functionality for Super Agent Party.",
     "author": "heshengtao",
