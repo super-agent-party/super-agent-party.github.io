@@ -129,6 +129,22 @@
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
         }
     </style>
+    <!-- 搜索 & 标签栏 额外样式 -->
+    <style>
+    /* 让搜索框更圆，并给清空按钮定位 */
+    #searchInput{
+    border-radius: 9999px;   /* full rounded */
+    padding-right: 2.5rem;   /* 给清空按钮留位 */
+    width: 60vw;
+    }
+    #clearSearch{
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;           /* 默认隐藏 */
+    }
+    </style>
 </head>
 <body class="bg-white min-h-screen transition-colors duration-300">
     <!-- Navigation -->
@@ -232,8 +248,36 @@
                 </div>
 
                 <!-- Plugin List -->
+                
+                <!-- 🔍 搜索 + 标签过滤栏 -->
+                <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+
+                <!-- 圆角搜索框 -->
+                <div class="relative mb-4">
+                    <input id="searchInput"
+                        type="text"
+                        placeholder="搜索插件名称或描述…"
+                        class="w-full h-12 pl-6 pr-10 text-base border border-gray-300 dark:border-gray-600
+                                bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+                                focus:ring-2 focus:ring-primary focus:border-primary
+                                transition duration-200 ease-in-out">
+                    <!-- 清空按钮 -->
+                    <button id="clearSearch" type="button" aria-label="清空"
+                            class="absolute inline-flex items-center justify-center w-8 h-8
+                                rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i class="fa-solid fa-times text-gray-500 dark:text-gray-400"></i>
+                    </button>
+                </div>
+
+                <!-- 圆角标签按钮组 -->
+                <div id="tagContainer" class="flex flex-wrap gap-2 justify-center">
+                    <!-- 按钮由 JS 动态生成 -->
+                </div>
+                </section>
+
+                <!-- 插件列表（原有结构不变，仅 id 保留） -->
                 <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    <!-- Plugins will be dynamically inserted here -->
+                <!-- 卡片仍由你原有的 renderPlugins() 填充 -->
                 </div>
 
                 <!-- Adding New Plugins Section -->
@@ -453,6 +497,117 @@
                 alert(getTranslation('copy_failed', localStorage.getItem('lang') || getBrowserLanguage()));
             });
     }
+    </script>
+    <script>
+    /* ========== 搜索 & 标签过滤逻辑 ========== */
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn    = document.getElementById('clearSearch');
+    const tagContainer= document.getElementById('tagContainer');
+    const pluginList  = document.getElementById('plugin-list');
+
+    let rawPlugins   = [];          // 原插件数据
+    let activeTag    = '全部';      // 当前激活标签
+
+    /* 初始化：等你的插件 fetch 完成后，把数据交给我们 */
+    function initFilter(plugins){
+    rawPlugins = plugins;
+    renderTags();
+    filterAndRender();
+    }
+
+    /* 生成圆角标签按钮 */
+    function renderTags(){
+    const categories = ['全部', ...new Set(rawPlugins.map(p=>p.category))];
+    tagContainer.innerHTML = categories.map(cat=>`
+    <button class="tag-btn px-4 py-2 text-sm font-medium rounded-full border
+                    transition duration-200 ease-in-out
+                    ${cat===activeTag
+                        ? 'bg-gray-900 text-white border-gray-900 dark:bg-gray-700 dark:border-gray-700'   // ← 统一用 GitHub 按钮配色
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700'}"
+            data-tag="${cat}" data-i18n="${cat==='全部'?'all':cat}">${cat}</button>
+    `).join('');
+    // 绑定点击
+    tagContainer.querySelectorAll('.tag-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+        activeTag = btn.dataset.tag;
+        renderTags();   // 刷新高亮
+        filterAndRender();
+        });
+    });
+    }
+
+    /* 关键词+标签双重过滤 */
+    function filterAndRender(){
+    const kw = searchInput.value.trim().toLowerCase();
+    const filtered = rawPlugins.filter(p=>{
+        const hitTag = activeTag==='全部' || p.category===activeTag;
+        const hitKw  = !kw || p.name.toLowerCase().includes(kw) || p.description.toLowerCase().includes(kw);
+        return hitTag && hitKw;
+    });
+    renderPlugins(filtered); // 复用你原来的卡片渲染函数
+    }
+
+    /* 搜索框事件 */
+    searchInput.addEventListener('input', ()=>{
+    clearBtn.style.display = searchInput.value ? 'flex' : 'none';
+    filterAndRender();
+    });
+    clearBtn.addEventListener('click', ()=>{
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    filterAndRender();
+    });
+
+    /* ========== 复用你原来的 renderPlugins，仅小改动 ========== */
+    function renderPlugins(data = rawPlugins){
+    // 清空旧卡片
+    pluginList.innerHTML = '';
+    data.forEach(plugin=>{
+        // 你原来的 card 模板，这里只示例核心差异
+        const card = document.createElement('div');
+        card.className = 'plugin-card bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden';
+        card.innerHTML = `
+            <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white">${plugin.name}</h2>
+                <div class="${getCategoryColorClass(plugin.category)} text-xs font-semibold px-2.5 py-0.5 rounded-full">${plugin.category}</div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">${plugin.description}</p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Author</h3>
+                <p class="text-gray-900 dark:text-white">${plugin.author}</p>
+                </div>
+                <div>
+                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Version</h3>
+                <p class="text-gray-900 dark:text-white">${plugin.version}</p>
+                </div>
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button onclick="copyRepositoryLink('${plugin.repository}')" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
+                <i class="fa-solid fa-copy w-4 h-4 mr-2"></i>
+                <span class="copy-text" data-i18n="copy">复制链接</span>
+                </button>
+                <a href="${plugin.repository}" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
+                <i class="fa-brands fa-github w-4 h-4 mr-2"></i>GitHub
+                </a>
+            </div>
+            </div>`;
+        pluginList.appendChild(card);
+    });
+    }
+
+    /* 把原来 fetch 后的数据交给我们 */
+    fetch('plugins.json')
+    .then(r=>r.json())
+    .then(initFilter)        // <-- 只改这一行
+    .catch(()=>{
+        // 兜底数据
+        initFilter([
+        {name:'示例插件',description:'示例',author:'demo',version:'1.0.0',category:'Example',repository:'#'},
+        {name:'Web预览',description:'预览',author:'demo',version:'1.0.0',category:'Utility',repository:'#'}
+        ]);
+    });
     </script>
 </body>
 </html>

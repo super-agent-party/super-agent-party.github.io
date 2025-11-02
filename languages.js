@@ -69,7 +69,8 @@ const translations = {
     "copied": "Copied!",
     "copy_error": "Cannot copy link: ",
     "copy_failed": "Failed to copy link, please copy manually",
-    
+    "all": "All",
+
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
@@ -142,7 +143,8 @@ const translations = {
     "copied": "已复制!",
     "copy_error": "无法复制链接: ",
     "copy_failed": "复制链接失败，请手动复制",
-    
+    "all": "全部",
+
     // Footer
     "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"
   }
