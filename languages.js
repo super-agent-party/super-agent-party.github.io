@@ -104,7 +104,7 @@ const translations = {
     "recommended_system": "推荐系统下载",
     "detecting_system": "正在检测您的操作系统...",
     "one_click_download": "一键下载",
-    "cloud_storage_downloads": "云存储下载",
+    "cloud_storage_downloads": "网盘下载",
     "password": "提取码",
     "direct_access": "直接访问",
     "integrated_package": "集成软件包",
