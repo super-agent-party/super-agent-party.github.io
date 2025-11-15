@@ -61,5 +61,14 @@
     "repository": "https://github.com/heshengtao/sap-aigalgame",
     "backupRepository": "https://gitee.com/heshengtao/sap-aigalgame",
     "category": "Game"
+  },
+  {
+    "name": "sap-tarot",
+    "version": "1.0.0",
+    "description": "an AI tarot reader",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-tarot",
+    "backupRepository": "https://gitee.com/heshengtao/sap-tarot",
+    "category": "Game"
   }
 ]
