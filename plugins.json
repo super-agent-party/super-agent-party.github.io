@@ -70,5 +70,14 @@
     "repository": "https://github.com/heshengtao/sap-tarot",
     "backupRepository": "https://gitee.com/heshengtao/sap-tarot",
     "category": "Game"
+  },
+  {
+    "name": "sap-ai-sheet",
+    "version": "1.0.0",
+    "author": "heshengtao",
+    "description": "SheetNext AI Excel Editor Plugin for Super Agent Party",
+    "repository": "https://github.com/heshengtao/sap-ai-sheet",
+    "backupRepository": "https://gitee.com/heshengtao/sap-ai-sheet",
+    "category": "Utility"
   }
 ]
