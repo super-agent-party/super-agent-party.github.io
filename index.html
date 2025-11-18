@@ -8,291 +8,234 @@
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['"JetBrains Mono"', 'monospace'], // 全局使用极客字体
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
                     colors: {
-                        primary: '#007AFF',
-                        secondary: '#5856D6',
-                        accent: '#FF9500'
+                        geekGreen: '#00ff41',
+                        geekDark: '#050505',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'cursor': 'cursor .75s step-end infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        cursor: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        }
                     }
                 }
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" href="img/icon.ico">
-<style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        .dark body {
-            background-color: #0d1117;
-            color: #f3f4f6;
-        }
+
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
         
-        /* 设置页面分块为整屏高度 */
+        /* 核心背景风格：点阵网格 */
+        .matrix-bg {
+            background-color: #ffffff;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .matrix-bg {
+            background-color: #050505;
+            background-image: radial-gradient(#222 1px, transparent 1px);
+        }
+
+        /* 终端卡片风格 */
+        .terminal-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s ease;
+        }
+        .dark .terminal-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #333;
+            box-shadow: 4px 4px 0px #00ff41;
+        }
+        .terminal-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+        .dark .terminal-card:hover {
+            box-shadow: 6px 6px 0px #00ff41;
+            border-color: #00ff41;
+        }
+
+        /* 导航栏链接特效 */
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after {
+            display: inline-block;
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.2s;
+            color: #00ff41; /* 始终保持极客绿 */
+        }
+        .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
+        .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
+
+        /* 主题切换图标 */
+        .dark-icon { display: none; }
+        .light-icon { display: inline-block; }
+        .dark .dark-icon { display: inline-block; }
+        .dark .light-icon { display: none; }
+        
+        /* 全屏分段 */
         .fullscreen-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-top: 4rem; /* 顶部导航栏的高度 */
-            box-sizing: border-box;
-        }
-
-        /* 确保内容在中间区域 */
-        .fullscreen-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        /* 平滑滚动效果 */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .dark-icon { display: none; }
-        .light-icon { display: block; }
-        .dark .dark-icon { display: block; }
-        .dark .light-icon { display: none; }
-        
-        /* Fix for theme toggle display in mobile view */
-        .light-icon.inline {
-            display: inline-block; 
-        }
-        .dark-icon.inline {
-            display: none; 
-        }
-        .dark .dark-icon.inline {
-            display: inline-block;
-        }
-        .dark .light-icon.inline {
-            display: none;
-        }
-        
-        /* GitHub-style dark mode overrides */
-        .dark .dark\:bg-gray-900\/80 {
-            background-color: rgba(13, 17, 23, 0.8) !important;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #161b22 !important;
-        }
-        .dark .dark\:bg-gray-900 {
-            background-color: #0d1117 !important;
-        }
-        .dark .dark\:border-gray-700 {
-            border-color: #30363d !important;
-        }
-        .dark .dark\:bg-gray-700:hover {
-            background-color: #1f2937 !important;
-        }
-        
-        /* Invert black background buttons in dark mode */
-        .dark .bg-gray-900.dark\:bg-gray-700 {
-            background-color: white !important;
-            color: #1f2937 !important;
-        }
-        .dark .bg-gray-900.dark\:bg-gray-700:hover {
-            background-color: #f3f4f6 !important;
-        }
-
-        /* 根据屏幕尺寸调整内容大小 */
-        @media (max-height: 600px) {
-            .section-heading {
-                margin-bottom: 0.5rem !important;
-            }
-            .section-subtitle {
-                margin-bottom: 0.75rem !important;
-            }
-            .compact-on-small {
-                padding-top: 0.5rem !important;
-                padding-bottom: 0.5rem !important;
-            }
         }
     </style>
 </head>
-<body class="bg-white min-h-screen transition-colors duration-300">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Navigation (统一标准) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-xl font-semibold text-gray-900 dark:text-white">Super Agent Party</h1>
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekGreen px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
+                </div>
+                
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
+                    <a href="plugins.html" class="nav-link font-bold text-sm" data-i18n="plugins">Plugins</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <span class="light-icon"><i class="fas fa-sun"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekGreen"></i></span>
+                    </button>
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors font-bold">
+                       中文
+                    </button>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span data-i18n="github">GitHub</span>
+                    </a>
                 </div>
                 
                 <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl">
+                    <i class="fas fa-bars"></i>
                 </button>
-                
-                <!-- Desktop menu -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="home">Home</a>
-                    <a href="download.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="download">Download</a>
-                    <a href="plugins.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="plugins">Plugins</a>
-                    <button id="theme-toggle" 
-                       onclick="toggleTheme()"
-                       class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <span class="light-icon">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                            </svg>
-                        </span>
-                        <span class="dark-icon">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                            </svg>
-                        </span>
-                    </button>
-                    <button id="lang-toggle" 
-                       onclick="toggleLanguage()"
-                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                       中文
-                    </button>
-                    <a href="https://github.com/heshengtao/super-agent-party" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span data-i18n="github">GitHub</span>
-                        <span class="ml-1 bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5 text-xs font-medium github-stars">-</span>
-                    </a>
-                </div>
             </div>
-            
-            <!-- Mobile menu, show/hide based on menu state -->
-            <div id="mobile-menu" class="hidden md:hidden mt-2 pb-3 space-y-1 border-t border-gray-200 dark:border-gray-700">
-                <a href="index.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="home">Home</a>
-                <a href="download.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="download">Download</a>
-                <a href="plugins.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="plugins">Plugins</a>
-                <button id="theme-toggle-mobile" 
-                       onclick="toggleTheme()"
-                       class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <div class="flex items-center">
-                        <span class="light-icon inline" data-i18n="dark_mode">Dark Mode</span>
-                        <span class="dark-icon inline" data-i18n="light_mode">Light Mode</span>
-                    </div>
-                </button>
-                <button id="lang-toggle-mobile" 
-                       onclick="toggleLanguage()"
-                       class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <span id="mobile-lang-text">中文</span>
-                </button>
-                <a href="https://github.com/heshengtao/super-agent-party" 
-                   target="_blank"
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <svg class="w-4 h-4 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span data-i18n="github">GitHub</span>
-                    <span class="ml-1 bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5 text-xs font-medium github-stars">-</span>
-                </a>
-            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="home">Home</a>
+            <a href="download.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="download">Download</a>
+            <a href="plugins.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="plugins">Plugins</a>
+            <!-- Mobile toggles would go here -->
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Main Content -->
     <main>
-        <div class="relative overflow-hidden bg-gray-50 dark:bg-gray-800 transition-colors duration-300 fullscreen-section">
-        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 fullscreen-content">
-                <div class="text-center">
-                    <!-- Logo/Icon -->
-                    <div class="mx-auto w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-2xl flex items-center justify-center mb-3 sm:mb-5 md:mb-6">
-                        <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full">
-                    </div>
-                    
-                    <!-- Main heading -->
-                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 section-heading">
-                        <span class="block">Super Agent Party</span>
-                    </h1>
-                    
-                    <!-- Subtitle -->
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-light section-subtitle" data-i18n="main_subtitle">
+        <div class="fullscreen-section relative overflow-hidden pt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                
+                <!-- Hero Logo -->
+                <div class="mx-auto w-40 h-40 sm:w-52 sm:h-52 mb-8 animate-float relative">
+                    <div class="absolute inset-0 bg-geekGreen opacity-20 blur-3xl rounded-full dark:opacity-10"></div>
+                    <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full object-contain relative z-10 drop-shadow-2xl">
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 tracking-tighter dark:text-white uppercase">
+                    Super Agent Party
+                </h1>
+                
+                <!-- Subtitle with cursor effect -->
+                <div class="flex justify-center items-center mb-10">
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-geekGreen font-bold max-w-3xl" data-i18n="main_subtitle">
                         A 3D AI desktop companion with unlimited possibilities
                     </p>
+                    <div class="w-3 h-6 bg-black dark:bg-geekGreen ml-2 animate-cursor"></div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="download.html" 
+                       class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-white bg-black dark:bg-geekGreen dark:text-black border-2 border-transparent hover:bg-gray-800 dark:hover:bg-green-400 transition-all shadow-[4px_4px_0px_rgba(0,0,0,0.2)] dark:shadow-[4px_4px_0px_#fff]">
+                        <span data-i18n="get_started">Get Started</span>
+                    </a>
                     
-                    <!-- CTA Button -->
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-                        <a href="download.html" 
-                           class="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-200">
-                            <span class="flex items-center">
-                                <span data-i18n="get_started">Get Started</span>
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                                </svg>
-                            </span>
-                        </a>
-                        
-                        <a href="https://github.com/heshengtao/super-agent-party" 
-                           target="_blank"
-                           class="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-xl hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
-                            <span data-i18n="view_docs">View Documentation</span>
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                            </svg>
-                        </a>
-                    </div>
+                    <a href="https://github.com/heshengtao/super-agent-party" 
+                       target="_blank"
+                       class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-black dark:text-white border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+                        <span data-i18n="view_docs">View Documentation</span>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Features Section -->
-        <div class="bg-white dark:bg-gray-900 transition-colors duration-300 fullscreen-section">
-            <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 fullscreen-content">
-                <div class="text-center mb-6 sm:mb-8 md:mb-10 compact-on-small">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3 section-heading" data-i18n="why_choose_us">Why Choose Us</h2>
-                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto font-light section-subtitle" data-i18n="why_choose_us_subtitle">Building a pluggable LLM enhancement platform for unlimited agent capability expansion</p>
+        <!-- Features -->
+        <div class="py-20 border-t border-black dark:border-gray-800 bg-white/50 dark:bg-geekDark/50 backdrop-blur">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white" data-i18n="why_choose_us">Why Choose Us</h2>
+                    <div class="h-1 w-20 bg-geekGreen mx-auto"></div>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12 max-w-7xl mx-auto">
-                    <div class="text-center px-4 sm:px-6">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 sm:mb-8">
-                            <svg class="w-8 h-8 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="terminal-card p-8 group">
+                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekGreen text-white dark:text-black flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fas fa-microchip"></i>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="seamless_enhancement">Seamless Enhancement</h3>
-                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="seamless_enhancement_desc">Upgrade LLM APIs at the enterprise level without code modifications, seamlessly integrating knowledge bases, real-time internet connectivity, permanent memory, and other modular features into existing model interfaces</p>
+                        <h3 class="text-xl font-bold mb-3 dark:text-white" data-i18n="seamless_enhancement">Seamless Enhancement</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="seamless_enhancement_desc">
+                            Upgrade LLM APIs at the enterprise level without code modifications...
+                        </p>
                     </div>
                     
-                    <div class="text-center px-4 sm:px-6">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 sm:mb-8">
-                            <svg class="w-8 h-8 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
+                    <div class="terminal-card p-8 group">
+                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekGreen text-white dark:text-black flex items-center justify-center text-2xl group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="omnichannel_deployment">Omnichannel Deployment</h3>
-                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="omnichannel_deployment_desc">Quickly deploy agent configurations to multiple terminals, compatible with classic chat interfaces, official QQ robots, Bilibili live streaming interaction, VRM virtual desktop pets, and other scenarios</p>
+                        <h3 class="text-xl font-bold mb-3 dark:text-white" data-i18n="omnichannel_deployment">Omnichannel Deployment</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="omnichannel_deployment_desc">
+                            Quickly deploy agent configurations to multiple terminals...
+                        </p>
                     </div>
                     
-                    <div class="text-center px-4 sm:px-6">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 sm:mb-8">
-                            <svg class="w-8 h-8 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
+                    <div class="terminal-card p-8 group">
+                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekGreen text-white dark:text-black flex items-center justify-center text-2xl group-hover:-rotate-12 transition-transform">
+                            <i class="fas fa-tools"></i>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="ecosystem_tool_integration">Ecosystem Tool Integration</h3>
-                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="ecosystem_tool_integration_desc">Freely connect third-party agents and workflows as tool chains, achieving cross-platform capability aggregation through the agent-party architecture</p>
+                        <h3 class="text-xl font-bold mb-3 dark:text-white" data-i18n="ecosystem_tool_integration">Ecosystem Tool Integration</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="ecosystem_tool_integration_desc">
+                            Freely connect third-party agents and workflows as tool chains...
+                        </p>
                     </div>
                 </div>
             </div>
@@ -300,76 +243,28 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center">
-                <p class="text-gray-500 dark:text-gray-400" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
-            </div>
+    <footer class="border-t border-black dark:border-gray-800 py-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
         </div>
     </footer>
     
     <script>
-        // 调整高度确保整屏显示
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').onclick = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+        
+        // Section Height Adjustment
         function adjustSectionHeights() {
             const sections = document.querySelectorAll('.fullscreen-section');
             const vh = window.innerHeight;
-            
             sections.forEach(section => {
-                // 确保内容不溢出视口
-                const contentHeight = section.querySelector('.fullscreen-content').offsetHeight;
-                const navHeight = 64; // 导航栏高度
-                
-                if (contentHeight + navHeight > vh) {
-                    // 内容过高，让它自然滚动
-                    section.style.height = 'auto';
-                    section.style.minHeight = '100vh';
-                } else {
-                    // 内容适合，精确设置高度
-                    section.style.height = vh + 'px';
-                }
+                section.style.minHeight = vh + 'px';
             });
         }
-        
-        // 初始加载和窗口调整时调整高度
-        window.addEventListener('DOMContentLoaded', adjustSectionHeights);
         window.addEventListener('resize', adjustSectionHeights);
-        
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLangText = document.getElementById('mobile-lang-text');
-            
-            // Initial state for mobile lang text
-            if (mobileLangText) {
-                const currentLang = localStorage.getItem('lang') || getBrowserLanguage();
-                mobileLangText.textContent = currentLang === 'en' ? '中文' : 'English';
-            }
-            
-            // Toggle mobile menu visibility
-            if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', function() {
-                    const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-                    menuButton.setAttribute('aria-expanded', !expanded);
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-            
-            // Update mobile language button when language changes
-            document.addEventListener('languageChanged', function(e) {
-                if (mobileLangText) {
-                    mobileLangText.textContent = e.detail.language === 'en' ? '中文' : 'English';
-                }
-            });
-            
-            // Close mobile menu when window is resized to desktop size
-            window.addEventListener('resize', function() {
-                if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
+        window.addEventListener('DOMContentLoaded', adjustSectionHeights);
     </script>
 </body>
 </html>

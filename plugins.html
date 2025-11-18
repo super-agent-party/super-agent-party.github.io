@@ -8,625 +8,306 @@
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
                     colors: {
-                        primary: '#007AFF',
-                        secondary: '#5856D6',
-                        accent: '#FF9500'
+                        geekGreen: '#00ff41',
+                        geekDark: '#050505',
                     }
                 }
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" href="img/icon.ico">
-<style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        .dark body {
-            background-color: #0d1117;
-            color: #f3f4f6;
-        }
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
         
-        /* 设置页面分块为整屏高度 */
-        .fullscreen-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 4rem; /* 顶部导航栏的高度 */
-            box-sizing: border-box;
+        .matrix-bg {
+            background-color: #ffffff;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .matrix-bg {
+            background-color: #050505;
+            background-image: radial-gradient(#222 1px, transparent 1px);
         }
 
-        /* 确保内容在中间区域 */
-        .fullscreen-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* 
+           修改核心：统一卡片风格 
+           使用硬边阴影 (4px 4px 0px) 代替柔和阴影
+        */
+        .plugin-card {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #000;
+            /* 亮色模式下的硬阴影衬底 */
+            box-shadow: 4px 4px 0px #000; 
+            position: relative;
+            transition: all 0.2s ease;
         }
-        
-        /* 平滑滚动效果 */
-        html {
-            scroll-behavior: smooth;
+        .dark .plugin-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #333;
+            /* 暗色模式下的极客绿硬阴影衬底 */
+            box-shadow: 4px 4px 0px #00ff41; 
         }
-        
+        .plugin-card:hover {
+            /* 悬停时轻微位移，增加立体感 */
+            transform: translate(-2px, -2px); 
+            box-shadow: 6px 6px 0px #000;
+        }
+        .dark .plugin-card:hover {
+            box-shadow: 6px 6px 0px #00ff41;
+            border-color: #00ff41;
+        }
+
+        /* Tag 样式保持终端风格 */
+        .tag-bracket {
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .tag-bracket.active {
+            background: #000;
+            color: #fff;
+        }
+        .dark .tag-bracket.active {
+            background: #00ff41;
+            color: #000;
+        }
+
+        /* 光标闪烁动画 */
+        .cursor-blink {
+            display: inline-block; width: 8px; height: 1.2em; background: #00ff41;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* 导航栏链接特效 */
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after {
+            display: inline-block; opacity: 0; transition: 0.3s; color: #00ff41;
+        }
+        .nav-link::before { content: '['; margin-right: 5px; }
+        .nav-link::after { content: ']'; margin-left: 5px; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+
         .dark-icon { display: none; }
         .light-icon { display: block; }
         .dark .dark-icon { display: block; }
         .dark .light-icon { display: none; }
-        
-        /* Fix for theme toggle display in mobile view */
-        .light-icon.inline {
-            display: inline; 
-        }
-        .dark-icon.inline {
-            display: none; 
-        }
-        .dark .dark-icon.inline {
-            display: inline;
-        }
-        .dark .light-icon.inline {
-            display: none;
-        }
-        
-        /* GitHub-style dark mode overrides */
-        .dark .dark\:bg-gray-900\/80 {
-            background-color: rgba(13, 17, 23, 0.8) !important;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #161b22 !important;
-        }
-        .dark .dark\:bg-gray-900 {
-            background-color: #0d1117 !important;
-        }
-        .dark .dark\:border-gray-700 {
-            border-color: #30363d !important;
-        }
-        .dark .dark\:bg-gray-700:hover {
-            background-color: #1f2937 !important;
-        }
-        
-        /* Invert black background buttons in dark mode */
-        .dark .bg-gray-900.dark\:bg-gray-700 {
-            background-color: white !important;
-            color: #1f2937 !important;
-        }
-        .dark .bg-gray-900.dark\:bg-gray-700:hover {
-            background-color: #f3f4f6 !important;
-        }
-
-        /* 根据屏幕尺寸调整内容大小 */
-        @media (max-height: 600px) {
-            .section-heading {
-                margin-bottom: 0.5rem !important;
-            }
-            .section-subtitle {
-                margin-bottom: 0.75rem !important;
-            }
-            .compact-on-small {
-                padding-top: 0.5rem !important;
-                padding-bottom: 0.5rem !important;
-            }
-        }
-        
-        /* Plugin card hover effect */
-        .plugin-card {
-            transition: all 0.3s ease;
-        }
-        
-        .plugin-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-        }
-        /* 移动端：≥640px 以下生效 */
-        @media (max-width:639px){
-        /* 让搜索栏外层居中 */
-        .mb-4.relative{          /* 搜索框父级 */
-            display:flex;
-            justify-content:center;
-        }
-        #searchInput{
-            width:90vw;          /* 拉满屏幕，留左右边距 */
-            max-width:420px;     /* 防止过大 */
-        }
-        #clearSearch{
-            right:calc(50% - 45vw + 0.75rem); /* 让×始终贴在输入框右侧 */
-        }
-        /* 标签组居中 */
-        #tagContainer{
-            justify-content:center!important; /* 覆盖原来的 flex-start */
-        }
-        }
-    </style>
-    <!-- 搜索 & 标签栏 额外样式 -->
-    <style>
-    /* 让搜索框更圆，并给清空按钮定位 */
-    #searchInput{
-    border-radius: 9999px;   /* full rounded */
-    padding-right: 2.5rem;   /* 给清空按钮留位 */
-    width: 60vw;
-    }
-    #clearSearch{
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: none;           /* 默认隐藏 */
-    }
     </style>
 </head>
-<body class="bg-white min-h-screen transition-colors duration-300">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Navigation (与其他页面保持一致) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-xl font-semibold text-gray-900 dark:text-white">Super Agent Party</a>
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekGreen px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
                 </div>
-                
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-                
-                <!-- Desktop menu -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="home">Home</a>
-                    <a href="download.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="download">Download</a>
-                    <a href="plugins.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="plugins">Plugins</a>
-                    <button id="theme-toggle" 
-                       onclick="toggleTheme()"
-                       class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <span class="light-icon">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                            </svg>
-                        </span>
-                        <span class="dark-icon">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                            </svg>
-                        </span>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
+                    <a href="plugins.html" class="nav-link font-bold text-sm" data-i18n="plugins">Plugins</a>
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <span class="light-icon"><i class="fas fa-sun"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekGreen"></i></span>
                     </button>
-                    <button id="lang-toggle" 
-                       onclick="toggleLanguage()"
-                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors font-bold">
                        中文
                     </button>
-                    <a href="https://github.com/heshengtao/super-agent-party" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                        </svg>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
                         <span data-i18n="github">GitHub</span>
-                        <span class="ml-1 bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5 text-xs font-medium github-stars">-</span>
                     </a>
                 </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
-            
-            <!-- Mobile menu, show/hide based on menu state -->
-            <div id="mobile-menu" class="hidden md:hidden mt-2 pb-3 space-y-1 border-t border-gray-200 dark:border-gray-700">
-                <a href="index.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="home">Home</a>
-                <a href="download.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="download">Download</a>
-                <a href="plugins.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="plugins">Plugins</a>
-                <button id="theme-toggle-mobile" 
-                       onclick="toggleTheme()"
-                       class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <div class="flex items-center">
-                        <span class="light-icon inline" data-i18n="dark_mode">Dark Mode</span>
-                        <span class="dark-icon inline" data-i18n="light_mode">Light Mode</span>
-                    </div>
-                </button>
-                <button id="lang-toggle-mobile" 
-                       onclick="toggleLanguage()"
-                       class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <span id="mobile-lang-text">中文</span>
-                </button>
-                <a href="https://github.com/heshengtao/super-agent-party" 
-                   target="_blank"
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <svg class="w-4 h-4 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span data-i18n="github">GitHub</span>
-                    <span class="ml-1 bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5 text-xs font-medium github-stars">-</span>
-                </a>
-            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="home">Home</a>
+            <a href="download.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="download">Download</a>
+            <a href="plugins.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="plugins">Plugins</a>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <div class="relative overflow-hidden bg-gray-50 dark:bg-gray-800 transition-colors duration-300 fullscreen-section">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fullscreen-content py-12">
-                <!-- Header -->
-                <div class="text-center mb-12">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="plugins">Plugins</h1>
-                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-i18n="plugins_description">Plugins that add new functionalities to Super Agent Party</p>
-                </div>
+    <main class="flex-grow pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase" data-i18n="plugins">Plugins</h1>
+                <p class="text-gray-500 dark:text-gray-400" data-i18n="plugins_description">Plugins that add new functionalities to Super Agent Party</p>
+            </div>
 
-                <!-- Plugin List -->
+            <!-- Search and Tags -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <!-- Console style input -->
+                <div class="flex items-center bg-gray-50 dark:bg-black border-b-2 border-gray-400 dark:border-geekGreen p-4 mb-8">
+                    <span class="text-green-600 dark:text-geekGreen mr-2 font-bold">></span>
+                    <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-black dark:text-white placeholder-gray-400" placeholder="search_module...">
+                    <button id="clearSearch" class="hidden text-red-500 font-bold ml-2">X</button>
+                    <div class="cursor-blink"></div>
+                </div>
                 
-                <!-- 🔍 搜索 + 标签过滤栏 -->
-                <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-
-                <!-- 圆角搜索框 -->
-                <div class="relative mb-4">
-                    <input id="searchInput"
-                        type="text"
-                        placeholder="搜索插件名称或描述…"
-                        class="w-full h-12 pl-6 pr-10 text-base border border-gray-300 dark:border-gray-600
-                                bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
-                                focus:ring-2 focus:ring-primary focus:border-primary
-                                transition duration-200 ease-in-out">
-                    <!-- 清空按钮 -->
-                    <button id="clearSearch" type="button" aria-label="清空"
-                            class="absolute inline-flex items-center justify-center w-8 h-8
-                                rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                    <i class="fa-solid fa-times text-gray-500 dark:text-gray-400"></i>
-                    </button>
+                <div id="tagContainer" class="flex flex-wrap justify-center gap-3">
+                    <!-- Tags generated by JS -->
                 </div>
+            </div>
 
-                <!-- 圆角标签按钮组 -->
-                <div id="tagContainer" class="flex flex-wrap gap-2 justify-center">
-                    <!-- 按钮由 JS 动态生成 -->
-                </div>
-                </section>
+            <!-- Plugins Grid -->
+            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Content generated by JS -->
+            </div>
 
-                <!-- 插件列表（原有结构不变，仅 id 保留） -->
-                <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- 卡片仍由你原有的 renderPlugins() 填充 -->
-                </div>
-
-                <!-- Adding New Plugins Section -->
-                <div class="mt-16 bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-8 max-w-6xl mx-auto">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="adding_your_own_plugin">Adding Your Own Plugin</h2>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6" data-i18n="add_plugin_description">
-                        Want to add your plugin to this list? You can easily update the plugins by modifying the plugins configuration file.
-                    </p>
-                    
-                    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 mb-6">
-                        <pre class="text-sm text-gray-800 dark:text-gray-300 overflow-x-auto whitespace-pre-wrap">
-// Modify plugins.json in the root directory
+            <!-- Add Plugin Section -->
+            <div class="mt-20 border border-dashed border-gray-400 dark:border-gray-700 p-8 bg-white dark:bg-geekDark/50 rounded-sm shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#00ff41]">
+                <h2 class="text-2xl font-bold mb-4 dark:text-white" data-i18n="adding_your_own_plugin">Adding Your Own Plugin</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="add_plugin_description">Want to add your plugin to this list?</p>
+                
+                <div class="bg-black text-geekGreen p-4 rounded-sm text-xs overflow-x-auto mb-6 border-l-4 border-geekGreen shadow-lg">
+                    <pre>// plugins.json structure
 [
   {
-    "name": "Your Plugin Name",
-    "description": "A short description of what your plugin does",
-    "author": "Your Name",
-    "version": "1.0.0",
+    "name": "Plugin Name",
     "category": "Utility",
-    "repository": "https://github.com/your-username/your-plugin",
-    "backupRepository": "https://gitee.com/your-username/your-plugin",
+    "repository": "https://github.com/..."
   }
 ]</pre>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-400">
-                        <span data-i18n="plugin_development_info">For more detailed information about plugin development and submission, please refer to the</span>
-                        <a href="https://github.com/super-agent-party/super-agent-party.github.io" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Super Agent Party documentation</a>.
-                    </p>
                 </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                    <span data-i18n="plugin_development_info">Refer to documentation:</span>
+                    <a href="https://github.com/super-agent-party/super-agent-party.github.io" target="_blank" class="text-blue-600 dark:text-geekGreen hover:underline font-bold">Super Agent Party Docs</a>
+                </p>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center">
-                <p class="text-gray-500 dark:text-gray-400" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
-            </div>
-        </div>
+    <footer class="border-t border-black dark:border-gray-800 py-8 mt-8 bg-white dark:bg-geekDark text-center">
+        <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
     </footer>
 
     <script>
-        // Load plugins from JSON file
-        let pluginData = [];
+        document.getElementById('mobile-menu-button').onclick = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
 
-        // Fetch plugins from the JSON file
+        let rawPlugins = [];
+        let activeTag = '全部'; 
+        
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearSearch');
+        const tagContainer = document.getElementById('tagContainer');
+        const pluginList = document.getElementById('plugin-list');
+
+        // Fallback data
+        const fallbackData = [
+             {name:'Example Plugin', description:'Demonstration module.', author:'heshengtao', version:'1.0.0', category:'Example', repository:'#'},
+             {name:'Web Preview', description:'Enables chromium rendering.', author:'heshengtao', version:'1.0.0', category:'Utility', repository:'#'}
+        ];
+
         fetch('plugins.json')
-            .then(response => response.json())
-            .then(data => {
-                pluginData = data;
-                renderPlugins();
-            })
-            .catch(error => {
-                console.error('Error loading plugins:', error);
-                // If there's an error loading the JSON, fall back to hardcoded plugins
-                pluginData = [
-                    {
-                        name: "Super Agent Party Example Plugin",
-                        description: "This is the example plugin for Super Agent Party, demonstrating the plugin architecture and capabilities.",
-                        author: "heshengtao",
-                        version: "1.0.0",
-                        category: "Example",
-                        repository: "https://github.com/heshengtao/sap-example"
-                    },
-                    {
-                        name: "Web Preview Plugin",
-                        description: "A plugin that enables web previewing functionality for Super Agent Party.",
-                        author: "heshengtao",
-                        version: "1.0.0",
-                        category: "Utility",
-                        repository: "https://github.com/heshengtao/sap-web-preview"
-                    }
-                ];
-                renderPlugins();
-            });
+            .then(r => r.json())
+            .then(data => { rawPlugins = data; initFilter(); })
+            .catch(() => { rawPlugins = fallbackData; initFilter(); });
 
-        // Function to render plugins dynamically
-        function renderPlugins() {
-            const pluginListContainer = document.getElementById('plugin-list');
-            if (!pluginListContainer) return;
-            
-            // Clear the container
-            pluginListContainer.innerHTML = '';
-            
-            // Add each plugin
-            pluginData.forEach(plugin => {
-                const categoryColorClass = getCategoryColorClass(plugin.category);
-                
-                const pluginCard = document.createElement('div');
-                pluginCard.className = 'bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden plugin-card';
-                
-                pluginCard.innerHTML = `
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">${plugin.name}</h2>
-                            <div class="${categoryColorClass} text-xs font-semibold px-2.5 py-0.5 rounded-full">${plugin.category}</div>
+        function initFilter() {
+            renderTags();
+            renderPlugins(rawPlugins);
+        }
+
+        function renderTags() {
+            const categories = ['全部', ...new Set(rawPlugins.map(p => p.category))];
+            tagContainer.innerHTML = categories.map(cat => `
+                <button class="tag-bracket px-4 py-1 border border-gray-400 dark:border-gray-600 text-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors" 
+                        onclick="setTag(this, '${cat}')">
+                    [ ${cat === '全部' ? (localStorage.getItem('lang') === 'en' ? 'All' : '全部') : cat} ]
+                </button>
+            `).join('');
+             const firstBtn = tagContainer.querySelector('button');
+             if(firstBtn) firstBtn.classList.add('active');
+        }
+        
+        window.setTag = function(btn, cat) {
+            document.querySelectorAll('.tag-bracket').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeTag = cat;
+            filterPlugins();
+        }
+
+        searchInput.addEventListener('input', () => {
+            clearBtn.style.display = searchInput.value ? 'inline' : 'none';
+            filterPlugins();
+        });
+        
+        clearBtn.onclick = () => {
+            searchInput.value = '';
+            clearBtn.style.display = 'none';
+            filterPlugins();
+        };
+
+        function filterPlugins() {
+            const kw = searchInput.value.toLowerCase();
+            const filtered = rawPlugins.filter(p => {
+                const hitTag = activeTag === '全部' || p.category === activeTag;
+                const hitKw = !kw || p.name.toLowerCase().includes(kw) || p.description.toLowerCase().includes(kw);
+                return hitTag && hitKw;
+            });
+            renderPlugins(filtered);
+        }
+
+        function renderPlugins(data) {
+            pluginList.innerHTML = '';
+            data.forEach(p => {
+                const el = document.createElement('div');
+                // Note: 'plugin-card' class now has the hard shadow styles defined in CSS
+                el.className = 'plugin-card p-6 flex flex-col justify-between h-full';
+                el.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-black dark:text-white">${p.name}</h3>
+                            <span class="text-xs border border-black dark:border-geekGreen px-2 py-1 text-black dark:text-geekGreen font-bold">${p.category}</span>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">${plugin.description}</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1" data-i18n="plugin_author">Author</h3>
-                                <p class="text-gray-900 dark:text-white">${plugin.author}</p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Version</h3>
-                                <p class="text-gray-900 dark:text-white">${plugin.version}</p>
-                            </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${p.description}</p>
+                    </div>
+                    <div class="border-t border-gray-300 dark:border-gray-700 pt-4 mt-auto">
+                        <div class="flex justify-between items-center text-xs mb-3 text-gray-500">
+                            <span>Ver: ${p.version}</span>
+                            <span data-i18n="plugin_author">Author: ${p.author}</span>
                         </div>
-                        <div class="flex justify-end space-x-2">
-                            <button onclick="copyRepositoryLink('${plugin.repository}')" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
-                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
-                                </svg>
-                                <span class="copy-text" data-i18n="copy">复制链接</span>
+                        <div class="flex space-x-3">
+                            <button onclick="copyLink('${p.repository}')" class="flex-1 py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-xs font-bold">
+                                <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
                             </button>
-                            <a href="${plugin.repository}" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                GitHub
+                            <a href="${p.repository}" target="_blank" class="flex-1 py-2 bg-black text-white dark:bg-geekGreen dark:text-black text-center hover:opacity-80 transition-opacity text-xs font-bold">
+                                <i class="fab fa-github mr-2"></i> <span data-i18n="github">GitHub</span>
                             </a>
                         </div>
                     </div>
                 `;
-                
-                pluginListContainer.appendChild(pluginCard);
+                pluginList.appendChild(el);
             });
         }
-        
-        // Helper function to get color class based on category
-        function getCategoryColorClass(category) {
-            switch(category.toLowerCase()) {
-                case 'example':
-                    return 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200';
-                case 'utility':
-                    return 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200';
-                case 'integration':
-                    return 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200';
-                case 'ai':
-                    return 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200';
-                default:
-                    return 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200';
-            }
+
+        function copyLink(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link Copied');
+            });
         }
-
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLangText = document.getElementById('mobile-lang-text');
-            
-            // Initial state for mobile lang text
-            if (mobileLangText) {
-                const currentLang = localStorage.getItem('lang') || getBrowserLanguage();
-                mobileLangText.textContent = currentLang === 'en' ? '中文' : 'English';
-            }
-            
-            // Toggle mobile menu visibility
-            if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', function() {
-                    const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-                    menuButton.setAttribute('aria-expanded', !expanded);
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-            
-            // Update mobile language button when language changes
-            document.addEventListener('languageChanged', function(e) {
-                if (mobileLangText) {
-                    mobileLangText.textContent = e.detail.language === 'en' ? '中文' : 'English';
-                }
-            });
-            
-        // Close mobile menu when window is resized to desktop size
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                menuButton.setAttribute('aria-expanded', 'false');
-            }
-        });
-    });
-    
-    // Function to copy repository link to clipboard
-    function copyRepositoryLink(link) {
-        navigator.clipboard.writeText(link)
-            .then(() => {
-                // Find all copy buttons
-                const copyButtons = document.querySelectorAll('button[onclick^="copyRepositoryLink"]');
-                
-                // Get the button that was clicked
-                let clickedButton = null;
-                copyButtons.forEach(btn => {
-                    if (btn.getAttribute('onclick').includes(link)) {
-                        clickedButton = btn;
-                    }
-                });
-                
-                if (clickedButton) {
-                    // Get the span element with the copy text
-                    const copyTextElement = clickedButton.querySelector('.copy-text');
-                    const originalText = copyTextElement.textContent;
-                    
-                    // Change the text to indicate success - using translation key
-                    copyTextElement.textContent = getTranslation('copied', localStorage.getItem('lang') || getBrowserLanguage());
-                    
-                    // Reset text after 2 seconds
-                    setTimeout(() => {
-                        copyTextElement.textContent = originalText;
-                    }, 2000);
-                }
-            })
-            .catch(err => {
-                console.error(getTranslation('copy_error', localStorage.getItem('lang') || getBrowserLanguage()) + err);
-                alert(getTranslation('copy_failed', localStorage.getItem('lang') || getBrowserLanguage()));
-            });
-    }
-    </script>
-    <script>
-    /* ========== 搜索 & 标签过滤逻辑 ========== */
-    const searchInput = document.getElementById('searchInput');
-    const clearBtn    = document.getElementById('clearSearch');
-    const tagContainer= document.getElementById('tagContainer');
-    const pluginList  = document.getElementById('plugin-list');
-
-    let rawPlugins   = [];          // 原插件数据
-    let activeTag    = '全部';      // 当前激活标签
-
-    /* 初始化：等你的插件 fetch 完成后，把数据交给我们 */
-    function initFilter(plugins){
-    rawPlugins = plugins;
-    renderTags();
-    filterAndRender();
-    }
-
-    /* 生成圆角标签按钮 */
-    function renderTags(){
-    const categories = ['全部', ...new Set(rawPlugins.map(p=>p.category))];
-    tagContainer.innerHTML = categories.map(cat=>`
-    <button class="tag-btn px-4 py-2 text-sm font-medium rounded-full border
-                    transition duration-200 ease-in-out
-                    ${cat===activeTag
-                        ? 'bg-gray-900 text-white border-gray-900 dark:bg-gray-700 dark:border-gray-700'   // ← 统一用 GitHub 按钮配色
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700'}"
-            data-tag="${cat}" data-i18n="${cat==='全部'?'all':cat}">${cat}</button>
-    `).join('');
-    // 绑定点击
-    tagContainer.querySelectorAll('.tag-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-        activeTag = btn.dataset.tag;
-        renderTags();   // 刷新高亮
-        filterAndRender();
-        });
-    });
-    }
-
-    /* 关键词+标签双重过滤 */
-    function filterAndRender(){
-    const kw = searchInput.value.trim().toLowerCase();
-    const filtered = rawPlugins.filter(p=>{
-        const hitTag = activeTag==='全部' || p.category===activeTag;
-        const hitKw  = !kw || p.name.toLowerCase().includes(kw) || p.description.toLowerCase().includes(kw);
-        return hitTag && hitKw;
-    });
-    renderPlugins(filtered); // 复用你原来的卡片渲染函数
-    }
-
-    /* 搜索框事件 */
-    searchInput.addEventListener('input', ()=>{
-    clearBtn.style.display = searchInput.value ? 'flex' : 'none';
-    filterAndRender();
-    });
-    clearBtn.addEventListener('click', ()=>{
-    searchInput.value = '';
-    clearBtn.style.display = 'none';
-    filterAndRender();
-    });
-
-    /* ========== 复用你原来的 renderPlugins，仅小改动 ========== */
-    function renderPlugins(data = rawPlugins){
-    // 清空旧卡片
-    pluginList.innerHTML = '';
-    data.forEach(plugin=>{
-        // 你原来的 card 模板，这里只示例核心差异
-        const card = document.createElement('div');
-        card.className = 'plugin-card bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden';
-        card.innerHTML = `
-            <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-gray-900 dark:text-white">${plugin.name}</h2>
-                <div class="${getCategoryColorClass(plugin.category)} text-xs font-semibold px-2.5 py-0.5 rounded-full">${plugin.category}</div>
-            </div>
-            <p class="text-gray-600 dark:text-gray-400 mb-6">${plugin.description}</p>
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div>
-                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Author</h3>
-                <p class="text-gray-900 dark:text-white">${plugin.author}</p>
-                </div>
-                <div>
-                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Version</h3>
-                <p class="text-gray-900 dark:text-white">${plugin.version}</p>
-                </div>
-            </div>
-            <div class="flex justify-end space-x-2">
-                <button onclick="copyRepositoryLink('${plugin.repository}')" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
-                <i class="fa-solid fa-copy w-4 h-4 mr-2"></i>
-                <span class="copy-text" data-i18n="copy">复制链接</span>
-                </button>
-                <a href="${plugin.repository}" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                <i class="fa-brands fa-github w-4 h-4 mr-2"></i>GitHub
-                </a>
-            </div>
-            </div>`;
-        pluginList.appendChild(card);
-    });
-    }
-
-    /* 把原来 fetch 后的数据交给我们 */
-    fetch('plugins.json')
-    .then(r=>r.json())
-    .then(initFilter)        // <-- 只改这一行
-    .catch(()=>{
-        // 兜底数据
-        initFilter([
-        {name:'示例插件',description:'示例',author:'demo',version:'1.0.0',category:'Example',repository:'#'},
-        {name:'Web预览',description:'预览',author:'demo',version:'1.0.0',category:'Utility',repository:'#'}
-        ]);
-    });
     </script>
 </body>
 </html>

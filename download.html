@@ -8,480 +8,257 @@
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['"JetBrains Mono"', 'monospace'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
                     colors: {
-                        primary: '#007AFF',
-                        secondary: '#5856D6',
-                        accent: '#FF9500'
+                        geekGreen: '#00ff41',
+                        geekDark: '#050505',
                     }
                 }
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" href="img/icon.ico">
-<style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        .dark body {
-            background-color: #0d1117;
-            color: #f3f4f6;
-        }
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
         
-        /* 设置页面分块为整屏高度 */
-        .fullscreen-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 4rem; /* 顶部导航栏的高度 */
-            box-sizing: border-box;
+        /* 背景与卡片样式统一 */
+        .matrix-bg {
+            background-color: #ffffff;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .matrix-bg {
+            background-color: #050505;
+            background-image: radial-gradient(#222 1px, transparent 1px);
         }
 
-        /* 确保内容在中间区域 */
-        .fullscreen-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .terminal-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
-        /* 平滑滚动效果 */
-        html {
-            scroll-behavior: smooth;
+        .dark .terminal-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #333;
+            box-shadow: 4px 4px 0px #00ff41;
         }
+        .terminal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+        .dark .terminal-card:hover {
+            box-shadow: 6px 6px 0px #00ff41;
+            border-color: #00ff41;
+        }
+
+        /* 扫描线动画 (Download 特有) */
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.5);
+            position: absolute;
+            top: 0; left: 0;
+            animation: scan 3s linear infinite;
+            display: none;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .dark .scanline { display: block; }
+        @keyframes scan { 0% { top: 0%; opacity: 0; } 50% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+        /* 导航栏一致性 */
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after {
+            display: inline-block; opacity: 0; transition: 0.3s; color: #00ff41;
+        }
+        .nav-link::before { content: '['; margin-right: 5px; }
+        .nav-link::after { content: ']'; margin-left: 5px; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
         
         .dark-icon { display: none; }
         .light-icon { display: block; }
         .dark .dark-icon { display: block; }
         .dark .light-icon { display: none; }
-        
-        /* Fix for theme toggle display in mobile view */
-        .light-icon.inline {
-            display: inline; 
-        }
-        .dark-icon.inline {
-            display: none; 
-        }
-        .dark .dark-icon.inline {
-            display: inline;
-        }
-        .dark .light-icon.inline {
-            display: none;
-        }
-        
-        /* Invert black background buttons in dark mode */
-        .dark .bg-gray-900.dark\:bg-gray-700 {
-            background-color: white !important;
-            color: #1f2937 !important;
-        }
-        .dark .bg-gray-900.dark\:bg-gray-700:hover {
-            background-color: #f3f4f6 !important;
-        }
-        
-        /* GitHub-style dark mode overrides */
-        .dark .dark\:bg-gray-900\/80 {
-            background-color: rgba(13, 17, 23, 0.8) !important;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #161b22 !important;
-        }
-        .dark .dark\:bg-gray-900 {
-            background-color: #0d1117 !important;
-        }
-        .dark .dark\:border-gray-700 {
-            border-color: #30363d !important;
-        }
-        .dark .dark\:bg-gray-700:hover {
-            background-color: #1f2937 !important;
-        }
-
-        /* 根据屏幕尺寸调整内容大小 */
-        @media (max-height: 600px) {
-            .section-heading {
-                margin-bottom: 0.5rem !important;
-            }
-            .section-subtitle {
-                margin-bottom: 0.75rem !important;
-            }
-            .compact-on-small {
-                padding-top: 0.5rem !important;
-                padding-bottom: 0.5rem !important;
-            }
-        }
-        
-        /* 下载页面特有样式 */
-        .download-section {
-            position: relative;
-            margin-bottom: 0;
-        }
-        
-        /* 确保内容适应性更强 */
-        .auto-fit-content {
-            margin: 0 auto;
-            max-width: 100%;
-            padding: 0 1rem;
-        }
-        
-        /* 确保下载块在小屏幕上显示正确 */
-        @media (max-height: 700px) {
-            .download-card {
-                padding: 1rem !important;
-            }
-            .download-icon {
-                margin-bottom: 0.5rem !important;
-            }
-        }
     </style>
 </head>
-<body class="bg-white min-h-screen transition-colors duration-300">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Navigation (完全一致) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-xl font-semibold text-gray-900 dark:text-white">Super Agent Party</a>
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekGreen px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
                 </div>
-                
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-                
-                <!-- Desktop menu -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="home">Home</a>
-                    <a href="download.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="download">Download</a>
-                    <a href="plugins.html" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" data-i18n="plugins">Plugins</a>
-                    <button id="theme-toggle" 
-                       onclick="toggleTheme()"
-                       class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <span class="light-icon">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                            </svg>
-                        </span>
-                        <span class="dark-icon">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                            </svg>
-                        </span>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
+                    <a href="plugins.html" class="nav-link font-bold text-sm" data-i18n="plugins">Plugins</a>
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <span class="light-icon"><i class="fas fa-sun"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekGreen"></i></span>
                     </button>
-                    <button id="lang-toggle" 
-                       onclick="toggleLanguage()"
-                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors font-bold">
                        中文
                     </button>
-                    <a href="https://github.com/heshengtao/super-agent-party" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                        </svg>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
                         <span data-i18n="github">GitHub</span>
-                        <span class="ml-1 bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5 text-xs font-medium github-stars">-</span>
                     </a>
                 </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
-            
-            <!-- Mobile menu, show/hide based on menu state -->
-            <div id="mobile-menu" class="hidden md:hidden mt-2 pb-3 space-y-1 border-t border-gray-200 dark:border-gray-700">
-                <a href="index.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="home">Home</a>
-                <a href="download.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="download">Download</a>
-                <a href="plugins.html" 
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
-                   data-i18n="plugins">Plugins</a>
-                <button id="theme-toggle-mobile" 
-                       onclick="toggleTheme()"
-                       class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <div class="flex items-center">
-                        <span class="light-icon inline" data-i18n="dark_mode">Dark Mode</span>
-                        <span class="dark-icon inline" data-i18n="light_mode">Light Mode</span>
-                    </div>
-                </button>
-                <button id="lang-toggle-mobile" 
-                       onclick="toggleLanguage()"
-                       class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <span id="mobile-lang-text">中文</span>
-                </button>
-                <a href="https://github.com/heshengtao/super-agent-party" 
-                   target="_blank"
-                   class="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                    <svg class="w-4 h-4 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span data-i18n="github">GitHub</span>
-                    <span class="ml-1 bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5 text-xs font-medium github-stars">-</span>
-                </a>
-            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="home">Home</a>
+            <a href="download.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="download">Download</a>
+            <a href="plugins.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="plugins">Plugins</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <div class="relative overflow-hidden bg-gray-50 dark:bg-gray-800 transition-colors duration-300 fullscreen-section">
-        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 fullscreen-content">
-                <!-- Header -->
-                <div class="text-center mb-6 sm:mb-10 compact-on-small">
-                    <!-- Logo/Icon -->
-                    <div class="mx-auto w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 md:mb-8">
-                        <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full">
-                    </div>
-                    
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 section-heading" data-i18n="download_title">Download Super Agent Party</h1>
-                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto section-subtitle" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
-                </div>
+    <!-- Content -->
+    <main class="flex-grow pt-24 pb-12 px-4">
+        <div class="max-w-6xl mx-auto relative">
+            
+            <!-- Header -->
+            <div class="text-center mb-12">
 
-                <!-- Auto-detect Download -->
-                <div class="mb-8 sm:mb-10 download-section">
-                    <div class="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto text-center auto-fit-content">
-                        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                                <svg class="w-8 h-8 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                </svg>
+                <h1 class="text-3xl md:text-5xl font-bold dark:text-white mb-4 uppercase" data-i18n="download_title">Download Super Agent Party</h1>
+                <p class="text-gray-600 dark:text-geekGreen" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
+            </div>
+
+            <!-- Auto Detect -->
+            <div class="mb-12 max-w-3xl mx-auto">
+                <div class="terminal-card p-8 relative">
+                    <div class="scanline"></div>
+                    <div class="flex flex-col md:flex-row items-center gap-6 relative z-20">
+                        <div class="w-16 h-16 flex items-center justify-center bg-black text-white dark:bg-geekGreen dark:text-black text-2xl shadow-lg">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h2 class="text-xl font-bold mb-2 dark:text-white" data-i18n="recommended_system">Recommended for Your System</h2>
+                            <div class="text-sm bg-gray-100 dark:bg-black dark:text-geekGreen p-2 border-l-4 border-geekGreen mb-4">
+                                > <span id="detected-system" data-i18n="detecting_system">Detecting...</span><span class="animate-pulse">_</span>
                             </div>
-                            <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="recommended_system">Recommended for Your System</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mb-5 sm:mb-6" id="detected-system" data-i18n="detecting_system">Detecting your operating system...</p>
-                            <button id="auto-download-btn" 
-                                    class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                </svg>
-                                <span data-i18n="one_click_download">One-Click Download</span>
-                            </button>
+                        </div>
+                        <button id="auto-download-btn" class="px-6 py-3 bg-black text-white dark:bg-geekGreen dark:text-black font-bold hover:opacity-80 transition-opacity shadow-md">
+                            <i class="fas fa-download mr-2"></i> <span data-i18n="one_click_download">One-Click Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Downloads -->
+            <div class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <a href="https://pan.baidu.com/share/init?surl=VBSnq4Ga3fRX_NcyPwsV7Q&pwd=2333" target="_blank" class="terminal-card p-4 flex items-center space-x-4 hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer group">
+                    <div class="bg-gray-200 dark:bg-gray-800 p-3"><i class="fas fa-cloud text-xl"></i></div>
+                    <div>
+                        <h3 class="font-bold dark:text-white">Baidu Cloud</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400"><span data-i18n="password">Password</span>: 2333</p>
+                    </div>
+                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekGreen transition-opacity"></i>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1xu8U1FCIZ5iqWpmf1w3TLX8AqGWft3zg?usp=sharing" target="_blank" class="terminal-card p-4 flex items-center space-x-4 hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer group">
+                    <div class="bg-gray-200 dark:bg-gray-800 p-3"><i class="fab fa-google-drive text-xl"></i></div>
+                    <div>
+                        <h3 class="font-bold dark:text-white">Google Drive</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" data-i18n="direct_access">Direct access</p>
+                    </div>
+                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekGreen transition-opacity"></i>
+                </a>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Windows -->
+                <div class="terminal-card p-6 flex flex-col h-full">
+                    <div class="flex items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <i class="fab fa-windows text-2xl mr-3"></i>
+                        <h2 class="text-xl font-bold dark:text-white">Windows</h2>
+                    </div>
+                    <div class="space-y-4 flex-1">
+                        <div class="bg-gray-50 dark:bg-white/5 p-3 border border-gray-200 dark:border-gray-700">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-bold text-sm dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
+                                <span class="text-[10px] bg-geekGreen text-black px-1 font-bold" data-i18n="recommended">REC</span>
+                            </div>
+                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/super-agent-party-win-v0.3.2.zip" class="block w-full text-center py-2 border border-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-xs font-bold transition-colors">
+                                <span data-i18n="download_zip">Download ZIP</span>
+                            </a>
+                        </div>
+                        <div class="p-3 opacity-70 hover:opacity-100 transition-opacity">
+                            <h3 class="font-bold text-sm mb-2 dark:text-white" data-i18n="desktop_installer">Desktop Installer</h3>
+                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-Setup-0.3.2.exe" class="block w-full text-center py-2 bg-gray-200 dark:bg-gray-700 dark:text-white hover:bg-gray-300 text-xs font-bold">
+                                <span data-i18n="download_exe">Download EXE</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cloud Storage Downloads -->
-                <div class="mb-6 sm:mb-10 download-section">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white text-center mb-4 sm:mb-6 section-heading" data-i18n="cloud_storage_downloads">Cloud Storage Downloads</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 max-w-xs sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-2 sm:px-4 auto-fit-content">
-                        <a href="https://pan.baidu.com/share/init?surl=VBSnq4Ga3fRX_NcyPwsV7Q&pwd=2333" 
-                           target="_blank"
-                           class="group bg-white dark:bg-gray-900 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 shadow-md border border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Baidu Cloud</h3>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm"><span data-i18n="password">Password</span>: 2333</p>
-                                </div>
-                                <svg class="w-5 h-5 text-gray-400 ml-auto group-hover:text-gray-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                </svg>
+                <!-- macOS -->
+                <div class="terminal-card p-6 flex flex-col h-full">
+                    <div class="flex items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <i class="fab fa-apple text-2xl mr-3"></i>
+                        <h2 class="text-xl font-bold dark:text-white">macOS</h2>
+                    </div>
+                    <div class="space-y-4 flex-1">
+                         <div class="bg-gray-50 dark:bg-white/5 p-3 border border-gray-200 dark:border-gray-700">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-bold text-sm dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
+                                <span class="text-[10px] bg-geekGreen text-black px-1 font-bold" data-i18n="recommended">REC</span>
                             </div>
+                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/super-agent-party-mac-v0.3.2.zip" class="block w-full text-center py-2 border border-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-xs font-bold transition-colors">
+                                <span data-i18n="download_zip">Download ZIP</span>
+                            </a>
+                        </div>
+                        <div class="p-3 opacity-70 hover:opacity-100 transition-opacity">
+                            <h3 class="font-bold text-sm mb-2 dark:text-white" data-i18n="desktop_app">Desktop App</h3>
+                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Mac.dmg" class="block w-full text-center py-2 bg-gray-200 dark:bg-gray-700 dark:text-white hover:bg-gray-300 text-xs font-bold">
+                                <span data-i18n="download_dmg">Download DMG</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linux -->
+                <div class="terminal-card p-6 flex flex-col h-full">
+                    <div class="flex items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <i class="fab fa-linux text-2xl mr-3"></i>
+                        <h2 class="text-xl font-bold dark:text-white">Linux / Docker</h2>
+                    </div>
+                    <div class="space-y-4 flex-1 text-xs">
+                        <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.AppImage" 
+                           class="flex justify-between items-center p-2 border-b border-dashed border-gray-400 hover:text-geekGreen cursor-pointer">
+                           <span data-i18n="appimage">AppImage</span> <i class="fas fa-download"></i>
                         </a>
-
-                        <a href="https://drive.google.com/drive/folders/1xu8U1FCIZ5iqWpmf1w3TLX8AqGWft3zg?usp=sharing" 
-                           target="_blank"
-                           class="group bg-white dark:bg-gray-900 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 shadow-md border border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Google Drive</h3>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="direct_access">Direct access</p>
-                                </div>
-                                <svg class="w-5 h-5 text-gray-400 ml-auto group-hover:text-gray-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                </svg>
-                            </div>
+                         <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.deb" 
+                           class="flex justify-between items-center p-2 border-b border-dashed border-gray-400 hover:text-geekGreen cursor-pointer">
+                           <span data-i18n="deb_package">DEB Package</span> <i class="fas fa-download"></i>
                         </a>
-                    </div>
-                </div>
-
-                <!-- Platform Downloads -->
-                <div class="space-y-6 sm:space-y-10">
-                    <!-- Windows -->
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-md border border-gray-200 dark:border-gray-700 download-card">
-                        <div class="flex items-center mb-3 sm:mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4 download-icon">
-                            <i class="fab fa-windows text-2xl text-gray-700 dark:text-white"></i>
-                        </div>
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Windows</h2>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
-                                <div class="flex items-center mb-3 sm:mb-4">
-                                    <span class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2 py-1 rounded-full mr-3" data-i18n="recommended">RECOMMENDED</span>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4" data-i18n="integrated_package_desc">No installation required, supports one-click updates to latest version</p>
-                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/super-agent-party-win-v0.3.2.zip" 
-                                   class="inline-flex items-center justify-center w-full px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                    </svg>
-                                    <span data-i18n="download_zip">Download ZIP</span>
-                                </a>
-                                <div class="mt-2 sm:mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                    <p>⭐ Double-click <code class="bg-gray-800 px-1 rounded text-white">update.bat</code> to update</p>
-                                    <p>⭐ Double-click <code class="bg-gray-800 px-1 rounded text-white">start.bat</code> to launch</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4" data-i18n="desktop_installer">Desktop Installer</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4" data-i18n="desktop_installer_desc">Traditional Windows installer with desktop integration</p>
-                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-Setup-0.3.2.exe" 
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                    </svg>
-                                    <span data-i18n="download_exe">Download EXE</span>
-                                </a>
-                                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                    <p>⭐ Install for current user only to avoid admin rights requirement</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- macOS -->
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fab fa-apple text-2xl text-gray-700 dark:text-white"></i>
-                        </div>
-                            <div>
-                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">macOS</h2>
-                                <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="m_chip_only">M-chip only</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 sm:p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <span class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2 py-1 rounded-full mr-3" data-i18n="recommended">RECOMMENDED</span>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="integrated_package_desc">No installation required, supports one-click updates to latest version</p>
-                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/super-agent-party-mac-v0.3.2.zip" 
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                    </svg>
-                                    <span data-i18n="download_zip">Download ZIP</span>
-                                </a>
-                                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                    <p>⭐ Run in terminal:</p>
-                                    <code class="block bg-gray-100 dark:bg-gray-800 p-2 rounded mt-1 text-xs text-gray-700 dark:text-gray-300">
-                                        chmod +x 一键更新(update).sh && ./一键更新(update).sh<br>
-                                        chmod +x 一键启动(start).sh && ./一键启动(start).sh
-                                    </code>
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4" data-i18n="desktop_app">Desktop App</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="desktop_app_desc">Native macOS application with system integration</p>
-                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Mac.dmg" 
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                    </svg>
-                                    <span data-i18n="download_dmg">Download DMG</span>
-                                </a>
-                                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                    <p>⭐ After installation, run:</p>
-                                    <code class="block bg-gray-100 dark:bg-gray-800 p-2 rounded mt-1 text-xs text-gray-700 dark:text-gray-300">
-                                        sudo xattr -dr com.apple.quarantine /Applications/Super-Agent-Party.app
-                                    </code>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Linux -->
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fab fa-linux text-2xl text-gray-700 dark:text-white"></i>
-                        </div>
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Linux</h2>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4" data-i18n="appimage">AppImage</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="appimage_desc">Universal Linux format, no installation required</p>
-                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.AppImage" 
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                    </svg>
-                                    <span data-i18n="download_appimage">Download AppImage</span>
-                                </a>
-                                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                    <p>⭐ Make executable and run directly</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4" data-i18n="deb_package">DEB Package</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="deb_package_desc">For Ubuntu/Debian systems with package management</p>
-                                <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.deb" 
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                    </svg>
-                                    <span data-i18n="download_deb">Download DEB</span>
-                                </a>
-                                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                    <p>⭐ Install with: <code class="bg-gray-800 px-1 rounded text-white">sudo dpkg -i *.deb</code></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Docker -->
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-md border border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fab fa-docker text-2xl text-gray-700 dark:text-white"></i>
-                        </div>
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Docker</h2>
-                        </div>
-                        
-                        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4" data-i18n="container_deployment">Container Deployment</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-i18n="container_deployment_desc">Run in any environment with Docker support. Web interface only.</p>
-                            <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
-                                <code class="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
-                                    docker pull ailm32442/super-agent-party:latest<br>
-                                    docker run -d -p 3456:3456 -v ./super-agent-data:/app/data ailm32442/super-agent-party:latest
-                                </code>
-                            </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">
-                                <p>⭐ <span data-i18n="access_at">Access at</span>: <code class="bg-gray-800 px-1 rounded text-white">http://localhost:3456/</code></p>
-                                <p>⭐ <span data-i18n="data_persisted_in">Data persisted in</span> <code class="bg-gray-800 px-1 rounded text-white">./super-agent-data</code></p>
-                            </div>
+                        <div class="mt-2 pt-2">
+                            <span class="block text-gray-500 mb-1" data-i18n="container_deployment">Container Deployment</span>
+                            <code class="block bg-black text-geekGreen p-2 text-[10px] overflow-x-auto">
+                                docker pull ailm32442/super-agent-party:latest
+                            </code>
                         </div>
                     </div>
                 </div>
@@ -490,70 +267,26 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center">
-                <p class="text-gray-500 dark:text-gray-400" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
-            </div>
-        </div>
+    <footer class="border-t border-black dark:border-gray-800 py-8 mt-8 bg-white dark:bg-geekDark text-center">
+        <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
     </footer>
 
     <script>
-        // 调整高度确保整屏显示
-        function adjustSectionHeights() {
-            const sections = document.querySelectorAll('.fullscreen-section');
-            const vh = window.innerHeight;
-            
-            sections.forEach(section => {
-                // 确保内容不溢出视口
-                const contentHeight = section.querySelector('.fullscreen-content').offsetHeight;
-                const navHeight = 64; // 导航栏高度
-                
-                if (contentHeight + navHeight > vh) {
-                    // 内容过高，让它自然滚动
-                    section.style.height = 'auto';
-                    section.style.minHeight = '100vh';
-                } else {
-                    // 内容适合，精确设置高度
-                    section.style.height = vh + 'px';
-                }
-            });
-        }
-        
-        // 初始加载和窗口调整时调整高度
-        window.addEventListener('DOMContentLoaded', adjustSectionHeights);
-        window.addEventListener('resize', adjustSectionHeights);
-        
-        // Check if the device is mobile
+        // System detection functionality
         function isMobileDevice() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(userAgent);
+            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(navigator.userAgent.toLowerCase());
         }
-        
-        // System detection and auto-download functionality
         function detectSystem() {
             const userAgent = navigator.userAgent.toLowerCase();
             const platform = navigator.platform.toLowerCase();
-            
             let system = 'unknown';
             let downloadUrl = '';
             let systemName = '';
             let isMobile = isMobileDevice();
             
             if (isMobile) {
-                // Detect mobile OS
-                if (userAgent.includes('android')) {
-                    system = 'android';
-                    systemName = 'Android';
-                } else if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('ipod')) {
-                    system = 'ios';
-                    systemName = 'iOS';
-                } else {
-                    system = 'mobile';
-                    systemName = 'Mobile';
-                }
-                // No download URL for mobile devices as they're not supported
-                downloadUrl = '';
+                system = 'mobile';
+                systemName = 'Mobile';
             } else if (userAgent.includes('windows') || platform.includes('win')) {
                 system = 'windows';
                 systemName = 'Windows';
@@ -567,131 +300,38 @@
                 systemName = 'Linux';
                 downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.AppImage';
             }
-            
             return { system, systemName, downloadUrl, isMobile };
         }
-        
-        // Handle system detection message based on language
+
         function updateSystemDetectionMessage(systemName, lang, isMobile) {
             const systemElement = document.getElementById('detected-system');
-            if (!systemName || systemName === 'unknown') {
-                systemElement.textContent = getTranslation('detecting_system', lang);
-                return;
-            }
+            if (!systemName || systemName === 'unknown') return;
             
-        if (isMobile) {
-            // Show message for mobile devices
             if (lang === 'en') {
-                systemElement.innerHTML = `<strong>Mobile Device Detected:</strong> ${systemName}<br>Super Agent Party is currently not available for mobile devices<br>Please use a desktop computer with Windows, macOS or Linux to download and use Super Agent Party`;
+                systemElement.textContent = `${systemName}`;
             } else if (lang === 'zh') {
-                systemElement.innerHTML = `<strong>检测到移动设备:</strong> ${systemName}<br>Super Agent Party 目前不支持移动设备<br>请使用 Windows、macOS 或 Linux 桌面系统下载并使用 Super Agent Party`;
-            }
-        } else {
-                // Show message for desktop devices
-                if (lang === 'en') {
-                    systemElement.textContent = `We detected you're using ${systemName}. Click below for the recommended download.`;
-                } else if (lang === 'zh') {
-                    systemElement.textContent = `我们检测到您正在使用 ${systemName}。点击下方获取推荐下载。`;
-                }
+                systemElement.textContent = `${systemName}`;
             }
         }
-        
-        // Initialize system detection
+
         document.addEventListener('DOMContentLoaded', function() {
             const detection = detectSystem();
             const downloadBtn = document.getElementById('auto-download-btn');
-            
-            // Get current language
             const currentLang = localStorage.getItem('lang') || getBrowserLanguage();
             
-            // Update system detection message
             updateSystemDetectionMessage(detection.systemName, currentLang, detection.isMobile);
             
-            if (detection.isMobile) {
-                // Disable download button for mobile devices
+            if (detection.isMobile || detection.system === 'unknown') {
                 downloadBtn.disabled = true;
-                if (currentLang === 'en') {
-                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">Mobile Device Detected</span>';
-                } else {
-                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">检测到移动设备</span>';
-                }
-            } else if (detection.system !== 'unknown') {
-                downloadBtn.onclick = function() {
-                    window.open(detection.downloadUrl, '_blank');
-                };
+                downloadBtn.style.opacity = "0.5";
+                downloadBtn.style.cursor = "not-allowed";
             } else {
-                downloadBtn.disabled = true;
-                if (currentLang === 'en') {
-                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">System Not Detected</span>';
-                } else {
-                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">无法检测系统</span>';
-                }
+                downloadBtn.onclick = function() { window.open(detection.downloadUrl, '_blank'); };
             }
-        });
-        
-        // Listen for language changes and update the system detection message
-        document.addEventListener('languageChanged', function(e) {
-            const detection = detectSystem();
-            const downloadBtn = document.getElementById('auto-download-btn');
-            const lang = e.detail.language;
             
-            updateSystemDetectionMessage(detection.systemName, lang, detection.isMobile);
-            
-            if (detection.isMobile) {
-                // Update button for mobile devices when language changes
-                downloadBtn.disabled = true;
-                if (lang === 'en') {
-                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">Mobile Device Detected</span>';
-                } else {
-                    downloadBtn.innerHTML = '<span data-i18n="mobile_detected">检测到移动设备</span>';
-                }
-            } else if (detection.system === 'unknown') {
-                downloadBtn.disabled = true;
-                if (lang === 'en') {
-                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">System Not Detected</span>';
-                } else {
-                    downloadBtn.innerHTML = '<span data-i18n="system_not_detected">无法检测系统</span>';
-                }
-            }
-        });
-    </script>
-    
-    <script>
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.getElementById('mobile-menu-button');
+            const menuBtn = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLangText = document.getElementById('mobile-lang-text');
-            
-            // Initial state for mobile lang text
-            if (mobileLangText) {
-                const currentLang = localStorage.getItem('lang') || getBrowserLanguage();
-                mobileLangText.textContent = currentLang === 'en' ? '中文' : 'English';
-            }
-            
-            // Toggle mobile menu visibility
-            if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', function() {
-                    const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-                    menuButton.setAttribute('aria-expanded', !expanded);
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-            
-            // Update mobile language button when language changes
-            document.addEventListener('languageChanged', function(e) {
-                if (mobileLangText) {
-                    mobileLangText.textContent = e.detail.language === 'en' ? '中文' : 'English';
-                }
-            });
-            
-            // Close mobile menu when window is resized to desktop size
-            window.addEventListener('resize', function() {
-                if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                }
-            });
+            if(menuBtn) menuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
         });
     </script>
 </body>
