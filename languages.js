@@ -10,7 +10,7 @@ const translations = {
     "light_mode": "Light Mode",
     
     // index.html content
-    "main_subtitle": "A 3D AI desktop companion with unlimited possibilities",
+    "main_subtitle": "An AI desktop companion with unlimited possibilities",
     "get_started": "Get Started",
     "view_docs": "View Documentation",
     "why_choose_us": "Why Choose Us",
@@ -84,7 +84,7 @@ const translations = {
     "light_mode": "浅色模式",
     
     // index.html content
-    "main_subtitle": "一款拥有无限可能的3D版AI桌面伴侣",
+    "main_subtitle": "一款拥有无限可能的AI桌面伴侣",
     "get_started": "立即开始",
     "view_docs": "查看文档",
     "why_choose_us": "为什么选择我们",
