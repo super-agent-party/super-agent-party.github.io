@@ -24,7 +24,7 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        geekGreen: '#00ff41',
+                        geekYellow: '#FFD700', // 改为明黄色
                         geekDark: '#050505',
                     },
                     animation: {
@@ -70,15 +70,15 @@
         .dark .terminal-card {
             background: rgba(10, 10, 10, 0.8);
             border: 1px solid #333;
-            box-shadow: 4px 4px 0px #00ff41;
+            box-shadow: 4px 4px 0px #FFD700; /* 改为明黄色 */
         }
         .terminal-card:hover {
             transform: translate(-2px, -2px);
             box-shadow: 6px 6px 0px #000;
         }
         .dark .terminal-card:hover {
-            box-shadow: 6px 6px 0px #00ff41;
-            border-color: #00ff41;
+            box-shadow: 6px 6px 0px #FFD700; /* 改为明黄色 */
+            border-color: #FFD700; /* 改为明黄色 */
         }
 
         /* 导航栏链接特效 */
@@ -87,7 +87,7 @@
             display: inline-block;
             opacity: 0;
             transition: transform 0.3s, opacity 0.2s;
-            color: #00ff41; /* 始终保持极客绿 */
+            color: #FFD700; /* 始终保持明黄色 */
         }
         .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
         .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
@@ -117,7 +117,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekGreen px-2 py-1 transition-all">Super Agent Party</a>
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
                 </div>
                 
@@ -131,9 +131,9 @@
 
                     <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <span class="light-icon"><i class="fas fa-sun"></i></span>
-                        <span class="dark-icon"><i class="fas fa-moon text-geekGreen"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
                     </button>
-                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors font-bold">
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                        中文
                     </button>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
@@ -166,7 +166,7 @@
                 
                 <!-- Hero Logo -->
                 <div class="mx-auto w-40 h-40 sm:w-52 sm:h-52 mb-8 animate-float relative">
-                    <div class="absolute inset-0 bg-geekGreen opacity-20 blur-3xl rounded-full dark:opacity-10"></div>
+                    <div class="absolute inset-0 bg-geekYellow opacity-20 blur-3xl rounded-full dark:opacity-10"></div>
                     <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full object-contain relative z-10 drop-shadow-2xl">
                 </div>
                 
@@ -177,16 +177,16 @@
                 
                 <!-- Subtitle with cursor effect -->
                 <div class="flex justify-center items-center mb-10">
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-geekGreen font-bold max-w-3xl" data-i18n="main_subtitle">
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl" data-i18n="main_subtitle">
                         An AI desktop companion with unlimited possibilities
                     </p>
-                    <div class="w-3 h-6 bg-black dark:bg-geekGreen ml-2 animate-cursor"></div>
+                    <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-2 animate-cursor"></div>
                 </div>
                 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="download.html" 
-                       class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-white bg-black dark:bg-geekGreen dark:text-black border-2 border-transparent hover:bg-gray-800 dark:hover:bg-green-400 transition-all shadow-[4px_4px_0px_rgba(0,0,0,0.2)] dark:shadow-[4px_4px_0px_#fff]">
+                       class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-white bg-black dark:bg-geekYellow dark:text-black border-2 border-transparent hover:bg-gray-800 dark:hover:bg-yellow-400 transition-all shadow-[4px_4px_0px_rgba(0,0,0,0.2)] dark:shadow-[4px_4px_0px_#fff]">
                         <span data-i18n="get_started">Get Started</span>
                     </a>
                     
@@ -204,12 +204,12 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white" data-i18n="why_choose_us">Why Choose Us</h2>
-                    <div class="h-1 w-20 bg-geekGreen mx-auto"></div>
+                    <div class="h-1 w-20 bg-geekYellow mx-auto"></div>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="terminal-card p-8 group">
-                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekGreen text-white dark:text-black flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                             <i class="fas fa-microchip"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-3 dark:text-white" data-i18n="seamless_enhancement">Seamless Enhancement</h3>
@@ -219,7 +219,7 @@
                     </div>
                     
                     <div class="terminal-card p-8 group">
-                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekGreen text-white dark:text-black flex items-center justify-center text-2xl group-hover:rotate-12 transition-transform">
+                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-2xl group-hover:rotate-12 transition-transform">
                             <i class="fas fa-network-wired"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-3 dark:text-white" data-i18n="omnichannel_deployment">Omnichannel Deployment</h3>
@@ -229,7 +229,7 @@
                     </div>
                     
                     <div class="terminal-card p-8 group">
-                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekGreen text-white dark:text-black flex items-center justify-center text-2xl group-hover:-rotate-12 transition-transform">
+                        <div class="w-16 h-16 mb-6 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-2xl group-hover:-rotate-12 transition-transform">
                             <i class="fas fa-tools"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-3 dark:text-white" data-i18n="ecosystem_tool_integration">Ecosystem Tool Integration</h3>

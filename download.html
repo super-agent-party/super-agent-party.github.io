@@ -23,7 +23,7 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        geekGreen: '#00ff41',
+                        geekYellow: '#FFD700', // 改为明黄色
                         geekDark: '#050505',
                     }
                 }
@@ -55,22 +55,22 @@
         .dark .terminal-card {
             background: rgba(10, 10, 10, 0.8);
             border: 1px solid #333;
-            box-shadow: 4px 4px 0px #00ff41;
+            box-shadow: 4px 4px 0px #FFD700; /* 改为明黄色 */
         }
         .terminal-card:hover {
             transform: translateY(-2px);
             box-shadow: 6px 6px 0px #000;
         }
         .dark .terminal-card:hover {
-            box-shadow: 6px 6px 0px #00ff41;
-            border-color: #00ff41;
+            box-shadow: 6px 6px 0px #FFD700; /* 改为明黄色 */
+            border-color: #FFD700; /* 改为明黄色 */
         }
 
         /* 扫描线动画 (Download 特有) */
         .scanline {
             width: 100%;
             height: 2px;
-            background: rgba(0, 255, 65, 0.5);
+            background: rgba(255, 215, 0, 0.5); /* 改为黄色的 RGB */
             position: absolute;
             top: 0; left: 0;
             animation: scan 3s linear infinite;
@@ -84,7 +84,7 @@
         /* 导航栏一致性 */
         .nav-link { position: relative; display: inline-block; }
         .nav-link::before, .nav-link::after {
-            display: inline-block; opacity: 0; transition: 0.3s; color: #00ff41;
+            display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; /* 改为明黄色 */
         }
         .nav-link::before { content: '['; margin-right: 5px; }
         .nav-link::after { content: ']'; margin-left: 5px; }
@@ -104,7 +104,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekGreen px-2 py-1 transition-all">Super Agent Party</a>
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
@@ -114,9 +114,9 @@
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <span class="light-icon"><i class="fas fa-sun"></i></span>
-                        <span class="dark-icon"><i class="fas fa-moon text-geekGreen"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
                     </button>
-                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors font-bold">
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                        中文
                     </button>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
@@ -143,7 +143,7 @@
             <div class="text-center mb-12">
 
                 <h1 class="text-3xl md:text-5xl font-bold dark:text-white mb-4 uppercase" data-i18n="download_title">Download Super Agent Party</h1>
-                <p class="text-gray-600 dark:text-geekGreen" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
+                <p class="text-gray-600 dark:text-geekYellow" data-i18n="download_subtitle">Choose your platform and get started with AI automation in minutes</p>
             </div>
 
             <!-- Auto Detect -->
@@ -151,16 +151,16 @@
                 <div class="terminal-card p-8 relative">
                     <div class="scanline"></div>
                     <div class="flex flex-col md:flex-row items-center gap-6 relative z-20">
-                        <div class="w-16 h-16 flex items-center justify-center bg-black text-white dark:bg-geekGreen dark:text-black text-2xl shadow-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-black text-white dark:bg-geekYellow dark:text-black text-2xl shadow-lg">
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <div class="flex-1 text-center md:text-left">
                             <h2 class="text-xl font-bold mb-2 dark:text-white" data-i18n="recommended_system">Recommended for Your System</h2>
-                            <div class="text-sm bg-gray-100 dark:bg-black dark:text-geekGreen p-2 border-l-4 border-geekGreen mb-4">
+                            <div class="text-sm bg-gray-100 dark:bg-black dark:text-geekYellow p-2 border-l-4 border-geekYellow mb-4">
                                 > <span id="detected-system" data-i18n="detecting_system">Detecting...</span><span class="animate-pulse">_</span>
                             </div>
                         </div>
-                        <button id="auto-download-btn" class="px-6 py-3 bg-black text-white dark:bg-geekGreen dark:text-black font-bold hover:opacity-80 transition-opacity shadow-md">
+                        <button id="auto-download-btn" class="px-6 py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold hover:opacity-80 transition-opacity shadow-md">
                             <i class="fas fa-download mr-2"></i> <span data-i18n="one_click_download">One-Click Download</span>
                         </button>
                     </div>
@@ -175,7 +175,7 @@
                         <h3 class="font-bold dark:text-white">Baidu Cloud</h3>
                         <p class="text-xs text-gray-500 dark:text-gray-400"><span data-i18n="password">Password</span>: 2333</p>
                     </div>
-                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekGreen transition-opacity"></i>
+                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekYellow transition-opacity"></i>
                 </a>
                 <a href="https://drive.google.com/drive/folders/1xu8U1FCIZ5iqWpmf1w3TLX8AqGWft3zg?usp=sharing" target="_blank" class="terminal-card p-4 flex items-center space-x-4 hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer group">
                     <div class="bg-gray-200 dark:bg-gray-800 p-3"><i class="fab fa-google-drive text-xl"></i></div>
@@ -183,7 +183,7 @@
                         <h3 class="font-bold dark:text-white">Google Drive</h3>
                         <p class="text-xs text-gray-500 dark:text-gray-400" data-i18n="direct_access">Direct access</p>
                     </div>
-                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekGreen transition-opacity"></i>
+                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekYellow transition-opacity"></i>
                 </a>
             </div>
 
@@ -199,7 +199,7 @@
                         <div class="bg-gray-50 dark:bg-white/5 p-3 border border-gray-200 dark:border-gray-700">
                             <div class="flex justify-between mb-2">
                                 <h3 class="font-bold text-sm dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
-                                <span class="text-[10px] bg-geekGreen text-black px-1 font-bold" data-i18n="recommended">REC</span>
+                                <span class="text-[10px] bg-geekYellow text-black px-1 font-bold" data-i18n="recommended">REC</span>
                             </div>
                             <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/super-agent-party-win-v0.3.2.zip" class="block w-full text-center py-2 border border-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-xs font-bold transition-colors">
                                 <span data-i18n="download_zip">Download ZIP</span>
@@ -224,7 +224,7 @@
                          <div class="bg-gray-50 dark:bg-white/5 p-3 border border-gray-200 dark:border-gray-700">
                             <div class="flex justify-between mb-2">
                                 <h3 class="font-bold text-sm dark:text-white" data-i18n="integrated_package">Integrated Package</h3>
-                                <span class="text-[10px] bg-geekGreen text-black px-1 font-bold" data-i18n="recommended">REC</span>
+                                <span class="text-[10px] bg-geekYellow text-black px-1 font-bold" data-i18n="recommended">REC</span>
                             </div>
                             <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/super-agent-party-mac-v0.3.2.zip" class="block w-full text-center py-2 border border-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-xs font-bold transition-colors">
                                 <span data-i18n="download_zip">Download ZIP</span>
@@ -247,16 +247,16 @@
                     </div>
                     <div class="space-y-4 flex-1 text-xs">
                         <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.AppImage" 
-                           class="flex justify-between items-center p-2 border-b border-dashed border-gray-400 hover:text-geekGreen cursor-pointer">
+                           class="flex justify-between items-center p-2 border-b border-dashed border-gray-400 hover:text-geekYellow cursor-pointer">
                            <span data-i18n="appimage">AppImage</span> <i class="fas fa-download"></i>
                         </a>
                          <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.2/Super-Agent-Party-0.3.2-Linux.deb" 
-                           class="flex justify-between items-center p-2 border-b border-dashed border-gray-400 hover:text-geekGreen cursor-pointer">
+                           class="flex justify-between items-center p-2 border-b border-dashed border-gray-400 hover:text-geekYellow cursor-pointer">
                            <span data-i18n="deb_package">DEB Package</span> <i class="fas fa-download"></i>
                         </a>
                         <div class="mt-2 pt-2">
                             <span class="block text-gray-500 mb-1" data-i18n="container_deployment">Container Deployment</span>
-                            <code class="block bg-black text-geekGreen p-2 text-[10px] overflow-x-auto">
+                            <code class="block bg-black text-geekYellow p-2 text-[10px] overflow-x-auto">
                                 docker pull ailm32442/super-agent-party:latest
                             </code>
                         </div>

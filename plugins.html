@@ -20,7 +20,7 @@
                 extend: {
                     fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
                     colors: {
-                        geekGreen: '#00ff41',
+                        geekYellow: '#FFD700', // 改为明黄色
                         geekDark: '#050505',
                     }
                 }
@@ -55,8 +55,8 @@
         .dark .plugin-card {
             background: rgba(10, 10, 10, 0.8);
             border: 1px solid #333;
-            /* 暗色模式下的极客绿硬阴影衬底 */
-            box-shadow: 4px 4px 0px #00ff41; 
+            /* 暗色模式下的明黄色硬阴影衬底 */
+            box-shadow: 4px 4px 0px #FFD700; 
         }
         .plugin-card:hover {
             /* 悬停时轻微位移，增加立体感 */
@@ -64,8 +64,8 @@
             box-shadow: 6px 6px 0px #000;
         }
         .dark .plugin-card:hover {
-            box-shadow: 6px 6px 0px #00ff41;
-            border-color: #00ff41;
+            box-shadow: 6px 6px 0px #FFD700;
+            border-color: #FFD700;
         }
 
         /* Tag 样式保持终端风格 */
@@ -78,13 +78,13 @@
             color: #fff;
         }
         .dark .tag-bracket.active {
-            background: #00ff41;
+            background: #FFD700; /* 改为明黄色 */
             color: #000;
         }
 
         /* 光标闪烁动画 */
         .cursor-blink {
-            display: inline-block; width: 8px; height: 1.2em; background: #00ff41;
+            display: inline-block; width: 8px; height: 1.2em; background: #FFD700; /* 改为明黄色 */
             animation: blink 1s step-end infinite;
             vertical-align: middle;
         }
@@ -93,7 +93,7 @@
         /* 导航栏链接特效 */
         .nav-link { position: relative; display: inline-block; }
         .nav-link::before, .nav-link::after {
-            display: inline-block; opacity: 0; transition: 0.3s; color: #00ff41;
+            display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; /* 改为明黄色 */
         }
         .nav-link::before { content: '['; margin-right: 5px; }
         .nav-link::after { content: ']'; margin-left: 5px; }
@@ -113,7 +113,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekGreen px-2 py-1 transition-all">Super Agent Party</a>
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
@@ -123,9 +123,9 @@
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <span class="light-icon"><i class="fas fa-sun"></i></span>
-                        <span class="dark-icon"><i class="fas fa-moon text-geekGreen"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
                     </button>
-                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors font-bold">
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                        中文
                     </button>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
@@ -156,8 +156,8 @@
             <!-- Search and Tags -->
             <div class="max-w-4xl mx-auto mb-16">
                 <!-- Console style input -->
-                <div class="flex items-center bg-gray-50 dark:bg-black border-b-2 border-gray-400 dark:border-geekGreen p-4 mb-8">
-                    <span class="text-green-600 dark:text-geekGreen mr-2 font-bold">></span>
+                <div class="flex items-center bg-gray-50 dark:bg-black border-b-2 border-gray-400 dark:border-geekYellow p-4 mb-8">
+                    <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold">></span>
                     <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-black dark:text-white placeholder-gray-400" placeholder="search_module...">
                     <button id="clearSearch" class="hidden text-red-500 font-bold ml-2">X</button>
                     <div class="cursor-blink"></div>
@@ -174,11 +174,11 @@
             </div>
 
             <!-- Add Plugin Section -->
-            <div class="mt-20 border border-dashed border-gray-400 dark:border-gray-700 p-8 bg-white dark:bg-geekDark/50 rounded-sm shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#00ff41]">
+            <div class="mt-20 border border-dashed border-gray-400 dark:border-gray-700 p-8 bg-white dark:bg-geekDark/50 rounded-sm shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
                 <h2 class="text-2xl font-bold mb-4 dark:text-white" data-i18n="adding_your_own_plugin">Adding Your Own Plugin</h2>
                 <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="add_plugin_description">Want to add your plugin to this list?</p>
                 
-                <div class="bg-black text-geekGreen p-4 rounded-sm text-xs overflow-x-auto mb-6 border-l-4 border-geekGreen shadow-lg">
+                <div class="bg-black text-geekYellow p-4 rounded-sm text-xs overflow-x-auto mb-6 border-l-4 border-geekYellow shadow-lg">
                     <pre>// plugins.json structure
 [
   {
@@ -191,7 +191,7 @@
                 
                 <p class="text-gray-600 dark:text-gray-400 text-sm">
                     <span data-i18n="plugin_development_info">Refer to documentation:</span>
-                    <a href="https://github.com/super-agent-party/super-agent-party.github.io" target="_blank" class="text-blue-600 dark:text-geekGreen hover:underline font-bold">Super Agent Party Docs</a>
+                    <a href="https://github.com/super-agent-party/super-agent-party.github.io" target="_blank" class="text-blue-600 dark:text-geekYellow hover:underline font-bold">Super Agent Party Docs</a>
                 </p>
             </div>
         </div>
@@ -233,7 +233,7 @@
         function renderTags() {
             const categories = ['全部', ...new Set(rawPlugins.map(p => p.category))];
             tagContainer.innerHTML = categories.map(cat => `
-                <button class="tag-bracket px-4 py-1 border border-gray-400 dark:border-gray-600 text-sm hover:bg-black hover:text-white dark:hover:bg-geekGreen dark:hover:text-black transition-colors" 
+                <button class="tag-bracket px-4 py-1 border border-gray-400 dark:border-gray-600 text-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" 
                         onclick="setTag(this, '${cat}')">
                     [ ${cat === '全部' ? (localStorage.getItem('lang') === 'en' ? 'All' : '全部') : cat} ]
                 </button>
@@ -280,7 +280,7 @@
                     <div>
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-black dark:text-white">${p.name}</h3>
-                            <span class="text-xs border border-black dark:border-geekGreen px-2 py-1 text-black dark:text-geekGreen font-bold">${p.category}</span>
+                            <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 text-black dark:text-geekYellow font-bold">${p.category}</span>
                         </div>
                         <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${p.description}</p>
                     </div>
@@ -293,7 +293,7 @@
                             <button onclick="copyLink('${p.repository}')" class="flex-1 py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-xs font-bold">
                                 <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
                             </button>
-                            <a href="${p.repository}" target="_blank" class="flex-1 py-2 bg-black text-white dark:bg-geekGreen dark:text-black text-center hover:opacity-80 transition-opacity text-xs font-bold">
+                            <a href="${p.repository}" target="_blank" class="flex-1 py-2 bg-black text-white dark:bg-geekYellow dark:text-black text-center hover:opacity-80 transition-opacity text-xs font-bold">
                                 <i class="fab fa-github mr-2"></i> <span data-i18n="github">GitHub</span>
                             </a>
                         </div>
