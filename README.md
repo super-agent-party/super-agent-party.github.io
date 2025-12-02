@@ -45,3 +45,4 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | AI galgame      | heshengtao  | This is an AI galgame extension     | https://github.com/heshengtao/sap-aigalgame  |
 | AI tarot reader      | heshengtao  | This is an AI tarot reader extension      | https://github.com/heshengtao/sap-tarot  |
 | AI sheet      | heshengtao  | This is an AI Sheet extension                | https://github.com/heshengtao/sap-ai-sheet  |
+| AI drawio      | heshengtao  | This is an AI drawio extension                 | https://github.com/heshengtao/sap-ai-drawio  |

@@ -45,3 +45,4 @@
 | AI galgame      | heshengtao  | 一款AI galgame 插件。                   | https://github.com/heshengtao/sap-aigalgame  |
 | AI tarot reader      | heshengtao  | 一款AI 塔罗牌插件。                   | https://github.com/heshengtao/sap-tarot  |
 | AI sheet      | heshengtao  | 一款AI 表格插件。                   | https://github.com/heshengtao/sap-ai-sheet  |
+| AI drawio      | heshengtao  | 一款AI drawio插件。                   | https://github.com/heshengtao/sap-ai-drawio  |

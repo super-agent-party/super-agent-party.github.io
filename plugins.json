@@ -79,5 +79,14 @@
     "repository": "https://github.com/heshengtao/sap-ai-sheet",
     "backupRepository": "https://gitee.com/heshengtao/sap-ai-sheet",
     "category": "Utility"
+  },
+  {
+    "name": "sap-ai-drawio",
+    "version": "1.0.0",
+    "description": "This is a drawio extension for the Super Agent Party",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-ai-drawio",
+    "backupRepository": "https://gitee.com/heshengtao/sap-ai-drawio",
+    "category": "Utility"
   }
 ]
