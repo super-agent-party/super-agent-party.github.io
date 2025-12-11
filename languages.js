@@ -9,20 +9,58 @@ const translations = {
     "dark_mode": "Dark Mode",
     "light_mode": "Light Mode",
     
-    // index.html content
+    // index.html - Hero Section
     "main_subtitle": "An AI desktop companion with unlimited possibilities",
     "get_started": "Get Started",
     "view_docs": "View Documentation",
-    "why_choose_us": "Why Choose Us",
-    "why_choose_us_subtitle": "Building a pluggable LLM enhancement platform for unlimited agent capability expansion",
     
-    // Features
-    "seamless_enhancement": "Seamless Enhancement",
-    "seamless_enhancement_desc": "Upgrade LLM APIs at the enterprise level without code modifications, seamlessly integrating knowledge bases, real-time internet connectivity, permanent memory, and other modular features into existing model interfaces",
-    "omnichannel_deployment": "Omnichannel Deployment",
-    "omnichannel_deployment_desc": "Quickly deploy agent configurations to multiple terminals, compatible with classic chat interfaces, official QQ robots, Bilibili live streaming interaction, VRM virtual desktop pets, and other scenarios",
-    "ecosystem_tool_integration": "Ecosystem Tool Integration",
-    "ecosystem_tool_integration_desc": "Freely connect third-party agents and workflows as tool chains, achieving cross-platform capability aggregation through the agent-party architecture",
+    // index.html - Core Features (6 Grid Items)
+    "core_features": "Core Features",
+    
+    "omnichannel": "Omnichannel Deployment",
+    "omnichannel_desc": "One-click deployment to desktop, QQ, Discord, Telegram, Twitch, YouTube, and more. Ready to use out of the box.",
+    
+    "ecosystem": "Ecosystem Integration",
+    "ecosystem_desc": "Connect standard workflows as toolchains: Home Assistant, Claude Code, ComfyUI, MCP, A2A, and Dify.",
+    
+    "enhancement": "Seamless Enhancement",
+    "enhancement_desc": "Upgrade LLMs without code: Web access, Permanent Memory, RAG, Code Execution, Vision & Automation.",
+    
+    "extensions": "Extension Marketplace",
+    "extensions_desc": "Customizable extension development with a community marketplace for sharing capabilities to meet personalized needs.",
+    
+    "interfaces": "Open Interfaces",
+    "interfaces_desc": "OpenAI API compatible, MCP protocol support, VRM/VMC for 3D avatars, and WebXR ready for immersive experiences.",
+    
+    "compatibility": "Platform Compatibility",
+    "compatibility_desc": "Native support for Windows, macOS, Linux, Docker containers, and Web-based cloud services.",
+
+    // index.html - Detailed Capabilities (Terminal List)
+    "system_capabilities": "view_system_capabilities.sh",
+    
+    "feat_model_title": "Model Services",
+    "feat_model_desc": "Support OpenAI, Ollama, Dify, and multi-modal fusion (Roleplay/Vision/TTS/STT).",
+    
+    "feat_vrm_title": "VRM Avatar Robot",
+    "feat_vrm_desc": "Custom 3D avatars, voice interaction, transparent OBS streaming, dual-way VMC protocol support.",
+    
+    "feat_platforms_title": "Message & Live Bots",
+    "feat_platforms_desc": "Connects with QQ, Feishu, Discord, Telegram, Bilibili, YouTube, Twitch.",
+    
+    "feat_broadcast_title": "Broadcasting Agent",
+    "feat_broadcast_desc": "Long text/ePub TTS, multi-voice, digital human broadcasting, batch audio export.",
+    
+    "feat_ui_title": "Advanced UI & Tools",
+    "feat_ui_desc": "Mermaid/HTML rendering, capsule mode, screenshot analysis, sandboxed code execution, file system ops.",
+    
+    "feat_rpg_title": "Roleplay & Memory",
+    "feat_rpg_desc": "SillyTavern card support, distinct character voices, long-term memory, narrator mode.",
+    
+    "feat_dev_title": "Developer Ready",
+    "feat_dev_desc": "Simulated OpenAI/MCP APIs, custom toolchain (HTTP/LLM), extension system.",
+    
+    "feat_storage_title": "Privacy & Storage",
+    "feat_storage_desc": "Local data storage. NAS support for private file/image hosting.",
     
     // download.html content
     "download_title": "Download Super Agent Party",
@@ -74,6 +112,7 @@ const translations = {
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
+  
   zh: {
     // Navigation
     "github": "GitHub",
@@ -83,20 +122,58 @@ const translations = {
     "dark_mode": "深色模式",
     "light_mode": "浅色模式",
     
-    // index.html content
+    // index.html - Hero Section
     "main_subtitle": "一款拥有无限可能的AI桌面伴侣",
     "get_started": "立即开始",
     "view_docs": "查看文档",
-    "why_choose_us": "为什么选择我们",
-    "why_choose_us_subtitle": "打造可插拔的LLM增强中台，实现智能体能力的无限扩展",
     
-    // Features
-    "seamless_enhancement": "无缝能力增强",
-    "seamless_enhancement_desc": "无需代码改造即可实现LLM API企业级升级，为现有模型接口无缝集成知识库、实时联网、永久记忆等模块化功能",
-    "omnichannel_deployment": "全渠道一键部署",
-    "omnichannel_deployment_desc": "支持将智能体配置快速部署至多类终端，已兼容经典聊天界面、QQ官方机器人、B站直播互动、VRM虚拟桌宠等场景",
-    "ecosystem_tool_integration": "生态工具互联",
-    "ecosystem_tool_integration_desc": "可自由接入第三方智能体与工作流作为工具链，通过agent-party架构实现跨平台能力聚合",
+    // index.html - Core Features (6 Grid Items)
+    "core_features": "核心特性",
+    
+    "omnichannel": "全渠道一键部署",
+    "omnichannel_desc": "支持将智能体配置快速部署至多类终端，兼容经典界面、桌宠、QQ、飞书、Discord、Telegram、直播机器人（B站/YouTube/Twitch）等。",
+    
+    "ecosystem": "生态工具互联",
+    "ecosystem_desc": "自由接入第三方智能体与工作流（Home Assistant/Claude code/ComfyUI/MCP/A2A/Dify），实现跨平台能力聚合。",
+    
+    "enhancement": "无缝能力增强",
+    "enhancement_desc": "无需代码改造实现LLM API企业级升级：集成知识库、联网、永久记忆、代码执行、多模态及深度思考控制。",
+    
+    "extensions": "扩展生态丰富",
+    "extensions_desc": "支持自定义扩展开发，通过官网扩展市场实现社区共享，满足个性化需求。",
+    
+    "interfaces": "标准化接口开放",
+    "interfaces_desc": "兼容OpenAI API及MCP协议，VRM桌宠开放VMC协议，界面支持WebXR协议沉浸式体验。",
+    
+    "compatibility": "全平台兼容适配",
+    "compatibility_desc": "覆盖Windows/macOS/Linux原生运行环境，支持Docker容器化部署与Web端云服务。",
+
+    // index.html - Detailed Capabilities (Terminal List)
+    "system_capabilities": "查看系统功能列表.sh",
+    
+    "feat_model_title": "常见模型服务商支持",
+    "feat_model_desc": "已支持市面上常见的本地部署及云服务商接口，如：OpenAI/Ollama/Dify等，支持多模态模型融合。",
+    
+    "feat_vrm_title": "VRM桌宠机器人",
+    "feat_vrm_desc": "高度自由，支持自定义形象/动作/语音交互/打断，支持透明推流及双向VMC协议。",
+    
+    "feat_platforms_title": "消息平台机器人",
+    "feat_platforms_desc": "目前已支持QQ、飞书、Discord、Telegram，后续会支持更多平台。",
+    
+    "feat_broadcast_title": "播报机器人",
+    "feat_broadcast_desc": "支持长文播报、多语音、数字人、超长文本批量转语音下载，支持电子书epub解析。",
+    
+    "feat_ui_title": "对话界面与工具",
+    "feat_ui_desc": "支持公式/Mermaid/HTML代码渲染，胶囊模式/小助手模式，支持截图分析、沙盒代码执行、文件操作。",
+    
+    "feat_rpg_title": "角色扮演",
+    "feat_rpg_desc": "支持酒馆(SillyTavern)角色卡、异色语音、长期记忆、旁白音色及表情包支持。",
+    
+    "feat_dev_title": "对外接口与扩展",
+    "feat_dev_desc": "开放模拟OpenAI和MCP接口，支持任意LLM接口作为工具，拥有完善的扩展插件系统。",
+    
+    "feat_storage_title": "存储空间",
+    "feat_storage_desc": "所有文件本地存储。支持NAS部署，可作为内网个人图床、文件床使用。",
     
     // download.html content
     "download_title": "下载 Super Agent Party",
