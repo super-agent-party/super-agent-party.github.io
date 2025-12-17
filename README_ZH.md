@@ -46,3 +46,4 @@
 | AI tarot reader      | heshengtao  | 一款AI 塔罗牌插件。                   | https://github.com/heshengtao/sap-tarot  |
 | AI sheet      | heshengtao  | 一款AI 表格插件。                   | https://github.com/heshengtao/sap-ai-sheet  |
 | AI drawio      | heshengtao  | 一款AI drawio插件。                   | https://github.com/heshengtao/sap-ai-drawio  |
+| AI mermaid      | heshengtao  | 一款AI mermaid编辑器插件                  | https://github.com/heshengtao/sap-ai-mermaid  |
