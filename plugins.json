@@ -97,5 +97,14 @@
     "repository": "https://github.com/heshengtao/sap-ai-mermaid",
     "backupRepository": "https://gitee.com/heshengtao/sap-ai-mermaid",
     "category": "Utility"
+  },
+  {
+    "name": "sap-rss",
+    "version": "1.0.0",
+    "description": "This is a RSS reader extension for the Super Agent Party",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-rss",
+    "backupRepository": "https://gitee.com/heshengtao/sap-rss",
+    "category": "Utility"
   }
 ]
