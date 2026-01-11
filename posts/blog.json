@@ -1,0 +1,30 @@
+{
+  "en": [
+    {
+      "id": "hello-world",
+      "title": "Welcome to the Super Agent Party Blog",
+      "date": "2026-01-14",
+      "description": "This is the first Super Agent Party blog post.",
+      "tags": [
+        "First Update",
+        "AI"
+      ],
+      "lang": "en",
+      "file": "hello-world.md"
+    }
+  ],
+  "zh": [
+    {
+      "id": "hello-world",
+      "title": "欢迎来到 Super Agent Party 博客",
+      "date": "2026-01-14",
+      "description": "这里是第一篇Super Agent Party 博客",
+      "tags": [
+        "First Update",
+        "AI"
+      ],
+      "lang": "zh",
+      "file": "hello-world.md"
+    }
+  ]
+}

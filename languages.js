@@ -108,6 +108,18 @@ const translations = {
     "copy_error": "Cannot copy link: ",
     "copy_failed": "Failed to copy link, please copy manually",
     "all": "All",
+    // blog page
+    "blog": "Blog",
+    "blog_title": "DevLog_",
+    "blog_subtitle": "Updates, tutorials, free resources, and release notes.",
+    "read_more": "READ_FILE.EXE",
+    "back_to_blog": "cd ..",
+    "article_loading": "Loading data stream...",
+    "no_posts": "No posts found for current language.",
+    "error_loading": "Error loading blog index.",
+    "source_file": "Source File",
+    "rss_feed": "RSS Feed",
+
 
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
@@ -221,6 +233,17 @@ const translations = {
     "copy_error": "无法复制链接: ",
     "copy_failed": "复制链接失败，请手动复制",
     "all": "全部",
+    // blog page
+    "blog": "博客",
+    "blog_title": "开发日志_",
+    "blog_subtitle": "更新动态、教程、免费资源与发布说明。",
+    "read_more": "阅读全文.EXE",
+    "back_to_blog": "返回上级",
+    "article_loading": "正在加载数据流...",
+    "no_posts": "当前语言暂无文章。",
+    "error_loading": "加载博客索引失败。",
+    "source_file": "源文件",
+    "rss_feed": "RSS 订阅",
 
     // Footer
     "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Super Agent Party Blog (ZH)</title>
+    <link>https://yourwebsite.com/blog.html</link>
+    <description>Updates from Super Agent Party</description>
+    <language>zh</language>
+    <item>
+      <title>欢迎来到 Super Agent Party 博客</title>
+      <link>https://yourwebsite.com/article.html?lang=zh&amp;slug=hello-world</link>
+      <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
+      <description>这里是第一篇Super Agent Party 博客</description>
+      <guid>https://yourwebsite.com/article.html?lang=zh&amp;slug=hello-world</guid>
+    </item>
+  </channel>
+</rss>

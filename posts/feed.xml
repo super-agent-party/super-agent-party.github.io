@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Super Agent Party Blog (EN)</title>
+    <link>https://yourwebsite.com/blog.html</link>
+    <description>Updates from Super Agent Party</description>
+    <language>en</language>
+    <item>
+      <title>Welcome to the Super Agent Party Blog</title>
+      <link>https://yourwebsite.com/article.html?lang=en&amp;slug=hello-world</link>
+      <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
+      <description>This is the first Super Agent Party blog post.</description>
+      <guid>https://yourwebsite.com/article.html?lang=en&amp;slug=hello-world</guid>
+    </item>
+  </channel>
+</rss>

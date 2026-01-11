@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading - Super Agent Party</title>
+    <script src="languages.js"></script>
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked.js 用于解析 Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Frontmatter 解析 (可选，如果需要在详情页再次读取头部) -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
+        .matrix-bg {
+            background-color: #ffffff;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .matrix-bg {
+            background-color: #050505;
+            background-image: radial-gradient(#222 1px, transparent 1px);
+        }
+        
+        /* Markdown 内容样式自定义 */
+        .prose { max-width: 100%; }
+        .prose h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; margin-top: 2rem; color: inherit; }
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 1.5rem; border-bottom: 2px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
+        .prose p { margin-bottom: 1rem; line-height: 1.7; color: #4B5563; }
+        .dark .prose p { color: #D1D5DB; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        .prose code { background: #eee; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+        .dark .prose code { background: #333; color: #FFD700; }
+        .prose pre { background: #1a1a1a; padding: 1rem; overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid #333; }
+        .dark .prose pre { border-color: #555; }
+        .prose pre code { background: transparent; color: #fff; padding: 0; }
+        .prose img { max-width: 100%; border: 2px solid #000; margin: 1rem 0; }
+        .dark .prose img { border-color: #FFD700; }
+        .prose a { color: #2563EB; text-decoration: underline; }
+        .dark .prose a { color: #FFD700; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="blog.html" class="flex items-center text-sm font-bold hover:underline">
+                    <i class="fas fa-arrow-left mr-2"></i> cd ..
+                </a>
+                <div class="flex items-center space-x-4">
+                     <button id="theme-toggle" onclick="toggleTheme()" class="p-2"><i class="fas fa-adjust"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="flex-grow pt-24 pb-12 px-4">
+        <div class="max-w-3xl mx-auto">
+            <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
+                
+                <!-- Metadata Area -->
+                <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
+                    <div id="meta-tags" class="flex space-x-2 mb-4"></div>
+                    <h1 id="article-title" class="text-3xl md:text-4xl font-black mb-2 dark:text-white">Loading...</h1>
+                    <div class="text-sm font-mono text-gray-500">
+                        <span id="article-date">--/--/----</span> | <span id="article-file">source.md</span>
+                    </div>
+                </div>
+
+                <!-- Markdown Content Area -->
+                <div id="markdown-content" class="prose dark:prose-invert">
+                    <div class="animate-pulse space-y-4">
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <script>
+        // Simple Frontmatter parser for browser (regex based, simpler than importing a huge library)
+        function parseFrontMatter(text) {
+            const pattern = /^---[\s\S]*?---/;
+            const match = text.match(pattern);
+            if (!match) return { attributes: {}, body: text };
+            
+            const frontMatterBlock = match[0];
+            const body = text.replace(pattern, '').trim();
+            const attributes = {};
+            
+            frontMatterBlock.split('\n').forEach(line => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > 0) {
+                    const key = line.slice(0, colonIndex).trim();
+                    let value = line.slice(colonIndex + 1).trim();
+                    // Clean quotes
+                    if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
+                    if (key !== '---') attributes[key] = value;
+                }
+            });
+            return { attributes, body };
+        }
+
+        async function loadArticle() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+            const lang = params.get('lang') || 'en';
+
+            if (!slug) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            try {
+                // Fetch MD file
+                const response = await fetch(`posts/${lang}/${slug}.md`);
+                if (!response.ok) throw new Error("Article not found");
+                const text = await response.text();
+
+                // Parse
+                const { attributes, body } = parseFrontMatter(text);
+
+                // Update UI
+                document.title = `${attributes.title || 'Post'} - Super Agent Party`;
+                document.getElementById('article-title').textContent = attributes.title || 'Untitled';
+                document.getElementById('article-date').textContent = attributes.date || '';
+                document.getElementById('article-file').textContent = `${slug}.md`;
+
+                // Handle Tags
+                if (attributes.tags) {
+                    // Simple parsing for [tag1, tag2] string if it came that way, or just raw string
+                    const tagsStr = attributes.tags.replace(/[\[\]"]/g, '');
+                    const tags = tagsStr.split(',');
+                    const tagsHtml = tags.map(t => 
+                        `<span class="text-xs font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">${t.trim()}</span>`
+                    ).join('');
+                    document.getElementById('meta-tags').innerHTML = tagsHtml;
+                }
+
+                // Render Markdown
+                document.getElementById('markdown-content').innerHTML = marked.parse(body);
+
+            } catch (e) {
+                document.getElementById('markdown-content').innerHTML = 
+                    `<p class="text-red-500 font-bold">Error 404: Article file not found on server.</p>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadArticle);
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Super Agent Party</title>
+    <script src="languages.js"></script>
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="github-stars.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
+        .matrix-bg {
+            background-color: #ffffff;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .matrix-bg {
+            background-color: #050505;
+            background-image: radial-gradient(#222 1px, transparent 1px);
+        }
+        .terminal-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s ease;
+        }
+        .dark .terminal-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #333;
+            box-shadow: 4px 4px 0px #FFD700;
+        }
+        .terminal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+        .dark .terminal-card:hover {
+            box-shadow: 6px 6px 0px #FFD700;
+            border-color: #FFD700;
+        }
+        
+        /* 导航栏样式：悬停时自动加 [] */
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after {
+            display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700;
+        }
+        .nav-link::before { content: '['; margin-right: 5px; }
+        .nav-link::after { content: ']'; margin-left: 5px; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+
+        .dark-icon { display: none; } .dark .dark-icon { display: block; }
+        .light-icon { display: block; } .dark .light-icon { display: none; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
+                    <a href="plugins.html" class="nav-link font-bold text-sm" data-i18n="plugins">Plugins</a>
+                    <!-- 博客链接已修复为自动翻译 -->
+                    <a href="blog.html" class="nav-link font-bold text-sm" data-i18n="blog">Blog</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                        <span class="light-icon"><i class="fas fa-sun"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
+                    </button>
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black font-bold">
+                       中文
+                    </button>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span data-i18n="github">GitHub</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="home">Home</a>
+            <a href="download.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="download">Download</a>
+            <a href="plugins.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="plugins">Plugins</a>
+            <a href="blog.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="blog">Blog</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24 pb-12 px-4">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase" data-i18n="blog_title">DevLog_</h1>
+                <p class="text-gray-500 dark:text-gray-400" data-i18n="blog_subtitle">Updates, tutorials, and release notes.</p>
+
+                <!-- RSS Links -->
+                <div class="mt-4 flex justify-center space-x-4 text-xs font-bold">
+                    <a href="posts/feed.xml" target="_blank" class="flex items-center text-orange-500 hover:underline">
+                        <i class="fas fa-rss mr-1"></i> RSS (EN)
+                    </a>
+                    <a href="posts/feed-zh.xml" target="_blank" class="flex items-center text-orange-500 hover:underline">
+                        <i class="fas fa-rss mr-1"></i> RSS (中文)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Blog List Container -->
+            <div id="blog-grid" class="grid grid-cols-1 gap-6">
+                <!-- Posts will be injected here -->
+                <div class="text-center py-10">
+                    <span class="animate-pulse">> Loading data stream...</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-black dark:border-gray-800 py-8 mt-8 bg-white dark:bg-geekDark text-center">
+        <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+
+        async function loadPosts() {
+            try {
+                // 1. 先获取当前语言 (zh 或 en)
+                // 如果 localStorage 没数据，默认为 en，或者尝试读取浏览器语言
+                const currentLang = localStorage.getItem('lang') || 'en';
+
+                // 2. 根据语言定义按钮文字
+                const readMoreText = currentLang === 'zh' ? '阅读全文.EXE' : 'READ_FILE.EXE'; 
+
+                // 3. 尝试获取 JSON 数据
+                const response = await fetch('posts/blog.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // 4. 获取对应语言的文章列表，如果为空则设为空数组
+                const posts = data[currentLang] || [];
+
+                // 5. 渲染
+                const container = document.getElementById('blog-grid');
+                container.innerHTML = '';
+
+                if (posts.length === 0) {
+                    const emptyMsg = currentLang === 'zh' ? '暂无文章，请稍后再来。' : 'No posts found yet.';
+                    container.innerHTML = `<div class="text-center p-10 border border-dashed border-gray-400">${emptyMsg}</div>`;
+                    return;
+                }
+
+                posts.forEach(post => {
+                    // 防止标签为空报错
+                    const tagsHtml = (post.tags || []).map(tag => 
+                        `<span class="text-[10px] uppercase font-bold bg-black text-white dark:bg-geekYellow dark:text-black px-2 py-0.5">${tag}</span>`
+                    ).join('');
+
+                    const html = `
+                        <a href="article.html?lang=${currentLang}&slug=${post.id}" class="terminal-card p-6 block group hover:no-underline">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h2 class="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-geekYellow transition-colors">
+                                    ${post.title}
+                                </h2>
+                                <span class="text-xs font-mono text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700 px-2 py-1 mt-2 md:mt-0">
+                                    ${post.date}
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                                ${post.description}
+                            </p>
+                            <div class="flex items-center space-x-2">
+                                ${tagsHtml}
+                                <span class="ml-auto text-xs font-bold text-black dark:text-geekYellow opacity-0 group-hover:opacity-100 transition-opacity">
+                                    ${readMoreText} <i class="fas fa-caret-right ml-1"></i>
+                                </span>
+                            </div>
+                        </a>
+                    `;
+                    container.innerHTML += html;
+                });
+
+            } catch (e) {
+                console.error("Blog Load Error:", e);
+                const container = document.getElementById('blog-grid');
+                // 提示用户可能的原因
+                container.innerHTML = `
+                    <div class="text-red-500 text-center border border-red-500 p-4">
+                        <p class="font-bold">Error loading blog index.</p>
+                        <p class="text-xs mt-2 text-gray-500">
+                            1. Did you run 'node build-blog.js'?<br>
+                            2. Are you opening this file via 'file://'? (Use a local server)
+                        </p>
+                        <p class="text-xs mt-2 text-gray-400">Details: ${e.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 监听语言切换事件，重新加载文章
+        document.addEventListener('languageChanged', loadPosts);
+        // 页面加载完成时执行
+        document.addEventListener('DOMContentLoaded', loadPosts);
+    </script>
+</body>
+</html>
