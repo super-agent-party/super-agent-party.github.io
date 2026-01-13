@@ -1,20 +1,34 @@
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter'); // 需要 npm install gray-matter
-const xml = require('xml'); // 需要 npm install xml
+const matter = require('gray-matter');
+const xml = require('xml');
+const { marked } = require('marked'); // 引入 Markdown 转换器
 
 const POSTS_DIR = path.join(__dirname, 'posts');
-const BASE_URL = 'https://yourwebsite.com'; // ★★★ 请修改为你的实际域名 ★★★
+// ★★★ 请务必确认这里是你的真实域名，否则RSS里的图片和链接会打不开 ★★★
+const BASE_URL = 'https://super-agent-party.github.io'; 
 
-// 读取文章函数
+// 确保文件夹存在
+const folders = [POSTS_DIR, path.join(POSTS_DIR, 'en'), path.join(POSTS_DIR, 'zh')];
+folders.forEach(f => {
+    if (!fs.existsSync(f)) fs.mkdirSync(f, { recursive: true });
+});
+
 function getPosts(lang) {
     const dir = path.join(POSTS_DIR, lang);
     if (!fs.existsSync(dir)) return [];
     
     const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-    const posts = files.map(filename => {
-        const content = fs.readFileSync(path.join(dir, filename), 'utf-8');
-        const { data } = matter(content); // 解析 YAML 头部
+    
+    return files.map(filename => {
+        const fileContent = fs.readFileSync(path.join(dir, filename), 'utf-8');
+        // 解析 Frontmatter 和 正文
+        const { data, content } = matter(fileContent);
+        
+        // ★ 核心修改：将 Markdown 正文转换为 HTML
+        // 这里我们把相对路径的图片处理一下（简单处理），建议博客图片最好用图床的绝对路径
+        const htmlContent = marked.parse(content);
+
         return {
             id: filename.replace('.md', ''),
             title: data.title || 'No Title',
@@ -22,31 +36,41 @@ function getPosts(lang) {
             description: data.description || '',
             tags: data.tags || [],
             lang: lang,
-            file: filename
+            content: htmlContent // 保存转换后的 HTML
         };
-    }).sort((a, b) => new Date(b.date) - new Date(a.date)); // 按日期倒序
-    
-    return posts;
+    }).sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
-// 生成 RSS
 function generateRSS(posts, lang) {
     const feedObj = {
         rss: [
-            { _attr: { version: '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom' } },
+            { 
+                _attr: { 
+                    version: '2.0', 
+                    'xmlns:atom': 'http://www.w3.org/2005/Atom',
+                    'xmlns:content': 'http://purl.org/rss/1.0/modules/content/' // ★ 必须引入 content 命名空间
+                } 
+            },
             {
                 channel: [
                     { title: `Super Agent Party Blog (${lang.toUpperCase()})` },
                     { link: `${BASE_URL}/blog.html` },
                     { description: 'Updates from Super Agent Party' },
-                    { language: lang },
+                    { language: lang === 'zh' ? 'zh-cn' : 'en-us' },
+                    { generator: 'NodeJS Build Script' },
                     ...posts.map(post => ({
                         item: [
                             { title: post.title },
                             { link: `${BASE_URL}/article.html?lang=${lang}&slug=${post.id}` },
                             { pubDate: new Date(post.date).toUTCString() },
-                            { description: post.description },
-                            { guid: `${BASE_URL}/article.html?lang=${lang}&slug=${post.id}` }
+                            { description: post.description }, // 纯文本简介
+                            { guid: `${BASE_URL}/article.html?lang=${lang}&slug=${post.id}` },
+                            // ★ 核心修改：添加全文内容，必须用 CDATA 包裹
+                            { 
+                                'content:encoded': { 
+                                    _cdata: post.content 
+                                } 
+                            }
                         ]
                     }))
                 ]
@@ -56,20 +80,20 @@ function generateRSS(posts, lang) {
     return xml(feedObj, { declaration: true, indent: '  ' });
 }
 
-// 主逻辑
+// 执行
+console.log('Building Blog Data...');
 const postsEn = getPosts('en');
 const postsZh = getPosts('zh');
 
-const allPosts = {
-    en: postsEn,
-    zh: postsZh
-};
+// 写入 blog.json (为了减小体积，JSON 里我们可以不放 content，或者放进去供前端预加载，这里先去掉 content 减小体积)
+// 前端 article.html 是重新请求 md 文件的，所以 json 不需要 full content
+const postsEnSimple = postsEn.map(({content, ...rest}) => rest);
+const postsZhSimple = postsZh.map(({content, ...rest}) => rest);
 
-// 1. 写入 blog.json (供前端 JS 使用)
-fs.writeFileSync(path.join(POSTS_DIR, 'blog.json'), JSON.stringify(allPosts, null, 2));
-console.log('✅ Generated posts/blog.json');
+fs.writeFileSync(path.join(POSTS_DIR, 'blog.json'), JSON.stringify({ en: postsEnSimple, zh: postsZhSimple }, null, 2));
 
-// 2. 写入 RSS XML
+// 写入 RSS (包含全文)
 fs.writeFileSync(path.join(POSTS_DIR, 'feed.xml'), generateRSS(postsEn, 'en'));
 fs.writeFileSync(path.join(POSTS_DIR, 'feed-zh.xml'), generateRSS(postsZh, 'zh'));
-console.log('✅ Generated RSS feeds');
+
+console.log('✨ RSS with full content generated!');

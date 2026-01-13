@@ -20,6 +20,7 @@
   "homepage": "https://github.com/super-agent-party/super-agent-party.github.io#readme",
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "marked": "^17.0.1",
     "xml": "^1.0.1"
   }
 }

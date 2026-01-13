@@ -9,8 +9,7 @@
         "First Update",
         "AI"
       ],
-      "lang": "en",
-      "file": "hello-world.md"
+      "lang": "en"
     }
   ],
   "zh": [
@@ -23,8 +22,7 @@
         "First Update",
         "AI"
       ],
-      "lang": "zh",
-      "file": "hello-world.md"
+      "lang": "zh"
     }
   ]
 }

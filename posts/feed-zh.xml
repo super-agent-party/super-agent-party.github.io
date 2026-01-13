@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Super Agent Party Blog (ZH)</title>
-    <link>https://yourwebsite.com/blog.html</link>
+    <link>https://super-agent-party.github.io/blog.html</link>
     <description>Updates from Super Agent Party</description>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <generator>NodeJS Build Script</generator>
     <item>
       <title>欢迎来到 Super Agent Party 博客</title>
-      <link>https://yourwebsite.com/article.html?lang=zh&amp;slug=hello-world</link>
+      <link>https://super-agent-party.github.io/article.html?lang=zh&amp;slug=hello-world</link>
       <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
       <description>这里是第一篇Super Agent Party 博客</description>
-      <guid>https://yourwebsite.com/article.html?lang=zh&amp;slug=hello-world</guid>
+      <guid>https://super-agent-party.github.io/article.html?lang=zh&amp;slug=hello-world</guid>
+      <content:encoded><![CDATA[<p>我在开发Super Agent Party时，会有一些思考和想法，我会在这里分享出来，希望对大家有所帮助。</p>
+<h3>这个博客主要会包含以下内容：</h3>
+<ul>
+<li>Super Agent Party的开发过程和好玩的使用方法</li>
+<li>一些可以让Super Agent Party或者其他AI应用更强大的技术生态分享</li>
+<li>关于数字生命、模拟人类意识相关的一些思考</li>
+<li>收集整理一些资源站点、免费的云服务、工具、插件、软件等</li>
+</ul>
+<h3>本博客支持RSS订阅，欢迎关注！</h3>
+<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="中文RSS"></a>
+<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="EnglishRSS"></a></p>
+<h3>欢迎大家关注和留言交流，谢谢！</h3>
+]]></content:encoded>
     </item>
   </channel>
 </rss>
