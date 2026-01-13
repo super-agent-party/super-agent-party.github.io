@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Agent Party - AI Agent Platform</title>
+    <!-- 依赖脚本 -->
     <script src="languages.js"></script>
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
+    <!-- 字体与图标 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="img/icon.ico">
     
+    <!-- Tailwind 配置 -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -28,17 +31,17 @@
                         geekDark: '#050505',
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
                         'cursor': 'cursor .75s step-end infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
                         cursor: {
                             '0%, 100%': { opacity: '1' },
                             '50%': { opacity: '0' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
                         }
                     }
                 }
@@ -47,46 +50,65 @@
     </script>
 
     <style>
-        body { font-family: 'JetBrains Mono', monospace; }
+        /* 全局与背景 */
+        body { 
+            font-family: 'JetBrains Mono', monospace; 
+            overflow-x: hidden; 
+        }
         
         .matrix-bg {
             background-color: #ffffff;
-            background-image: radial-gradient(#ccc 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-attachment: fixed;
         }
         .dark .matrix-bg {
             background-color: #050505;
-            background-image: radial-gradient(#222 1px, transparent 1px);
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
         }
 
+        /* 扫描线效果 */
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.02) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .dark .scan-line {
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.03) 50%);
+        }
+
+        /* 卡片风格 */
         .terminal-card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid #000;
-            box-shadow: 4px 4px 0px #000;
-            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .dark .terminal-card {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             border: 1px solid #333;
-            box-shadow: 4px 4px 0px #FFD700;
+            box-shadow: 6px 6px 0px rgba(255, 215, 0, 0.4);
         }
         .terminal-card:hover {
             transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px #000;
+            box-shadow: 10px 10px 0px #000;
         }
         .dark .terminal-card:hover {
-            box-shadow: 6px 6px 0px #FFD700;
+            box-shadow: 10px 10px 0px #FFD700;
             border-color: #FFD700;
         }
 
-        /* 列表项的极客风格 */
-        .feature-item::before {
-            content: '>';
-            margin-right: 8px;
-            color: #FFD700;
-            font-weight: bold;
-        }
-
+        /* 顶部导航 */
         .nav-link { position: relative; display: inline-block; }
         .nav-link::before, .nav-link::after {
             display: inline-block;
@@ -103,18 +125,72 @@
         .dark .dark-icon { display: inline-block; }
         .dark .light-icon { display: none; }
         
+        /* 全屏区块布局 */
         .fullscreen-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* 横向滚动动画容器 */
+        .scroll-row {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            padding: 1rem;
+            will-change: transform;
+        }
+
+        /* 列表项动画 */
+        .feature-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+        .feature-item.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .feature-item::before {
+            content: '>';
+            color: #FFD700;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Glitch 文本效果 */
+        .glitch-text { position: relative; }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.8; 
+            display: none;
+        }
+        .dark .glitch-text:hover::before {
+            display: block;
+            color: #FF0000;
+            z-index: -1;
+            transform: translate(-2px, -2px);
+        }
+        .dark .glitch-text:hover::after {
+            display: block;
+            color: #0000FF;
+            z-index: -2;
+            transform: translate(2px, 2px);
         }
     </style>
 </head>
-<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300">
 
-    <!-- Navigation (Unchanged) -->
-    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800 transition-all duration-300">
+    <div class="scan-line"></div>
+
+    <!-- 1. 顶部导航栏 (保持原样) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -155,205 +231,254 @@
     </nav>
 
     <main>
-        <!-- Hero Section -->
-        <div class="fullscreen-section relative overflow-hidden pt-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <div class="mx-auto w-40 h-40 sm:w-52 sm:h-52 mb-8 animate-float relative">
-                    <div class="absolute inset-0 bg-geekYellow opacity-20 blur-3xl rounded-full dark:opacity-10"></div>
+        <!-- 2. Hero 区域：视差 + 3D悬浮 -->
+        <div class="fullscreen-section relative overflow-hidden flex items-center justify-center">
+            <!-- 动态背景光斑 -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                <div class="parallax-bg absolute top-1/4 left-10 w-64 h-64 bg-geekYellow/10 rounded-full blur-3xl animate-float"></div>
+                <div class="parallax-bg absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 z-10 text-center relative w-full">
+                <!-- 3D Logo 容器 (绑定了 JS 视差) -->
+                <div id="hero-logo" class="mx-auto w-48 h-48 md:w-60 md:h-60 mb-8 relative transition-transform duration-75 ease-out">
+                    <div class="absolute inset-0 bg-geekYellow opacity-20 blur-3xl rounded-full dark:opacity-10 scale-125"></div>
                     <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full object-contain relative z-10 drop-shadow-2xl">
                 </div>
-                <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 tracking-tighter dark:text-white uppercase">
+                
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter dark:text-white uppercase glitch-text" data-text="SUPER AGENT PARTY">
                     Super Agent Party
                 </h1>
+                
                 <div class="flex justify-center items-center mb-10">
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl" data-i18n="main_subtitle">
+                    <p class="text-lg md:text-2xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl" data-i18n="main_subtitle">
                         An AI desktop companion with unlimited possibilities
                     </p>
                     <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-2 animate-cursor"></div>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="download.html" class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-white bg-black dark:bg-geekYellow dark:text-black border-2 border-transparent hover:bg-gray-800 dark:hover:bg-yellow-400 transition-all shadow-[4px_4px_0px_rgba(0,0,0,0.2)] dark:shadow-[4px_4px_0px_#fff]">
-                        <span data-i18n="get_started">Get Started</span>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 translate-y-10 transition-all duration-1000 delay-300" id="hero-buttons">
+                    <a href="download.html" class="w-full sm:w-auto px-10 py-4 bg-black dark:bg-geekYellow text-white dark:text-black font-bold text-lg hover:scale-105 transition-transform shadow-[4px_4px_0px_rgba(128,128,128,0.5)] dark:shadow-[4px_4px_0px_#fff]">
+                        <i class="fas fa-download mr-2"></i> <span data-i18n="get_started">Get Started</span>
                     </a>
-                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-black dark:text-white border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
-                        <span data-i18n="view_docs">View Documentation</span>
+                    <a href="https://gcnij7egmcww.feishu.cn/wiki/DPRKwdetCiYBhPkPpXWcugujnRc" target="_blank" class="w-full sm:w-auto px-10 py-4 border-2 border-black dark:border-white text-black dark:text-white font-bold text-lg hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                        <i class="fas fa-book mr-2"></i> <span data-i18n="view_docs">Documentation</span>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Core Features Section (Rebuilt based on your input) -->
-        <div class="py-20 border-t border-black dark:border-gray-800 bg-white/50 dark:bg-geekDark/50 backdrop-blur">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Main Title -->
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white" data-i18n="core_features">Core Features</h2>
-                    <div class="h-1 w-20 bg-geekYellow mx-auto"></div>
-                </div>
-                
-                <!-- 3x2 Grid for the 6 Main Points -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <!-- 3. 核心特性：双向横向滚动流 -->
+        <div class="fullscreen-section bg-gray-50/50 dark:bg-gray-900/30 border-y border-black dark:border-gray-800 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 mb-12 w-full">
+                <h2 class="text-3xl font-bold mb-2 dark:text-white">
+                    <span class="text-geekYellow">>></span> <span data-i18n="core_features">Core Features</span>
+                </h2>
+            </div>
+
+            <!-- 向左滚动的行 (Omnichannel, Ecosystem, Enhancement) -->
+            <div class="mb-12 transform -rotate-1 origin-center">
+                <div class="scroll-row" id="row-left">
+                    <div class="terminal-card p-6 w-[400px] shrink-0 hover:z-10 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors" data-i18n="omnichannel">Omnichannel</h3>
+                            <i class="fas fa-share-nodes text-3xl text-gray-400 dark:text-gray-600"></i>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="omnichannel_desc">Deployment to desktop, QQ, Discord, Telegram...</p>
+                    </div>
                     
-                    <!-- 1. Omnichannel Deployment -->
-                    <div class="terminal-card p-6 group h-full">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-lg mr-3 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-share-nodes"></i>
-                            </div>
-                            <h3 class="text-lg font-bold dark:text-white" data-i18n="omnichannel">Omnichannel Deployment</h3>
+                    <div class="terminal-card p-6 w-[400px] shrink-0 hover:z-10 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors" data-i18n="ecosystem">Ecosystem</h3>
+                            <i class="fas fa-link text-3xl text-gray-400 dark:text-gray-600"></i>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="omnichannel_desc">
-                            One-click deployment to desktop, QQ, Discord, Telegram, Twitch, YouTube, and more.
-                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="ecosystem_desc">Connect standard workflows: Home Assistant, MCP, Dify...</p>
                     </div>
 
-                    <!-- 2. Ecosystem Tool Integration -->
-                    <div class="terminal-card p-6 group h-full">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-lg mr-3 group-hover:rotate-12 transition-transform">
-                                <i class="fas fa-link"></i>
-                            </div>
-                            <h3 class="text-lg font-bold dark:text-white" data-i18n="ecosystem">Ecosystem Integration</h3>
+                    <div class="terminal-card p-6 w-[400px] shrink-0 hover:z-10 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors" data-i18n="enhancement">Enhancement</h3>
+                            <i class="fas fa-microchip text-3xl text-gray-400 dark:text-gray-600"></i>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="ecosystem_desc">
-                            Connect standard workflows: Home Assistant, Claude Code, ComfyUI, MCP, A2A, and Dify.
-                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="enhancement_desc">Web access, Permanent Memory, RAG, Vision...</p>
                     </div>
-
-                    <!-- 3. Seamless Enhancement -->
-                    <div class="terminal-card p-6 group h-full">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-lg mr-3 group-hover:animate-pulse transition-transform">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="text-lg font-bold dark:text-white" data-i18n="enhancement">Seamless Enhancement</h3>
+                    
+                    <!-- 替补卡片保持循环视觉 -->
+                    <div class="terminal-card p-6 w-[400px] shrink-0 opacity-50 border-dashed">
+                        <div class="flex justify-between items-start mb-4">
+                            <!-- 添加了 data-i18n="api_ready" -->
+                            <h3 class="text-xl font-bold dark:text-white" data-i18n="api_ready">API Ready</h3>
+                            <i class="fas fa-plug text-3xl"></i>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="enhancement_desc">
-                            Upgrade LLMs without code: Web access, Permanent Memory, RAG, Code Execution & Vision.
-                        </p>
-                    </div>
-
-                    <!-- 4. Extension Ecosystem -->
-                    <div class="terminal-card p-6 group h-full">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-lg mr-3 group-hover:-rotate-12 transition-transform">
-                                <i class="fas fa-puzzle-piece"></i>
-                            </div>
-                            <h3 class="text-lg font-bold dark:text-white" data-i18n="extensions">Extension Marketplace</h3>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="extensions_desc">
-                            Customizable extension development with a community marketplace for sharing capabilities.
-                        </p>
-                    </div>
-
-                    <!-- 5. Standardized Interfaces -->
-                    <div class="terminal-card p-6 group h-full">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-lg mr-3 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3 class="text-lg font-bold dark:text-white" data-i18n="interfaces">Open Interfaces</h3>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="interfaces_desc">
-                            OpenAI API compatible, MCP protocol support, VRM/VMC for 3D avatars, and WebXR ready.
-                        </p>
-                    </div>
-
-                    <!-- 6. Cross-Platform -->
-                    <div class="terminal-card p-6 group h-full">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-black dark:bg-geekYellow text-white dark:text-black flex items-center justify-center text-lg mr-3 group-hover:translate-y-1 transition-transform">
-                                <i class="fas fa-desktop"></i>
-                            </div>
-                            <h3 class="text-lg font-bold dark:text-white" data-i18n="compatibility">Platform Compatibility</h3>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="compatibility_desc">
-                            Native support for Windows, macOS, Linux, Docker containers, and Web-based cloud services.
-                        </p>
+                        <!-- 添加了 data-i18n="waiting_connection" -->
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="waiting_connection">Waiting for connection...</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Detailed System Capabilities (The "List" View) -->
-                <div class="mt-12">
-                    <h2 class="text-2xl font-bold mb-6 dark:text-white flex items-center">
-                        <span class="text-geekYellow mr-2">root@agent:~#</span> 
-                        <span data-i18n="system_capabilities">view_system_capabilities.sh</span>
-                        <span class="animate-cursor ml-1 block w-3 h-5 bg-black dark:bg-white"></span>
+            <!-- 向右滚动的行 (Extensions, Interfaces, Compatibility) -->
+            <div class="transform rotate-1 origin-center">
+                <div class="scroll-row ml-auto justify-end" id="row-right">
+                    <div class="terminal-card p-6 w-[400px] shrink-0 hover:z-10 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors" data-i18n="extensions">Extensions</h3>
+                            <i class="fas fa-puzzle-piece text-3xl text-gray-400 dark:text-gray-600"></i>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="extensions_desc">Marketplace for sharing capabilities...</p>
+                    </div>
+
+                    <div class="terminal-card p-6 w-[400px] shrink-0 hover:z-10 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors" data-i18n="interfaces">Interfaces</h3>
+                            <i class="fas fa-code text-3xl text-gray-400 dark:text-gray-600"></i>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="interfaces_desc">OpenAI API, MCP, VRM/VMC for 3D avatars...</p>
+                    </div>
+
+                    <div class="terminal-card p-6 w-[400px] shrink-0 hover:z-10 group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors" data-i18n="compatibility">Compatibility</h3>
+                            <i class="fas fa-desktop text-3xl text-gray-400 dark:text-gray-600"></i>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="compatibility_desc">Windows, macOS, Linux, Docker, Web...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 系统能力：终端风格列表 -->
+        <div class="fullscreen-section px-4 relative">
+            <div class="max-w-7xl mx-auto w-full">
+                <!-- 标题 -->
+                <div class="mb-8">
+                    <div class="inline-block px-2 py-1 bg-black text-white dark:bg-geekYellow dark:text-black text-xs font-bold mb-2">ROOT ACCESS GRANTED</div>
+                    <h2 class="text-3xl md:text-5xl font-black dark:text-white flex items-center gap-3">
+                        <span data-i18n="system_capabilities">System Capabilities</span>
+                        <span class="animate-cursor w-4 h-8 bg-black dark:bg-white inline-block"></span>
                     </h2>
-                    
-                    <div class="terminal-card p-6 md:p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-sm">
-                            
-                            <!-- Left Column -->
-                            <div class="space-y-4">
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_model_title">Model Services</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_model_desc">Support OpenAI, Ollama, Dify, and multi-modal fusion (Roleplay/Vision/TTS/STT).</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_vrm_title">VRM Avatar Robot</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_vrm_desc">Custom 3D avatars, voice interaction, transparent OBS streaming, VMC protocol support.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_platforms_title">Message & Live Bots</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_platforms_desc">Connects with QQ, Discord, Telegram, Bilibili, YouTube, Twitch.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_broadcast_title">Broadcasting Agent</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_broadcast_desc">Long text/ePub TTS, multi-voice, digital human broadcasting, batch audio export.</p>
-                                </div>
-                            </div>
+                </div>
 
-                            <!-- Right Column -->
-                            <div class="space-y-4">
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_ui_title">Advanced UI & Tools</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_ui_desc">Mermaid/HTML rendering, capsule mode, screenshot analysis, sandboxed code execution.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_rpg_title">Roleplay & Memory</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_rpg_desc">SillyTavern card support, distinct character voices, long-term memory, narrator mode.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_dev_title">Developer Ready</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_dev_desc">Simulated OpenAI/MCP APIs, custom toolchain (HTTP/LLM), extension system.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-black dark:text-geekYellow mb-1 uppercase text-xs tracking-wider" data-i18n="feat_storage_title">Privacy & Storage</h4>
-                                    <p class="text-gray-600 dark:text-gray-400 feature-item" data-i18n="feat_storage_desc">Local data storage. NAS support for private file/image hosting.</p>
-                                </div>
-                            </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="capabilities-terminal">
+                    <!-- 左列 -->
+                    <div class="space-y-6">
+                        <div class="feature-item" style="transition-delay: 100ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_model_title">Model Services</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_model_desc">Support OpenAI, Ollama, Dify...</p>
+                        </div>
+                        <div class="feature-item" style="transition-delay: 200ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_vrm_title">VRM Avatar Robot</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_vrm_desc">Custom 3D avatars, VMC protocol...</p>
+                        </div>
+                        <div class="feature-item" style="transition-delay: 300ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_platforms_title">Message Bots</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_platforms_desc">QQ, Discord, Telegram, Twitch...</p>
+                        </div>
+                        <div class="feature-item" style="transition-delay: 400ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_broadcast_title">Broadcasting</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_broadcast_desc">Long text TTS, multi-voice...</p>
+                        </div>
+                    </div>
 
+                    <!-- 右列 -->
+                    <div class="space-y-6">
+                        <div class="feature-item" style="transition-delay: 500ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_ui_title">Advanced UI</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_ui_desc">Mermaid, HTML rendering, Sandbox...</p>
+                        </div>
+                        <div class="feature-item" style="transition-delay: 600ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_rpg_title">Roleplay & Memory</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_rpg_desc">SillyTavern cards, Long-term memory...</p>
+                        </div>
+                        <div class="feature-item" style="transition-delay: 700ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_dev_title">Developer Ready</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_dev_desc">Simulated OpenAI/MCP APIs...</p>
+                        </div>
+                        <div class="feature-item" style="transition-delay: 800ms">
+                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1" data-i18n="feat_storage_title">Privacy</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat_storage_desc">Local data storage, NAS support...</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
 
-    <!-- Footer (Unchanged) -->
-    <footer class="border-t border-black dark:border-gray-800 py-8 bg-white dark:bg-geekDark">
+    <!-- Footer -->
+    <footer class="border-t-2 border-black dark:border-gray-800 py-8 bg-white dark:bg-geekDark">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
+            <p class="text-xs text-gray-500 font-mono" data-i18n="footer_copyright">&copy; 2025 Super Agent Party. Open source project available on GitHub.</p>
         </div>
     </footer>
     
+    <!-- 交互逻辑脚本 -->
     <script>
+        // 1. 移动端菜单切换
         document.getElementById('mobile-menu-button').onclick = function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-        
-        function adjustSectionHeights() {
-            const sections = document.querySelectorAll('.fullscreen-section');
-            const vh = window.innerHeight;
-            sections.forEach(section => {
-                section.style.minHeight = vh + 'px';
+
+        // 2. Hero 按钮入场动画
+        window.addEventListener('load', () => {
+            const btns = document.getElementById('hero-buttons');
+            if(btns) {
+                btns.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+
+        // 3. 鼠标视差效果 (Hero Logo & Background)
+        document.addEventListener('mousemove', (e) => {
+            const logo = document.getElementById('hero-logo');
+            const bgs = document.querySelectorAll('.parallax-bg');
+            
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+
+            if(logo) {
+                // Logo 移动
+                logo.style.transform = `translate(${x}px, ${y}px)`;
+            }
+            
+            // 背景反向移动
+            bgs.forEach(bg => {
+                bg.style.transform = `translate(${-x*2}px, ${-y*2}px)`;
             });
+        });
+
+        // 4. 横向滚动速度效果 (Velocity Scroll)
+        const rowLeft = document.getElementById('row-left');
+        const rowRight = document.getElementById('row-right');
+        
+        function updateScroll() {
+            const scrollY = window.scrollY;
+            const velocity = scrollY * 0.2; // 滚动速度系数
+            
+            if(rowLeft) {
+                // 第一行向右移（随着页面向下）
+                rowLeft.style.transform = `translateX(${-200 + velocity}px)`; 
+            }
+            if(rowRight) {
+                // 第二行向左移
+                rowRight.style.transform = `translateX(${200 - velocity}px)`;
+            }
+            requestAnimationFrame(updateScroll);
         }
-        window.addEventListener('resize', adjustSectionHeights);
-        window.addEventListener('DOMContentLoaded', adjustSectionHeights);
+        requestAnimationFrame(updateScroll);
+
+        // 5. 终端能力列表：滚动进入视口时触发动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const items = entry.target.querySelectorAll('.feature-item');
+                    items.forEach(item => {
+                        item.classList.add('in-view');
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const terminalSection = document.getElementById('capabilities-terminal');
+        if(terminalSection) observer.observe(terminalSection);
     </script>
 </body>
 </html>

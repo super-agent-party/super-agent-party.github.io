@@ -6,19 +6,18 @@ const translations = {
     "home": "Home",
     "download": "Download",
     "plugins": "Plugins",
-    "dark_mode": "Dark Mode",
-    "light_mode": "Light Mode",
+    "blog": "Blog",
     
     // index.html - Hero Section
     "main_subtitle": "An AI desktop companion with unlimited possibilities",
     "get_started": "Get Started",
-    "view_docs": "View Documentation",
+    "view_docs": "Documentation",
     
-    // index.html - Core Features (6 Grid Items)
+    // index.html - Core Features (Scroll Rows)
     "core_features": "Core Features",
     
     "omnichannel": "Omnichannel Deployment",
-    "omnichannel_desc": "One-click deployment to desktop, QQ, Discord, Telegram, Twitch, YouTube, and more. Ready to use out of the box.",
+    "omnichannel_desc": "One-click deployment to Desktop, QQ, Discord, Telegram, Twitch, YouTube, and more. Ready to use out of the box.",
     
     "ecosystem": "Ecosystem Integration",
     "ecosystem_desc": "Connect standard workflows as toolchains: Home Assistant, Claude Code, ComfyUI, MCP, A2A, and Dify.",
@@ -36,7 +35,7 @@ const translations = {
     "compatibility_desc": "Native support for Windows, macOS, Linux, Docker containers, and Web-based cloud services.",
 
     // index.html - Detailed Capabilities (Terminal List)
-    "system_capabilities": "view_system_capabilities.sh",
+    "system_capabilities": "Capabilities",
     
     "feat_model_title": "Model Services",
     "feat_model_desc": "Support OpenAI, Ollama, Dify, and multi-modal fusion (Roleplay/Vision/TTS/STT).",
@@ -62,7 +61,10 @@ const translations = {
     "feat_storage_title": "Privacy & Storage",
     "feat_storage_desc": "Local data storage. NAS support for private file/image hosting.",
     
-    // download.html content
+    "api_ready": "API Ready",
+    "waiting_connection": "Waiting for connection...",
+
+    // download.html content (Existing content preserved)
     "download_title": "Download Super Agent Party",
     "download_subtitle": "Choose your platform and have your own AI desktop companion in minutes",
     "recommended_system": "Recommended for Your System",
@@ -108,19 +110,7 @@ const translations = {
     "copy_error": "Cannot copy link: ",
     "copy_failed": "Failed to copy link, please copy manually",
     "all": "All",
-    // blog page
-    "blog": "Blog",
-    "blog_title": "DevLog_",
-    "blog_subtitle": "Updates, tutorials, free resources, and release notes.",
-    "read_more": "READ_FILE.EXE",
-    "back_to_blog": "cd ..",
-    "article_loading": "Loading data stream...",
-    "no_posts": "No posts found for current language.",
-    "error_loading": "Error loading blog index.",
-    "source_file": "Source File",
-    "rss_feed": "RSS Feed",
-
-
+    
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
@@ -131,15 +121,14 @@ const translations = {
     "home": "首页",
     "download": "下载",
     "plugins": "插件",
-    "dark_mode": "深色模式",
-    "light_mode": "浅色模式",
+    "blog": "博客",
     
     // index.html - Hero Section
     "main_subtitle": "一款拥有无限可能的AI桌面伴侣",
     "get_started": "立即开始",
     "view_docs": "查看文档",
     
-    // index.html - Core Features (6 Grid Items)
+    // index.html - Core Features (Scroll Rows)
     "core_features": "核心特性",
     
     "omnichannel": "全渠道一键部署",
@@ -161,7 +150,7 @@ const translations = {
     "compatibility_desc": "覆盖Windows/macOS/Linux原生运行环境，支持Docker容器化部署与Web端云服务。",
 
     // index.html - Detailed Capabilities (Terminal List)
-    "system_capabilities": "查看系统功能列表.sh",
+    "system_capabilities": "系统能力概览",
     
     "feat_model_title": "常见模型服务商支持",
     "feat_model_desc": "已支持市面上常见的本地部署及云服务商接口，如：OpenAI/Ollama/Dify等，支持多模态模型融合。",
@@ -187,6 +176,9 @@ const translations = {
     "feat_storage_title": "存储空间",
     "feat_storage_desc": "所有文件本地存储。支持NAS部署，可作为内网个人图床、文件床使用。",
     
+    "api_ready": "API 就绪",
+    "waiting_connection": "等待连接...",
+
     // download.html content
     "download_title": "下载 Super Agent Party",
     "download_subtitle": "选择您的平台，几分钟内即可拥有你的专属AI桌面伴侣",
@@ -233,18 +225,7 @@ const translations = {
     "copy_error": "无法复制链接: ",
     "copy_failed": "复制链接失败，请手动复制",
     "all": "全部",
-    // blog page
-    "blog": "博客",
-    "blog_title": "开发日志_",
-    "blog_subtitle": "更新动态、教程、免费资源与发布说明。",
-    "read_more": "阅读全文.EXE",
-    "back_to_blog": "返回上级",
-    "article_loading": "正在加载数据流...",
-    "no_posts": "当前语言暂无文章。",
-    "error_loading": "加载博客索引失败。",
-    "source_file": "源文件",
-    "rss_feed": "RSS 订阅",
-
+    
     // Footer
     "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"
   }
