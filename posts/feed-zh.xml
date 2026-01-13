@@ -12,7 +12,8 @@
       <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
       <description>这里是第一篇Super Agent Party 博客</description>
       <guid>https://super-agent-party.github.io/article.html?lang=zh&amp;slug=hello-world</guid>
-      <content:encoded><![CDATA[<p>我在开发Super Agent Party时，会有一些思考和想法，我会在这里分享出来，希望对大家有所帮助。</p>
+      <content:encoded><![CDATA[<p><img src="https://super-agent-party.github.io/img/cover.png" alt="img"></p>
+<p>我在开发Super Agent Party时，会有一些思考和想法，我会在这里分享出来，希望对大家有所帮助。</p>
 <h3>这个博客主要会包含以下内容：</h3>
 <ul>
 <li>Super Agent Party的开发过程和好玩的使用方法</li>

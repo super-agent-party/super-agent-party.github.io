@@ -5,6 +5,8 @@ description: "这里是第一篇Super Agent Party 博客"
 tags: ["First Update", "AI"]
 ---
 
+![img](https://super-agent-party.github.io/img/cover.png)
+
 我在开发Super Agent Party时，会有一些思考和想法，我会在这里分享出来，希望对大家有所帮助。
 
 ### 这个博客主要会包含以下内容：

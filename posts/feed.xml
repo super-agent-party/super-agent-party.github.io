@@ -12,7 +12,8 @@
       <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
       <description>This is the first Super Agent Party blog post.</description>
       <guid>https://super-agent-party.github.io/article.html?lang=en&amp;slug=hello-world</guid>
-      <content:encoded><![CDATA[<p>While developing Super Agent Party, I will share some thoughts and ideas here, hoping they will be helpful to everyone.</p>
+      <content:encoded><![CDATA[<p><img src="https://super-agent-party.github.io/img/cover.png" alt="img"></p>
+<p>While developing Super Agent Party, I will share some thoughts and ideas here, hoping they will be helpful to everyone.</p>
 <h3>This blog will mainly include the following content:</h3>
 <ul>
 <li>The development process of Super Agent Party and fun usage methods</li>

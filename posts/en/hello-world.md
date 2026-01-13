@@ -5,6 +5,8 @@ description: "This is the first Super Agent Party blog post."
 tags: ["First Update", "AI"]
 ---
 
+![img](https://super-agent-party.github.io/img/cover.png)
+
 While developing Super Agent Party, I will share some thoughts and ideas here, hoping they will be helpful to everyone.
 
 ### This blog will mainly include the following content:
