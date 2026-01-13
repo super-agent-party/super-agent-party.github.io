@@ -9,7 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Marked.js 用于解析 Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Frontmatter 解析 (可选，如果需要在详情页再次读取头部) -->
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -49,8 +48,11 @@
         .prose pre { background: #1a1a1a; padding: 1rem; overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid #333; }
         .dark .prose pre { border-color: #555; }
         .prose pre code { background: transparent; color: #fff; padding: 0; }
-        .prose img { max-width: 100%; border: 2px solid #000; margin: 1rem 0; }
-        .dark .prose img { border-color: #FFD700; }
+        
+        /* --- 修改：去掉了 border 属性 --- */
+        .prose img { max-width: 100%; margin: 1rem 0; display: block; }
+        /* --------------------------- */
+
         .prose a { color: #2563EB; text-decoration: underline; }
         .dark .prose a { color: #FFD700; }
     </style>
@@ -99,7 +101,7 @@
     </main>
 
     <script>
-        // Simple Frontmatter parser for browser (regex based, simpler than importing a huge library)
+        // Simple Frontmatter parser for browser
         function parseFrontMatter(text) {
             const pattern = /^---[\s\S]*?---/;
             const match = text.match(pattern);
@@ -149,7 +151,6 @@
 
                 // Handle Tags
                 if (attributes.tags) {
-                    // Simple parsing for [tag1, tag2] string if it came that way, or just raw string
                     const tagsStr = attributes.tags.replace(/[\[\]"]/g, '');
                     const tags = tagsStr.split(',');
                     const tagsHtml = tags.map(t => 
