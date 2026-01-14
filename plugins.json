@@ -85,7 +85,6 @@
     "author": "heshengtao",
     "description": "SheetNext AI Excel Editor Plugin for Super Agent Party",
     "description_zh": "SheetNext AI 表格/Excel 编辑器插件。",
-    "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-ai-sheet",
     "backupRepository": "https://gitee.com/heshengtao/sap-ai-sheet",
     "category": "Utility"
