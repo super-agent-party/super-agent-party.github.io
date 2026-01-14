@@ -201,17 +201,47 @@
             color: #000;
         }
 
-        .prose blockquote { 
-            border-left: 5px solid #FFD700; 
-            padding: 0.5rem 0 0.5rem 1.5rem; 
-            font-style: italic; 
-            color: #4B5563; 
-            margin: 1.5rem 0;
-            background: rgba(255, 215, 0, 0.05);
+        /* --- 替换原有的 .prose blockquote 样式 --- */
+
+        .prose blockquote {
+            position: relative;
+            margin: 2rem 0;
+            padding: 1rem 1.5rem;
+            border: 2px solid #000;
+            background-color: #fff;
+            /* 硬阴影效果，呼应文章容器和代码块 */
+            box-shadow: 4px 4px 0px #FFD700; 
+            border-radius: 0px; /* 保持硬朗直角 */
+            color: #000;
+            font-style: normal; /* 极客风格通常不使用斜体 */
+            font-weight: 500;
         }
-        .dark .prose blockquote { 
-            color: #9CA3AF; 
-            background: rgba(255, 215, 0, 0.02);
+
+        /* 装饰性符号：左上角的终端提示符 */
+        .prose blockquote::before {
+            content: ">> INPUT_DATA:";
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #FFD700;
+            background: #000;
+            width: fit-content;
+            padding: 2px 6px;
+            margin-bottom: 0.5rem;
+            margin-left: -1.6rem; /* 稍微突出一点 */
+        }
+
+        /* 暗黑模式适配 */
+        .dark .prose blockquote {
+            background-color: #111;
+            border-color: #FFD700;
+            color: #e5e7eb;
+            box-shadow: 4px 4px 0px #333; /* 或者白色 */
+        }
+
+        .dark .prose blockquote::before {
+            background: #FFD700;
+            color: #000;
         }
 
         /* --- 侧边栏目录 (TOC) 样式微调 --- */
@@ -339,7 +369,6 @@
         async function loadArticle() {
             const params = new URLSearchParams(window.location.search);
             const slug = params.get('slug');
-            // 优先读取 localStorage，如果没有则读取 URL 里的 lang，最后 fallback 'en'
             const lang = localStorage.getItem('lang') || params.get('lang') || 'en';
 
             if (!slug) {
@@ -348,7 +377,6 @@
             }
 
             try {
-                // 根据当前选择的语言加载对应的 md 文件
                 const response = await fetch(`posts/${lang}/${slug}.md`);
                 if (!response.ok) throw new Error("Article not found");
                 const text = await response.text();
@@ -361,21 +389,129 @@
                 document.getElementById('article-file').textContent = `${slug}.md`;
 
                 if (attributes.tags) {
-                    const tagsStr = attributes.tags.replace(/[\[\]"]/g, '');
+                    const tagsStr = attributes.tags.toString().replace(/[\[\]"]/g, '');
                     const tags = tagsStr.split(',');
                     const tagsHtml = tags.map(t => 
-                        `<span class="text-xs font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">${t.trim()}</span>`
+                        `<span class="text-xs font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm mr-1">${t.trim()}</span>`
                     ).join('');
                     document.getElementById('meta-tags').innerHTML = tagsHtml;
                 }
 
-                document.getElementById('markdown-content').innerHTML = marked.parse(body);
+                // --- 修复部分开始 ---
+
+                const basePath = `posts/${lang}/`;
+                const renderer = new marked.Renderer();
+
+                // A. 修复图片渲染 (增强版：支持 Alt 文本控制大小，支持徽章并排)
+                renderer.image = function(token, title, text) {
+                    let href = '', imgTitle = '', imgText = '';
+                    if (typeof token === 'object' && token !== null) {
+                        href = token.href || '';
+                        imgTitle = token.title || '';
+                        imgText = token.text || '';
+                    } else {
+                        href = token;
+                        imgTitle = title;
+                        imgText = text;
+                    }
+
+                    if (!href) return '';
+
+                    // 处理相对路径
+                    if (!href.startsWith('http') && !href.startsWith('//') && !href.startsWith('/') && !href.startsWith('data:')) {
+                        href = basePath + href;
+                    }
+                    
+                    // --- 智能判断逻辑 ---
+                    // 1. URL 包含 badge/icon/shields 等关键词
+                    // 2. 或者 Alt 文本 (imgText) 包含 'icon', 'small', 'inline', 'badge' 等关键词
+                    const isSmall = /shields\.io|badge|icon|button/i.test(href) || 
+                                    /icon|small|inline|badge/i.test(imgText);
+                                    
+                    const titlePart = imgTitle ? `title="${imgTitle}"` : '';
+
+                    if (isSmall) {
+                        // ★ 小图/徽章/图标模式：
+                        // 1. inline-block: 允许并排，不换行
+                        // 2. no shadow: 去除大图的阴影
+                        // 3. vertical-align: middle: 修正文字对齐
+                        return `<img src="${href}" alt="${imgText}" ${titlePart} 
+                                class="select-none" 
+                                style="display: inline-block !important; 
+                                       vertical-align: middle !important; 
+                                       margin: 0 4px 0 0 !important; 
+                                       width: auto !important; 
+                                       height: auto !important; 
+                                       box-shadow: none !important; 
+                                       border-radius: 0 !important; 
+                                       background: transparent !important; 
+                                       filter: none !important;">`;
+                    } else {
+                        // ★ 普通大图模式：
+                        // 独立一行 (figure)，居中，带轮廓阴影
+                        return `
+                            <figure class="my-8">
+                                <img src="${href}" alt="${imgText}" ${titlePart} 
+                                     class="mx-auto max-h-[600px] object-contain" 
+                                     loading="lazy" 
+                                     style="background: transparent;">
+                                ${imgTitle ? `<figcaption class="text-center text-sm text-gray-500 mt-2 italic font-mono">${imgTitle}</figcaption>` : ''}
+                            </figure>
+                        `;
+                    }
+                };
+                // B. 修复链接渲染 (保持嵌套图片可解析)
+                renderer.link = function(token, title, text) {
+                    let finalHref = '';
+                    let finalTitle = '';
+                    let content = '';
+
+                    if (typeof token === 'object' && token !== null) {
+                        finalHref = token.href;
+                        finalTitle = token.title ? `title="${token.title}"` : '';
+                        // 必须解析内部 token，否则图片会变成文本
+                        if (token.tokens && token.tokens.length > 0) {
+                            content = this.parser.parseInline(token.tokens);
+                        } else {
+                            content = token.text;
+                        }
+                    } else {
+                        finalHref = token;
+                        finalTitle = title ? `title="${title}"` : '';
+                        content = text;
+                    }
+
+                    if (finalHref && !finalHref.startsWith('http') && !finalHref.startsWith('//') && !finalHref.startsWith('/') && !finalHref.startsWith('#')) {
+                        finalHref = basePath + finalHref;
+                    }
+                    
+                    // 链接本身也设为 inline-block 以防万一，但通常 inline 即可
+                    return `<a href="${finalHref}" ${finalTitle} target="_blank" style="display: inline-block; text-decoration: none;">${content}</a>`;
+                };
+
+                // --- 修复部分结束 ---
+
+                let htmlContent = marked.parse(body, { renderer: renderer });
+
+                // C. 处理原生 HTML 标签正则替换
+                htmlContent = htmlContent.replace(/src="([^"]+)"/g, (match, src) => {
+                    if (!src.startsWith('http') && !src.startsWith('//') && !src.startsWith('/') && !src.startsWith('data:')) {
+                        const cleanSrc = src.replace(/^\.\//, '');
+                        return `src="${basePath}${cleanSrc}"`;
+                    }
+                    return match;
+                });
+
+                document.getElementById('markdown-content').innerHTML = htmlContent;
                 generateTOC();
 
             } catch (e) {
+                console.error(e); // 方便在控制台看到具体错误
                 const errorText = typeof getTranslation === 'function' ? getTranslation('error_404', lang) : 'Article not found.';
                 document.getElementById('markdown-content').innerHTML = 
-                    `<p class="text-red-500 font-bold">${errorText}</p>`;
+                    `<div class="p-4 border border-red-500 bg-red-50 text-red-700 font-bold rounded">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> ${errorText}
+                    </div>`;
             }
         }
 

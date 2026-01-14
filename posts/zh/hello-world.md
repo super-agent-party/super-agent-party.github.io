@@ -2,10 +2,10 @@
 title: "欢迎来到 Super Agent Party 博客"
 date: "2026-01-14"
 description: "这里是第一篇Super Agent Party 博客"
-tags: ["First Update", "AI"]
+tags: ["首次更新", "AI"]
 ---
 
-![img](https://super-agent-party.github.io/img/cover.png)
+![img](https://www.agentparty.top/img/cover.png)
 
 # 欢迎加入派对！
 
@@ -23,3 +23,6 @@ tags: ["First Update", "AI"]
 [![EnglishRSS](https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white)](https://super-agent-party.github.io/posts/feed-en.xml)
 
 ## 欢迎大家关注和留言交流，谢谢！
+
+> © 2026 heshengtao，采用 CC BY 4.0 国际协议授权  
+> 可自由转载、演绎、商用，须署名并给出原链接。

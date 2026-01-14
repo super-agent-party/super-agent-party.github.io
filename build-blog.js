@@ -6,7 +6,7 @@ const { marked } = require('marked'); // 引入 Markdown 转换器
 
 const POSTS_DIR = path.join(__dirname, 'posts');
 // ★★★ 请务必确认这里是你的真实域名，否则RSS里的图片和链接会打不开 ★★★
-const BASE_URL = 'https://super-agent-party.github.io'; 
+const BASE_URL = 'https://www.agentparty.top'; 
 
 // 确保文件夹存在
 const folders = [POSTS_DIR, path.join(POSTS_DIR, 'en'), path.join(POSTS_DIR, 'zh')];
@@ -22,12 +22,50 @@ function getPosts(lang) {
     
     return files.map(filename => {
         const fileContent = fs.readFileSync(path.join(dir, filename), 'utf-8');
-        // 解析 Frontmatter 和 正文
         const { data, content } = matter(fileContent);
         
-        // ★ 核心修改：将 Markdown 正文转换为 HTML
-        // 这里我们把相对路径的图片处理一下（简单处理），建议博客图片最好用图床的绝对路径
-        const htmlContent = marked.parse(content);
+        // 1. 自动提取封面图逻辑
+        let cover = data.cover || null; // 优先读取 header 里的 cover: xxx.jpg
+
+        if (!cover) {
+            // 如果 header 没写，正则抓取正文第一张图
+            // 支持 Markdown 格式 ![]() 和 HTML 格式 <img src>
+            const mdMatch = content.match(/!\[.*?\]\((.*?)(?:\s+".*?")?\)/);
+            const htmlMatch = content.match(/<img.*?src=["'](.*?)["']/);
+            
+            if (mdMatch || htmlMatch) {
+                let imgPath = mdMatch ? mdMatch[1] : htmlMatch[1];
+                
+                // 如果是相对路径 (img.png 或 ./img.png)，加上目录前缀
+                if (!imgPath.startsWith('http') && !imgPath.startsWith('//') && !imgPath.startsWith('/')) {
+                    // 去掉可能的 ./
+                    imgPath = imgPath.replace(/^\.\//, '');
+                    // 拼接完整路径: posts/en/img.png
+                    cover = `posts/${lang}/${imgPath}`;
+                } else {
+                    cover = imgPath;
+                }
+            }
+        }
+
+        // 2. 生成正文 HTML (RSS用，这里我加上了绝对路径修正，防止RSS里图片裂开)
+        const renderer = new marked.Renderer();
+        const absoluteResourceUrl = `${BASE_URL}/posts/${lang}/`;
+
+        renderer.image = function({ href, title, text }) {
+            // 兼容旧版 marked 参数
+            const linkHref = href || arguments[0];
+            const linkTitle = title || arguments[1];
+            const linkText = text || arguments[2];
+
+            let finalSrc = linkHref;
+            if (linkHref && !linkHref.startsWith('http') && !linkHref.startsWith('//')) {
+                finalSrc = `${absoluteResourceUrl}${linkHref.replace(/^\.\//, '')}`;
+            }
+            return `<img src="${finalSrc}" alt="${linkText}" title="${linkTitle || ''}" />`;
+        };
+
+        const htmlContent = marked.parse(content, { renderer: renderer });
 
         return {
             id: filename.replace('.md', ''),
@@ -36,7 +74,8 @@ function getPosts(lang) {
             description: data.description || '',
             tags: data.tags || [],
             lang: lang,
-            content: htmlContent // 保存转换后的 HTML
+            cover: cover, // ★ 提取出的图片路径
+            content: htmlContent 
         };
     }).sort((a, b) => new Date(b.date) - new Date(a.date));
 }

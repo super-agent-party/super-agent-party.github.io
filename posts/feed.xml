@@ -2,17 +2,127 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Super Agent Party Blog (EN)</title>
-    <link>https://super-agent-party.github.io/blog.html</link>
+    <link>https://www.agentparty.top/blog.html</link>
     <description>Updates from Super Agent Party</description>
     <language>en-us</language>
     <generator>NodeJS Build Script</generator>
     <item>
+      <title>Challenge: Create an AI Companion for $0, Can I Succeed?</title>
+      <link>https://www.agentparty.top/article.html?lang=en&amp;slug=0yuan</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+      <description>A step-by-step guide on how to build an AI companion without spending any money</description>
+      <guid>https://www.agentparty.top/article.html?lang=en&amp;slug=0yuan</guid>
+      <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/posts/en//img/0yuan/0.jpeg" alt="img" title="" /></p>
+<h1>Introduction</h1>
+<p>If you want an AI companion but don&#39;t want to spend a single cent, then this article is for you. Here, I will show you how to create an AI companion for free, allowing you to find companionship in the virtual world.</p>
+<h1>Step 1: Download the free Super Agent Party!</h1>
+<p>First, you need to download the free Super Agent Party! This is an open-source AI companion software. You can view its source code on <a href="https://github.com/heshengtao/super-agent-party">GitHub</a>.</p>
+<p>If you are a user in China, you can download it from the <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files">ModelScope Community</a>. Select the folder corresponding to the version number, then choose the version that matches your operating system, and click download!</p>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/1.jpeg" alt="img" title="" /></p>
+<p>If you are an overseas user, you can download it from <a href="https://github.com/heshengtao/super-agent-party/releases">GitHub</a>. Select the version suitable for your operating system and click download!</p>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/2.jpeg" alt="img" title="" /></p>
+<p>If you are a tinkering geek, you can also choose the Docker version. Check the usage instructions on <a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser">GitHub</a>.</p>
+<h1>Step 2: Enable Your AI Companion to Think</h1>
+<p>You need a large language model, commonly referred to as an LLM. The LLM is the &quot;brain&quot; of your AI companion, determining its level of intelligence. There are many free LLM computing resources available. Here, I recommend one that I frequently use: Ollama&#39;s cloud models. At least at the time of writing this blog, Ollama&#39;s cloud models are still free.</p>
+<h2>Download Ollama from the official website</h2>
+<p>Ollama official website: <a href="https://ollama.com/">https://ollama.com/</a></p>
+<p>You can see a &quot;Download&quot; button in the top right corner of the webpage. Click it, select the version suitable for your operating system, and click download!</p>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/3.jpeg" alt="img" title="" /></p>
+<h2>Register an Ollama account</h2>
+<p>You need to register an account on the Ollama website. After registering, log into your account in the Ollama application, and you will be able to use Ollama&#39;s cloud models.</p>
+<h2>Use Ollama&#39;s cloud models</h2>
+<p>On the Ollama website&#39;s &quot;Models&quot; page, click the <code>cloud</code> tab. The models under this tab are free and do not consume your local computing resources.</p>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/4.jpeg" alt="img" title="" /></p>
+<p>You can choose a model you like, click on it, and copy the CLI command, such as <code>ollama run deepseek-v3.1:671b-cloud</code>. Paste it into your terminal, press Enter, and you can start using Ollama&#39;s cloud model. Note! Make sure the model has the <code>cloud</code> suffix.</p>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/5.jpeg" alt="img" title="" /></p>
+<h2>Use Ollama&#39;s cloud models in Super Agent Party</h2>
+<ol>
+<li>Open Super Agent Party, go to the <code>Models</code> page, and in the <code>Model Providers</code> subpage, select <code>Add Provider</code>.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/6.jpeg" alt="img" title="" /></p>
+<ol start="2">
+<li>In the modal dialog, select <code>Ollama</code>, then click the <code>Confirm Add</code> button.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/7.jpeg" alt="img" title="" /></p>
+<ol start="3">
+<li>Click the magnifying glass button on the card to retrieve all the model lists in your Ollama. If it fails, you may have forgotten to open the Ollama application.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/8.jpeg" alt="img" title="" /></p>
+<ol start="4">
+<li>In the model list, select the model you just copied, such as <code>deepseek-v3.1:671b-cloud</code>.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/9.jpeg" alt="img" title="" /></p>
+<ol start="5">
+<li>Now, return to the conversation interface, and you can happily chat with your AI for free!</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/10.jpeg" alt="img" title="" /></p>
+<h1>Step 3: Enable Your AI Companion to Hear</h1>
+<p>You need a speech recognition model, commonly referred to as ASR. ASR serves as the &quot;ears&quot; of your AI companion, determining whether it can understand what you say.</p>
+<p>Here are two free methods:</p>
+<h2>Free Local Small Model</h2>
+<p>Super Agent Party comes with a built-in free speech recognition model. Simply go to the <code>Models</code> page, select <code>Speech Recognition Model</code>, and then choose <code>Sherpa ONNX</code> to use the built-in speech recognition model. This model does not require GPU resources; it only uses CPU and memory, so it can run on an ordinary laptop without the need to invest in expensive hardware.</p>
+<ol>
+<li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Recognition Model</code> subpage, select <code>Sherpa ONNX</code>.</li>
+<li>Click the download button in the Sherpa ONNX Sense Voice card below. Users in China can choose to download from ModelScope, while overseas users can download from Hugging Face.</li>
+<li>Once the download is complete, you can enable speech recognition and start chatting with your AI using voice.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/11.jpeg" alt="img" title="" /></p>
+<h2>Free Browser Built-in Speech Recognition API</h2>
+<p>You can use the free speech recognition API built into browsers, known as the Web Speech API. You need to open a browser to serve as the &quot;ears&quot; of your AI companion and use the Web Speech API for speech recognition. This method is free but requires an internet connection.</p>
+<ol>
+<li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Recognition Model</code> subpage, select <code>Web Speech API</code>.</li>
+<li>Enable speech recognition. Super Agent Party will automatically open a browser, and now you can use the Web Speech API in the browser for speech recognition.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/12.jpeg" alt="img" title="" /></p>
+<h1>Step 4: Enable Your AI Companion to Speak</h1>
+<p>You need a speech synthesis model, commonly referred to as TTS. TTS serves as the &quot;mouth&quot; of your AI companion, determining whether it can communicate with you using voice.</p>
+<p>Here are two free methods:</p>
+<h2>Free System TTS</h2>
+<p>Both Windows and macOS systems come with built-in speech synthesis models. The voice quality is average, but the speed is very fast, making it suitable for quick testing. For macOS, choose voices labeled with 【Siri/Premium】, such as <code>【Siri/Premium】Meijia</code>, which is the familiar Siri voice!</p>
+<ol>
+<li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Synthesis Model</code> subpage, select <code>System TTS</code>.</li>
+<li>Choose your system TTS, such as <code>【Siri/Premium】Meijia</code>.</li>
+<li>Enable speech synthesis.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/13.jpeg" alt="img" title="" /></p>
+<h2>Free EdgeTTS</h2>
+<p>EdgeTTS is a free TTS interface provided by Microsoft, offering better voice quality but requiring an internet connection. It is important to note that Microsoft permits small-scale or personal classroom use, but commercial and profit-driven use is not allowed. You can find <a href="https://learn.microsoft.com/zh-cn/answers/questions/5640180/edge-tts">relevant explanations</a> on Microsoft&#39;s official website. For commercial use, please use Azure TTS.</p>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/14.jpeg" alt="img" title="" /></p>
+<ol>
+<li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Synthesis Model</code> subpage, select <code>EdgeTTS</code>.</li>
+<li>Choose a voice for the corresponding language, such as <code>xiaoxiao</code>.</li>
+<li>Enable speech synthesis.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/15.jpeg" alt="img" title="" /></p>
+<h1>Step 5: Enable Your AI Companion to Be Seen</h1>
+<p>To make your AI companion appear as a 3D character on your desktop, you need to enable the VRM Desktop Pet Robot.</p>
+<h2>Free VRM Models</h2>
+<p> If you want more free 3D models, you can download them from <a href="https://hub.vroid.com/en">vroidhub</a> or <a href="https://www.aplaybox.com/search?value=VRM">模之屋</a>.</p>
+<ol>
+<li>Open Super Agent Party, click on the <code>Robots</code> page, then in the <code>VRM Desktop Pet Robot</code> subpage, click to start!</li>
+<li>Use the left mouse button to rotate, the scroll wheel to zoom, the right mouse button to pan, and the first button in the upper right corner to drag the entire window.</li>
+<li>If you want to record a digital human video with a transparent background or capture the desktop pet during a live stream, add <code>http://127.0.0.1:3456/vrm.html</code> as a video source in the browser source of your recording software.</li>
+</ol>
+<p><img src="https://www.agentparty.top/posts/en//img/0yuan/16.jpeg" alt="img" title="" /></p>
+<p>If you also want your AI companion to appear as a 2D character, you will need to install the Live2D extension. I will cover this in detail in the extensions section. Stay tuned and bookmark this blog series.</p>
+<h1>Conclusion</h1>
+<p>Finally! We&#39;ve completed an AI companion without spending a single penny! If you have any questions, feel free to join:</p>
+<ul>
+<li>QQ Group: <code>931057213</code></li>
+<li>Discord: <a href="https://discord.gg/f2dsAKKr2V">Discord link</a></li>
+</ul>
+<blockquote>
+<p>© 2026 heshengtao, licensed under CC BY 4.0 International<br>Free to share, adapt, and use commercially, with attribution and a link to the original.</p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
       <title>Welcome to the Super Agent Party Blog</title>
-      <link>https://super-agent-party.github.io/article.html?lang=en&amp;slug=hello-world</link>
+      <link>https://www.agentparty.top/article.html?lang=en&amp;slug=hello-world</link>
       <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
       <description>This is the first Super Agent Party blog post.</description>
-      <guid>https://super-agent-party.github.io/article.html?lang=en&amp;slug=hello-world</guid>
-      <content:encoded><![CDATA[<p><img src="https://super-agent-party.github.io/img/cover.png" alt="img"></p>
+      <guid>https://www.agentparty.top/article.html?lang=en&amp;slug=hello-world</guid>
+      <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/cover.png" alt="img" title="" /></p>
 <h1>Welcome to the Party!</h1>
 <p>During the development of Super Agent Party, I will have some thoughts and ideas, which I will share here in the hopes that they will be helpful to everyone.</p>
 <h2>This blog will mainly include the following content:</h2>
@@ -23,9 +133,12 @@
 <li>Collection and organization of resource sites, free cloud services, tools, plugins, software, etc.</li>
 </ul>
 <h2>This blog supports RSS subscription, welcome to follow!</h2>
-<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-Chinese-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="Chinese RSS"></a>
-<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="English RSS"></a></p>
+<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-Chinese-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="Chinese RSS" title="" /></a>
+<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="English RSS" title="" /></a></p>
 <h2>Welcome to follow and leave comments for discussion, thank you!</h2>
+<blockquote>
+<p>© 2026 heshengtao, licensed under CC BY 4.0 International<br>Free to share, adapt, and use commercially, with attribution and a link to the original.</p>
+</blockquote>
 ]]></content:encoded>
     </item>
   </channel>

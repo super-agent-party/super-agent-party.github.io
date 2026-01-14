@@ -5,7 +5,7 @@ description: "This is the first Super Agent Party blog post."
 tags: ["First Update", "AI"]
 ---
 
-![img](https://super-agent-party.github.io/img/cover.png)
+![img](https://www.agentparty.top/img/cover.png)
 
 # Welcome to the Party!
 
@@ -23,3 +23,6 @@ During the development of Super Agent Party, I will have some thoughts and ideas
 [![English RSS](https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white)](https://super-agent-party.github.io/posts/feed-en.xml)
 
 ## Welcome to follow and leave comments for discussion, thank you!
+
+> © 2026 heshengtao, licensed under CC BY 4.0 International  
+> Free to share, adapt, and use commercially, with attribution and a link to the original.

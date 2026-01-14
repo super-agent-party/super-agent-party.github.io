@@ -1,6 +1,17 @@
 {
   "en": [
     {
+      "id": "0yuan",
+      "title": "Challenge: Create an AI Companion for $0, Can I Succeed?",
+      "date": "2026-01-16",
+      "description": "A step-by-step guide on how to build an AI companion without spending any money",
+      "tags": [
+        "AI Companion"
+      ],
+      "lang": "en",
+      "cover": "/img/0yuan/0.jpeg"
+    },
+    {
       "id": "hello-world",
       "title": "Welcome to the Super Agent Party Blog",
       "date": "2026-01-14",
@@ -9,20 +20,33 @@
         "First Update",
         "AI"
       ],
-      "lang": "en"
+      "lang": "en",
+      "cover": "https://www.agentparty.top/img/cover.png"
     }
   ],
   "zh": [
+    {
+      "id": "0yuan",
+      "title": "挑战0元创造AI伴侣，我能成功吗？",
+      "date": "2026-01-16",
+      "description": "手把手教你如何不花钱打造一个AI伴侣",
+      "tags": [
+        "AI伴侣"
+      ],
+      "lang": "zh",
+      "cover": "/img/0yuan/0.jpeg"
+    },
     {
       "id": "hello-world",
       "title": "欢迎来到 Super Agent Party 博客",
       "date": "2026-01-14",
       "description": "这里是第一篇Super Agent Party 博客",
       "tags": [
-        "First Update",
+        "首次更新",
         "AI"
       ],
-      "lang": "zh"
+      "lang": "zh",
+      "cover": "https://www.agentparty.top/img/cover.png"
     }
   ]
 }

@@ -98,8 +98,8 @@
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- Navigation (完全一致) -->
-    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-black dark:border-gray-800 transition-all duration-300">
+    <!-- 1. 顶部导航栏 (保持原样) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -126,7 +126,9 @@
                         <span data-i18n="github">GitHub</span>
                     </a>
                 </div>
-                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
