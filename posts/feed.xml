@@ -13,18 +13,19 @@
       <description>This is the first Super Agent Party blog post.</description>
       <guid>https://super-agent-party.github.io/article.html?lang=en&amp;slug=hello-world</guid>
       <content:encoded><![CDATA[<p><img src="https://super-agent-party.github.io/img/cover.png" alt="img"></p>
-<p>While developing Super Agent Party, I will share some thoughts and ideas here, hoping they will be helpful to everyone.</p>
-<h3>This blog will mainly include the following content:</h3>
+<h1>Welcome to the Party!</h1>
+<p>During the development of Super Agent Party, I will have some thoughts and ideas, which I will share here in the hopes that they will be helpful to everyone.</p>
+<h2>This blog will mainly include the following content:</h2>
 <ul>
-<li>The development process of Super Agent Party and fun usage methods</li>
-<li>Technical ecosystems that can make Super Agent Party or other AI applications more powerful</li>
-<li>Thoughts related to digital life and simulating human consciousness</li>
+<li>The development process of Super Agent Party and fun ways to use it  </li>
+<li>Sharing of technical ecosystems that can make Super Agent Party or other AI applications more powerful  </li>
+<li>Some thoughts on digital life and simulating human consciousness  </li>
 <li>Collection and organization of resource sites, free cloud services, tools, plugins, software, etc.</li>
 </ul>
-<h3>This blog supports RSS subscription. Please follow us!</h3>
-<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="Chinese RSS"></a>
-<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="English RSS"></a></p>
-<h3>Everyone is welcome to follow and leave comments for discussion. Thank you!</h3>
+<h2>This blog supports RSS subscription, welcome to follow!</h2>
+<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-Chinese-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="Chinese RSS"></a>
+<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="English RSS"></a></p>
+<h2>Welcome to follow and leave comments for discussion, thank you!</h2>
 ]]></content:encoded>
     </item>
   </channel>

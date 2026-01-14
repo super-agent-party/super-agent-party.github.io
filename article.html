@@ -7,7 +7,6 @@
     <script src="languages.js"></script>
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Marked.js 用于解析 Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="icon" href="img/icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -25,7 +24,7 @@
         }
     </script>
     <style>
-        body { font-family: 'JetBrains Mono', monospace; }
+        body { font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
         .matrix-bg {
             background-color: #ffffff;
             background-image: radial-gradient(#ccc 1px, transparent 1px);
@@ -35,24 +34,16 @@
             background-color: #050505;
             background-image: radial-gradient(#222 1px, transparent 1px);
         }
-        
-        /* Markdown 内容样式自定义 */
         .prose { max-width: 100%; }
+        .prose h1, .prose h2 { scroll-margin-top: 5rem; }
         .prose h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; margin-top: 2rem; color: inherit; }
         .prose h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 1.5rem; border-bottom: 2px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
         .prose p { margin-bottom: 1rem; line-height: 1.7; color: #4B5563; }
         .dark .prose p { color: #D1D5DB; }
-        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        .prose code { background: #eee; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+        .prose code { background: #eee; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
         .dark .prose code { background: #333; color: #FFD700; }
         .prose pre { background: #1a1a1a; padding: 1rem; overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid #333; }
-        .dark .prose pre { border-color: #555; }
-        .prose pre code { background: transparent; color: #fff; padding: 0; }
-        
-        /* --- 修改：去掉了 border 属性 --- */
         .prose img { max-width: 100%; margin: 1rem 0; display: block; }
-        /* --------------------------- */
-
         .prose a { color: #2563EB; text-decoration: underline; }
         .dark .prose a { color: #FFD700; }
     </style>
@@ -64,59 +55,100 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="blog.html" class="flex items-center text-sm font-bold hover:underline">
-                    <i class="fas fa-arrow-left mr-2"></i> cd ..
+                    <i class="fas fa-arrow-left mr-2"></i> <span data-i18n="back_to_blog">cd ..</span>
                 </a>
                 <div class="flex items-center space-x-4">
+                     <!-- 语言切换按钮，会触发 languages.js 中的 toggleLanguage -->
+                     <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs font-bold border border-black dark:border-white px-2 py-1 hover:bg-geekYellow hover:text-black transition-colors">EN/中文</button>
                      <button id="theme-toggle" onclick="toggleTheme()" class="p-2"><i class="fas fa-adjust"></i></button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Content -->
-    <main class="flex-grow pt-24 pb-12 px-4">
-        <div class="max-w-3xl mx-auto">
-            <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
-                
-                <!-- Metadata Area -->
-                <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
-                    <div id="meta-tags" class="flex space-x-2 mb-4"></div>
-                    <h1 id="article-title" class="text-3xl md:text-4xl font-black mb-2 dark:text-white">Loading...</h1>
-                    <div class="text-sm font-mono text-gray-500">
-                        <span id="article-date">--/--/----</span> | <span id="article-file">source.md</span>
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left: Article -->
+            <div class="flex-grow lg:w-3/4">
+                <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
+                    <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
+                        <div id="meta-tags" class="flex space-x-2 mb-4"></div>
+                        <h1 id="article-title" class="text-3xl md:text-4xl font-black mb-2 dark:text-white" data-i18n="loading">Loading...</h1>
+                        <div class="text-sm font-mono text-gray-500">
+                            <span id="article-date">--/--/----</span> | <span id="article-file">source.md</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Markdown Content Area -->
-                <div id="markdown-content" class="prose dark:prose-invert">
-                    <div class="animate-pulse space-y-4">
-                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                    <div id="markdown-content" class="prose dark:prose-invert">
+                        <!-- Skeleton loading -->
+                        <div class="animate-pulse space-y-4">
+                            <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                            <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                        </div>
                     </div>
-                </div>
+                </article>
+            </div>
 
-            </article>
+            <!-- Right: TOC -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block" data-i18n="toc_title">Table of Contents</h3>
+                    <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
+                        <!-- Links will be injected here -->
+                    </nav>
+                </div>
+            </aside>
         </div>
     </main>
 
     <script>
-        // Simple Frontmatter parser for browser
+        // 生成目录
+        function generateTOC() {
+            const content = document.getElementById('markdown-content');
+            const toc = document.getElementById('toc');
+            const headings = content.querySelectorAll('h1, h2');
+            
+            // 获取当前语言的“无标题”翻译
+            const currentLang = localStorage.getItem('lang') || 'en';
+            const noHeadingsText = typeof getTranslation === 'function' ? getTranslation('no_headings', currentLang) : 'No headings';
+
+            if (headings.length === 0) {
+                toc.innerHTML = `<p class="text-gray-400 italic">${noHeadingsText}</p>`;
+                return;
+            }
+
+            toc.innerHTML = '';
+            headings.forEach((heading, index) => {
+                const id = `heading-${index}`;
+                heading.setAttribute('id', id);
+
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.textContent = heading.textContent;
+                link.className = 'block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3';
+                
+                if (heading.tagName === 'H1') {
+                    link.classList.add('font-bold', 'text-gray-900', 'dark:text-white');
+                } else {
+                    link.classList.add('ml-4', 'text-gray-500', 'dark:text-gray-400', 'text-xs');
+                }
+                toc.appendChild(link);
+            });
+        }
+
         function parseFrontMatter(text) {
             const pattern = /^---[\s\S]*?---/;
             const match = text.match(pattern);
             if (!match) return { attributes: {}, body: text };
-            
             const frontMatterBlock = match[0];
             const body = text.replace(pattern, '').trim();
             const attributes = {};
-            
             frontMatterBlock.split('\n').forEach(line => {
                 const colonIndex = line.indexOf(':');
                 if (colonIndex > 0) {
                     const key = line.slice(0, colonIndex).trim();
                     let value = line.slice(colonIndex + 1).trim();
-                    // Clean quotes
                     if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
                     if (key !== '---') attributes[key] = value;
                 }
@@ -124,10 +156,12 @@
             return { attributes, body };
         }
 
+        // 加载文章逻辑
         async function loadArticle() {
             const params = new URLSearchParams(window.location.search);
             const slug = params.get('slug');
-            const lang = params.get('lang') || 'en';
+            // 优先读取 localStorage，如果没有则读取 URL 里的 lang，最后 fallback 'en'
+            const lang = localStorage.getItem('lang') || params.get('lang') || 'en';
 
             if (!slug) {
                 window.location.href = 'blog.html';
@@ -135,21 +169,18 @@
             }
 
             try {
-                // Fetch MD file
+                // 根据当前选择的语言加载对应的 md 文件
                 const response = await fetch(`posts/${lang}/${slug}.md`);
                 if (!response.ok) throw new Error("Article not found");
                 const text = await response.text();
 
-                // Parse
                 const { attributes, body } = parseFrontMatter(text);
 
-                // Update UI
                 document.title = `${attributes.title || 'Post'} - Super Agent Party`;
                 document.getElementById('article-title').textContent = attributes.title || 'Untitled';
                 document.getElementById('article-date').textContent = attributes.date || '';
                 document.getElementById('article-file').textContent = `${slug}.md`;
 
-                // Handle Tags
                 if (attributes.tags) {
                     const tagsStr = attributes.tags.replace(/[\[\]"]/g, '');
                     const tags = tagsStr.split(',');
@@ -159,14 +190,21 @@
                     document.getElementById('meta-tags').innerHTML = tagsHtml;
                 }
 
-                // Render Markdown
                 document.getElementById('markdown-content').innerHTML = marked.parse(body);
+                generateTOC();
 
             } catch (e) {
+                const errorText = typeof getTranslation === 'function' ? getTranslation('error_404', lang) : 'Article not found.';
                 document.getElementById('markdown-content').innerHTML = 
-                    `<p class="text-red-500 font-bold">Error 404: Article file not found on server.</p>`;
+                    `<p class="text-red-500 font-bold">${errorText}</p>`;
             }
         }
+
+        // 监听语言切换事件（由 languages.js 触发）
+        document.addEventListener('languageChanged', (e) => {
+            // 当语言改变时，重新加载文章内容
+            loadArticle();
+        });
 
         document.addEventListener('DOMContentLoaded', loadArticle);
     </script>

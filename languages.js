@@ -121,6 +121,13 @@ const translations = {
     "copy_failed": "Failed to copy link, please copy manually",
     "all": "All",
     
+    // article.html content
+    "toc_title": "Table of Contents",
+    "no_headings": "No headings found.",
+    "back_to_blog": "cd ..",
+    "loading": "Loading...",
+    "error_404": "Error 404: Article not found.",
+
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
@@ -246,6 +253,13 @@ const translations = {
     "copy_failed": "复制链接失败，请手动复制",
     "all": "全部",
     
+    // article.html content
+    "toc_title": "文章目录",
+    "no_headings": "未找到标题",
+    "back_to_blog": "返回列表",
+    "loading": "加载中...",
+    "error_404": "错误 404：未找到文章文件。",
+
     // Footer
     "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"
   }
