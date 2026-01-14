@@ -128,6 +128,10 @@ const translations = {
     "loading": "Loading...",
     "error_404": "Error 404: Article not found.",
 
+    // blog.html content
+    "blog_title": "Blog",
+    "blog_subtitle": "Updates, tutorials, free resources, and some thoughts",
+
     // Footer
     "footer_copyright": "© 2025 Super Agent Party. Open source project available on GitHub."
   },
@@ -259,6 +263,10 @@ const translations = {
     "back_to_blog": "返回列表",
     "loading": "加载中...",
     "error_404": "错误 404：未找到文章文件。",
+
+    // blog.html content
+    "blog_title": "博客",
+    "blog_subtitle": "更新、教程、免费资源和一些想法",
 
     // Footer
     "footer_copyright": "© 2025 Super Agent Party。开源项目，可在GitHub上获取。"
