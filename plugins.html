@@ -208,6 +208,17 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
+        // --- 修改点 1: 包装 toggleLanguage 确保刷新列表 ---
+        const originalToggleLanguage = window.toggleLanguage;
+        window.toggleLanguage = function() {
+            if (typeof originalToggleLanguage === 'function') {
+                originalToggleLanguage(); // 执行原本的语言切换逻辑
+            }
+            // 重新渲染标签和插件列表以适应新语言
+            renderTags();
+            filterPlugins();
+        };
+
         let rawPlugins = [];
         let activeTag = '全部'; 
         
@@ -218,8 +229,7 @@
 
         // Fallback data
         const fallbackData = [
-             {name:'Example Plugin', description:'Demonstration module.', author:'heshengtao', version:'1.0.0', category:'Example', repository:'#'},
-             {name:'Web Preview', description:'Enables chromium rendering.', author:'heshengtao', version:'1.0.0', category:'Utility', repository:'#'}
+            {name:'Example Plugin', description:'Demonstration module.', description_zh:'演示模块', author:'heshengtao', version:'1.0.0', category:'Example', repository:'#'},
         ];
 
         fetch('plugins.json')
@@ -233,15 +243,20 @@
         }
 
         function renderTags() {
+            // --- 修改点 2: 标签“全部”的国际化 ---
+            const isEn = localStorage.getItem('lang') === 'en';
+            const allText = isEn ? 'All' : '全部';
+            
             const categories = ['全部', ...new Set(rawPlugins.map(p => p.category))];
-            tagContainer.innerHTML = categories.map(cat => `
-                <button class="tag-bracket px-4 py-1 border border-gray-400 dark:border-gray-600 text-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" 
-                        onclick="setTag(this, '${cat}')">
-                    [ ${cat === '全部' ? (localStorage.getItem('lang') === 'en' ? 'All' : '全部') : cat} ]
-                </button>
-            `).join('');
-             const firstBtn = tagContainer.querySelector('button');
-             if(firstBtn) firstBtn.classList.add('active');
+            tagContainer.innerHTML = categories.map(cat => {
+                const displayCat = cat === '全部' ? allText : cat;
+                return `
+                    <button class="tag-bracket px-4 py-1 border border-gray-400 dark:border-gray-600 text-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors ${activeTag === cat ? 'active' : ''}" 
+                            onclick="setTag(this, '${cat}')">
+                        [ ${displayCat} ]
+                    </button>
+                `;
+            }).join('');
         }
         
         window.setTag = function(btn, cat) {
@@ -266,7 +281,10 @@
             const kw = searchInput.value.toLowerCase();
             const filtered = rawPlugins.filter(p => {
                 const hitTag = activeTag === '全部' || p.category === activeTag;
-                const hitKw = !kw || p.name.toLowerCase().includes(kw) || p.description.toLowerCase().includes(kw);
+                const hitKw = !kw || 
+                            p.name.toLowerCase().includes(kw) || 
+                            (p.description && p.description.toLowerCase().includes(kw)) ||
+                            (p.description_zh && p.description_zh.toLowerCase().includes(kw));
                 return hitTag && hitKw;
             });
             renderPlugins(filtered);
@@ -274,9 +292,17 @@
 
         function renderPlugins(data) {
             pluginList.innerHTML = '';
+            
+            // --- 修改点 3: 根据语言选择描述字段 ---
+            const currentLang = localStorage.getItem('lang') || 'en';
+
             data.forEach(p => {
+                // 核心逻辑：如果是中文且有中文描述则使用，否则回退到英文描述
+                const displayDesc = (currentLang === 'zh' && p.description_zh) 
+                                    ? p.description_zh 
+                                    : p.description;
+
                 const el = document.createElement('div');
-                // Note: 'plugin-card' class now has the hard shadow styles defined in CSS
                 el.className = 'plugin-card p-6 flex flex-col justify-between h-full';
                 el.innerHTML = `
                     <div>
@@ -284,7 +310,7 @@
                             <h3 class="text-xl font-bold text-black dark:text-white">${p.name}</h3>
                             <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 text-black dark:text-geekYellow font-bold">${p.category}</span>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${p.description}</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${displayDesc}</p>
                     </div>
                     <div class="border-t border-gray-300 dark:border-gray-700 pt-4 mt-auto">
                         <div class="flex justify-between items-center text-xs mb-3 text-gray-500">
@@ -303,11 +329,15 @@
                 `;
                 pluginList.appendChild(el);
             });
+
+            // 如果页面有 i18n 刷新函数，此时可以调用
+            if (window.updateContent) window.updateContent();
         }
 
         function copyLink(url) {
             navigator.clipboard.writeText(url).then(() => {
-                alert('Link Copied');
+                const isEn = localStorage.getItem('lang') === 'en';
+                alert(isEn ? 'Link Copied' : '链接已复制');
             });
         }
     </script>
