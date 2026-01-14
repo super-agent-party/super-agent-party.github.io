@@ -169,25 +169,51 @@
                 </div>
             </div>
 
-            <!-- Cloud Downloads -->
-            <div class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <a href="https://pan.baidu.com/share/init?surl=VBSnq4Ga3fRX_NcyPwsV7Q&pwd=2333" target="_blank" class="terminal-card p-4 flex items-center space-x-4 hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer group">
-                    <div class="bg-gray-200 dark:bg-gray-800 p-3"><i class="fas fa-cloud text-xl"></i></div>
-                    <div>
-                        <h3 class="font-bold dark:text-white">Baidu Cloud</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400"><span data-i18n="password">Password</span>: 2333</p>
+            <!-- 社区下载区域 -->
+            <section class="py-12">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 左侧：魔搭社区 (ModelScope) -->
+                    <div class="terminal-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center mr-4 text-white">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl dark:text-white" data-i18n="mirror_china">ModelScope (Recommended for China)</h3>
+                                    <p class="text-sm text-gray-500" data-i18n="modelscope_desc">High-speed access for users in mainland China</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/tree/master/v0.3.6" target="_blank" class="block w-full text-center py-3 bg-black dark:bg-white text-white dark:text-black font-bold hover:opacity-80 transition-opacity">
+                                <span data-i18n="direct_download">Direct Download</span> <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
                     </div>
-                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekYellow transition-opacity"></i>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1xu8U1FCIZ5iqWpmf1w3TLX8AqGWft3zg?usp=sharing" target="_blank" class="terminal-card p-4 flex items-center space-x-4 hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer group">
-                    <div class="bg-gray-200 dark:bg-gray-800 p-3"><i class="fab fa-google-drive text-xl"></i></div>
-                    <div>
-                        <h3 class="font-bold dark:text-white">Google Drive</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400" data-i18n="direct_access">Direct access</p>
+
+                    <!-- 右侧：GitHub Releases -->
+                    <div class="terminal-card p-6 flex flex-col justify-between border-geekYellow">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-gray-800 rounded flex items-center justify-center mr-4 text-white">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl dark:text-white" data-i18n="mirror_global">GitHub Releases (Global / Recommended)</h3>
+                                    <p class="text-sm text-gray-500" data-i18n="github_releases_desc">Latest stable releases on GitHub</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank" class="block w-full text-center py-3 border-2 border-black dark:border-white text-black dark:text-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+                                <span data-i18n="direct_download">Direct Download</span> <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
                     </div>
-                    <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 text-geekYellow transition-opacity"></i>
-                </a>
-            </div>
+                </div>
+            </section>
 
             <!-- Grid -->
             <!-- 修改为 2x2 布局：md:grid-cols-2 保证在中大屏上都是两列，卡片更宽 -->
@@ -336,7 +362,78 @@ docker run -d -p 3456:3456 ailm32442/super-agent-party:latest</code>
     <footer class="border-t border-black dark:border-gray-800 py-8 mt-8 bg-white dark:bg-geekDark text-center">
         <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
     </footer>
+    <script>
+    function refreshDownloadButtons() {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const groups = document.querySelectorAll('.download-group');
 
+        groups.forEach(group => {
+            const githubUrl = group.getAttribute('data-github');
+            const modelscopeUrl = group.getAttribute('data-modelscope');
+            const container = group.querySelector('.btn-container');
+            
+            if (!container) return;
+
+            // 清空当前按钮
+            container.innerHTML = '';
+
+            // 定义两个按钮模板
+            const githubBtn = `
+                <a href="${githubUrl}" target="_blank" class="flex-1 text-center py-3 border-2 border-black dark:border-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-sm flex flex-col items-center justify-center">
+                    <span class="text-xs opacity-70 mb-1 btn-label-type"></span>
+                    <span data-i18n="global_link_text">Global Release (GitHub)</span>
+                </a>`;
+            
+            const modelscopeBtn = `
+                <a href="${modelscopeUrl}" target="_blank" class="flex-1 text-center py-3 border-2 border-black dark:border-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-sm flex flex-col items-center justify-center">
+                    <span class="text-xs opacity-70 mb-1 btn-label-type"></span>
+                    <span data-i18n="china_link_text">China Mirror (ModelScope)</span>
+                </a>`;
+
+            // 根据语言决定顺序和“推荐”样式
+            if (currentLang === 'zh' && modelscopeUrl) {
+                // 中文模式：魔搭优先
+                container.innerHTML = modelscopeBtn + githubBtn;
+                setBtnStyle(container.children[0], true); // 第一个是推荐
+                setBtnStyle(container.children[1], false); // 第二个是备用
+            } else {
+                // 英文模式：GitHub 优先
+                container.innerHTML = githubBtn + (modelscopeUrl ? modelscopeBtn : '');
+                setBtnStyle(container.children[0], true);
+                if(container.children[1]) setBtnStyle(container.children[1], false);
+            }
+        });
+
+        // 重新触发一次翻译，确保新添加的按钮文字正确
+        if (window.changeLanguage) {
+            const lang = localStorage.getItem('lang') || 'en';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.textContent = translations[lang][key];
+            });
+        }
+    }
+
+    function setBtnStyle(btn, isRecommended) {
+        const label = btn.querySelector('.btn-label-type');
+        const lang = localStorage.getItem('lang') || 'en';
+        
+        if (isRecommended) {
+            // 推荐按钮样式：实心黑/白
+            btn.classList.add('bg-black', 'text-white', 'dark:bg-white', 'dark:text-black');
+            label.textContent = lang === 'zh' ? '[ 推荐 ]' : '[ Recommended ]';
+        } else {
+            // 备用按钮样式：空心
+            btn.classList.add('text-black', 'dark:text-white');
+            label.textContent = lang === 'zh' ? '[ 备用镜像 ]' : '[ Mirror ]';
+        }
+    }
+
+    // 监听语言切换事件
+    document.addEventListener('languageChanged', refreshDownloadButtons);
+    // 页面加载时执行一次
+    document.addEventListener('DOMContentLoaded', refreshDownloadButtons);
+    </script>
     <script>
         // System detection functionality
         function isMobileDevice() {

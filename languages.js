@@ -98,7 +98,17 @@ const translations = {
     "mobile_detected": "Mobile Device Detected",
     "mobile_not_supported": "Super Agent Party is currently not available for mobile devices",
     "mobile_recommendation": "Please use a desktop computer with Windows, macOS or Linux to download and use Super Agent Party",
-    
+    "cloud_storage_downloads": "Download Mirrors",
+    "mirror_china": "ModelScope (Recommended for China)",
+    "mirror_global": "GitHub Releases (Global Recommended)",
+    "modelscope_desc": "High-speed access for users in mainland China",
+    "github_releases_desc": "Latest stable releases on GitHub",
+    "direct_download": "Direct Download",
+    "download_recommended": "Recommended",
+    "download_mirror": "Mirror",
+    "global_link_text": "Global Release (GitHub)",
+    "china_link_text": "China Mirror (ModelScope)",
+
     // Plugins page
     "plugins_description": "Plugins that add new functionalities to Super Agent Party",
     "plugin_author": "Author",
@@ -213,7 +223,17 @@ const translations = {
     "mobile_detected": "检测到移动设备",
     "mobile_not_supported": "Super Agent Party 目前不支持移动设备",
     "mobile_recommendation": "请使用 Windows、macOS 或 Linux 桌面系统下载并使用 Super Agent Party",
-    
+    "cloud_storage_downloads": "下载镜像",
+    "mirror_china": "魔搭社区 (中国用户推荐)",
+    "mirror_global": "GitHub Releases (国际用户推荐)",
+    "modelscope_desc": "为中国大陆用户提供极速下载体验",
+    "github_releases_desc": "GitHub 官方发布渠道，获取最新版本",
+    "direct_download": "立即下载",
+    "download_recommended": "推荐",
+    "download_mirror": "备用",
+    "global_link_text": "国际用户下载 (GitHub)",
+    "china_link_text": "中国用户下载 (魔搭社区)",
+
     // Plugins page
     "plugins_description": "为 Super Agent Party 增添新功能的插件",
     "plugin_author": "作者",
