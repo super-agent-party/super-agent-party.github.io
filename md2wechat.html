@@ -172,13 +172,64 @@
     const previewBox = document.getElementById('preview-box');
     const dynamicStyle = document.getElementById('dynamic-style');
 
+    // 1. 配置 marked 自定义渲染器
+    const renderer = new marked.Renderer();
+
+    // ★★★ 修复核心：兼容新旧版本的 Link 解析 ★★★
+    renderer.link = function(token, title, text) {
+        let finalHref = "";
+        let finalTitle = "";
+        let finalText = "";
+
+        // 判断：如果第一个参数是对象，说明是新版 marked
+        if (typeof token === 'object' && token !== null) {
+            finalHref = token.href || "";
+            finalTitle = token.title || "";
+            finalText = token.text || ""; 
+        } else {
+            // 旧版 marked，参数是分开的
+            finalHref = token || "";
+            finalTitle = title || "";
+            finalText = text || "";
+        }
+        
+        // 安全检查：确保是字符串
+        finalHref = String(finalHref);
+
+        // --- 业务逻辑开始 ---
+
+        // 判断是否为微信内部链接
+        const isWeChatLink = finalHref.includes('mp.weixin.qq.com');
+
+        if (isWeChatLink) {
+            // 微信文章链接：保持可点击
+            return `<a href="${finalHref}" title="${finalTitle}">${finalText}</a>`;
+        } else {
+            // 外部链接：显示为 "文字 <URL>"，方便复制
+            // 使用 span + 内联样式，确保复制到微信后样式保留
+            return `
+                <span style="color: #000; font-weight: bold; border-bottom: 2px solid #FFD700; padding-bottom: 1px;">${finalText}</span>
+                <span style="color: #888; font-family: Consolas, monospace; font-size: 0.85em; margin-left: 4px; user-select: all;">&lt;${finalHref}&gt;</span>
+            `;
+        }
+    };
+
+    // 应用渲染器
+    marked.use({ renderer: renderer });
+
     window.onload = render;
 
     function render() {
-        const mdText = mdEditor.value;
-        const html = marked.parse(mdText);
-        previewBox.innerHTML = html;
-        dynamicStyle.innerHTML = cssEditor.value;
+        try {
+            const mdText = mdEditor.value;
+            // 启用换行符转 <br>
+            marked.setOptions({ breaks: true });
+            const html = marked.parse(mdText);
+            previewBox.innerHTML = html;
+            dynamicStyle.innerHTML = cssEditor.value;
+        } catch (e) {
+            console.error("Render Error:", e);
+        }
     }
 
     function copyToClipboard() {
@@ -208,7 +259,6 @@
                             for (let i = 0; i < style.length; i++) {
                                 const propName = style[i];
                                 const propValue = style.getPropertyValue(propName);
-                                // 强制应用 filter 属性，确保阴影被复制
                                 el.style[propName] = propValue;
                             }
                         });
@@ -232,7 +282,7 @@
         document.body.removeChild(tempDiv);
         selection.removeAllRanges();
 
-        alert('已复制到剪贴板！\n注意：filter属性兼容性较好，但若粘贴后阴影丢失，请尝试在微信后台多次粘贴或清除格式。');
+        alert('已复制！\n\n外部链接已自动处理为文本显示。');
     }
 </script>
 
