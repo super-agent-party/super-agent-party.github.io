@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md2WeChat - Smart Shadow</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* --- 界面 UI 样式 (无需修改) --- */
+        :root { --geek-yellow: #FFD700; --geek-black: #050505; --geek-dark: #1a1a1a; --geek-gray: #333; }
+        body { margin: 0; padding: 0; font-family: 'Consolas', 'Monaco', monospace; height: 100vh; display: flex; flex-direction: column; background-color: var(--geek-black); color: #ccc; }
+        header { background: var(--geek-dark); border-bottom: 1px solid var(--geek-gray); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; height: 50px; }
+        h1 { margin: 0; font-size: 18px; color: var(--geek-yellow); letter-spacing: -1px; }
+        h1::before { content: "> "; color: #fff; }
+        button { background: var(--geek-yellow); color: #000; border: 2px solid #fff; padding: 6px 20px; font-weight: bold; font-family: inherit; cursor: pointer; box-shadow: 4px 4px 0px #fff; transition: all 0.1s; }
+        button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #fff; }
+        .container { flex: 1; display: flex; overflow: hidden; }
+        .column { flex: 1; display: flex; flex-direction: column; border-right: 1px solid var(--geek-gray); min-width: 0; }
+        .column:last-child { border-right: none; }
+        .col-header { background: var(--geek-black); padding: 8px 15px; font-size: 12px; color: var(--geek-yellow); border-bottom: 1px dashed var(--geek-gray); text-transform: uppercase; }
+        textarea { flex: 1; padding: 15px; border: none; resize: none; outline: none; font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; line-height: 1.5; background: #111; color: #ddd; }
+        #preview-container { flex: 1; overflow-y: auto; padding: 30px; background-color: #f0f0f0; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        #preview-box { max-width: 100%; margin: 0 auto; background: #fff; padding: 40px; min-height: 500px; box-shadow: 8px 8px 0px var(--geek-black); border: 2px solid var(--geek-black); }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SMART_AGENT_WRITER</h1>
+    <button onclick="copyToClipboard()">COPY_TO_WECHAT</button>
+</header>
+
+<div class="container">
+    <!-- 1. Markdown 输入区 -->
+    <div class="column">
+        <div class="col-header">Input.md</div>
+        <textarea id="md-editor" oninput="render()">
+# 极客风格标题
+
+这是一段正文文本。Super Agent Party 风格的核心在于**硬朗的线条**和**高对比度**的色彩。
+
+## 二级标题样式
+这里展示了列表和代码块的效果：
+
+- 列表项 01：模块化组件
+- 列表项 02：极简主义设计
+
+> 这是一个引用块。
+> 这种风格通常带有厚重的边框和阴影。
+        </textarea>
+    </div>
+
+    <!-- 2. CSS 编辑区 -->
+    <div class="column">
+        <div class="col-header">Style.css (With Drop-Shadow)</div>
+        <textarea id="css-editor" oninput="render()">
+/* 
+  === Super Agent Party 风格 (图片轮廓阴影版) === 
+*/
+
+.wechat-content {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #111;
+  text-align: justify;
+  background-color: #fff;
+}
+
+/* 
+  ★ 核心修改：图片样式 
+  使用 filter: drop-shadow 替代 box-shadow
+*/
+.wechat-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 30px auto;
+  
+  /* 1. 必须去除边框，否则阴影会沿着边框生成 */
+  border: none;
+  
+  /* 2. 关键属性：轮廓投影 */
+  /* 格式: X偏移 Y偏移 模糊半径 颜色 */
+  /* 设置为 0px 模糊半径可获得像素风硬阴影 */
+  filter: drop-shadow(6px 6px 0px #FFD700);
+  
+  /* 3. 兼容性：确保背景透明 */
+  background: transparent;
+  
+  /* 4. 可选：给图片本身加一点圆角，阴影也会跟着变圆 */
+  border-radius: 6px;
+}
+
+/* --- 其他样式保持不变 --- */
+
+.wechat-content h1 {
+  font-size: 24px;
+  font-weight: 900;
+  color: #000;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  border-left: 8px solid #000;
+  padding-left: 15px;
+}
+
+.wechat-content h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 35px;
+  margin-bottom: 20px;
+  color: #000;
+  border-bottom: 4px solid #FFD700;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.wechat-content p {
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+.wechat-content blockquote {
+  margin: 25px 0;
+  padding: 15px 20px;
+  border: 2px solid #000;
+  background-color: #f9f9f9;
+  box-shadow: 6px 6px 0px #FFD700;
+  color: #333;
+  font-size: 14px;
+}
+
+.wechat-content pre {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid #333;
+  box-shadow: 6px 6px 0px #000;
+  overflow-x: auto;
+  font-size: 13px;
+}
+.wechat-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #fff;
+}
+
+.wechat-content a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #FFD700;
+  font-weight: bold;
+}
+        </textarea>
+    </div>
+
+    <!-- 3. 预览区 -->
+    <div class="column">
+        <div class="col-header">Preview</div>
+        <div id="preview-container">
+            <div id="preview-box" class="wechat-content"></div>
+        </div>
+    </div>
+</div>
+
+<style id="dynamic-style"></style>
+
+<script>
+    const mdEditor = document.getElementById('md-editor');
+    const cssEditor = document.getElementById('css-editor');
+    const previewBox = document.getElementById('preview-box');
+    const dynamicStyle = document.getElementById('dynamic-style');
+
+    window.onload = render;
+
+    function render() {
+        const mdText = mdEditor.value;
+        const html = marked.parse(mdText);
+        previewBox.innerHTML = html;
+        dynamicStyle.innerHTML = cssEditor.value;
+    }
+
+    function copyToClipboard() {
+        const clone = previewBox.cloneNode(true);
+        const sheet = Array.from(document.styleSheets).find(s => s.ownerNode === dynamicStyle);
+        
+        if (sheet && sheet.cssRules) {
+            Array.from(sheet.cssRules).forEach(rule => {
+                try {
+                    if (rule.type === 1) { 
+                        const selector = rule.selectorText;
+                        const style = rule.style;
+                        
+                        let elements = [];
+                        if (selector.includes('.wechat-content')) {
+                            if (selector.trim() === '.wechat-content') {
+                                elements = [clone];
+                            } else {
+                                const subSelector = selector.replace('.wechat-content', '').trim();
+                                if(subSelector) elements = clone.querySelectorAll(subSelector);
+                            }
+                        } else {
+                            elements = clone.querySelectorAll(selector);
+                        }
+
+                        elements.forEach(el => {
+                            for (let i = 0; i < style.length; i++) {
+                                const propName = style[i];
+                                const propValue = style.getPropertyValue(propName);
+                                // 强制应用 filter 属性，确保阴影被复制
+                                el.style[propName] = propValue;
+                            }
+                        });
+                    }
+                } catch (e) { console.warn('Skipping rule:', rule); }
+            });
+        }
+
+        const tempDiv = document.createElement('div');
+        tempDiv.appendChild(clone);
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.left = '-9999px';
+        document.body.appendChild(tempDiv);
+
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(tempDiv);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+        document.body.removeChild(tempDiv);
+        selection.removeAllRanges();
+
+        alert('已复制到剪贴板！\n注意：filter属性兼容性较好，但若粘贴后阴影丢失，请尝试在微信后台多次粘贴或清除格式。');
+    }
+</script>
+
+</body>
+</html>
