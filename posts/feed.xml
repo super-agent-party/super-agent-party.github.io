@@ -7,6 +7,131 @@
     <language>en-us</language>
     <generator>NodeJS Build Script</generator>
     <item>
+      <title>An AI Magazine You Can Never Finish Reading! Let Your AI Companion Take You Through the Changes of the World!</title>
+      <link>https://www.agentparty.top/article.html?lang=en&amp;slug=aimgz</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
+      <description>Efficiently get updates via RSS subscription + AI companion!</description>
+      <guid>https://www.agentparty.top/article.html?lang=en&amp;slug=aimgz</guid>
+      <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/aimgz/0.jpeg" alt="img" title="" /></p>
+<h1>Introduction</h1>
+<p>In the era of information explosion, traditional reading methods often consume too much time and effort. Therefore, I added a new extension — <a href="https://github.com/heshengtao/sap-rss">sap-rss</a> — to the AI companion software — <a href="https://github.com/heshengtao/super-agent-party">Super Agent Party</a>. This extension helps us obtain updates through RSS subscriptions, automatically organizes them into a daily-updated AI magazine, and finally lets your AI companion read it aloud to you. Let’s take a look at how this is achieved!</p>
+<h1>Step One: Download Super Agent Party!</h1>
+<p>First, you need to download the free Super Agent Party! This is an open-source AI companion software. You can view its source code on <a href="https://github.com/heshengtao/super-agent-party">GitHub</a>.</p>
+<p>If you are a Chinese user, you can download it from the <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files">ModelScope Community</a>. Select the folder corresponding to the version number, then choose the version compatible with your operating system and click to download!</p>
+<p><img src="https://www.agentparty.top/img/0yuan/1.jpeg" alt="img" title="" /></p>
+<p>If you are an overseas user, you can download it from <a href="https://github.com/heshengtao/super-agent-party/releases">GitHub</a>. Select the version suitable for your operating system and click to download!</p>
+<p><img src="https://www.agentparty.top/img/0yuan/2.jpeg" alt="img" title="" /></p>
+<p>If you are a tech-savvy geek, you can also choose the Docker version and check the usage instructions on <a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser">GitHub</a>.</p>
+<h1>Step Two: Install the RSS Extension</h1>
+<p>Open Super Agent Party, and you can see the installed extensions under the 【Developer】-&gt; 【Extensions】subpage. Click the 【Install New Extension】button and select 【sap-rss】to install.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/1.jpeg" alt="img" title="" /></p>
+<p>There are three ways to open the extension:</p>
+<ol>
+<li>Open via sidebar: Click 【sap-rss】in the sidebar interface to open the extension.</li>
+</ol>
+<p><img src="https://www.agentparty.top/img/aimgz/2.jpeg" alt="img" title="" /></p>
+<p><img src="https://www.agentparty.top/img/aimgz/3.jpeg" alt="img" title="" /></p>
+<p>After opening, you will see the RSS extension interface. You can click the + button to add new RSS subscriptions.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/4.jpeg" alt="img" title="" /></p>
+<ol start="2">
+<li>Open via independent window: Click the small independent window button at the top right of 【sap-rss】in the sidebar interface.</li>
+</ol>
+<p><img src="https://www.agentparty.top/img/aimgz/5.jpeg" alt="img" title="" /></p>
+<p>After opening, the RSS extension interface will appear as an independent window.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/6.jpeg" alt="img" title="" /></p>
+<ol start="3">
+<li>Open via browser window: Click the small browser window button at the top right of 【sap-rss】in the sidebar interface.</li>
+</ol>
+<p><img src="https://www.agentparty.top/img/aimgz/7.jpeg" alt="img" title="" /></p>
+<p>After opening, the RSS extension interface will appear as a browser window.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/8.jpeg" alt="img" title="" /></p>
+<h1>Step Three: Add RSS Subscriptions</h1>
+<p>In the RSS extension interface, you can click the + button to add new RSS subscriptions. You can enter the RSS URL and click the 【Add】button.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/9.jpeg" alt="img" title="" /></p>
+<p>You can click the network button to the left of the + button to add some pre-organized RSS subscriptions we have prepared.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/10.jpeg" alt="img" title="" /></p>
+<h1>Step Four: Generate AI Translation, AI Summary, AI Podcast, AI Magazine</h1>
+<p>Click the buttons on the interface to generate AI translations, summaries, podcasts, and magazines based on your RSS subscriptions. Super Agent Party does not require you to pay for AI features; all AI computing power can be achieved through AI models you configure yourself. Therefore, you need to configure the corresponding LLM and TTS models in advance. How to use free computing power has already been introduced in the previous blog post — you can click <a href="https://www.agentparty.top/article.html?lang=zh&slug=0yuan">here</a> to view.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/11.jpeg" alt="img" title="" /></p>
+<p><img src="https://www.agentparty.top/img/aimgz/12.jpeg" alt="img" title="" /></p>
+<p>You can click the table of contents on the AI magazine to jump to the chapter you want to read.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/13.jpeg" alt="img" title="" /></p>
+<h1>Step Five: Let Your AI Companion Read It to You</h1>
+<p>Click the VRM pet button, then click the 【Play】button on the AI magazine to let your AI companion read it aloud to you.</p>
+<p><img src="https://www.agentparty.top/img/aimgz/14.jpeg" alt="img" title="" /></p>
+<p><img src="https://www.agentparty.top/img/aimgz/0.jpeg" alt="img" title="" /></p>
+<h1>Where to Find More RSS Subscriptions?</h1>
+<p>Although the RSS protocol is long-standing, it remains the most free and efficient way to access information on the internet today. Although many websites no longer prominently display the RSS icon, they are still available. To make your <strong>Super Agent Party</strong>-generated AI magazine content rich and diverse, here is a “Subscription Source Mining Guide” ranging from beginner to advanced, covering major global platforms.</p>
+<h2>1. Essential Tool: Browser Detection Plugin (RSSHub Radar)</h2>
+<p>This is the simplest and most recommended method for all users. You don’t need to know coding — just install a “radar” in your browser.</p>
+<ul>
+<li><strong>RSSHub Radar</strong>: This is an open-source browser extension (supports Chrome/Edge/Firefox). When you visit a website, if the site has RSS support or can generate RSS via RSSHub, its icon will light up and display a number.<ul>
+<li><strong>Applicable Scenarios</strong>: Almost all web pages.</li>
+<li><strong>Acquisition Method</strong>: Search for <code>RSSHub Radar</code> on GitHub or directly download it from the Chrome Web Store.</li>
+<li><strong>Global Applicability</strong>: Can detect not only domestic platforms like Bilibili and Weibo, but also international platforms like YouTube channels and Reddit subreddits.</li>
+</ul>
+</li>
+</ul>
+<h2>2. Everything Can Be RSS: Embrace the Open-Source Project RSSHub</h2>
+<p>If you find that a website you like (e.g., Twitter/X, Instagram, Zhihu, Douyin, etc.) does not officially support RSS, what should you do? At this point, you need to bring out the “Swiss Army Knife” of the RSS world — <strong>RSSHub</strong>.</p>
+<ul>
+<li><strong>What is RSSHub</strong>: It is an open-source, community-driven project that can convert almost any web page content into an RSS subscription source through specific rules.</li>
+<li><strong>How to Use</strong>:<ul>
+<li><strong>Official/Public Instances</strong>: RSSHub provides a public domain name. You only need to construct the URL according to the documentation (e.g., <code>https://rsshub.app/twitter/user/elonmusk</code>).</li>
+<li><strong>Self-Hosted Service (Recommended for Geeks)</strong>: To ensure a more stable experience and access specific regional content, it is strongly recommended to deploy an RSSHub locally or on a server using Docker, just like deploying Super Agent Party.</li>
+<li><strong>Docker Deployment</strong>: Just one command <code>docker pull diygod/rsshub</code>, combined with our <code>sap-rss</code> extension, the experience is simply amazing.</li>
+</ul>
+</li>
+</ul>
+<h2>3. Native or Skill-Based Access to Major Global Platforms</h2>
+<p>Many international mainstream platforms actually have native RSS interfaces, though they are hidden deep within. Mastering these techniques allows you to easily subscribe to global news:</p>
+<ul>
+<li><strong>YouTube (Videos/Podcasts)</strong>:<ul>
+<li>No third-party tools needed. Open any channel page, view the source code to search for <code>channel_id</code>, then construct: <code>https://www.youtube.com/feeds/videos.xml?channel_id=yourID</code>.</li>
+<li>Combined with the AI companion’s summarization feature, you don’t even need to watch the video to know what the creator is talking about.</li>
+</ul>
+</li>
+<li><strong>Reddit (Community Discussions)</strong>:<ul>
+<li>Very user-friendly — simply add <code>.rss</code> to the URL. For example: <code>https://www.reddit.com/r/technology/.rss</code>.</li>
+</ul>
+</li>
+<li><strong>Medium (Technology/Writing)</strong>:<ul>
+<li>Add <code>/feed</code> to the end of the personal homepage URL. For example: <code>medium.com/feed/@username</code>.</li>
+</ul>
+</li>
+<li><strong>Substack (Newsletters)</strong>:<ul>
+<li>In this era of newsletter popularity, almost all Substack pages only require adding <code>/feed</code> after the domain to obtain the full RSS feed.</li>
+</ul>
+</li>
+</ul>
+<h2>4. Aggregation Platforms and Search Engines (Aggregators)</h2>
+<p>If you don’t know what to read, you can browse these specialized RSS “yellow pages” websites, which usually categorize by topic, making it easy for you to import in bulk:</p>
+<ul>
+<li><strong>Feedly / Inoreader</strong>: These are the two largest RSS reader service providers globally. Although they are primarily readers, their “search bar” is a powerful RSS search engine. Enter keywords (e.g., &quot;AI News&quot; or &quot;SpaceX&quot;), and they will list the most popular relevant RSS sources across the web.</li>
+<li><strong>Follow.is</strong>: A next-generation subscription browser with a very modern interface. Its Discover page features many high-quality user-created subscription lists (Lists) covering cutting-edge fields such as technology, design, and programming.</li>
+<li><strong>Feedspot</strong>: A database containing tens of thousands of RSS Feeds worldwide, categorized by industry and country — ideal for finding professional information in specific fields.</li>
+</ul>
+<h2>5. Awesome Lists on GitHub</h2>
+<p>For developers and tech-savvy users, GitHub itself is a massive resource repository. You can search for the following keywords to find community-maintained source lists (OPML files):</p>
+<ul>
+<li><code>ALL-about-RSS</code></li>
+<li><code>awesome-rss-feeds</code></li>
+<li><code>chinese-independent-blogs</code> (Chinese independent blog list)</li>
+<li><code>engineering-blogs</code> (Technical blogs from major global tech companies)</li>
+</ul>
+<p><strong>Tip</strong>: After obtaining the RSS link, don’t forget to test it in your browser first. If you see a screen full of code (XML format) or a download prompt, it means the link is valid — simply copy it into the <code>sap-rss</code> extension in <strong>Super Agent Party</strong>!</p>
+<h1>Conclusion</h1>
+<p>Through RSS subscriptions + AI companion, we can efficiently obtain updates, automatically organize them into a daily-updated AI magazine, and finally let your AI companion read it aloud to you. This way, we can access the latest news anytime and anywhere in our busy lives, while letting the AI companion help us organize and read these updates.If you have any questions, feel free to join:</p>
+<ul>
+<li>QQ Group: <code>931057213</code></li>
+<li>Discord: <a href="https://discord.gg/f2dsAKKr2V">Discord link</a></li>
+</ul>
+<blockquote>
+<p>© 2026 heshengtao, licensed under CC BY 4.0 International<br>Free to share, adapt, and use commercially, with attribution and a link to the original.</p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
       <title>Challenge: Create an AI Companion for $0, Can I Succeed?</title>
       <link>https://www.agentparty.top/article.html?lang=en&amp;slug=0yuan</link>
       <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>

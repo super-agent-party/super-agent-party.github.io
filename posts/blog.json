@@ -1,6 +1,19 @@
 {
   "en": [
     {
+      "id": "aimgz",
+      "title": "An AI Magazine You Can Never Finish Reading! Let Your AI Companion Take You Through the Changes of the World!",
+      "date": "2026-01-19",
+      "description": "Efficiently get updates via RSS subscription + AI companion!",
+      "tags": [
+        "AI Magazine",
+        "AI Podcast",
+        "RSS"
+      ],
+      "lang": "en",
+      "cover": "img/aimgz/0.jpeg"
+    },
+    {
       "id": "0yuan",
       "title": "Challenge: Create an AI Companion for $0, Can I Succeed?",
       "date": "2026-01-16",
@@ -25,6 +38,19 @@
     }
   ],
   "zh": [
+    {
+      "id": "aimgz",
+      "title": "一本读不完的AI杂志！让AI伴侣带你感受世界的变化！",
+      "date": "2026-01-19",
+      "description": "通过RSS订阅+AI伴侣，高效获取消息！",
+      "tags": [
+        "AI杂志",
+        "AI播客",
+        "RSS"
+      ],
+      "lang": "zh",
+      "cover": "img/aimgz/0.jpeg"
+    },
     {
       "id": "0yuan",
       "title": "挑战0元创造AI伴侣，我能成功吗？",
