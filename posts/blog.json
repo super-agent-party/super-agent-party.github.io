@@ -9,7 +9,7 @@
         "AI Companion"
       ],
       "lang": "en",
-      "cover": "/img/0yuan/0.jpeg"
+      "cover": "img/0yuan/0.jpeg"
     },
     {
       "id": "hello-world",
@@ -34,7 +34,7 @@
         "AI伴侣"
       ],
       "lang": "zh",
-      "cover": "/img/0yuan/0.jpeg"
+      "cover": "img/0yuan/0.jpeg"
     },
     {
       "id": "hello-world",

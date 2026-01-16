@@ -24,44 +24,60 @@ function getPosts(lang) {
         const fileContent = fs.readFileSync(path.join(dir, filename), 'utf-8');
         const { data, content } = matter(fileContent);
         
-        // 1. 自动提取封面图逻辑
-        let cover = data.cover || null; // 优先读取 header 里的 cover: xxx.jpg
+        // --- 修复点 1: 封面图提取逻辑 ---
+        let cover = data.cover || null;
 
         if (!cover) {
-            // 如果 header 没写，正则抓取正文第一张图
-            // 支持 Markdown 格式 ![]() 和 HTML 格式 <img src>
             const mdMatch = content.match(/!\[.*?\]\((.*?)(?:\s+".*?")?\)/);
             const htmlMatch = content.match(/<img.*?src=["'](.*?)["']/);
             
             if (mdMatch || htmlMatch) {
                 let imgPath = mdMatch ? mdMatch[1] : htmlMatch[1];
                 
-                // 如果是相对路径 (img.png 或 ./img.png)，加上目录前缀
-                if (!imgPath.startsWith('http') && !imgPath.startsWith('//') && !imgPath.startsWith('/')) {
-                    // 去掉可能的 ./
-                    imgPath = imgPath.replace(/^\.\//, '');
-                    // 拼接完整路径: posts/en/img.png
-                    cover = `posts/${lang}/${imgPath}`;
+                // 判断是否为外部链接
+                if (!imgPath.startsWith('http') && !imgPath.startsWith('//')) {
+                    if (imgPath.startsWith('/')) {
+                        //如果是以 / 开头 (例如 /img/0.jpg)，说明是根目录，直接去掉开头的 / 即可
+                        //最终生成: img/0.jpg (供前端使用) 或 https://.../img/0.jpg (供RSS使用)
+                        //这里为了保持 json 数据干净，我们通常存相对根目录的路径，或者直接存完整 URL
+                        //为了统一，这里建议存完整相对路径
+                        cover = imgPath.substring(1); // 去掉第一个 '/' -> img/0yuan/0.jpeg
+                    } else {
+                        //如果是相对路径 (例如 0.jpg)，则加上文章目录
+                        imgPath = imgPath.replace(/^\.\//, '');
+                        cover = `posts/${lang}/${imgPath}`;
+                    }
                 } else {
                     cover = imgPath;
                 }
             }
         }
 
-        // 2. 生成正文 HTML (RSS用，这里我加上了绝对路径修正，防止RSS里图片裂开)
+        // --- 修复点 2: 生成 RSS HTML 的渲染器逻辑 ---
         const renderer = new marked.Renderer();
-        const absoluteResourceUrl = `${BASE_URL}/posts/${lang}/`;
+        // 定义文章所在的目录 URL
+        const postDirUrl = `${BASE_URL}/posts/${lang}/`;
 
         renderer.image = function({ href, title, text }) {
-            // 兼容旧版 marked 参数
             const linkHref = href || arguments[0];
             const linkTitle = title || arguments[1];
             const linkText = text || arguments[2];
 
             let finalSrc = linkHref;
+            
+            // 如果不是 http 开头，说明是本地图片
             if (linkHref && !linkHref.startsWith('http') && !linkHref.startsWith('//')) {
-                finalSrc = `${absoluteResourceUrl}${linkHref.replace(/^\.\//, '')}`;
+                if (linkHref.startsWith('/')) {
+                    // ★★★ 核心修复逻辑 ★★★
+                    // 如果路径以 / 开头（例如 /img/0yuan/0.jpeg），说明是网站根目录图片
+                    // 直接拼接到 BASE_URL 后面
+                    finalSrc = `${BASE_URL}${linkHref}`; 
+                } else {
+                    // 否则是相对路径，拼接到文章目录后面
+                    finalSrc = `${postDirUrl}${linkHref.replace(/^\.\//, '')}`;
+                }
             }
+            
             return `<img src="${finalSrc}" alt="${linkText}" title="${linkTitle || ''}" />`;
         };
 
@@ -74,7 +90,7 @@ function getPosts(lang) {
             description: data.description || '',
             tags: data.tags || [],
             lang: lang,
-            cover: cover, // ★ 提取出的图片路径
+            cover: cover, 
             content: htmlContent 
         };
     }).sort((a, b) => new Date(b.date) - new Date(a.date));
