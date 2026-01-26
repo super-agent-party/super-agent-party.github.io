@@ -64,6 +64,9 @@ const translations = {
     "api_ready": "API Ready",
     "waiting_connection": "Waiting for connection...",
 
+    "footer_links": "Quick Links",
+    "footer_community": "Community",
+
     // download.html content (Existing content preserved)
     "download_title": "Download Super Agent Party",
     "download_subtitle": "Choose your platform and have your own AI desktop companion in minutes",
@@ -199,6 +202,9 @@ const translations = {
     
     "api_ready": "API 就绪",
     "waiting_connection": "等待连接...",
+
+    "footer_links": "快速链接",
+    "footer_community": "加入社区",
 
     // download.html content
     "download_title": "下载 Super Agent Party",

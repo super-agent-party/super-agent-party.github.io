@@ -233,37 +233,38 @@
     </nav>
 
     <main>
-        <!-- 2. Hero 区域：视差 + 3D悬浮 -->
-        <div class="fullscreen-section relative overflow-hidden flex items-center justify-center">
+        <!-- 2. Hero 区域：高度收缩至 85vh，完整保留两个按钮 -->
+        <div class="relative overflow-hidden flex items-center justify-center bg-white dark:bg-geekDark" style="min-height: 85vh;">
             <!-- 动态背景光斑 -->
             <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
                 <div class="parallax-bg absolute top-1/4 left-10 w-64 h-64 bg-geekYellow/10 rounded-full blur-3xl animate-float"></div>
                 <div class="parallax-bg absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
             </div>
 
-            <div class="max-w-7xl mx-auto px-4 z-10 text-center relative w-full">
-                <!-- 3D Logo 容器 (绑定了 JS 视差) -->
-                <div id="hero-logo" class="mx-auto w-48 h-48 md:w-60 md:h-60 mb-8 relative transition-transform duration-75 ease-out">
+            <div class="max-w-7xl mx-auto px-4 z-10 text-center relative w-full pt-10">
+                <!-- 3D Logo -->
+                <div id="hero-logo" class="mx-auto w-36 h-36 md:w-44 md:h-44 mb-6 relative transition-transform duration-75 ease-out">
                     <div class="absolute inset-0 bg-geekYellow opacity-20 blur-3xl rounded-full dark:opacity-10 scale-125"></div>
                     <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full object-contain relative z-10 drop-shadow-2xl">
                 </div>
                 
-                <h1 class="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter dark:text-white uppercase glitch-text" data-text="SUPER AGENT PARTY">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tighter dark:text-white uppercase glitch-text" data-text="SUPER AGENT PARTY">
                     Super Agent Party
                 </h1>
                 
-                <div class="flex justify-center items-center mb-10">
-                    <p class="text-lg md:text-2xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl" data-i18n="main_subtitle">
+                <div class="flex justify-center items-center mb-8">
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl" data-i18n="main_subtitle">
                         An AI desktop companion with unlimited possibilities
                     </p>
                     <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-2 animate-cursor"></div>
                 </div>
 
+                <!-- 两个按钮都回来了！ -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 translate-y-10 transition-all duration-1000 delay-300" id="hero-buttons">
-                    <a href="download.html" class="w-full sm:w-auto px-10 py-4 bg-black dark:bg-geekYellow text-white dark:text-black font-bold text-lg hover:scale-105 transition-transform shadow-[4px_4px_0px_rgba(128,128,128,0.5)] dark:shadow-[4px_4px_0px_#fff]">
+                    <a href="download.html" class="w-full sm:w-auto px-8 py-3 bg-black dark:bg-geekYellow text-white dark:text-black font-bold text-lg hover:scale-105 transition-transform shadow-[4px_4px_0px_rgba(128,128,128,0.5)] dark:shadow-[4px_4px_0px_#fff]">
                         <i class="fas fa-download mr-2"></i> <span data-i18n="get_started">Get Started</span>
                     </a>
-                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="w-full sm:w-auto px-10 py-4 border-2 border-black dark:border-white text-black dark:text-white font-bold text-lg hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="w-full sm:w-auto px-8 py-3 border-2 border-black dark:border-white text-black dark:text-white font-bold text-lg hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
                         <i class="fas fa-book mr-2"></i> <span data-i18n="view_docs">Documentation</span>
                     </a>
                 </div>
@@ -271,7 +272,7 @@
         </div>
 
         <!-- 新增：软件截图展示区域 -->
-        <div class="fullscreen-section bg-white dark:bg-geekDark/50">
+        <div class="relative px-4 pb-20 bg-white dark:bg-geekDark">
             <div class="max-w-6xl mx-auto px-4 w-full">
                 <!-- 模拟窗口工具栏 -->
                 <div class="terminal-card overflow-hidden">
@@ -285,11 +286,6 @@
                         <img src="img/app.jpeg" 
                              alt="Software Screenshot" 
                              class="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.01]">
-                        
-                        <!-- 悬浮标签 -->
-                        <div class="absolute bottom-4 right-4 bg-black/80 text-geekYellow text-[10px] px-2 py-1 border border-geekYellow animate-pulse">
-                            LIVE_PREVIEW.SYS
-                        </div>
                     </div>
                 </div>
             </div>
@@ -430,10 +426,59 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t-2 border-black dark:border-gray-800 py-8 bg-white dark:bg-geekDark">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xs text-gray-500 font-mono" data-i18n="footer_copyright">&copy; 2025 Super Agent Party. Open source project available on GitHub.</p>
+<!-- 增强版 Footer -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- 第一列：项目简介 -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
+                    <p class="text-xs text-gray-500 leading-relaxed font-mono" data-i18n="main_subtitle">
+                        An AI desktop companion with unlimited possibilities
+                    </p>
+                </div>
+
+                <!-- 第二列：快速链接 -->
+                <div class="col-span-1">
+                    <h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-geekYellow" data-i18n="footer_links">Links</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="index.html" class="hover:underline opacity-60 hover:opacity-100" data-i18n="home">Home</a></li>
+                        <li><a href="download.html" class="hover:underline opacity-60 hover:opacity-100" data-i18n="download">Download</a></li>
+                        <li><a href="plugins.html" class="hover:underline opacity-60 hover:opacity-100" data-i18n="plugins">Plugins</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="hover:underline opacity-60 hover:opacity-100" data-i18n="view_docs">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <!-- 第三列：社区平台 -->
+                <div class="col-span-1">
+                    <h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-geekYellow" data-i18n="footer_community">Community</h4>
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center gap-2 hover:text-geekYellow transition-colors">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://gitee.com/heshengtao/super-agent-party" target="_blank" class="flex items-center gap-2 hover:text-red-500 transition-colors">
+                            <i class="fas fa-code-branch"></i> Gitee
+                        </a>
+                        <a href="https://space.bilibili.com/26978344" target="_blank" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-bilibili"></i> Bilibili
+                        </a>
+                        <a href="https://www.youtube.com/@agentParty" target="_blank" class="flex items-center gap-2 hover:text-red-600 transition-colors">
+                            <i class="fab fa-youtube"></i> Youtube
+                        </a>
+                        <a href="https://discord.com/invite/f2dsAKKr2V" target="_blank" class="flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                            <i class="fab fa-discord"></i> Discord
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部版权 -->
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[10px] text-gray-500 font-mono" data-i18n="footer_copyright">
+                    © 2026 Super Agent Party. All rights reserved.
+                </p>
+            </div>
         </div>
     </footer>
     
