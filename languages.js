@@ -17,7 +17,7 @@ const translations = {
     "core_features": "Core Features",
     
     "omnichannel": "Omnichannel Deployment",
-    "omnichannel_desc": "One-click deployment to Desktop, QQ, Discord, Telegram, Twitch, YouTube, and more. Ready to use out of the box.",
+    "omnichannel_desc": "One-click deployment to Desktop, QQ, Feishu, Telegram, Discord, Slack, Twitch, YouTube, and more. Ready to use out of the box.",
     
     "ecosystem": "Ecosystem Integration",
     "ecosystem_desc": "Connect standard workflows as toolchains: Home Assistant, Claude Code, ComfyUI, MCP, A2A, and Dify.",
@@ -44,7 +44,7 @@ const translations = {
     "feat_vrm_desc": "Custom 3D avatars, voice interaction, transparent OBS streaming, dual-way VMC protocol support.",
     
     "feat_platforms_title": "Message & Live Bots",
-    "feat_platforms_desc": "Connects with QQ, Feishu, Discord, Telegram, Bilibili, YouTube, Twitch.",
+    "feat_platforms_desc": "Connects with QQ, Feishu, Telegram, Discord, Slack, Bilibili, YouTube, Twitch.",
     
     "feat_broadcast_title": "Broadcasting Agent",
     "feat_broadcast_desc": "Long text/ePub TTS, multi-voice, digital human broadcasting, batch audio export.",
@@ -156,7 +156,7 @@ const translations = {
     "core_features": "核心特性",
     
     "omnichannel": "全渠道一键部署",
-    "omnichannel_desc": "支持将智能体配置快速部署至多类终端，兼容经典界面、桌宠、QQ、飞书、Discord、Telegram、直播机器人（B站/YouTube/Twitch）等。",
+    "omnichannel_desc": "支持将智能体配置快速部署至多类终端，兼容经典界面、桌宠、QQ, 飞书, Telegram, Discord, Slack、直播机器人（B站/YouTube/Twitch）等。",
     
     "ecosystem": "生态工具互联",
     "ecosystem_desc": "自由接入第三方智能体与工作流（Home Assistant/Claude code/ComfyUI/MCP/A2A/Dify），实现跨平台能力聚合。",
@@ -183,7 +183,7 @@ const translations = {
     "feat_vrm_desc": "高度自由，支持自定义形象/动作/语音交互/打断，支持透明推流及双向VMC协议。",
     
     "feat_platforms_title": "消息平台机器人",
-    "feat_platforms_desc": "目前已支持QQ、飞书、Discord、Telegram，后续会支持更多平台。",
+    "feat_platforms_desc": "目前已支持QQ, 飞书, Telegram, Discord, Slack，后续会支持更多平台。",
     
     "feat_broadcast_title": "播报机器人",
     "feat_broadcast_desc": "支持长文播报、多语音、数字人、超长文本批量转语音下载，支持电子书epub解析。",
