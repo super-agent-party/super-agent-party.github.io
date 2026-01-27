@@ -297,46 +297,83 @@
         function renderPlugins(data) {
             pluginList.innerHTML = '';
             
-            // --- 修改点 3: 根据语言选择描述字段 ---
+            // 获取当前语言设置
             const currentLang = localStorage.getItem('lang') || 'en';
+            const isEn = currentLang === 'en';
 
             data.forEach(p => {
-                // 核心逻辑：如果是中文且有中文描述则使用，否则回退到英文描述
+                // 1. 根据语言选择描述内容
                 const displayDesc = (currentLang === 'zh' && p.description_zh) 
                                     ? p.description_zh 
                                     : p.description;
 
                 const el = document.createElement('div');
+                // 保持你原有的卡片样式和阴影
                 el.className = 'plugin-card p-6 flex flex-col justify-between h-full';
+                
                 el.innerHTML = `
                     <div>
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-black dark:text-white">${p.name}</h3>
-                            <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 text-black dark:text-geekYellow font-bold">${p.category}</span>
+                            <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 text-black dark:text-geekYellow font-bold">
+                                ${p.category}
+                            </span>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${displayDesc}</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                            ${displayDesc}
+                        </p>
                     </div>
-                    <div class="border-t border-gray-300 dark:border-gray-700 pt-4 mt-auto">
-                        <div class="flex justify-between items-center text-xs mb-3 text-gray-500">
-                            <span>Ver: ${p.version}</span>
-                            <span data-i18n="plugin_author">Author: ${p.author}</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <button onclick="copyLink('${p.repository}')" class="flex-1 py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-xs font-bold">
-                                <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
-                            </button>
-                            <a href="${p.repository}" target="_blank" class="flex-1 py-2 bg-black text-white dark:bg-geekYellow dark:text-black text-center hover:opacity-80 transition-opacity text-xs font-bold">
-                                <i class="fab fa-github mr-2"></i> <span data-i18n="github">GitHub</span>
-                            </a>
+
+                    <div class="mt-auto">
+                        <!-- 新增：添加到 Agent Party 按钮 -->
+                        <button onclick="handleInstallClick('${p.repository}')" 
+                                class="w-full mb-4 py-3 bg-geekYellow text-black text-center hover:opacity-90 transition-all text-sm font-bold border-2 border-black dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] active:translate-x-1 active:translate-y-1 active:shadow-none">
+                            <i class="fa-solid fa-plus-circle mr-2"></i> 
+                            <span data-i18n="add_to_party">${isEn ? 'Add to Agent Party' : '添加到 Agent Party'}</span>
+                        </button>
+
+                        <div class="border-t border-gray-300 dark:border-gray-700 pt-4">
+                            <div class="flex justify-between items-center text-xs mb-3 text-gray-500">
+                                <span>Ver: ${p.version}</span>
+                                <span>Author: ${p.author}</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button onclick="copyLink('${p.repository}')" 
+                                        class="flex-1 py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-xs font-bold">
+                                    <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
+                                </button>
+                                <a href="${p.repository}" target="_blank" 
+                                class="flex-1 py-2 bg-black text-white dark:bg-gray-800 dark:text-white text-center hover:opacity-80 transition-opacity text-xs font-bold">
+                                    <i class="fab fa-github mr-2"></i> <span data-i18n="github">GitHub</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `;
                 pluginList.appendChild(el);
             });
 
-            // 如果页面有 i18n 刷新函数，此时可以调用
+            // 触发页面上的 i18n 刷新（如果存在）
             if (window.updateContent) window.updateContent();
         }
+
+        /**
+         * 处理安装按钮点击：唤起自定义协议 sap://
+         */
+        function handleInstallClick(repoUrl) {
+            // 格式必须是: sap://install?repo=你的git地址
+            const protocolUrl = `sap://install?repo=${encodeURIComponent(repoUrl)}`;
+            
+            // 跳转
+            window.location.href = protocolUrl;
+            
+            // 简单的未安装提示
+            setTimeout(() => {
+                // 如果2秒后页面还在(没切走)，说明可能没装软件
+                console.log("尝试唤起客户端..."); 
+            }, 2000);
+        }
+
 
         function copyLink(url) {
             navigator.clipboard.writeText(url).then(() => {
