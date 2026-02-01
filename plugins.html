@@ -361,17 +361,15 @@
          * 处理安装按钮点击：唤起自定义协议 sap://
          */
         function handleInstallClick(repoUrl) {
-            // 格式必须是: sap://install?repo=你的git地址
-            const protocolUrl = `sap://install?repo=${encodeURIComponent(repoUrl)}`;
+            // 1. 唤起协议
+            window.location.href = `sap://install?repo=${encodeURIComponent(repoUrl)}`;
             
-            // 跳转
-            window.location.href = protocolUrl;
-            
-            // 简单的未安装提示
-            setTimeout(() => {
-                // 如果2秒后页面还在(没切走)，说明可能没装软件
-                console.log("尝试唤起客户端..."); 
-            }, 2000);
+            // 2. 弹出一个 UI 引导层（而不是系统 Alert）
+            showInAppModal({
+                title: isEn ? "Launching..." : "正在唤起客户端...",
+                content: isEn ? "If nothing happens, you may need to install SAP." : "如果没有反应，请确保已安装并运行 Super Agent Party。",
+                downloadLink: "download.html"
+            });
         }
 
 
