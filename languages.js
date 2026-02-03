@@ -7,6 +7,7 @@ const translations = {
     "download": "Download",
     "plugins": "Plugins",
     "blog": "Blog",
+    "resources": "Resources",
     
     // index.html - Hero Section
     "main_subtitle": "An AI desktop companion with unlimited possibilities",
@@ -128,6 +129,34 @@ const translations = {
     "retry_launch": "Try Again",
     "go_to_download": "Download SAP Now",
 
+    
+    // 插件/技能/MCP 页面通用
+    "search_module": "search_module...",
+    "search_skills": "search_skills...",
+    "search_mcp": "search_mcp...",
+    "copy": "Copy",
+    "add_to_party": "Add to Agent Party",
+    
+    // 描述文字
+    "plugins_description": "Plugins that add new functionalities to Super Agent Party",
+    "skills_description": "Curated instruction sets and capabilities for your AI Agents",
+    "mcp_description": "Connect your Agent to external data and tools via Model Context Protocol",
+    
+    // 安装模态框
+    "launching_title": "Invoking Agent...",
+    "launching_desc": "Attempting to open Super Agent Party. If nothing happens, please ensure the client is installed.",
+    "retry_launch": "Retry Launch",
+    "go_to_download": "Go to Download",
+    
+    // 开发者区域
+    "adding_your_own_plugin": "Adding Your Own Module",
+    "add_plugin_description": "Want to add your work to this list?",
+    "plugin_development_info": "Refer to documentation:",
+
+    "mcp_description": "Connect your Agent to external data and tools via Model Context Protocol",
+    "search_mcp": "search_mcp_servers...",
+    "copy": "Copy Config",
+    "add_to_party": "Add to Agent Party",
 
     // article.html content
     "toc_title": "Table of Contents",
@@ -151,6 +180,7 @@ const translations = {
     "download": "下载",
     "plugins": "插件",
     "blog": "博客",
+    "resources": "资源",
     
     // index.html - Hero Section
     "main_subtitle": "一款拥有无限可能的AI桌面伴侣",
@@ -271,7 +301,33 @@ const translations = {
     "launching_desc": "我们正在尝试打开 Super Agent Party。如果几秒后没有反应，说明你可能尚未安装或运行该软件。",
     "retry_launch": "再次尝试唤起",
     "go_to_download": "立即下载客户端",
-
+    
+    // 插件/技能/MCP 页面通用
+    "search_module": "搜索插件...",
+    "search_skills": "搜索技能库...",
+    "search_mcp": "搜索 MCP 服务器...",
+    "copy": "复制链接",
+    "add_to_party": "添加到 Agent Party",
+    
+    // 描述文字
+    "plugins_description": "为 Super Agent Party 添加新功能的扩展插件",
+    "skills_description": "为你的 AI 智能体精心挑选的指令集与能力库",
+    "mcp_description": "通过 Model Context Protocol 让你的智能体连接外部数据与工具",
+    
+    // 安装模态框
+    "launching_title": "正在呼叫 Agent...",
+    "launching_desc": "我们正在尝试唤起 Super Agent Party 客户端。如果几秒后没有反应，说明你可能尚未安装。",
+    "retry_launch": "再次尝试唤起",
+    "go_to_download": "前往下载页面",
+    
+    // 开发者区域
+    "adding_your_own_plugin": "添加你自己的模块",
+    "add_plugin_description": "想要将你的作品添加到此列表吗？",
+    "plugin_development_info": "请参考开发文档：",
+    "mcp_description": "通过 Model Context Protocol 让你的智能体连接外部数据与工具",
+    "search_mcp": "搜索 MCP 服务器...",
+    "copy": "复制配置",
+    "add_to_party": "添加到 Agent Party",
 
     // article.html content
     "toc_title": "文章目录",

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Servers - Super Agent Party</title>
+    <script src="languages.js"></script>
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="github-stars.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] }, 
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' } 
+                } 
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .plugin-card { background: rgba(255,255,255,0.9); border: 1px solid #000; box-shadow: 4px 4px 0px #000; transition: all 0.2s ease; position: relative; }
+        .dark .plugin-card { background: rgba(10, 10, 10, 0.8); border: 1px solid #333; box-shadow: 4px 4px 0px #FFD700; }
+        .plugin-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000; }
+        .dark .plugin-card:hover { box-shadow: 6px 6px 0px #FFD700; border-color: #FFD700; }
+        .tag-bracket { transition: 0.2s; cursor: pointer; }
+        .tag-bracket.active { background: #000; color: #fff; }
+        .dark .tag-bracket.active { background: #FFD700; color: #000; }
+        .cursor-blink { display: inline-block; width: 8px; height: 1.2em; background: #FFD700; animation: blink 1s step-end infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; }
+        .nav-link::after { content: ']'; margin-left: 5px; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+        .dark-icon { display: none; } .light-icon { display: block; } .dark .dark-icon { display: block; } .dark .light-icon { display: none; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- 1. 统一导航栏 -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
+                    <div class="relative group">
+                        <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
+                            <span data-i18n="resources">Resources</span>
+                            <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block animate-in fade-in slide-in-from-top-2 duration-200">
+                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" data-i18n="plugins">Plugins</a>
+                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" data-i18n="mcp">MCP</a>
+                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" data-i18n="skills">Skills</a>
+                        </div>
+                    </div>
+                    <a href="blog.html" class="nav-link font-bold text-sm" data-i18n="blog">Blog</a>
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                        <span class="light-icon"><i class="fas fa-sun"></i></span>
+                        <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
+                    </button>
+                    <button id="lang-toggle" onclick="handleLangToggle()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 font-bold">中文</button>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span data-i18n="github">GitHub</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase" data-i18n="mcp">MCP</h1>
+                <p class="text-gray-500 dark:text-gray-400" data-i18n="mcp_description">Connect your Agent to external data and tools via Model Context Protocol</p>
+            </div>
+
+            <!-- 搜索与筛选区 -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="flex items-center bg-gray-50 dark:bg-black border-b-2 border-gray-400 dark:border-geekYellow p-4 mb-8">
+                    <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold">></span>
+                    <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 dark:text-white" placeholder="search_mcp..." data-i18n="[placeholder]search_mcp">
+                    <div class="cursor-blink"></div>
+                </div>
+                <div id="tagContainer" class="flex flex-wrap justify-center gap-3">
+                    <!-- 标签将由 JS 动态生成 -->
+                </div>
+            </div>
+
+            <!-- 列表容器 -->
+            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 卡片由 JS 动态生成 -->
+            </div>
+        </div>
+    </main>
+
+    <!-- 安装模态框 -->
+    <div id="installModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="plugin-card max-w-md w-full p-8 bg-white dark:bg-geekDark">
+            <button onclick="closeModal()" class="absolute top-4 right-4"><i class="fas fa-times"></i></button>
+            <div class="text-center">
+                <i class="fas fa-rocket text-3xl text-geekYellow mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2 dark:text-white" data-i18n="launching_title">Calling Agent...</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm" data-i18n="launching_desc">Invoking Super Agent Party...</p>
+                <div class="space-y-4">
+                    <button id="retryLink" class="w-full py-3 border-2 border-black dark:border-white font-bold" data-i18n="retry_launch">Retry</button>
+                    <a href="download.html" class="block w-full py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold" data-i18n="go_to_download">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let rawData = [];
+        let activeTag = '全部';
+
+        // 1. 初始化加载
+        fetch('mcp.json')
+            .then(r => r.json())
+            .then(data => { 
+                rawData = data; 
+                initFilter(); 
+            })
+            .catch(e => console.error("Load JSON Error:", e));
+
+        function initFilter() {
+            renderTags();
+            filterContent();
+        }
+
+        // 2. 渲染分类标签
+        function renderTags() {
+            const lang = localStorage.getItem('lang') || 'en';
+            const allText = (lang === 'en') ? 'All' : '全部';
+            
+            // 提取所有分类并去重
+            const categories = ['全部', ...new Set(rawData.map(p => p.category).filter(Boolean))];
+            
+            const container = document.getElementById('tagContainer');
+            container.innerHTML = categories.map(cat => {
+                const isSelected = activeTag === cat;
+                const displayText = (cat === '全部') ? allText : cat;
+                return `
+                    <button class="tag-bracket px-4 py-1 border border-gray-400 text-sm ${isSelected ? 'active' : ''}" 
+                            onclick="setTag('${cat}')">
+                        [ ${displayText} ]
+                    </button>
+                `;
+            }).join('');
+        }
+
+        window.setTag = (cat) => {
+            activeTag = cat;
+            renderTags();
+            filterContent();
+        };
+
+        // 3. 搜索框输入监听
+        document.getElementById('searchInput').addEventListener('input', filterContent);
+
+        // 4. 核心过滤逻辑
+        function filterContent() {
+            const kw = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            const filtered = rawData.filter(p => {
+                // 标签匹配
+                const hitTag = (activeTag === '全部' || p.category === activeTag);
+                
+                // 关键词匹配 (匹配名称、英文描述、中文描述)
+                const name = (p.name || "").toLowerCase();
+                const desc = (p.description || "").toLowerCase();
+                const descZh = (p.description_zh || "").toLowerCase();
+                
+                const hitKw = !kw || 
+                              name.includes(kw) || 
+                              desc.includes(kw) || 
+                              descZh.includes(kw);
+                
+                return hitTag && hitKw;
+            });
+            
+            renderCards(filtered);
+        }
+
+        // 5. 渲染卡片列表
+        function renderCards(data) {
+            const list = document.getElementById('plugin-list');
+            list.innerHTML = '';
+            const lang = localStorage.getItem('lang') || 'en';
+            
+            if (data.length === 0) {
+                list.innerHTML = `<div class="col-span-full text-center py-20 text-gray-500 font-bold opacity-50">[ NO RESULTS FOUND ]</div>`;
+                return;
+            }
+
+            data.forEach(p => {
+                const displayDesc = (lang === 'zh' && p.description_zh) ? p.description_zh : p.description;
+                const configStr = JSON.stringify(p.mcpConfig || {}, null, 2);
+                const encodedConfig = encodeURIComponent(configStr);
+                const mcpType = p.type || 'stdio'; 
+
+                const el = document.createElement('div');
+                el.className = 'plugin-card p-6 flex flex-col justify-between h-full';
+                el.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-black dark:text-white">${p.name}</h3>
+                            <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 font-bold">${p.category}</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${displayDesc}</p>
+                    </div>
+
+                    <div class="mt-auto">
+                        <button onclick="handleInstallClick('${mcpType}', '${encodedConfig}')" 
+                                class="w-full mb-4 py-3 bg-geekYellow text-black text-center hover:opacity-90 transition-all text-sm font-bold border-2 border-black dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] active:translate-x-1 active:translate-y-1 active:shadow-none">
+                            <i class="fa-solid fa-plus-circle mr-2"></i> <span data-i18n="add_to_party">Add to Agent Party</span>
+                        </button>
+
+                        <div class="border-t border-gray-300 dark:border-gray-700 pt-4 flex space-x-3">
+                            <button onclick="copyConfig('${encodedConfig}')" class="flex-1 py-2 border border-gray-400 text-xs font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                                <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
+                            </button>
+                            <a href="${p.repository}" target="_blank" class="flex-1 py-2 bg-black text-white dark:bg-white dark:text-black text-center text-xs font-bold hover:opacity-80 transition-opacity">
+                                <i class="fab fa-github mr-2"></i> GitHub
+                            </a>
+                        </div>
+                    </div>`;
+                list.appendChild(el);
+            });
+            
+            // 手动触发一次语言更新，确保新插入的 data-i18n 生效
+            if (window.updateContent) window.updateContent();
+        }
+
+        // 6. 语言切换特殊处理
+        function handleLangToggle() {
+            if (window.toggleLanguage) {
+                window.toggleLanguage(); // 调用 languages.js 里的原函数
+                renderTags();      // 刷新“全部/All”标签文字
+                filterContent();   // 刷新列表（更新描述文字语言）
+            }
+        }
+
+        // 7. 协议跳转与模态框
+        function handleInstallClick(mcpType, encodedConfig) {
+            const protocolUrl = `sap://install?type=mcp&mcpType=${mcpType}&config=${encodedConfig}`;
+            window.location.href = protocolUrl;
+            document.getElementById('installModal').classList.remove('hidden');
+            document.getElementById('retryLink').onclick = function() {
+                window.location.href = protocolUrl;
+            };
+        }
+
+        // 8. 复制配置
+        function copyConfig(encodedConfig) {
+            const text = decodeURIComponent(encodedConfig);
+            navigator.clipboard.writeText(text).then(() => {
+                const lang = localStorage.getItem('lang') || 'en';
+                alert(lang === 'zh' ? '配置已复制到剪贴板！' : 'Config copied to clipboard!');
+            });
+        }
+
+        function closeModal() { 
+            document.getElementById('installModal').classList.add('hidden'); 
+        }
+    </script>
+</body>
+</html>
