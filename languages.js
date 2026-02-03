@@ -123,7 +123,12 @@ const translations = {
     "copy_error": "Cannot copy link: ",
     "copy_failed": "Failed to copy link, please copy manually",
     "all": "All",
-    
+    "launching_title": "Launching Agent...",
+    "launching_desc": "Attempting to open Super Agent Party. If nothing happens, you might not have it installed.",
+    "retry_launch": "Try Again",
+    "go_to_download": "Download SAP Now",
+
+
     // article.html content
     "toc_title": "Table of Contents",
     "no_headings": "No headings found.",
@@ -262,7 +267,12 @@ const translations = {
     "copy_error": "无法复制链接: ",
     "copy_failed": "复制链接失败，请手动复制",
     "all": "全部",
-    
+    "launching_title": "正在唤起客户端...",
+    "launching_desc": "我们正在尝试打开 Super Agent Party。如果几秒后没有反应，说明你可能尚未安装或运行该软件。",
+    "retry_launch": "再次尝试唤起",
+    "go_to_download": "立即下载客户端",
+
+
     // article.html content
     "toc_title": "文章目录",
     "no_headings": "未找到标题",
