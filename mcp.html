@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 头部内容保持不变 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP Servers - Super Agent Party</title>
@@ -24,6 +25,7 @@
         }
     </script>
     <style>
+        /* 样式保持不变 */
         body { font-family: 'JetBrains Mono', monospace; }
         .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
         .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
@@ -46,7 +48,7 @@
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- 统一导航栏开始 -->
+    <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -56,51 +58,37 @@
                     </div>
                 </div>
                 
-                <!-- 桌面端菜单 -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
                     <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
-                    
-                    <!-- 资源下拉菜单 -->
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             <span data-i18n="resources">Resources</span>
                             <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
-                        <!-- 下拉内容 -->
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block animate-in fade-in slide-in-from-top-2 duration-200">
                             <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" data-i18n="plugins">Plugins</a>
                             <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors">MCP</a>
                             <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors">Skills</a>
                         </div>
                     </div>
-
                     <a href="blog.html" class="nav-link font-bold text-sm" data-i18n="blog">Blog</a>
-                    
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
-                    
                     <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <span class="light-icon"><i class="fas fa-sun"></i></span>
                         <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
                     </button>
-                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
-                    中文
-                    </button>
+                    <!-- 语言按钮调用 toggleLanguage() -->
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">中文</button>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
                         <i class="fab fa-github"></i>
                         <span class="github-stars">-</span>
                         <span data-i18n="github">GitHub</span>
                     </a>
                 </div>
-
-                <!-- 移动端按钮 -->
-                <button id="mobile-menu-button" class="md:hidden p-2 text-xl">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        
-        <!-- 移动端菜单 -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="home">Home</a>
             <a href="download.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="download">Download</a>
@@ -110,7 +98,6 @@
             <a href="blog.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="blog">Blog</a>
         </div>
     </nav>
-    <!-- 统一导航栏结束 -->
 
     <main class="flex-grow pt-24 pb-12 px-4">
         <div class="max-w-7xl mx-auto">
@@ -119,28 +106,21 @@
                 <p class="text-gray-500 dark:text-gray-400" data-i18n="mcp_description">Connect your Agent to external data and tools via Model Context Protocol</p>
             </div>
 
-            <!-- 搜索与筛选区 -->
             <div class="max-w-4xl mx-auto mb-16">
                 <div class="flex items-center bg-gray-50 dark:bg-black border-b-2 border-gray-400 dark:border-geekYellow p-4 mb-8">
                     <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold">></span>
                     <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 dark:text-white" placeholder="search_mcp..." data-i18n="[placeholder]search_mcp">
                     <div class="cursor-blink"></div>
                 </div>
-                <div id="tagContainer" class="flex flex-wrap justify-center gap-3">
-                    <!-- 标签将由 JS 动态生成 -->
-                </div>
+                <div id="tagContainer" class="flex flex-wrap justify-center gap-3"></div>
             </div>
 
-            <!-- 列表容器 -->
-            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 卡片由 JS 动态生成 -->
-            </div>
+            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </div>
     </main>
 
-    <!-- 安装模态框 -->
     <div id="installModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-        <div class="plugin-card max-w-md w-full p-8 bg-white dark:bg-geekDark">
+        <div class="plugin-card max-w-md w-full p-8 bg-white dark:bg-geekDark relative">
             <button onclick="closeModal()" class="absolute top-4 right-4"><i class="fas fa-times"></i></button>
             <div class="text-center">
                 <i class="fas fa-rocket text-3xl text-geekYellow mb-4"></i>
@@ -155,37 +135,41 @@
     </div>
 
     <script>
+        document.getElementById('mobile-menu-button').onclick = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        const originalToggleLanguage = window.toggleLanguage;
+        window.toggleLanguage = function() {
+            if (typeof originalToggleLanguage === 'function') {
+                originalToggleLanguage(); 
+            }
+            renderTags();
+            filterContent();
+        };
+
         let rawData = [];
         let activeTag = '全部';
 
-        // 1. 初始化加载
         fetch('mcp.json')
             .then(r => r.json())
-            .then(data => { 
-                rawData = data; 
-                initFilter(); 
-            })
+            .then(data => { rawData = data; initFilter(); })
             .catch(e => console.error("Load JSON Error:", e));
 
-        function initFilter() {
-            renderTags();
-            filterContent();
-        }
+        function initFilter() { renderTags(); filterContent(); }
 
-        // 2. 渲染分类标签
         function renderTags() {
             const lang = localStorage.getItem('lang') || 'en';
-            const allText = (lang === 'en') ? 'All' : '全部';
+            // 修复：直接使用 translations 变量
+            const allText = (translations && translations[lang]) ? translations[lang]["all"] : "All";
             
-            // 提取所有分类并去重
             const categories = ['全部', ...new Set(rawData.map(p => p.category).filter(Boolean))];
             
             const container = document.getElementById('tagContainer');
             container.innerHTML = categories.map(cat => {
-                const isSelected = activeTag === cat;
                 const displayText = (cat === '全部') ? allText : cat;
                 return `
-                    <button class="tag-bracket px-4 py-1 border border-gray-400 text-sm ${isSelected ? 'active' : ''}" 
+                    <button class="tag-bracket px-4 py-1 border border-gray-400 text-sm ${activeTag === cat ? 'active' : ''}" 
                             onclick="setTag('${cat}')">
                         [ ${displayText} ]
                     </button>
@@ -193,58 +177,47 @@
             }).join('');
         }
 
-        window.setTag = (cat) => {
-            activeTag = cat;
-            renderTags();
-            filterContent();
-        };
-
-        // 3. 搜索框输入监听
+        window.setTag = (cat) => { activeTag = cat; renderTags(); filterContent(); };
         document.getElementById('searchInput').addEventListener('input', filterContent);
 
-        // 4. 核心过滤逻辑
         function filterContent() {
             const kw = document.getElementById('searchInput').value.toLowerCase().trim();
-            
             const filtered = rawData.filter(p => {
-                // 标签匹配
                 const hitTag = (activeTag === '全部' || p.category === activeTag);
-                
-                // 关键词匹配 (匹配名称、英文描述、中文描述)
                 const name = (p.name || "").toLowerCase();
                 const desc = (p.description || "").toLowerCase();
                 const descZh = (p.description_zh || "").toLowerCase();
-                
-                const hitKw = !kw || 
-                              name.includes(kw) || 
-                              desc.includes(kw) || 
-                              descZh.includes(kw);
-                
-                return hitTag && hitKw;
+                return hitTag && (!kw || name.includes(kw) || desc.includes(kw) || descZh.includes(kw));
             });
-            
             renderCards(filtered);
         }
 
-        // 5. 渲染卡片列表
         function renderCards(data) {
             const list = document.getElementById('plugin-list');
             list.innerHTML = '';
-            const lang = localStorage.getItem('lang') || 'en';
             
+            const currentLang = localStorage.getItem('lang') || 'en';
+            
+            // --- 关键修复点 ---
+            // 去掉 'window.' 前缀
+            const t = (typeof translations !== 'undefined') ? translations[currentLang] : null;
+            const addBtnText = (t && t["add_to_party"]) ? t["add_to_party"] : "Add to Agent Party";
+            const copyBtnText = (t && t["copy"]) ? t["copy"] : "Copy";
+
             if (data.length === 0) {
                 list.innerHTML = `<div class="col-span-full text-center py-20 text-gray-500 font-bold opacity-50">[ NO RESULTS FOUND ]</div>`;
                 return;
             }
 
             data.forEach(p => {
-                const displayDesc = (lang === 'zh' && p.description_zh) ? p.description_zh : p.description;
+                const displayDesc = (currentLang === 'zh' && p.description_zh) ? p.description_zh : p.description;
                 const configStr = JSON.stringify(p.mcpConfig || {}, null, 2);
                 const encodedConfig = encodeURIComponent(configStr);
                 const mcpType = p.type || 'stdio'; 
 
                 const el = document.createElement('div');
                 el.className = 'plugin-card p-6 flex flex-col justify-between h-full';
+                
                 el.innerHTML = `
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -257,12 +230,12 @@
                     <div class="mt-auto">
                         <button onclick="handleInstallClick('${mcpType}', '${encodedConfig}')" 
                                 class="w-full mb-4 py-3 bg-geekYellow text-black text-center hover:opacity-90 transition-all text-sm font-bold border-2 border-black dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] active:translate-x-1 active:translate-y-1 active:shadow-none">
-                            <i class="fa-solid fa-plus-circle mr-2"></i> <span data-i18n="add_to_party">Add to Agent Party</span>
+                            <i class="fa-solid fa-plus-circle mr-2"></i> <span>${addBtnText}</span>
                         </button>
 
                         <div class="border-t border-gray-300 dark:border-gray-700 pt-4 flex space-x-3">
                             <button onclick="copyConfig('${encodedConfig}')" class="flex-1 py-2 border border-gray-400 text-xs font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
-                                <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
+                                <i class="far fa-copy mr-2"></i> <span>${copyBtnText}</span>
                             </button>
                             <a href="${p.repository}" target="_blank" class="flex-1 py-2 bg-black text-white dark:bg-white dark:text-black text-center text-xs font-bold hover:opacity-80 transition-opacity">
                                 <i class="fab fa-github mr-2"></i> GitHub
@@ -271,42 +244,25 @@
                     </div>`;
                 list.appendChild(el);
             });
-            
-            // 手动触发一次语言更新，确保新插入的 data-i18n 生效
-            if (window.updateContent) window.updateContent();
         }
 
-        // 6. 语言切换特殊处理
-        function handleLangToggle() {
-            if (window.toggleLanguage) {
-                window.toggleLanguage(); // 调用 languages.js 里的原函数
-                renderTags();      // 刷新“全部/All”标签文字
-                filterContent();   // 刷新列表（更新描述文字语言）
-            }
-        }
-
-        // 7. 协议跳转与模态框
         function handleInstallClick(mcpType, encodedConfig) {
             const protocolUrl = `sap://install?type=mcp&mcpType=${mcpType}&config=${encodedConfig}`;
             window.location.href = protocolUrl;
             document.getElementById('installModal').classList.remove('hidden');
-            document.getElementById('retryLink').onclick = function() {
-                window.location.href = protocolUrl;
-            };
+            document.getElementById('retryLink').onclick = function() { window.location.href = protocolUrl; };
         }
 
-        // 8. 复制配置
         function copyConfig(encodedConfig) {
             const text = decodeURIComponent(encodedConfig);
             navigator.clipboard.writeText(text).then(() => {
                 const lang = localStorage.getItem('lang') || 'en';
-                alert(lang === 'zh' ? '配置已复制到剪贴板！' : 'Config copied to clipboard!');
+                // 修复：Alert 也使用翻译
+                const successMsg = (translations && translations[lang] && translations[lang]["copied"]) ? translations[lang]["copied"] : "Config copied!";
+                alert(successMsg);
             });
         }
-
-        function closeModal() { 
-            document.getElementById('installModal').classList.add('hidden'); 
-        }
+        function closeModal() { document.getElementById('installModal').classList.add('hidden'); }
     </script>
 </body>
 </html>

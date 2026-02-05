@@ -119,7 +119,7 @@ const translations = {
     "adding_your_own_plugin": "Adding Your Own Plugin",
     "add_plugin_description": "Want to add your plugin to this list? You can easily update the plugins by modifying the plugins configuration file.",
     "plugin_development_info": "For more detailed information about plugin development and submission, please refer to the",
-    "copy": "Copy Link",
+    "copy": "Copy",
     "copied": "Copied!",
     "copy_error": "Cannot copy link: ",
     "copy_failed": "Failed to copy link, please copy manually",
@@ -134,7 +134,6 @@ const translations = {
     "search_module": "search_module...",
     "search_skills": "search_skills...",
     "search_mcp": "search_mcp...",
-    "copy": "Copy",
     "add_to_party": "Add to Agent Party",
     
     // 描述文字
@@ -155,7 +154,6 @@ const translations = {
 
     "mcp_description": "Connect your Agent to external data and tools via Model Context Protocol",
     "search_mcp": "search_mcp_servers...",
-    "copy": "Copy Config",
     "add_to_party": "Add to Agent Party",
 
     // article.html content
@@ -292,7 +290,7 @@ const translations = {
     "adding_your_own_plugin": "添加您自己的插件",
     "add_plugin_description": "想要将您的插件添加到此列表中？您可以通过修改插件配置文件轻松更新插件。",
     "plugin_development_info": "有关插件开发和提交的更详细信息，请参阅",
-    "copy": "复制链接",
+    "copy": "复制",
     "copied": "已复制!",
     "copy_error": "无法复制链接: ",
     "copy_failed": "复制链接失败，请手动复制",
@@ -306,7 +304,6 @@ const translations = {
     "search_module": "搜索插件...",
     "search_skills": "搜索技能库...",
     "search_mcp": "搜索 MCP 服务器...",
-    "copy": "复制链接",
     "add_to_party": "添加到 Agent Party",
     
     // 描述文字
@@ -326,7 +323,6 @@ const translations = {
     "plugin_development_info": "请参考开发文档：",
     "mcp_description": "通过 Model Context Protocol 让你的智能体连接外部数据与工具",
     "search_mcp": "搜索 MCP 服务器...",
-    "copy": "复制配置",
     "add_to_party": "添加到 Agent Party",
 
     // article.html content

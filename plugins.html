@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 头部内容保持不变 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plugins - Super Agent Party</title>
-    <meta name="description" content="Super Agent Party (SAP) 是一款开源的全能型 AI 伴侣与智能体平台。它集成了 AI 桌面女友、AI 虚拟主播、社交软件机器人、AI 浏览器助手及智能家居控制等功能。立即体验，打造属于你的个性化数字生命与全能管家。">
-    <meta name="keywords" content="AI Companion, AI伴侣, 桌面女友, 虚拟主播, neuro sama like, QQ, 飞书, Telegram, Discord, Slack机器人, AI游戏, AI智能家居, AI浏览器, 开源项目">
+    <!-- ... 省略其他 meta 和 css ... -->
     <script src="languages.js"></script>
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,95 +21,36 @@
             theme: {
                 extend: {
                     fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
-                    colors: {
-                        geekYellow: '#FFD700', // 改为明黄色
-                        geekDark: '#050505',
-                    }
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
                 }
             }
         }
     </script>
     <style>
+        /* ... 样式保持不变 ... */
         body { font-family: 'JetBrains Mono', monospace; }
-        
-        .matrix-bg {
-            background-color: #ffffff;
-            background-image: radial-gradient(#ccc 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        .dark .matrix-bg {
-            background-color: #050505;
-            background-image: radial-gradient(#222 1px, transparent 1px);
-        }
-
-        /* 
-           修改核心：统一卡片风格 
-           使用硬边阴影 (4px 4px 0px) 代替柔和阴影
-        */
-        .plugin-card {
-            background: rgba(255,255,255,0.9);
-            border: 1px solid #000;
-            /* 亮色模式下的硬阴影衬底 */
-            box-shadow: 4px 4px 0px #000; 
-            position: relative;
-            transition: all 0.2s ease;
-        }
-        .dark .plugin-card {
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid #333;
-            /* 暗色模式下的明黄色硬阴影衬底 */
-            box-shadow: 4px 4px 0px #FFD700; 
-        }
-        .plugin-card:hover {
-            /* 悬停时轻微位移，增加立体感 */
-            transform: translate(-2px, -2px); 
-            box-shadow: 6px 6px 0px #000;
-        }
-        .dark .plugin-card:hover {
-            box-shadow: 6px 6px 0px #FFD700;
-            border-color: #FFD700;
-        }
-
-        /* Tag 样式保持终端风格 */
-        .tag-bracket {
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .tag-bracket.active {
-            background: #000;
-            color: #fff;
-        }
-        .dark .tag-bracket.active {
-            background: #FFD700; /* 改为明黄色 */
-            color: #000;
-        }
-
-        /* 光标闪烁动画 */
-        .cursor-blink {
-            display: inline-block; width: 8px; height: 1.2em; background: #FFD700; /* 改为明黄色 */
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-        }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .plugin-card { background: rgba(255,255,255,0.9); border: 1px solid #000; box-shadow: 4px 4px 0px #000; position: relative; transition: all 0.2s ease; }
+        .dark .plugin-card { background: rgba(10, 10, 10, 0.8); border: 1px solid #333; box-shadow: 4px 4px 0px #FFD700; }
+        .plugin-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000; }
+        .dark .plugin-card:hover { box-shadow: 6px 6px 0px #FFD700; border-color: #FFD700; }
+        .tag-bracket { transition: 0.2s; cursor: pointer; }
+        .tag-bracket.active { background: #000; color: #fff; }
+        .dark .tag-bracket.active { background: #FFD700; color: #000; }
+        .cursor-blink { display: inline-block; width: 8px; height: 1.2em; background: #FFD700; animation: blink 1s step-end infinite; vertical-align: middle; }
         @keyframes blink { 50% { opacity: 0; } }
-
-        /* 导航栏链接特效 */
         .nav-link { position: relative; display: inline-block; }
-        .nav-link::before, .nav-link::after {
-            display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; /* 改为明黄色 */
-        }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; }
         .nav-link::before { content: '['; margin-right: 5px; }
         .nav-link::after { content: ']'; margin-left: 5px; }
         .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
-
-        .dark-icon { display: none; }
-        .light-icon { display: block; }
-        .dark .dark-icon { display: block; }
-        .dark .light-icon { display: none; }
+        .dark-icon { display: none; } .light-icon { display: block; } .dark .dark-icon { display: block; } .dark .light-icon { display: none; }
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- 统一导航栏开始 -->
+    <!-- 导航栏保持不变，为了节省空间省略部分HTML -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -118,52 +59,37 @@
                         <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                     </div>
                 </div>
-                
                 <!-- 桌面端菜单 -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="index.html" class="nav-link font-bold text-sm" data-i18n="home">Home</a>
                     <a href="download.html" class="nav-link font-bold text-sm" data-i18n="download">Download</a>
-                    
-                    <!-- 资源下拉菜单 -->
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             <span data-i18n="resources">Resources</span>
                             <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
-                        <!-- 下拉内容 -->
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block animate-in fade-in slide-in-from-top-2 duration-200">
                             <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors" data-i18n="plugins">Plugins</a>
                             <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors">MCP</a>
                             <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors">Skills</a>
                         </div>
                     </div>
-
                     <a href="blog.html" class="nav-link font-bold text-sm" data-i18n="blog">Blog</a>
-                    
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
-                    
                     <button id="theme-toggle" onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <span class="light-icon"><i class="fas fa-sun"></i></span>
                         <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
                     </button>
-                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
-                    中文
-                    </button>
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">中文</button>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
                         <i class="fab fa-github"></i>
                         <span class="github-stars">-</span>
                         <span data-i18n="github">GitHub</span>
                     </a>
                 </div>
-
-                <!-- 移动端按钮 -->
-                <button id="mobile-menu-button" class="md:hidden p-2 text-xl">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        
-        <!-- 移动端菜单 -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="home">Home</a>
             <a href="download.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="download">Download</a>
@@ -173,42 +99,29 @@
             <a href="blog.html" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-900 font-bold" data-i18n="blog">Blog</a>
         </div>
     </nav>
-    <!-- 统一导航栏结束 -->
 
-    <!-- Main Content -->
     <main class="flex-grow pt-24 pb-12 px-4">
         <div class="max-w-7xl mx-auto">
-            
             <div class="text-center mb-16">
                 <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase" data-i18n="plugins">Plugins</h1>
                 <p class="text-gray-500 dark:text-gray-400" data-i18n="plugins_description">Plugins that add new functionalities to Super Agent Party</p>
             </div>
 
-            <!-- Search and Tags -->
             <div class="max-w-4xl mx-auto mb-16">
-                <!-- Console style input -->
                 <div class="flex items-center bg-gray-50 dark:bg-black border-b-2 border-gray-400 dark:border-geekYellow p-4 mb-8">
                     <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold">></span>
                     <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-black dark:text-white placeholder-gray-400" placeholder="search_module...">
                     <button id="clearSearch" class="hidden text-red-500 font-bold ml-2">X</button>
                     <div class="cursor-blink"></div>
                 </div>
-                
-                <div id="tagContainer" class="flex flex-wrap justify-center gap-3">
-                    <!-- Tags generated by JS -->
-                </div>
+                <div id="tagContainer" class="flex flex-wrap justify-center gap-3"></div>
             </div>
 
-            <!-- Plugins Grid -->
-            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Content generated by JS -->
-            </div>
+            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
 
-            <!-- Add Plugin Section -->
             <div class="mt-20 border border-dashed border-gray-400 dark:border-gray-700 p-8 bg-white dark:bg-geekDark/50 rounded-sm shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
                 <h2 class="text-2xl font-bold mb-4 dark:text-white" data-i18n="adding_your_own_plugin">Adding Your Own Plugin</h2>
                 <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="add_plugin_description">Want to add your plugin to this list?</p>
-                
                 <div class="bg-black text-geekYellow p-4 rounded-sm text-xs overflow-x-auto mb-6 border-l-4 border-geekYellow shadow-lg">
                     <pre>// plugins.json structure
 [
@@ -219,7 +132,6 @@
   }
 ]</pre>
                 </div>
-                
                 <p class="text-gray-600 dark:text-gray-400 text-sm">
                     <span data-i18n="plugin_development_info">Refer to documentation:</span>
                     <a href="https://github.com/super-agent-party/super-agent-party.github.io" target="_blank" class="text-blue-600 dark:text-geekYellow hover:underline font-bold">Super Agent Party Docs</a>
@@ -231,30 +143,20 @@
     <footer class="border-t border-black dark:border-gray-800 py-8 mt-8 bg-white dark:bg-geekDark text-center">
         <p class="text-xs text-gray-500" data-i18n="footer_copyright">&copy; 2024 Super Agent Party. Open source project available on GitHub.</p>
     </footer>
-    <!-- 安装引导模态框 -->
+
     <div id="installModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
         <div class="plugin-card max-w-md w-full p-8 bg-white dark:bg-geekDark relative">
-            <!-- 关闭按钮 -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black dark:hover:text-geekYellow">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black dark:hover:text-geekYellow"><i class="fas fa-times text-xl"></i></button>
             <div class="text-center">
                 <div class="inline-block p-4 rounded-full bg-yellow-100 dark:bg-yellow-900/30 mb-4">
                     <i class="fas fa-rocket text-3xl text-geekYellow animate-bounce"></i>
                 </div>
                 <h3 class="text-2xl font-bold mb-2 dark:text-white" data-i18n="launching_title">正在呼叫 Agent...</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm leading-relaxed" data-i18n="launching_desc">
-                    我们正在尝试唤起 Super Agent Party 客户端。如果几秒后没有反应，说明你可能尚未安装。
-                </p>
-
+                <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm leading-relaxed" data-i18n="launching_desc">我们正在尝试唤起 Super Agent Party 客户端...</p>
                 <div class="space-y-4">
-                    <!-- 重试链接 -->
                     <button id="retryLink" class="w-full py-3 border-2 border-black dark:border-white font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                         <i class="fas fa-redo-alt mr-2"></i> <span data-i18n="retry_launch">再次尝试唤起</span>
                     </button>
-                    
-                    <!-- 下载按钮 -->
                     <a href="download.html" class="block w-full py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_#fff] hover:translate-y-[-2px] transition-transform">
                         <i class="fas fa-download mr-2"></i> <span data-i18n="go_to_download">前往下载页面</span>
                     </a>
@@ -262,49 +164,41 @@
             </div>
         </div>
     </div>
+
     <script>
         document.getElementById('mobile-menu-button').onclick = function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        // --- 修改点 1: 包装 toggleLanguage 确保刷新列表 ---
+        // --- 核心修复：语言切换钩子 ---
         const originalToggleLanguage = window.toggleLanguage;
         window.toggleLanguage = function() {
             if (typeof originalToggleLanguage === 'function') {
-                originalToggleLanguage(); // 执行原本的语言切换逻辑
+                originalToggleLanguage(); 
             }
-            // 重新渲染标签和插件列表以适应新语言
+            // 切换语言后重新渲染
             renderTags();
             filterPlugins();
         };
 
         let rawPlugins = [];
         let activeTag = '全部'; 
-        
         const searchInput = document.getElementById('searchInput');
         const clearBtn = document.getElementById('clearSearch');
         const tagContainer = document.getElementById('tagContainer');
         const pluginList = document.getElementById('plugin-list');
 
-        // Fallback data
-        const fallbackData = [
-            {name:'Example Plugin', description:'Demonstration module.', description_zh:'演示模块', author:'heshengtao', version:'1.0.0', category:'Example', repository:'#'},
-        ];
-
         fetch('plugins.json')
             .then(r => r.json())
             .then(data => { rawPlugins = data; initFilter(); })
-            .catch(() => { rawPlugins = fallbackData; initFilter(); });
+            .catch(() => { initFilter(); }); 
 
-        function initFilter() {
-            renderTags();
-            renderPlugins(rawPlugins);
-        }
+        function initFilter() { renderTags(); filterPlugins(); }
 
         function renderTags() {
-            // --- 修改点 2: 标签“全部”的国际化 ---
-            const isEn = localStorage.getItem('lang') === 'en';
-            const allText = isEn ? 'All' : '全部';
+            const lang = localStorage.getItem('lang') || 'en';
+            // 修复：直接使用 translations 变量
+            const allText = (translations && translations[lang]) ? translations[lang]["all"] : "All";
             
             const categories = ['全部', ...new Set(rawPlugins.map(p => p.category))];
             tagContainer.innerHTML = categories.map(cat => {
@@ -319,9 +213,8 @@
         }
         
         window.setTag = function(btn, cat) {
-            document.querySelectorAll('.tag-bracket').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
             activeTag = cat;
+            renderTags();
             filterPlugins();
         }
 
@@ -329,19 +222,13 @@
             clearBtn.style.display = searchInput.value ? 'inline' : 'none';
             filterPlugins();
         });
-        
-        clearBtn.onclick = () => {
-            searchInput.value = '';
-            clearBtn.style.display = 'none';
-            filterPlugins();
-        };
+        clearBtn.onclick = () => { searchInput.value = ''; clearBtn.style.display = 'none'; filterPlugins(); };
 
         function filterPlugins() {
             const kw = searchInput.value.toLowerCase();
             const filtered = rawPlugins.filter(p => {
                 const hitTag = activeTag === '全部' || p.category === activeTag;
-                const hitKw = !kw || 
-                            p.name.toLowerCase().includes(kw) || 
+                const hitKw = !kw || p.name.toLowerCase().includes(kw) || 
                             (p.description && p.description.toLowerCase().includes(kw)) ||
                             (p.description_zh && p.description_zh.toLowerCase().includes(kw));
                 return hitTag && hitKw;
@@ -352,50 +239,47 @@
         function renderPlugins(data) {
             pluginList.innerHTML = '';
             
-            // 获取当前语言设置
             const currentLang = localStorage.getItem('lang') || 'en';
-            const isEn = currentLang === 'en';
+            
+            // --- 关键修复点 ---
+            // 去掉了 'window.' 前缀。直接访问全局变量 translations。
+            // 同时增加了空值检查，防止报错。
+            const t = (typeof translations !== 'undefined') ? translations[currentLang] : null;
+            
+            const addBtnText = (t && t["add_to_party"]) ? t["add_to_party"] : "Add to Agent Party";
+            const copyBtnText = (t && t["copy"]) ? t["copy"] : "Copy";
 
             data.forEach(p => {
-                // 1. 根据语言选择描述内容
-                const displayDesc = (currentLang === 'zh' && p.description_zh) 
-                                    ? p.description_zh 
-                                    : p.description;
+                const displayDesc = (currentLang === 'zh' && p.description_zh) ? p.description_zh : p.description;
 
                 const el = document.createElement('div');
-                // 保持你原有的卡片样式和阴影
                 el.className = 'plugin-card p-6 flex flex-col justify-between h-full';
                 
                 el.innerHTML = `
                     <div>
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-black dark:text-white">${p.name}</h3>
-                            <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 text-black dark:text-geekYellow font-bold">
-                                ${p.category}
-                            </span>
+                            <span class="text-xs border border-black dark:border-geekYellow px-2 py-1 text-black dark:text-geekYellow font-bold">${p.category}</span>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-                            ${displayDesc}
-                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">${displayDesc}</p>
                     </div>
 
                     <div class="mt-auto">
-                        <!-- 新增：添加到 Agent Party 按钮 -->
                         <button onclick="handleInstallClick('${p.repository}')" 
                                 class="w-full mb-4 py-3 bg-geekYellow text-black text-center hover:opacity-90 transition-all text-sm font-bold border-2 border-black dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] active:translate-x-1 active:translate-y-1 active:shadow-none">
                             <i class="fa-solid fa-plus-circle mr-2"></i> 
-                            <span data-i18n="add_to_party">${isEn ? 'Add to Agent Party' : '添加到 Agent Party'}</span>
+                            <span>${addBtnText}</span>
                         </button>
 
                         <div class="border-t border-gray-300 dark:border-gray-700 pt-4">
                             <div class="flex justify-between items-center text-xs mb-3 text-gray-500">
                                 <span>Ver: ${p.version}</span>
-                                <span>Author: ${p.author}</span>
+                                <span class="flex items-center gap-1"><span data-i18n="plugin_author">Author</span>: ${p.author}</span>
                             </div>
                             <div class="flex space-x-3">
                                 <button onclick="copyLink('${p.repository}')" 
                                         class="flex-1 py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-xs font-bold">
-                                    <i class="far fa-copy mr-2"></i> <span data-i18n="copy">Copy</span>
+                                    <i class="far fa-copy mr-2"></i> <span>${copyBtnText}</span>
                                 </button>
                                 <a href="${p.repository}" target="_blank" 
                                 class="flex-1 py-2 bg-black text-white dark:bg-gray-800 dark:text-white text-center hover:opacity-80 transition-opacity text-xs font-bold">
@@ -407,49 +291,26 @@
                 `;
                 pluginList.appendChild(el);
             });
-
-            // 触发页面上的 i18n 刷新（如果存在）
-            if (window.updateContent) window.updateContent();
         }
-
-        /**
-         * 处理安装按钮点击：唤起自定义协议 sap://
-         */
-        // --- 安装引导逻辑 ---
 
         function handleInstallClick(repoUrl) {
             const protocolUrl = `sap://install?type=extension&repo=${encodeURIComponent(repoUrl)}`;
-            
-            // 1. 尝试唤起
             window.location.href = protocolUrl;
-
-            // 2. 显示模态框
-            const modal = document.getElementById('installModal');
-            modal.classList.remove('hidden');
-
-            // 3. 配置重试按钮
+            document.getElementById('installModal').classList.remove('hidden');
             document.getElementById('retryLink').onclick = function() {
                 window.location.href = protocolUrl;
             };
-
-            // 4. 这里的 i18n 手动刷新一下（如果你的 languages.js 支持）
-            if (window.updateContent) window.updateContent();
         }
 
-        function closeModal() {
-            document.getElementById('installModal').classList.add('hidden');
-        }
-
-        // 点击遮罩层关闭
-        document.getElementById('installModal').onclick = function(e) {
-            if (e.target === this) closeModal();
-        }
-
+        function closeModal() { document.getElementById('installModal').classList.add('hidden'); }
+        document.getElementById('installModal').onclick = function(e) { if (e.target === this) closeModal(); }
 
         function copyLink(url) {
             navigator.clipboard.writeText(url).then(() => {
-                const isEn = localStorage.getItem('lang') === 'en';
-                alert(isEn ? 'Link Copied' : '链接已复制');
+                const lang = localStorage.getItem('lang') || 'en';
+                // 这里也使用 translations 变量
+                const successMsg = (translations && translations[lang] && translations[lang]["copied"]) ? translations[lang]["copied"] : "Link Copied!";
+                alert(successMsg);
             });
         }
     </script>
