@@ -451,60 +451,193 @@
         </div>
     </main>
 
-<!-- 增强版 Footer -->
-    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+    <!-- 增强版 Footer - AGPL-3.0 开源权威性优化 -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark" itemscope itemtype="https://schema.org/SoftwareApplication">
+        
+        <!-- GitHub 开源号召横幅 -->
+        <div class="max-w-7xl mx-auto px-4 mb-10">
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" rel="noopener noreferrer"
+            class="group flex flex-col sm:flex-row items-center justify-between gap-4 bg-black text-white dark:bg-white dark:text-black p-6 border-2 border-geekYellow shadow-[4px_4px_0px_#FFD700] hover:shadow-[6px_6px_0px_#FFD700] hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center gap-4">
+                    <div class="text-4xl group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest opacity-70 mb-1">Open Source · AGPL-3.0</div>
+                        <div class="text-lg font-bold">Star us on GitHub</div>
+                        <div class="text-xs font-mono opacity-60 mt-1">github.com/heshengtao/super-agent-party</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-800 dark:bg-gray-200 px-4 py-2 rounded-sm">
+                    <i class="fas fa-star text-geekYellow dark:text-yellow-600"></i>
+                    <span class="github-stars font-bold text-sm">-</span>
+                    <span class="text-xs opacity-70">stars</span>
+                </div>
+            </a>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 
                 <!-- 第一列：项目简介 -->
-                <div class="col-span-1 md:col-span-1">
-                    <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
-                    <p class="text-xs text-gray-500 leading-relaxed font-mono" data-i18n="main_subtitle">
-                        An AI desktop companion with unlimited possibilities
+                <div class="col-span-1 md:col-span-1" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="Super Agent Party">
+                    <meta itemprop="url" content="https://github.com/heshengtao/super-agent-party">
+                    
+                    <div class="text-xl font-bold mb-4 tracking-tighter" itemprop="name">Super Agent Party</div>
+                    <p class="text-xs text-gray-500 leading-relaxed font-mono mb-4" itemprop="description" data-i18n="main_subtitle">
+                        开源全能AI智能体框架 | 桌面女友 & 虚拟主播 & 社交机器人
                     </p>
+                    
+                    <!-- 技术标签 -->
+                    <div class="flex flex-wrap gap-2 text-[10px] font-bold">
+                        <span class="px-2 py-1 bg-geekYellow/20 text-geekYellow rounded-sm">AGPL-3.0</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-sm">Open Source</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-sm">Python</span>
+                    </div>
                 </div>
 
-                <!-- 第二列：快速链接 -->
+                <!-- 第二列：产品功能 -->
                 <div class="col-span-1">
-                    <h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-geekYellow" data-i18n="footer_links">Links</h4>
+                    <h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-geekYellow" data-i18n="footer_product">Product</h4>
                     <ul class="space-y-2 text-xs font-bold">
-                        <li><a href="index.html" class="hover:underline opacity-60 hover:opacity-100" data-i18n="home">Home</a></li>
-                        <li><a href="download.html" class="hover:underline opacity-60 hover:opacity-100" data-i18n="download">Download</a></li>
-                        <li><a href="plugins.html" class="hover:underline opacity-60 hover:opacity-100" data-i18n="plugins">Plugins</a></li>
-                        <li><a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="hover:underline opacity-60 hover:opacity-100" data-i18n="view_docs">Documentation</a></li>
+                        <li>
+                            <a href="index.html" class="hover:text-geekYellow transition-colors flex items-center gap-2" data-i18n="home">
+                                <span class="text-[10px] opacity-30">[</span> Home <span class="text-[10px] opacity-30">]</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="download.html" class="hover:text-geekYellow transition-colors flex items-center gap-2" data-i18n="download">
+                                <span class="text-[10px] opacity-30">[</span> Download <span class="text-[10px] opacity-30">]</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="plugins.html" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <span class="text-[10px] opacity-30">[</span> <span data-i18n="plugins">Plugins</span> <span class="text-[10px] opacity-30">]</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mcp.html" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <span class="text-[10px] opacity-30">[</span> MCP Servers <span class="text-[10px] opacity-30">]</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="skills.html" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <span class="text-[10px] opacity-30">[</span> Agent Skills <span class="text-[10px] opacity-30">]</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- 第三列：社区平台 -->
+                <!-- 第三列：开发者资源 -->
+                <div class="col-span-1">
+                    <h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-geekYellow" data-i18n="footer_developers">Developers</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li>
+                            <a href="https://github.com/heshengtao/super-agent-party/blob/main/README.md" target="_blank" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <i class="fas fa-book text-[10px]"></i> <span data-i18n="view_docs">Documentation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/heshengtao/super-agent-party/issues" target="_blank" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <i class="fas fa-bug text-[10px]"></i> Report Issues
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/heshengtao/super-agent-party/blob/main/CONTRIBUTING.md" target="_blank" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <i class="fas fa-handshake text-[10px]"></i> Contribute
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/heshengtao/super-agent-party/blob/main/LICENSE" target="_blank" class="hover:text-geekYellow transition-colors flex items-center gap-2">
+                                <i class="fas fa-balance-scale text-[10px]"></i> AGPL-3.0 License
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 第四列：社区平台 -->
                 <div class="col-span-1">
                     <h4 class="text-sm font-bold mb-4 uppercase tracking-widest text-geekYellow" data-i18n="footer_community">Community</h4>
-                    <div class="grid grid-cols-2 gap-2 text-[11px]">
-                        <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center gap-2 hover:text-geekYellow transition-colors">
-                            <i class="fab fa-github"></i> GitHub
+                    <div class="grid grid-cols-2 gap-3 text-[11px] font-bold">
+                        <a href="https://github.com/heshengtao/super-agent-party" target="_blank" rel="noopener" 
+                        class="flex items-center gap-2 hover:text-geekYellow transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm">
+                            <i class="fab fa-github text-sm"></i> GitHub
                         </a>
-                        <a href="https://gitee.com/heshengtao/super-agent-party" target="_blank" class="flex items-center gap-2 hover:text-red-500 transition-colors">
-                            <i class="fas fa-code-branch"></i> Gitee
+                        <a href="https://gitee.com/heshengtao/super-agent-party" target="_blank" rel="noopener" 
+                        class="flex items-center gap-2 hover:text-red-500 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm">
+                            <i class="fas fa-code-branch text-sm"></i> Gitee
                         </a>
-                        <a href="https://space.bilibili.com/26978344" target="_blank" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
-                            <i class="fab fa-bilibili"></i> Bilibili
+                        <a href="https://space.bilibili.com/26978344" target="_blank" rel="noopener" 
+                        class="flex items-center gap-2 hover:text-blue-400 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm">
+                            <i class="fab fa-bilibili text-sm"></i> Bilibili
                         </a>
-                        <a href="https://www.youtube.com/@agentParty" target="_blank" class="flex items-center gap-2 hover:text-red-600 transition-colors">
-                            <i class="fab fa-youtube"></i> Youtube
+                        <a href="https://www.youtube.com/@agentParty" target="_blank" rel="noopener" 
+                        class="flex items-center gap-2 hover:text-red-600 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm">
+                            <i class="fab fa-youtube text-sm"></i> YouTube
                         </a>
-                        <a href="https://discord.com/invite/f2dsAKKr2V" target="_blank" class="flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                            <i class="fab fa-discord"></i> Discord
+                        <a href="https://discord.com/invite/f2dsAKKr2V" target="_blank" rel="noopener" 
+                        class="flex items-center gap-2 hover:text-indigo-500 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm">
+                            <i class="fab fa-discord text-sm"></i> Discord
+                        </a>
+                        <a href="https://x.com/AILM32442" target="_blank" rel="noopener" 
+                        class="flex items-center gap-2 hover:text-blue-400 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm">
+                            <i class="fab fa-twitter text-sm"></i> Twitter
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- 底部版权 -->
+            <!-- 底部版权区 -->
             <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-[10px] text-gray-500 font-mono" data-i18n="footer_copyright">
-                    © 2026 Super Agent Party. All rights reserved.
-                </p>
+                <div class="flex flex-col md:flex-row items-center gap-4 text-[10px] text-gray-500 font-mono">
+                    <p data-i18n="footer_copyright">
+                        © 2026 Super Agent Party. Open source under AGPL-3.0.
+                    </p>
+                    <span class="hidden md:inline text-gray-300 dark:text-gray-700">|</span>
+                    <p class="flex items-center gap-2">
+                        Made with <i class="fas fa-heart text-red-500 animate-pulse"></i> by 
+                        <a href="https://github.com/heshengtao" target="_blank" class="hover:text-geekYellow underline">@heshengtao</a>
+                        & contributors
+                    </p>
+                </div>
+                
+                <!-- 开源协议标识 -->
+                <div class="flex items-center gap-3 text-[10px] text-gray-400">
+                    <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" class="flex items-center gap-1 hover:text-geekYellow transition-colors" title="GNU AGPL-3.0">
+                        <i class="fas fa-shield-alt"></i> AGPL-3.0
+                    </a>
+                    <span class="flex items-center gap-1" title="Open Source Initiative">
+                        <i class="fab fa-osi"></i> OSI Approved
+                    </span>
+                </div>
             </div>
         </div>
+
+        <!-- Schema.org 结构化数据 -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Super Agent Party",
+            "applicationCategory": "AIApplication",
+            "operatingSystem": "Windows, macOS, Linux",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "Super Agent Party",
+                "url": "https://github.com/heshengtao/super-agent-party"
+            },
+            "codeRepository": "https://github.com/heshengtao/super-agent-party",
+            "programmingLanguage": ["Python", "JavaScript"],
+            "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+            "softwareVersion": "1.0.0"
+        }
+        </script>
     </footer>
     
     <!-- 交互逻辑脚本 -->
