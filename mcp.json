@@ -75,26 +75,6 @@
     }
   },
   {
-    "name": "mcpmcp-server",
-    "type": "stdio",
-    "description": "Discover, setup, and integrate MCP servers with your favorite clients. Unlock the full potential of AI in your daily workflow.",
-    "description_zh": "发现、设置并将 MCP 服务器集成到您喜欢的客户端中。解锁 AI 在日常工作流程中的全部潜能。",
-    "category": "Cloud",
-    "repository": "https://github.com/glenngillen/mcpmcp-server",
-    "mcpConfig": {
-      "mcpServers": {
-        "mcpmcp": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "mcp-remote@latest",
-            "https://mcpmcp.io/mcp"
-          ]
-        }
-      }
-    }
-  },
-  {
     "name": "Imagen3-MCP",
     "type": "stdio",
     "description": "Image generation tool based on Google's Imagen 3.0, exposed via MCP as a local executable server.",
