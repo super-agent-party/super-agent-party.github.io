@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skill Library - Super Agent Party | AI Agent Workflows</title>
-    <meta name="description" content="Super Agent Party Skills Library: 100+ pre-built AI agent skills covering desktop companion chats, VTuber interactions, discord bots, browser automation, and smart home control. No-code workflow orchestration.">
-    <meta name="keywords" content="AI Skills, Agent Skills, AI Workflows, No-code AI, Desktop Companion Skills, VTuber Automation, Discord Bot Skills, Browser Automation, Agent Orchestration">
+    <title>MCP 服务器中心 | Super Agent Party - AI 智能体模型上下文协议集成</title>
+    <meta name="description" content="Super Agent Party MCP 服务器中心：集成 Model Context Protocol，连接 Claude、GPT、DeepSeek 等大语言模型。实现 AI 桌面女友、虚拟主播、社交机器人的上下文记忆与多模态能力扩展。">
+    <meta name="keywords" content="MCP服务器, Model Context Protocol, AI上下文协议, LLM集成, Claude MCP, GPT智能体, AI记忆系统, 多模态AI, AI智能体架构, 开源MCP工具">
     
-    <!-- SEO Language Mapping -->
-    <link rel="alternate" hreflang="en" href="https://www.agentparty.top/skills.html" />
-    <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/skills-zh.html" />
-    <link rel="canonical" href="https://www.agentparty.top/skills.html" />
+    <!-- SEO 语言关联 -->
+    <link rel="alternate" hreflang="en" href="https://www.agentparty.top/mcp.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/mcp-zh.html" />
+    <link rel="canonical" href="https://www.agentparty.top/mcp-zh.html" />
 
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,19 +23,19 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
-                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
-                }
+            theme: { 
+                extend: { 
+                    fontFamily: { mono: ['"JetBrains Mono"', '"Microsoft YaHei"', 'monospace'] }, 
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' } 
+                } 
             }
         }
     </script>
     <style>
-        body { font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
+        body { font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace; overflow-x: hidden; }
         .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
         .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
-        .plugin-card { background: rgba(255,255,255,0.9); border: 2px solid #000; box-shadow: 4px 4px 0px #000; position: relative; transition: all 0.2s ease; }
+        .plugin-card { background: rgba(255,255,255,0.9); border: 2px solid #000; box-shadow: 4px 4px 0px #000; transition: all 0.2s ease; position: relative; }
         .dark .plugin-card { background: rgba(10, 10, 10, 0.8); border: 2px solid #333; box-shadow: 4px 4px 0px #FFD700; }
         .plugin-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000; }
         .dark .plugin-card:hover { box-shadow: 6px 6px 0px #FFD700; border-color: #FFD700; }
@@ -53,31 +53,31 @@
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- Navigation -->
+    <!-- 导航栏 (中文版) -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    <a href="index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
-                <!-- Desktop Menu -->
+                <!-- 桌面端菜单 -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link font-bold text-sm">Home</a>
-                    <a href="download.html" class="nav-link font-bold text-sm">Download</a>
+                    <a href="index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="download-zh.html" class="nav-link font-bold text-sm">下载</a>
                     
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
-                            Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                            资源生态 <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
-                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
-                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
-                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                            <a href="plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
+                            <a href="mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
+                            <a href="skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
                         </div>
                     </div>
 
-                    <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    <a href="blog-zh.html" class="nav-link font-bold text-sm">博客</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
@@ -86,9 +86,9 @@
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- Language Switch -->
-                    <a href="skills-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
-                        中文
+                    <!-- 语言切换：硬链接到英文版 -->
+                    <a href="mcp.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        English
                     </a>
 
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
@@ -102,21 +102,21 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
+        <!-- 移动端菜单 (中文版链接) -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
-            <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
-            <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
+            <a href="index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
+            <a href="download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载</a>
             
             <div class="bg-gray-50 dark:bg-gray-900/50">
-                <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
-                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
-                <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
+                <a href="plugins-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ 插件市场</a>
+                <a href="mcp-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP 服务器</a>
+                <a href="skills-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ 技能库</a>
             </div>
 
-            <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            <a href="blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">博客</a>
             
-            <a href="skills-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
-                <i class="fas fa-language mr-2"></i>Switch to 中文
+            <a href="mcp.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
+                <i class="fas fa-language mr-2"></i>Switch to English
             </a>
             
             <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
@@ -128,25 +128,28 @@
     <main class="flex-grow pt-24 pb-12 px-4 max-w-full overflow-x-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-8 md:mb-16">
-                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase tracking-tighter">Skills</h1>
-                <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base px-4">Expand your agent's capabilities with community-driven skill repositories</p>
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase tracking-tighter">MCP 服务器中心</h1>
+                <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base px-4">通过 Model Context Protocol 让你的智能体连接万物</p>
             </div>
 
             <div class="max-w-4xl mx-auto mb-10">
+                <!-- 搜索框 -->
                 <div class="flex items-center bg-gray-50 dark:bg-black border-2 border-black dark:border-geekYellow px-3 py-2 md:p-4 mb-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
                     <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold font-mono">></span>
-                    <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-sm md:text-base text-black dark:text-white placeholder-gray-400" placeholder="Search skills...">
+                    <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-sm md:text-base text-black dark:text-white placeholder-gray-400" placeholder="搜索 MCP 服务器...">
                     <button id="clearSearch" class="hidden text-red-500 font-bold ml-2 px-2">X</button>
                     <div class="cursor-blink"></div>
                 </div>
+                <!-- 标签容器 -->
                 <div id="tagContainer" class="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto pb-2"></div>
             </div>
 
+            <!-- MCP 列表网格 -->
             <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"></div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
         <div class="max-w-7xl mx-auto px-4 mb-10">
             <a href="https://github.com/heshengtao/super-agent-party" target="_blank" rel="noopener noreferrer"
@@ -155,7 +158,7 @@
                     <div class="text-3xl"><i class="fab fa-github"></i></div>
                     <div>
                         <div class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Open Source · AGPL-3.0</div>
-                        <div class="text-base font-bold">Star us on GitHub</div>
+                        <div class="text-base font-bold">在 GitHub 上为我们点亮 Star</div>
                     </div>
                 </div>
                 <div class="flex items-center gap-3 bg-gray-800 dark:bg-gray-200 px-4 py-2">
@@ -169,25 +172,25 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-center sm:text-left">
                 <div class="col-span-1">
                     <div class="text-lg font-bold mb-4 tracking-tighter">Super Agent Party</div>
-                    <p class="text-[10px] text-gray-500 font-mono">Open source AI agent framework | Desktop Companion & Virtual Streamer</p>
+                    <p class="text-[10px] text-gray-500 font-mono">开源全能 AI 智能体框架 | 桌面女友 & 虚拟主播</p>
                 </div>
                 <div>
-                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">Product</h4>
+                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">产品</h4>
                     <ul class="space-y-2 text-[11px] font-bold">
-                        <li><a href="index.html" class="hover:text-geekYellow">[ Home ]</a></li>
-                        <li><a href="download.html" class="hover:text-geekYellow">[ Download ]</a></li>
-                        <li><a href="skills.html" class="hover:text-geekYellow">[ Skills ]</a></li>
+                        <li><a href="index-zh.html" class="hover:text-geekYellow">[ 首页 ]</a></li>
+                        <li><a href="download-zh.html" class="hover:text-geekYellow">[ 下载 ]</a></li>
+                        <li><a href="mcp-zh.html" class="hover:text-geekYellow">[ MCP 服务器 ]</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">Developers</h4>
+                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">开发者</h4>
                     <ul class="space-y-2 text-[11px] font-bold">
-                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">Documentation</a></li>
-                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">Report Issues</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">开发文档</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">反馈问题</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">Community</h4>
+                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">社区</h4>
                     <div class="grid grid-cols-2 gap-2 text-[10px] font-bold">
                         <a href="#" class="hover:text-geekYellow"><i class="fab fa-github mr-1"></i> GitHub</a>
                         <a href="#" class="hover:text-blue-400"><i class="fab fa-bilibili mr-1"></i> Bilibili</a>
@@ -198,7 +201,7 @@
             </div>
 
             <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col items-center gap-4 text-[10px] text-gray-500 font-mono text-center">
-                <p>© 2026 Super Agent Party. Open source under AGPL-3.0.</p>
+                <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
                 <div class="flex gap-4">
                     <a href="https://www.gnu.org/licenses/agpl-3.0.html" class="hover:text-geekYellow"><i class="fas fa-shield-alt"></i> AGPL-3.0</a>
                     <span><i class="fab fa-osi"></i> OSI Approved</span>
@@ -207,7 +210,7 @@
         </div>
     </footer>
 
-    <!-- Install Modal -->
+    <!-- 安装弹窗 -->
     <div id="installModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
         <div class="plugin-card max-w-md w-full p-6 md:p-8 bg-white dark:bg-geekDark relative">
             <button onclick="closeModal()" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-black dark:hover:text-geekYellow"><i class="fas fa-times text-xl"></i></button>
@@ -215,48 +218,48 @@
                 <div class="inline-block p-4 rounded-full bg-yellow-100 dark:bg-yellow-900/30 mb-4">
                     <i class="fas fa-rocket text-3xl text-geekYellow"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-2 dark:text-white">Invoking Agent...</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-8 text-xs leading-relaxed">Attempting to open Super Agent Party client to install this skill...</p>
+                <h3 class="text-xl font-bold mb-2 dark:text-white">正在呼叫 Agent...</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 text-xs leading-relaxed">我们正在尝试唤起 Super Agent Party 客户端以配置此 MCP 服务器...</p>
                 <div class="space-y-3">
-                    <button id="retryLink" class="w-full py-3 border-2 border-black dark:border-white font-bold text-sm">Retry Launch</button>
-                    <a href="download.html" class="block w-full py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold text-sm shadow-[4px_4px_0px_#ccc]">Download Client</a>
+                    <button id="retryLink" class="w-full py-3 border-2 border-black dark:border-white font-bold text-sm">再次尝试唤起</button>
+                    <a href="download-zh.html" class="block w-full py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold text-sm shadow-[4px_4px_0px_#ccc]">前往下载页面</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('mobile-menu-button').onclick = () => {
+        document.getElementById('mobile-menu-button').onclick = function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
-        };
+        }
 
         let rawData = [];
-        let activeTag = 'All'; 
+        let activeTag = '全部';
         const searchInput = document.getElementById('searchInput');
         const clearBtn = document.getElementById('clearSearch');
-        const tagContainer = document.getElementById('tagContainer');
-        const pluginList = document.getElementById('plugin-list');
 
-        // Fetch skills.json
-        fetch('skills.json')
+        // 获取 MCP 数据
+        fetch('mcp.json')
             .then(r => r.json())
-            .then(data => { rawData = data; initFilter(); });
+            .then(data => { rawData = data; initFilter(); })
+            .catch(e => console.error("Load JSON Error:", e));
 
         function initFilter() { renderTags(); filterContent(); }
 
         function renderTags() {
-            const categories = ['All', ...new Set(rawData.map(p => p.category))];
-            tagContainer.innerHTML = categories.map(cat => {
+            const categories = ['全部', ...new Set(rawData.map(p => p.category).filter(Boolean))];
+            const container = document.getElementById('tagContainer');
+            container.innerHTML = categories.map(cat => {
                 return `
                     <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm ${activeTag === cat ? 'active' : ''}" 
-                            onclick="setTag(this, '${cat}')">
+                            onclick="setTag('${cat}')">
                         [ ${cat} ]
                     </button>
                 `;
             }).join('');
         }
 
-        window.setTag = (btn, cat) => { activeTag = cat; renderTags(); filterContent(); };
+        window.setTag = (cat) => { activeTag = cat; renderTags(); filterContent(); };
         
         searchInput.addEventListener('input', () => {
             clearBtn.style.display = searchInput.value ? 'inline' : 'none';
@@ -265,21 +268,34 @@
         clearBtn.onclick = () => { searchInput.value = ''; clearBtn.style.display = 'none'; filterContent(); };
 
         function filterContent() {
-            const kw = searchInput.value.toLowerCase();
+            const kw = searchInput.value.toLowerCase().trim();
             const filtered = rawData.filter(p => {
-                const hitTag = activeTag === 'All' || p.category === activeTag;
-                const hitKw = !kw || p.name.toLowerCase().includes(kw) || 
-                            p.description.toLowerCase().includes(kw);
-                return hitTag && hitKw;
+                const hitTag = (activeTag === '全部' || p.category === activeTag);
+                const name = (p.name || "").toLowerCase();
+                const desc = (p.description || "").toLowerCase();
+                // 增加对中文描述的搜索支持
+                const descZh = (p.description_zh || "").toLowerCase();
+                return hitTag && (!kw || name.includes(kw) || desc.includes(kw) || descZh.includes(kw));
             });
             renderCards(filtered);
         }
 
         function renderCards(data) {
-            pluginList.innerHTML = '';
+            const list = document.getElementById('plugin-list');
+            list.innerHTML = '';
             
+            if (data.length === 0) {
+                list.innerHTML = `<div class="col-span-full text-center py-20 text-gray-500 font-bold opacity-50 text-sm">[ 未找到相关 MCP 服务器 ]</div>`;
+                return;
+            }
+
             data.forEach(p => {
-                const displayDesc = p.description;
+                // 优先显示中文描述
+                const displayDesc = p.description_zh || p.description;
+                const configStr = JSON.stringify(p.mcpConfig || {}, null, 2);
+                const encodedConfig = encodeURIComponent(configStr);
+                const mcpType = p.type || 'stdio'; 
+
                 const el = document.createElement('div');
                 el.className = 'plugin-card p-5 md:p-6 flex flex-col justify-between h-full';
                 
@@ -293,52 +309,37 @@
                     </div>
 
                     <div class="mt-auto">
-                        <button onclick="handleInstallClick('${p.repository}')" 
-                                class="w-full mb-4 py-3 bg-geekYellow text-black text-center text-xs md:text-sm font-bold border-2 border-black dark:border-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">
-                            <i class="fa-solid fa-plus-circle mr-2"></i> 
-                            <span>Add to Agent Party</span>
+                        <button onclick="handleInstallClick('${mcpType}', '${encodedConfig}')" 
+                                class="w-full mb-4 py-3 bg-geekYellow text-black text-center hover:opacity-90 transition-all text-xs md:text-sm font-bold border-2 border-black dark:border-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff] active:translate-x-1 active:translate-y-1 active:shadow-none">
+                            <i class="fa-solid fa-plus-circle mr-2"></i> <span>添加到 Agent Party</span>
                         </button>
 
-                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
-                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
-                                <span>Author: ${p.author}</span>
-                                <span>Repo: GitHub</span>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button onclick="copyLink('${p.repository}')" 
-                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
-                                    <i class="far fa-copy mr-1"></i> <span>Copy</span>
-                                </button>
-                                <a href="${p.repository}" target="_blank" 
-                                   class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold hover:opacity-80 transition-opacity">
-                                    <i class="fab fa-github mr-1"></i> <span>GitHub</span>
-                                </a>
-                            </div>
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4 grid grid-cols-2 gap-2">
+                            <button onclick="copyConfig('${encodedConfig}')" class="py-2 border border-gray-400 dark:border-gray-600 text-[10px] font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                                <i class="far fa-copy mr-1"></i> <span>复制配置</span>
+                            </button>
+                            <a href="${p.repository}" target="_blank" class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold hover:opacity-80 transition-opacity">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
                         </div>
-                    </div>
-                `;
-                pluginList.appendChild(el);
+                    </div>`;
+                list.appendChild(el);
             });
         }
 
-        function handleInstallClick(repoUrl) {
-            const protocolUrl = `sap://install?type=skill&repo=${encodeURIComponent(repoUrl)}`;
+        function handleInstallClick(mcpType, encodedConfig) {
+            const protocolUrl = `sap://install?type=mcp&mcpType=${mcpType}&config=${encodedConfig}`;
             window.location.href = protocolUrl;
-            
-            const modal = document.getElementById('installModal');
-            modal.classList.remove('hidden');
-
-            document.getElementById('retryLink').onclick = function() {
-                window.location.href = protocolUrl;
-            };
+            document.getElementById('installModal').classList.remove('hidden');
+            document.getElementById('retryLink').onclick = function() { window.location.href = protocolUrl; };
         }
 
-        function copyLink(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                alert('Link Copied!');
+        function copyConfig(encodedConfig) {
+            const text = decodeURIComponent(encodedConfig);
+            navigator.clipboard.writeText(text).then(() => {
+                alert("配置已复制到剪贴板！");
             });
         }
-
         function closeModal() { document.getElementById('installModal').classList.add('hidden'); }
         document.getElementById('installModal').onclick = function(e) { if (e.target === this) closeModal(); }
     </script>

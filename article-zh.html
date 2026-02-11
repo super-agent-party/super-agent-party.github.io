@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading - Super Agent Party</title>
+    <!-- 初始标题，JS加载文章后会被替换 -->
+    <title>正在阅读 - Super Agent Party</title>
     
-    <!-- Default SEO Metadata (Updated by JS later) -->
-    <meta name="description" content="Read the latest developer logs and tutorials from Super Agent Party - the open-source AI agent platform.">
-    <meta name="keywords" content="AI Agent, SAP Blog, AI Desktop Companion, Open Source AI">
+    <!-- 默认 SEO 标签 -->
+    <meta name="description" content="阅读 Super Agent Party 官方博客。了解 AI 桌面伴侣、虚拟主播机器人及智能体插件的最新开发日志与技术教程。">
+    <meta name="keywords" content="AI智能体教程, Super Agent Party博客, 开发日志, 桌面女友技术, 开源AI项目">
     
-    <!-- SEO Language Mapping -->
+    <!-- SEO 语言关联 -->
     <link rel="alternate" hreflang="en" href="https://www.agentparty.top/article.html" />
     <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/article-zh.html" />
+    <link rel="canonical" href="https://www.agentparty.top/article-zh.html" />
 
-    <!-- Dependencies -->
+    <!-- 依赖脚本 -->
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -28,14 +30,14 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
+                    fontFamily: { mono: ['"JetBrains Mono"', '"Microsoft YaHei"', 'monospace'] },
                     colors: { geekYellow: '#FFD700', geekDark: '#050505' }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
+        body { font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace; scroll-behavior: smooth; }
         .matrix-bg {
             background-color: #ffffff;
             background-image: radial-gradient(#ccc 1px, transparent 1px);
@@ -46,76 +48,63 @@
             background-image: radial-gradient(#222 1px, transparent 1px);
         }
         .nav-link { position: relative; display: inline-block; }
-        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: transform 0.3s, opacity 0.2s; color: #FFD700; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: transform 0.3s; color: #FFD700; }
         .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
         .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
         .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
-        .dark-icon { display: none; }
-        .light-icon { display: inline-block; }
-        .dark .dark-icon { display: inline-block; }
-        .dark .light-icon { display: none; }
 
-        /* Markdown Styles */
+        /* Markdown 内容样式 */
         .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
         .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
         .dark .prose h1, .dark .prose h2, .dark .prose h3 { color: #ffffff; }
-        .prose h1 { font-size: 2.25rem; margin-bottom: 1.5rem; margin-top: 2.5rem; }
         .prose h2 { font-size: 1.5rem; margin-bottom: 1.25rem; margin-top: 2rem; border-bottom: 3px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
         .prose p { margin-bottom: 1.25rem; color: #374151; }
         .dark .prose p { color: #D1D5DB; }
-        .prose ul { list-style-type: disc !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
-        .prose ol { list-style-type: decimal !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
-        .prose li { margin-bottom: 0.5rem !important; }
         .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #eb5757; }
         .dark .prose code { background: #2d2d2d; color: #FFD700; }
-        .prose pre { background: #1a1a1a; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; border: 1px solid #333; box-shadow: 4px 4px 0px #000; }
-        .dark .prose pre { border-color: #444; box-shadow: 4px 4px 0px #FFD700; }
+        .prose pre { background: #1a1a1a; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; box-shadow: 4px 4px 0px #000; }
         .prose img { max-width: 100%; height: auto; margin: 2.5rem auto; border-radius: 8px; filter: drop-shadow(6px 6px 0px #FFD700); }
-        .prose a { color: #2563EB; text-decoration: underline; }
-        .prose a:hover { color: #FFD700; background: #000; }
-        .dark .prose a { color: #FFD700; }
         .prose blockquote { margin: 2rem 0; padding: 1rem 1.5rem; border: 2px solid #000; background: #fff; box-shadow: 4px 4px 0px #FFD700; }
-        .dark .prose blockquote { background: #111; border-color: #FFD700; color: #e5e7eb; }
         #toc a.active { color: #FFD700; border-left-color: #FFD700; font-weight: 800; }
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
 
-    <!-- Navigation -->
+    <!-- 导航栏 (指向 -zh 页面) -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    <a href="index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link font-bold text-sm">Home</a>
-                    <a href="download.html" class="nav-link font-bold text-sm">Download</a>
+                    <a href="index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
                     
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
-                            Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                            资源生态 <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
-                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
-                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
-                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                            <a href="plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
+                            <a href="mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
+                            <a href="skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
                         </div>
                     </div>
 
-                    <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    <a href="blog-zh.html" class="nav-link font-bold text-sm">项目博客</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
-                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
-                        <span class="light-icon"><i class="fas fa-sun"></i></span>
-                        <span class="dark-icon"><i class="fas fa-moon text-geekYellow"></i></span>
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- Language Switcher (Presets to Chinese version of this article) -->
-                    <a id="lang-switch-link" href="article-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
-                        中文
+                    <!-- 语言切换：硬链接到英文版 article.html -->
+                    <a id="lang-switch-link" href="article.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        English
                     </a>
 
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
@@ -129,54 +118,52 @@
             </div>
         </div>
         
-        <!-- Mobile Menu (Expanded) -->
+        <!-- 移动端菜单 -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
-            <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
-            <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
+            <a href="index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
+            <a href="download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
             <div class="bg-gray-50 dark:bg-gray-900/50">
-                <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Plugins</a>
-                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ MCP</a>
-                <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Skills</a>
+                <a href="plugins-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ 插件市场</a>
+                <a href="mcp-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP服务器</a>
+                <a href="skills-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ 技能库</a>
             </div>
-            <a href="blog.html" class="block px-4 py-3 font-bold">Blog</a>
+            <a href="blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
         </div>
     </nav>
 
     <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
-        <!-- Back Link -->
+        <!-- 返回链接 -->
         <div class="mb-4 text-sm font-mono">
-            <a href="blog.html" class="hover:text-geekYellow hover:underline">
-                <i class="fas fa-arrow-left mr-1"></i> <span>Back to Blog</span>
+            <a href="blog-zh.html" class="hover:text-geekYellow hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i> <span>返回博客列表</span>
             </a>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Left: Article -->
+            <!-- 文章内容区 -->
             <div class="flex-grow lg:w-3/4">
                 <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
                     <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
                         <div id="meta-tags" class="flex flex-wrap gap-2 mb-4"></div>
-                        <h1 id="article-title" class="text-3xl md:text-4xl font-black mb-2 dark:text-white">Loading Article...</h1>
+                        <h1 id="article-title" class="text-3xl md:text-4xl font-black mb-2 dark:text-white">正在加载文章内容...</h1>
                         <div class="text-sm font-mono text-gray-500">
                             <span id="article-date">--/--/----</span> | <span id="article-file">source.md</span>
                         </div>
                     </div>
 
                     <div id="markdown-content" class="prose dark:prose-invert">
-                        <!-- Skeleton loading -->
                         <div class="animate-pulse space-y-4">
                             <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
                             <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                            <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            <!-- Right: TOC -->
+            <!-- 右侧目录 -->
             <aside class="hidden lg:block lg:w-1/4">
                 <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
-                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">Table of Contents</h3>
+                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">文章目录</h3>
                     <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
                     </nav>
                 </div>
@@ -184,21 +171,55 @@
         </div>
     </main>
 
+    <!-- 页脚 (指向 -zh 页面) -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
+                <div class="col-span-1">
+                    <div class="text-lg font-bold mb-4 tracking-tighter">Super Agent Party</div>
+                    <p class="text-[10px] text-gray-500 font-mono">开源全能 AI 智能体框架 | 桌面伴侣 & 虚拟主播</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">产品生态</h4>
+                    <ul class="space-y-2 text-[11px] font-bold">
+                        <li><a href="index-zh.html" class="hover:text-geekYellow">[ 首页 ]</a></li>
+                        <li><a href="download-zh.html" class="hover:text-geekYellow">[ 软件下载 ]</a></li>
+                        <li><a href="blog-zh.html" class="hover:text-geekYellow">[ 技术博客 ]</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">开发者</h4>
+                    <ul class="space-y-2 text-[11px] font-bold">
+                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">GitHub 源码</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">提交反馈</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold mb-4 uppercase text-geekYellow">加入社区</h4>
+                    <div class="flex justify-center md:justify-start gap-4 text-lg">
+                        <a href="#" class="hover:text-geekYellow"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col items-center gap-2 text-[10px] text-gray-500 font-mono">
+                <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // UI Logic
         document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
 
-        // TOC Generation
+        // 生成目录
         function generateTOC() {
             const content = document.getElementById('markdown-content');
             const toc = document.getElementById('toc');
-            const headings = content.querySelectorAll('h1, h2');
-
+            const headings = content.querySelectorAll('h2, h3');
             if (headings.length === 0) {
-                toc.innerHTML = `<p class="text-gray-400 italic">No headings found.</p>`;
+                toc.innerHTML = `<p class="text-gray-400 italic text-xs">暂无目录项</p>`;
                 return;
             }
-
             toc.innerHTML = '';
             headings.forEach((heading, index) => {
                 const id = `heading-${index}`;
@@ -206,14 +227,14 @@
                 const link = document.createElement('a');
                 link.href = `#${id}`;
                 link.textContent = heading.textContent;
-                link.className = 'block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3';
-                if (heading.tagName === 'H1') link.classList.add('font-bold', 'text-gray-900', 'dark:text-white');
-                else link.classList.add('ml-4', 'text-gray-500', 'dark:text-gray-400', 'text-xs');
+                link.className = 'block transition-all py-1 border-l-2 border-transparent pl-3 hover:text-geekYellow';
+                if (heading.tagName === 'H2') link.classList.add('font-bold', 'text-gray-900', 'dark:text-white');
+                else link.classList.add('ml-4', 'text-gray-500', 'text-xs');
                 toc.appendChild(link);
             });
         }
 
-        // Front Matter Parser
+        // 解析 Front Matter
         function parseFrontMatter(text) {
             const pattern = /^---[\s\S]*?---/;
             const match = text.match(pattern);
@@ -232,35 +253,33 @@
             return { attributes, body };
         }
 
-        // Main Load Article Function
         async function loadArticle() {
             const params = new URLSearchParams(window.location.search);
             const slug = params.get('slug');
-            const lang = 'en'; // Fixed for this page
+            const lang = 'zh'; // 中文版固定加载 zh 目录
 
-            if (!slug) { window.location.href = 'blog.html'; return; }
+            if (!slug) { window.location.href = 'blog-zh.html'; return; }
 
-            // Update language switch link to point to Chinese version with same slug
-            document.getElementById('lang-switch-link').href = `article-zh.html?slug=${slug}`;
+            // 动态设置语言切换按钮的链接，保持 slug 一致
+            document.getElementById('lang-switch-link').href = `article.html?slug=${slug}`;
 
             try {
                 const response = await fetch(`posts/${lang}/${slug}.md`);
-                if (!response.ok) throw new Error("Article not found");
+                if (!response.ok) throw new Error("文章未找到");
                 const text = await response.text();
-
                 const { attributes, body } = parseFrontMatter(text);
 
-                // Update DOM Meta
-                document.getElementById('article-title').textContent = attributes.title || 'Untitled';
+                // 更新 DOM
+                document.getElementById('article-title').textContent = attributes.title || '无标题文章';
                 document.getElementById('article-date').textContent = attributes.date || '';
                 document.getElementById('article-file').textContent = `${slug}.md`;
                 
-                // SEO: Update Title & Meta Tags
-                if (attributes.title) document.title = `${attributes.title} - Super Agent Party`;
+                // 更新 SEO 元数据
+                if (attributes.title) document.title = `${attributes.title} - Super Agent Party 博客`;
                 const metaDesc = document.querySelector('meta[name="description"]');
-                if (metaDesc) metaDesc.setAttribute('content', attributes.description || attributes.summary || "Read this article on Super Agent Party Blog.");
+                if (metaDesc) metaDesc.setAttribute('content', attributes.description || attributes.summary || "阅读这篇关于 Super Agent Party 的文章。");
 
-                // Render Tags
+                // 渲染标签
                 if (attributes.tags) {
                     const tagList = attributes.tags.toString().replace(/[\[\]"]/g, '').split(',').map(t => t.trim());
                     document.getElementById('meta-tags').innerHTML = tagList.map(t => 
@@ -268,16 +287,14 @@
                     ).join('');
                 }
 
-                // Setup Markdown Renderer
+                // 配置 Marked
                 const renderer = new marked.Renderer();
                 const basePath = `posts/${lang}/`;
-                
                 renderer.image = (token) => {
                     let href = token.href;
                     if (!href.startsWith('http') && !href.startsWith('/')) href = basePath + href;
                     return `<figure class="my-8"><img src="${href}" alt="${token.text}" class="mx-auto" loading="lazy"></figure>`;
                 };
-
                 renderer.link = (token) => {
                     let href = token.href;
                     if (!href.startsWith('http') && !href.startsWith('#')) href = basePath + href;
@@ -288,7 +305,7 @@
                 generateTOC();
 
             } catch (e) {
-                document.getElementById('markdown-content').innerHTML = `<div class="p-4 border border-red-500 bg-red-50 text-red-700 font-bold rounded">Article not found.</div>`;
+                document.getElementById('markdown-content').innerHTML = `<div class="p-4 border border-red-500 bg-red-50 text-red-700 font-bold rounded">未找到该文章，请检查链接或稍后重试。</div>`;
             }
         }
 
