@@ -93,7 +93,7 @@
                         </div>
                     </div>
 
-                    <a href="blog-zh.html" class="nav-link font-bold text-sm">项目博客</a>
+                    <a href="blog-zh.html" class="nav-link font-bold text-sm">博客</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
@@ -290,15 +290,27 @@
                 // 配置 Marked
                 const renderer = new marked.Renderer();
                 const basePath = `posts/${lang}/`;
-                renderer.image = (token) => {
+                
+                // 修复点 1：将图片配置为支持内联徽章渲染且使用常规函数以兼容 this.parser
+                renderer.image = function(token) {
                     let href = token.href;
                     if (!href.startsWith('http') && !href.startsWith('/')) href = basePath + href;
+                    
+                    // 判断是否为徽章图片并取消.prose img设定的外边距和阴影样式
+                    if (href.includes('img.shields.io') || href.includes('badge')) {
+                        return `<img src="${href}" alt="${token.text}" style="margin: 0; filter: none; box-shadow: none; border-radius: 0; display: inline-block;" loading="lazy">`;
+                    }
+                    
                     return `<figure class="my-8"><img src="${href}" alt="${token.text}" class="mx-auto" loading="lazy"></figure>`;
                 };
-                renderer.link = (token) => {
+                
+                // 修复点 2：将内部带有图片的超链接解析出图片而不是返回纯Markdown字符串
+                renderer.link = function(token) {
                     let href = token.href;
                     if (!href.startsWith('http') && !href.startsWith('#')) href = basePath + href;
-                    return `<a href="${href}" target="_blank">${token.text}</a>`;
+                    
+                    let text = token.tokens ? this.parser.parseInline(token.tokens) : token.text;
+                    return `<a href="${href}" target="_blank">${text}</a>`;
                 };
 
                 document.getElementById('markdown-content').innerHTML = marked.parse(body, { renderer });

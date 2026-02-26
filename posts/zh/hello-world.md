@@ -19,7 +19,9 @@ tags: ["首次更新", "AI"]
 - 收集整理一些资源站点、免费的云服务、工具、插件、软件等
 
 ## 本博客支持RSS订阅，欢迎关注！
+
 [![中文RSS](https://img.shields.io/badge/RSS-中文-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white)](https://super-agent-party.github.io/posts/feed-zh.xml)
+
 [![EnglishRSS](https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white)](https://super-agent-party.github.io/posts/feed-en.xml)
 
 ## 欢迎大家关注和留言交流，谢谢！

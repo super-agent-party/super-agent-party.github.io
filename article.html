@@ -272,16 +272,26 @@
                 const renderer = new marked.Renderer();
                 const basePath = `posts/${lang}/`;
                 
-                renderer.image = (token) => {
+                // FIXED: Normal Function for `this` context binding and Handle Shield Badges Layout
+                renderer.image = function(token) {
                     let href = token.href;
                     if (!href.startsWith('http') && !href.startsWith('/')) href = basePath + href;
+                    
+                    // Specific logic for badge links: display inline, remove shadow and margin from .prose styling
+                    if (href.includes('img.shields.io') || href.includes('badge')) {
+                        return `<img src="${href}" alt="${token.text}" style="margin: 0; filter: none; border-radius: 0; box-shadow: none; display: inline-block;" loading="lazy">`;
+                    }
+                    
                     return `<figure class="my-8"><img src="${href}" alt="${token.text}" class="mx-auto" loading="lazy"></figure>`;
                 };
 
-                renderer.link = (token) => {
+                // FIXED: Parse Link Inner Tokens instead of pulling raw markdown strings from `token.text`
+                renderer.link = function(token) {
                     let href = token.href;
                     if (!href.startsWith('http') && !href.startsWith('#')) href = basePath + href;
-                    return `<a href="${href}" target="_blank">${token.text}</a>`;
+                    
+                    let text = token.tokens ? this.parser.parseInline(token.tokens) : token.text;
+                    return `<a href="${href}" target="_blank">${text}</a>`;
                 };
 
                 document.getElementById('markdown-content').innerHTML = marked.parse(body, { renderer });

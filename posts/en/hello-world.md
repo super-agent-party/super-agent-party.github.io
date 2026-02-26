@@ -19,7 +19,9 @@ During the development of Super Agent Party, I will have some thoughts and ideas
 - Collection and organization of resource sites, free cloud services, tools, plugins, software, etc.
 
 ## This blog supports RSS subscription, welcome to follow!
+
 [![Chinese RSS](https://img.shields.io/badge/RSS-Chinese-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white)](https://super-agent-party.github.io/posts/feed-zh.xml)
+
 [![English RSS](https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white)](https://super-agent-party.github.io/posts/feed-en.xml)
 
 ## Welcome to follow and leave comments for discussion, thank you!
