@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} - Super Agent Party</title>
+    <meta name="description" content="{{DESC}}">
+    
+    <link rel="alternate" hreflang="en" href="{{LANG_SWITCH_LINK}}" />
+    
+    <!-- 注意这些 js 和图片引入前面加了 ../../ -->
+    <script src="../../theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../github-stars.js"></script>
+    
+    <link rel="icon" href="../../img/icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', '"Microsoft YaHei"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace; scroll-behavior: smooth; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: transform 0.3s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
+        .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
+
+        .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
+        .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
+        .dark .prose h1, .dark .prose h2, .dark .prose h3 { color: #ffffff; }
+        .prose h1 { font-size: 2.25rem; margin-bottom: 1.5rem; margin-top: 2.5rem; }
+        .prose h2 { font-size: 1.5rem; margin-bottom: 1.25rem; margin-top: 2rem; border-bottom: 3px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
+        .prose p { margin-bottom: 1.25rem; color: #374151; }
+        .dark .prose p { color: #D1D5DB; }
+        .prose ul { list-style-type: disc !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose ol { list-style-type: decimal !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose li { margin-bottom: 0.5rem !important; }
+        .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #eb5757; }
+        .dark .prose code { background: #2d2d2d; color: #FFD700; }
+        .prose pre { background: #1a1a1a; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; box-shadow: 4px 4px 0px #000; border: 1px solid #333; }
+        .dark .prose pre { border-color: #444; box-shadow: 4px 4px 0px #FFD700; }
+        .prose img { max-width: 100%; height: auto; margin: 2.5rem auto; border-radius: 8px; filter: drop-shadow(6px 6px 0px #FFD700); }
+        .prose a { color: #2563EB; text-decoration: underline; }
+        .prose a:hover { color: #FFD700; background: #000; }
+        .dark .prose a { color: #FFD700; }
+        .prose blockquote { margin: 2rem 0; padding: 1rem 1.5rem; border: 2px solid #000; background: #fff; box-shadow: 4px 4px 0px #FFD700; }
+        .dark .prose blockquote { background: #111; border-color: #FFD700; color: #e5e7eb; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="../../download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
+                    <a href="../../blog-zh.html" class="nav-link font-bold text-sm">博客</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
+                    </button>
+
+                    <a href="{{LANG_SWITCH_LINK}}" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        English
+                    </a>
+
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="../../index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
+            <a href="../../download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
+            <a href="../../blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
+        <div class="mb-4 text-sm font-mono">
+            <!-- 回到根目录的博客列表页 -->
+            <a href="../../blog-zh.html" class="hover:text-geekYellow hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i> <span>返回博客列表</span>
+            </a>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="flex-grow lg:w-3/4">
+                <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
+                    <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
+                        <div id="meta-tags" class="flex flex-wrap gap-2 mb-4">
+                            {{TAGS}}
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-black mb-2 dark:text-white">{{TITLE}}</h1>
+                        <div class="text-sm font-mono text-gray-500">
+                            <span>{{DATE}}</span> | <span>{{FILE}}</span>
+                        </div>
+                    </div>
+
+                    <div class="prose dark:prose-invert">
+                        {{CONTENT}}
+                    </div>
+                </article>
+            </div>
+
+            <!-- 右侧目录 -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">文章目录</h3>
+                    <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
+                        {{TOC}}
+                    </nav>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left text-gray-500 text-xs font-mono">
+            <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
+</body>
+</html>

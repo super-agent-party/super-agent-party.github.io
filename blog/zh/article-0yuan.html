@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>挑战0元创造AI伴侣，我能成功吗？ - Super Agent Party</title>
+    <meta name="description" content="手把手教你如何不花钱打造一个AI伴侣">
+    
+    <link rel="alternate" hreflang="en" href="../en/article-0yuan.html" />
+    
+    <!-- 注意这些 js 和图片引入前面加了 ../../ -->
+    <script src="../../theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../github-stars.js"></script>
+    
+    <link rel="icon" href="../../img/icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', '"Microsoft YaHei"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace; scroll-behavior: smooth; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: transform 0.3s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
+        .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
+
+        .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
+        .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
+        .dark .prose h1, .dark .prose h2, .dark .prose h3 { color: #ffffff; }
+        .prose h1 { font-size: 2.25rem; margin-bottom: 1.5rem; margin-top: 2.5rem; }
+        .prose h2 { font-size: 1.5rem; margin-bottom: 1.25rem; margin-top: 2rem; border-bottom: 3px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
+        .prose p { margin-bottom: 1.25rem; color: #374151; }
+        .dark .prose p { color: #D1D5DB; }
+        .prose ul { list-style-type: disc !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose ol { list-style-type: decimal !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose li { margin-bottom: 0.5rem !important; }
+        .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #eb5757; }
+        .dark .prose code { background: #2d2d2d; color: #FFD700; }
+        .prose pre { background: #1a1a1a; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; box-shadow: 4px 4px 0px #000; border: 1px solid #333; }
+        .dark .prose pre { border-color: #444; box-shadow: 4px 4px 0px #FFD700; }
+        .prose img { max-width: 100%; height: auto; margin: 2.5rem auto; border-radius: 8px; filter: drop-shadow(6px 6px 0px #FFD700); }
+        .prose a { color: #2563EB; text-decoration: underline; }
+        .prose a:hover { color: #FFD700; background: #000; }
+        .dark .prose a { color: #FFD700; }
+        .prose blockquote { margin: 2rem 0; padding: 1rem 1.5rem; border: 2px solid #000; background: #fff; box-shadow: 4px 4px 0px #FFD700; }
+        .dark .prose blockquote { background: #111; border-color: #FFD700; color: #e5e7eb; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="../../download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
+                    <a href="../../blog-zh.html" class="nav-link font-bold text-sm">博客</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
+                    </button>
+
+                    <a href="../en/article-0yuan.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        English
+                    </a>
+
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="../../index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
+            <a href="../../download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
+            <a href="../../blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
+        <div class="mb-4 text-sm font-mono">
+            <!-- 回到根目录的博客列表页 -->
+            <a href="../../blog-zh.html" class="hover:text-geekYellow hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i> <span>返回博客列表</span>
+            </a>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="flex-grow lg:w-3/4">
+                <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
+                    <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
+                        <div id="meta-tags" class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">AI伴侣</span>
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-black mb-2 dark:text-white">挑战0元创造AI伴侣，我能成功吗？</h1>
+                        <div class="text-sm font-mono text-gray-500">
+                            <span>2026-01-16</span> | <span>0yuan.md</span>
+                        </div>
+                    </div>
+
+                    <div class="prose dark:prose-invert">
+                        <p><figure class="my-8"><img src="/img/0yuan/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>引言</h1>
+<p>如果说，你想要一个AI伴侣，但是又不想花费一分钱，那么这篇文章就是为你准备的。在这里，我将向你展示如何不花钱打造一个AI伴侣，让你在虚拟世界中找到陪伴。</p>
+<h1>第一步：下载免费的super agent party！</h1>
+<p>首先，你需要下载一个免费的super agent party！这是一个开源的AI伴侣软件。你可以从<a href="https://github.com/heshengtao/super-agent-party" target="_blank">GitHub</a>看到他的源码。</p>
+<p>如果你是中国用户，你可以在<a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files" target="_blank">魔搭社区</a>下载。选择对应版本号的文件夹，然后选择符合你的操作系统的版本，点击下载即可！</p>
+<p><figure class="my-8"><img src="/img/0yuan/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>如果你是海外用户，你可以在<a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank">GitHub</a>下载。选择适合你的操作系统的版本，点击下载即可！</p>
+<p><figure class="my-8"><img src="/img/0yuan/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>如果你是一个爱折腾的极客，你也可以选择docker版本，在<a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser" target="_blank">GitHub</a>查看使用方法。</p>
+<h1>第二步：让你的AI伴侣能思考</h1>
+<p>你需要一个大语言模型，我们一般称为LLM。LLM是AI伴侣的“大脑”，它决定了AI伴侣的智能程度。市面上有非常多的免费的LLM算力，这里我推荐一个我常用的，ollama的云模型，至少在我写下这篇博客时，ollama的云模型还是免费的。</p>
+<h2 id="heading-0">去ollama官网下载ollama</h2>
+<p>ollama官网：<a href="https://ollama.com/" target="_blank">https://ollama.com/</a></p>
+<p>你可以在网页的右上角看到一个“下载”按钮，点击它，选择适合你的操作系统的版本，点击下载即可！</p>
+<p><figure class="my-8"><img src="/img/0yuan/3.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h2 id="heading-1">免费的ollama的云模型</h2>
+<ol>
+<li><p>你需要在ollama官网注册一个账号，注册后在ollama应用中登录你的账号，你就可以使用ollama的云模型了。</p>
+</li>
+<li><p>你可以在ollama官网的“模型”页面点击<code>cloud</code>标签，这些标签下的模型都是免费且不占用你的本地算力的。</p>
+</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/4.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="3">
+<li>你可以选择一个你喜欢的模型，点击它，然后复制CLI命令，比如<code>ollama run deepseek-v3.1:671b-cloud</code>，粘贴到你的终端，然后回车，你就可以使用ollama的云模型了。注意！一定要有<code>cloud</code>后缀的模型。</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/5.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h2 id="heading-2">在super agent party中使用ollama的云模型</h2>
+<ol>
+<li>打开super agent party，点击<code>模型</code>页面，然后在<code>模型供应商</code>子页面，选择<code>添加供应商</code></li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/6.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="2">
+<li>在模态框中,选择<code>ollama</code>，然后点击<code>确认添加</code>按钮</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/7.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="3">
+<li>点击卡片上的放大镜按钮，就可以获取你的ollama内的所有模型列表，如果获取失败，可能是你忘记打开ollama应用了</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/8.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="4">
+<li>在模型列表中，选择你刚刚复制的模型，比如<code>deepseek-v3.1:671b-cloud</code></li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/9.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="5">
+<li>这时候你回到对话界面，就可以愉快地免费和你的AI聊天了！</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/10.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>第三步：让你的AI伴侣能听见</h1>
+<p>你需要一个语音识别模型，我们一般称为ASR。ASR是AI伴侣的“耳朵”，它决定了AI伴侣能否听懂你说的话。</p>
+<p>这里有两个免费的方法：</p>
+<h2 id="heading-3">免费的本地小模型</h2>
+<p>super agent party内置了一个免费的语音识别模型，你只需要在<code>模型</code>页面，选择<code>语音识别模型</code>，然后选择<code>Sherpa ONNX</code>，就可以使用内置的语音识别模型了。这个模型不吃GPU，只占用CPU和内存，所以普通的笔记本电脑也可以跑，不需要花钱去买好设备。</p>
+<ol>
+<li>打开super agent party，点击<code>模型</code>页面，然后在<code>语音识别模型</code>子页面，选择<code>Sherpa ONNX</code></li>
+<li>点击下方的Sherpa ONNX Sense Voice卡片里的下载按钮，国内用户选择魔搭社区下载，海外用户选择huggingface下载</li>
+<li>下载完成后，就可以开启语音识别，使用语音和你的AI聊天了</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/11.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h2 id="heading-4">免费的浏览器内置语音识别API</h2>
+<p>你可以使用浏览器中内置的免费语音识别API，Web Speech API。你需要开启一个浏览器作为你的AI伴侣的“耳朵”，然后使用Web Speech API来识别语音。这个方法不需要花钱，但是需要联网。</p>
+<ol>
+<li>打开super agent party，点击<code>模型</code>页面，然后在<code>语音识别模型</code>子页面，选择<code>Web Speech API</code></li>
+<li>开启语音识别，super agent party会自动开启一个浏览器，现在你就可以在浏览器中使用Web Speech API来识别语音了</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/12.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>第四步：让你的AI伴侣能说话</h1>
+<p>你需要一个语音合成模型，我们一般称为TTS。TTS是AI伴侣的“嘴巴”，它决定了AI伴侣能否用声音和你交流。</p>
+<p>这里有两个免费的方法：</p>
+<h2 id="heading-5">免费的系统TTS</h2>
+<p>windows系统和macOS系统都内置了语音合成模型，语音效果很一般，但是速度非常的快。用来快速测试非常合适。macOS请选择有【Siri/Premium】标识的语音，比如<code>【Siri/Premium】Meijia</code>，就是你经常听到的siri语音啦！</p>
+<ol>
+<li>打开super agent party，点击<code>模型</code>页面，然后在<code>语音合成模型</code>子页面，选择<code>系统TTS</code></li>
+<li>选择你的系统TTS，比如<code>【Siri/Premium】Meijia</code></li>
+<li>开启语音合成即可</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/13.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h2 id="heading-6">免费的EdgeTTS</h2>
+<p>EdgeTTS是微软提供的一个免费的TTS接口，语音效果比较好，但是需要联网。这里额外声明一下，对于小规模或个人课堂使用，微软持默许态度，但是如果你要商业化和盈利，微软是不允许的。微软官网可以找到<a href="https://learn.microsoft.com/zh-cn/answers/questions/5640180/edge-tts" target="_blank">相关解释</a>。如果你需要商业使用，请使用Azure TTS。</p>
+<p><figure class="my-8"><img src="/img/0yuan/14.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol>
+<li>打开super agent party，点击<code>模型</code>页面，然后在<code>语音合成模型</code>子页面，选择<code>EdgeTTS</code></li>
+<li>选择对应语言的音色，比如：<code>xiaoxiao</code></li>
+<li>开启语音合成即可</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/15.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>第五步：让你的AI伴侣能被看见</h1>
+<p>为了让你的AI伴侣以3D形象出现在你的桌面上，你需要开启VRM桌宠机器人。</p>
+<h2 id="heading-7">免费的VRM模型</h2>
+<p>如果你想要更多的免费3D形象，可以去<a href="https://hub.vroid.com/en" target="_blank">vroidhub</a>下载，或者去<a href="https://www.aplaybox.com/search?value=VRM" target="_blank">模之屋</a>下载。</p>
+<ol>
+<li>打开super agent party，点击<code>机器人</code>页面，然后在<code>VRM桌宠机器人</code>子页面点击启动即可！</li>
+<li>鼠标左键旋转，滚轮缩放，右键平移，右上角第一个按钮拖拽整体窗口</li>
+<li>如果你希望录制透明背景的数字人口播视频或者在直播时录制桌宠，请在录制软件的浏览器源中添加<code>http://127.0.0.1:3456/vrm.html</code>作为视频源</li>
+</ol>
+<p><figure class="my-8"><img src="/img/0yuan/16.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>如果你还想让你的AI伴侣以2D形象出现，那么你需要安装live2D扩展，我将在扩展篇中仔细介绍，欢迎继续关注和收藏本博客专栏。</p>
+<h1>结语</h1>
+<p>终于！我们没有花费一分钱就完成了一个AI伴侣！如果你有任何问题，欢迎加入：</p>
+<ul>
+<li>QQ群：<code>931057213</code></li>
+<li>Discord:<a href="https://discord.gg/f2dsAKKr2V" target="_blank">Discord link</a></li>
+</ul>
+<blockquote>
+<p>© 2026 heshengtao，采用 CC BY 4.0 国际协议授权<br>可自由转载、演绎、商用，须署名并给出原链接。</p>
+</blockquote>
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- 右侧目录 -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">文章目录</h3>
+                    <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
+                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">去ollama官网下载ollama</a>
+<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">免费的ollama的云模型</a>
+<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">在super agent party中使用ollama的云模型</a>
+<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">免费的本地小模型</a>
+<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">免费的浏览器内置语音识别API</a>
+<a href="#heading-5" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">免费的系统TTS</a>
+<a href="#heading-6" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">免费的EdgeTTS</a>
+<a href="#heading-7" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">免费的VRM模型</a>
+
+                    </nav>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left text-gray-500 text-xs font-mono">
+            <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
+</body>
+</html>

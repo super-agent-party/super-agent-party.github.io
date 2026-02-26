@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一本读不完的AI杂志！让AI伴侣带你感受世界的变化！ - Super Agent Party</title>
+    <meta name="description" content="通过RSS订阅+AI伴侣，高效获取消息！">
+    
+    <link rel="alternate" hreflang="en" href="../en/article-aimgz.html" />
+    
+    <!-- 注意这些 js 和图片引入前面加了 ../../ -->
+    <script src="../../theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../github-stars.js"></script>
+    
+    <link rel="icon" href="../../img/icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', '"Microsoft YaHei"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace; scroll-behavior: smooth; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: transform 0.3s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
+        .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
+
+        .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
+        .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
+        .dark .prose h1, .dark .prose h2, .dark .prose h3 { color: #ffffff; }
+        .prose h1 { font-size: 2.25rem; margin-bottom: 1.5rem; margin-top: 2.5rem; }
+        .prose h2 { font-size: 1.5rem; margin-bottom: 1.25rem; margin-top: 2rem; border-bottom: 3px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
+        .prose p { margin-bottom: 1.25rem; color: #374151; }
+        .dark .prose p { color: #D1D5DB; }
+        .prose ul { list-style-type: disc !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose ol { list-style-type: decimal !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose li { margin-bottom: 0.5rem !important; }
+        .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #eb5757; }
+        .dark .prose code { background: #2d2d2d; color: #FFD700; }
+        .prose pre { background: #1a1a1a; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; box-shadow: 4px 4px 0px #000; border: 1px solid #333; }
+        .dark .prose pre { border-color: #444; box-shadow: 4px 4px 0px #FFD700; }
+        .prose img { max-width: 100%; height: auto; margin: 2.5rem auto; border-radius: 8px; filter: drop-shadow(6px 6px 0px #FFD700); }
+        .prose a { color: #2563EB; text-decoration: underline; }
+        .prose a:hover { color: #FFD700; background: #000; }
+        .dark .prose a { color: #FFD700; }
+        .prose blockquote { margin: 2rem 0; padding: 1rem 1.5rem; border: 2px solid #000; background: #fff; box-shadow: 4px 4px 0px #FFD700; }
+        .dark .prose blockquote { background: #111; border-color: #FFD700; color: #e5e7eb; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="../../download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
+                    <a href="../../blog-zh.html" class="nav-link font-bold text-sm">博客</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
+                    </button>
+
+                    <a href="../en/article-aimgz.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        English
+                    </a>
+
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="../../index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
+            <a href="../../download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
+            <a href="../../blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
+        <div class="mb-4 text-sm font-mono">
+            <!-- 回到根目录的博客列表页 -->
+            <a href="../../blog-zh.html" class="hover:text-geekYellow hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i> <span>返回博客列表</span>
+            </a>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="flex-grow lg:w-3/4">
+                <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
+                    <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
+                        <div id="meta-tags" class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">AI杂志</span><span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">AI播客</span><span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">RSS</span>
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-black mb-2 dark:text-white">一本读不完的AI杂志！让AI伴侣带你感受世界的变化！</h1>
+                        <div class="text-sm font-mono text-gray-500">
+                            <span>2026-01-19</span> | <span>aimgz.md</span>
+                        </div>
+                    </div>
+
+                    <div class="prose dark:prose-invert">
+                        <p><figure class="my-8"><img src="/img/aimgz/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>引言</h1>
+<p>面对着信息爆炸的时代，传统的阅读方式往往耗时耗力。因此，我给AI伴侣软件——<a href="https://github.com/heshengtao/super-agent-party" target="_blank">Super Agent party</a>，增加了一个新的扩展：<a href="https://github.com/heshengtao/sap-rss" target="_blank">sap-rss</a>，它可以帮助我们通过RSS订阅获取消息，然后自动整理成一本每日都可以会更新的AI杂志，最后让你的AI伴侣念给你听。我们一起来看一下是怎么实现的吧！</p>
+<h1>第一步：下载super agent party！</h1>
+<p>首先，你需要下载一个免费的super agent party！这是一个开源的AI伴侣软件。你可以从<a href="https://github.com/heshengtao/super-agent-party" target="_blank">GitHub</a>看到他的源码。</p>
+<p>如果你是中国用户，你可以在<a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files" target="_blank">魔搭社区</a>下载。选择对应版本号的文件夹，然后选择符合你的操作系统的版本，点击下载即可！</p>
+<p><figure class="my-8"><img src="/img/0yuan/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>如果你是海外用户，你可以在<a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank">GitHub</a>下载。选择适合你的操作系统的版本，点击下载即可！</p>
+<p><figure class="my-8"><img src="/img/0yuan/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>如果你是一个爱折腾的极客，你也可以选择docker版本，在<a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser" target="_blank">GitHub</a>查看使用方法。</p>
+<h1>第二步：安装RSS扩展</h1>
+<p>打开super agent party，你可以在【开发者】-&gt; 【扩展】子页面中看到已经安装的扩展，你可以点击【安装新扩展】按钮，然后选择【sap-rss】进行安装。</p>
+<p><figure class="my-8"><img src="/img/aimgz/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>扩展有三种方式可以打开，分别是：</p>
+<ol>
+<li>侧边栏方式打开：点击侧边栏界面中的的【sap-rss】就可以打开扩展。</li>
+</ol>
+<p><figure class="my-8"><img src="/img/aimgz/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p><figure class="my-8"><img src="/img/aimgz/3.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>打开之后，你就可以看到RSS扩展的界面了。你可以点击+号来添加新的RSS订阅。</p>
+<p><figure class="my-8"><img src="/img/aimgz/4.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="2">
+<li>独立窗口方式打开：点击侧边栏界面中的【sap-rss】右上角的独立窗口小按钮。</li>
+</ol>
+<p><figure class="my-8"><img src="/img/aimgz/5.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>打开之后，RSS扩展的界面会以独立窗口的形式打开。</p>
+<p><figure class="my-8"><img src="/img/aimgz/6.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="3">
+<li>浏览器窗口方式打开：点击侧边栏界面中的【sap-rss】右上角的浏览器窗口小按钮。</li>
+</ol>
+<p><figure class="my-8"><img src="/img/aimgz/7.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>打开之后，RSS扩展的界面会以浏览器窗口的形式打开。</p>
+<p><figure class="my-8"><img src="/img/aimgz/8.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>第三步：添加RSS订阅</h1>
+<p>在RSS扩展的界面中，你可以点击+号来添加新的RSS订阅。你可以输入RSS的URL，然后点击【添加】按钮。</p>
+<p><figure class="my-8"><img src="/img/aimgz/9.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>你可以点击+号左边的网络按钮添加我们已经整理好的一些RSS订阅。</p>
+<p><figure class="my-8"><img src="/img/aimgz/10.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>第四步：生成AI翻译、AI总结、AI播客、AI杂志</h1>
+<p>点击界面上的以下按钮，可以实现对RSS订阅的翻译、总结、播客、杂志的生成。Super Agent party不会通过提供AI功能而要求你付费使用，所有的AI算力可以通过你自己配置的AI模型来实现。因此你需要提前配置好对应的LLM和TTS模型。关于如何使用免费的算力，在上一期博客中已经介绍过了，你可以点击<a href="https://www.agentparty.top/article.html?lang=zh&slug=0yuan" target="_blank">这里</a>查看。</p>
+<p><figure class="my-8"><img src="/img/aimgz/11.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p><figure class="my-8"><img src="/img/aimgz/12.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>你可以点击AI杂志上的目录跳转到你想要看的章节。</p>
+<p><figure class="my-8"><img src="/img/aimgz/13.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>第五步：让AI伴侣念给你听</h1>
+<p>点击VRM桌宠按钮，然后点击AI杂志上的【播放】按钮，就可以让AI伴侣念给你听了。</p>
+<p><figure class="my-8"><img src="/img/aimgz/14.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p><figure class="my-8"><img src="/img/aimgz/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>更多RSS订阅去哪里找？</h1>
+<p>RSS 协议虽然历史悠久，但它依然是当今互联网上信息获取最自由、最高效的方式。虽然现在很多网站不再把 RSS 图标挂在显眼位置，但它们其实一直都在。为了让你的 <strong>Super Agent Party</strong> 生成的 AI 杂志内容丰富多彩，这里为你整理了一套从入门到精通的“订阅源挖掘指南”，涵盖全球主流平台。</p>
+<h2 id="heading-0">1. 必备神器：浏览器探测插件 (RSSHub Radar)</h2>
+<p>这是最简单、最推荐给所有用户的方法。你不需要懂代码，只需要给浏览器装一个“雷达”。</p>
+<ul>
+<li><strong>RSSHub Radar</strong>: 这是一个开源的浏览器扩展（支持 Chrome/Edge/Firefox）。当你访问一个网站时，如果该网站自带 RSS，或者支持通过 RSSHub 生成 RSS，它的图标就会亮起并显示数字。<ul>
+<li><strong>适用场景</strong>：几乎所有网页。</li>
+<li><strong>获取方式</strong>：在 GitHub 搜索 <code>RSSHub Radar</code> 或在 Chrome 应用商店直接下载。</li>
+<li><strong>全球通用</strong>：不仅能探测国内的 Bilibili、微博，也能探测国外的 YouTube Channel、Reddit 板块等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-1">2. 万物皆可 RSS：拥抱开源项目 RSSHub</h2>
+<p>如果你发现某个喜欢的网站（例如 Twitter/X、Instagram、知乎、抖音等）官方完全不支持 RSS，怎么办？这时候就需要请出 RSS 界的“瑞士军刀”—— <strong>RSSHub</strong>。</p>
+<ul>
+<li><strong>什么是 RSSHub</strong>：它是一个开源社区驱动的项目，可以通过特定的规则将几乎任何网页内容转换成 RSS 订阅源。</li>
+<li><strong>如何使用</strong>：<ul>
+<li><strong>官方/公共实例</strong>：RSSHub 官方提供了一个公共域名，你只需要按照文档拼接 URL 即可（例如 <code>https://rsshub.app/twitter/user/elonmusk</code>）。</li>
+<li><strong>自建服务（推荐给极客）</strong>：为了更稳定的体验和访问某些特定区域的内容，强烈建议像部署 Super Agent Party 一样，使用 Docker 在本地或服务器上自部署一个 RSSHub。</li>
+<li><strong>Docker 部署</strong>：只需一行命令 <code>docker pull diygod/rsshub</code>，配合我们的 <code>sap-rss</code> 扩展，体验简直起飞。</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-2">3. 全球主流平台的原生/技巧性获取</h2>
+<p>很多国际主流平台其实自带 RSS 接口，只是藏得比较深。掌握这些技巧，你可以轻松订阅全球资讯：</p>
+<ul>
+<li><strong>YouTube (视频/播客)</strong>：<ul>
+<li>不需要第三方工具。打开任意频道页面，查看源代码搜索 <code>channel_id</code>，然后拼接：<code>https://www.youtube.com/feeds/videos.xml?channel_id=你的ID</code>。</li>
+<li>配合 AI 伴侣的总结功能，你甚至不用看视频就能知道博主讲了什么。</li>
+</ul>
+</li>
+<li><strong>Reddit (社区讨论)</strong>：<ul>
+<li>非常良心，只需在 URL 后加 <code>.rss</code>。例如：<code>https://www.reddit.com/r/technology/.rss</code>。</li>
+</ul>
+</li>
+<li><strong>Medium (技术/写作)</strong>：<ul>
+<li>在个人主页 URL 后加 <code>/feed</code>。例如：<code>medium.com/feed/@username</code>。</li>
+</ul>
+</li>
+<li><strong>Substack (Newsletter)</strong>：<ul>
+<li>在这个 Newsletter 盛行的时代，几乎所有的 Substack 页面只需在域名后加 <code>/feed</code> 即可获得全文 RSS。</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-3">4. 聚合平台与搜索引擎 (Aggregators)</h2>
+<p>如果你不知道看什么，可以去这些专门收集 RSS 的“黄页”网站逛逛，它们通常按话题分类，方便你批量导入：</p>
+<ul>
+<li><strong>Feedly / Inoreader</strong>: 这两个是全球最大的 RSS 阅读器服务商。虽然它们主要是阅读器，但它们的“搜索框”是非常强大的 RSS 搜索引擎。输入关键词（如 &quot;AI News&quot; 或 &quot;SpaceX&quot;），它们会列出全网最热门的相关 RSS 源。</li>
+<li><strong>Follow.is</strong>: 新一代的订阅浏览器，界面非常现代化。它的发现页（Discover）有很多用户创建的高质量订阅列表（Lists），涵盖了科技、设计、编程等前沿领域。</li>
+<li><strong>Feedspot</strong>: 一个包含全球数十万个 RSS Feed 的数据库，按行业和国家分类，非常适合寻找特定领域的专业资讯。</li>
+</ul>
+<h2 id="heading-4">5. GitHub 上的 Awesome 列表</h2>
+<p>对于开发者和极客用户，GitHub 本身就是一个巨大的资源库。你可以搜索以下关键词找到由社区精心维护的源列表（OPML文件）：</p>
+<ul>
+<li><code>ALL-about-RSS</code></li>
+<li><code>awesome-rss-feeds</code></li>
+<li><code>chinese-independent-blogs</code> (中文独立博客列表)</li>
+<li><code>engineering-blogs</code> (全球各大科技公司的技术博客)</li>
+</ul>
+<p><strong>小贴士</strong>：获取到 RSS 链接后，别忘了先在浏览器里打开测试一下，只要看到满屏的代码（XML 格式）或者下载提示，就说明这是一个有效的链接，直接复制进 <strong>Super Agent Party</strong> 的 <code>sap-rss</code> 扩展即可！</p>
+<h1>结语</h1>
+<p>通过RSS订阅+AI伴侣，我们可以高效获取消息，然后自动整理成一本每日都可以会更新的AI杂志，最后让你的AI伴侣念给你听。这样，我们就可以在忙碌的生活中，随时随地的获取到最新的消息，并且让AI伴侣来帮助我们整理和阅读这些消息。如果你有任何问题，欢迎加入：</p>
+<ul>
+<li>QQ群：<code>931057213</code></li>
+<li>Discord:<a href="https://discord.gg/f2dsAKKr2V" target="_blank">Discord link</a></li>
+</ul>
+<blockquote>
+<p>© 2026 heshengtao，采用 CC BY 4.0 国际协议授权<br>可自由转载、演绎、商用，须署名并给出原链接。</p>
+</blockquote>
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- 右侧目录 -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">文章目录</h3>
+                    <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
+                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">1. 必备神器：浏览器探测插件 (RSSHub Radar)</a>
+<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">2. 万物皆可 RSS：拥抱开源项目 RSSHub</a>
+<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">3. 全球主流平台的原生/技巧性获取</a>
+<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">4. 聚合平台与搜索引擎 (Aggregators)</a>
+<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">5. GitHub 上的 Awesome 列表</a>
+
+                    </nav>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left text-gray-500 text-xs font-mono">
+            <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
+</body>
+</html>

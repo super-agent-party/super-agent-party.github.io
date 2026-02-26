@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Super Agent Party Blog (ZH)</title>
-    <link>https://www.agentparty.top/blog.html</link>
+    <link>https://www.agentparty.top/blog-zh.html</link>
     <description>Updates from Super Agent Party</description>
     <language>zh-cn</language>
     <generator>NodeJS Build Script</generator>
     <item>
       <title>一本读不完的AI杂志！让AI伴侣带你感受世界的变化！</title>
-      <link>https://www.agentparty.top/article.html?lang=zh&amp;slug=aimgz</link>
+      <link>https://www.agentparty.top/blog/zh/article-aimgz.html</link>
       <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
       <description>通过RSS订阅+AI伴侣，高效获取消息！</description>
-      <guid>https://www.agentparty.top/article.html?lang=zh&amp;slug=aimgz</guid>
+      <guid>https://www.agentparty.top/blog/zh/article-aimgz.html</guid>
       <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/aimgz/0.jpeg" alt="img" title="" /></p>
 <h1>引言</h1>
 <p>面对着信息爆炸的时代，传统的阅读方式往往耗时耗力。因此，我给AI伴侣软件——<a href="https://github.com/heshengtao/super-agent-party">Super Agent party</a>，增加了一个新的扩展：<a href="https://github.com/heshengtao/sap-rss">sap-rss</a>，它可以帮助我们通过RSS订阅获取消息，然后自动整理成一本每日都可以会更新的AI杂志，最后让你的AI伴侣念给你听。我们一起来看一下是怎么实现的吧！</p>
@@ -133,10 +133,10 @@
     </item>
     <item>
       <title>挑战0元创造AI伴侣，我能成功吗？</title>
-      <link>https://www.agentparty.top/article.html?lang=zh&amp;slug=0yuan</link>
+      <link>https://www.agentparty.top/blog/zh/article-0yuan.html</link>
       <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
       <description>手把手教你如何不花钱打造一个AI伴侣</description>
-      <guid>https://www.agentparty.top/article.html?lang=zh&amp;slug=0yuan</guid>
+      <guid>https://www.agentparty.top/blog/zh/article-0yuan.html</guid>
       <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/0yuan/0.jpeg" alt="img" title="" /></p>
 <h1>引言</h1>
 <p>如果说，你想要一个AI伴侣，但是又不想花费一分钱，那么这篇文章就是为你准备的。在这里，我将向你展示如何不花钱打造一个AI伴侣，让你在虚拟世界中找到陪伴。</p>
@@ -248,10 +248,10 @@
     </item>
     <item>
       <title>欢迎来到 Super Agent Party 博客</title>
-      <link>https://www.agentparty.top/article.html?lang=zh&amp;slug=hello-world</link>
+      <link>https://www.agentparty.top/blog/zh/article-hello-world.html</link>
       <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
       <description>这里是第一篇Super Agent Party 博客</description>
-      <guid>https://www.agentparty.top/article.html?lang=zh&amp;slug=hello-world</guid>
+      <guid>https://www.agentparty.top/blog/zh/article-hello-world.html</guid>
       <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/cover.png" alt="img" title="" /></p>
 <h1>欢迎加入派对！</h1>
 <p>我在开发Super Agent Party时，会有一些思考和想法，我会在这里分享出来，希望对大家有所帮助。</p>
@@ -263,8 +263,8 @@
 <li>收集整理一些资源站点、免费的云服务、工具、插件、软件等</li>
 </ul>
 <h2>本博客支持RSS订阅，欢迎关注！</h2>
-<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-中文-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="中文RSS" title="" /></a>
-<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="EnglishRSS" title="" /></a></p>
+<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-中文-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="中文RSS" title="" /></a></p>
+<p><a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="EnglishRSS" title="" /></a></p>
 <h2>欢迎大家关注和留言交流，谢谢！</h2>
 <blockquote>
 <p>© 2026 heshengtao，采用 CC BY 4.0 国际协议授权<br>可自由转载、演绎、商用，须署名并给出原链接。</p>

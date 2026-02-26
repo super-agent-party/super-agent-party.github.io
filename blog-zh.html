@@ -289,9 +289,9 @@
 
                     // 核心修改：链接指向 article-zh.html
                     container.innerHTML += `
-                        <a href="article-zh.html?slug=${post.id}" class="tech-card block group hover:no-underline rounded-sm">
-                            ${layoutHtml}
-                        </a>`;
+                    <a href="blog/zh/article-${post.id}.html" class="tech-card block group hover:no-underline rounded-sm">
+                        ${layoutHtml}
+                    </a>`;
                 });
 
             } catch (e) {

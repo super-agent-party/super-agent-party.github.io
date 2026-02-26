@@ -8,10 +8,10 @@
     <generator>NodeJS Build Script</generator>
     <item>
       <title>An AI Magazine You Can Never Finish Reading! Let Your AI Companion Take You Through the Changes of the World!</title>
-      <link>https://www.agentparty.top/article.html?lang=en&amp;slug=aimgz</link>
+      <link>https://www.agentparty.top/blog/en/article-aimgz.html</link>
       <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
       <description>Efficiently get updates via RSS subscription + AI companion!</description>
-      <guid>https://www.agentparty.top/article.html?lang=en&amp;slug=aimgz</guid>
+      <guid>https://www.agentparty.top/blog/en/article-aimgz.html</guid>
       <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/aimgz/0.jpeg" alt="img" title="" /></p>
 <h1>Introduction</h1>
 <p>In the era of information explosion, traditional reading methods often consume too much time and effort. Therefore, I added a new extension — <a href="https://github.com/heshengtao/sap-rss">sap-rss</a> — to the AI companion software — <a href="https://github.com/heshengtao/super-agent-party">Super Agent Party</a>. This extension helps us obtain updates through RSS subscriptions, automatically organizes them into a daily-updated AI magazine, and finally lets your AI companion read it aloud to you. Let’s take a look at how this is achieved!</p>
@@ -133,10 +133,10 @@
     </item>
     <item>
       <title>Challenge: Create an AI Companion for $0, Can I Succeed?</title>
-      <link>https://www.agentparty.top/article.html?lang=en&amp;slug=0yuan</link>
+      <link>https://www.agentparty.top/blog/en/article-0yuan.html</link>
       <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
       <description>A step-by-step guide on how to build an AI companion without spending any money</description>
-      <guid>https://www.agentparty.top/article.html?lang=en&amp;slug=0yuan</guid>
+      <guid>https://www.agentparty.top/blog/en/article-0yuan.html</guid>
       <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/0yuan/0.jpeg" alt="img" title="" /></p>
 <h1>Introduction</h1>
 <p>If you want an AI companion but don&#39;t want to spend a single cent, then this article is for you. Here, I will show you how to create an AI companion for free, allowing you to find companionship in the virtual world.</p>
@@ -248,10 +248,10 @@
     </item>
     <item>
       <title>Welcome to the Super Agent Party Blog</title>
-      <link>https://www.agentparty.top/article.html?lang=en&amp;slug=hello-world</link>
+      <link>https://www.agentparty.top/blog/en/article-hello-world.html</link>
       <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
       <description>This is the first Super Agent Party blog post.</description>
-      <guid>https://www.agentparty.top/article.html?lang=en&amp;slug=hello-world</guid>
+      <guid>https://www.agentparty.top/blog/en/article-hello-world.html</guid>
       <content:encoded><![CDATA[<p><img src="https://www.agentparty.top/img/cover.png" alt="img" title="" /></p>
 <h1>Welcome to the Party!</h1>
 <p>During the development of Super Agent Party, I will have some thoughts and ideas, which I will share here in the hopes that they will be helpful to everyone.</p>
@@ -263,8 +263,8 @@
 <li>Collection and organization of resource sites, free cloud services, tools, plugins, software, etc.</li>
 </ul>
 <h2>This blog supports RSS subscription, welcome to follow!</h2>
-<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-Chinese-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="Chinese RSS" title="" /></a>
-<a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="English RSS" title="" /></a></p>
+<p><a href="https://super-agent-party.github.io/posts/feed-zh.xml"><img src="https://img.shields.io/badge/RSS-Chinese-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="Chinese RSS" title="" /></a></p>
+<p><a href="https://super-agent-party.github.io/posts/feed-en.xml"><img src="https://img.shields.io/badge/RSS-English-%23FF0000.svg?&style=for-the-badge&logo=rss&logoColor=white" alt="English RSS" title="" /></a></p>
 <h2>Welcome to follow and leave comments for discussion, thank you!</h2>
 <blockquote>
 <p>© 2026 heshengtao, licensed under CC BY 4.0 International<br>Free to share, adapt, and use commercially, with attribution and a link to the original.</p>

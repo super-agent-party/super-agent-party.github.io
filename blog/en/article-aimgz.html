@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An AI Magazine You Can Never Finish Reading! Let Your AI Companion Take You Through the Changes of the World! - Super Agent Party</title>
+    <meta name="description" content="Efficiently get updates via RSS subscription + AI companion!">
+    
+    <!-- SEO Language Mapping -->
+    <link rel="alternate" hreflang="zh-Hans" href="../zh/article-aimgz.html" />
+
+    <!-- 依赖脚本 (注意 ../../ 返回根目录获取资源) -->
+    <script src="../../theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../github-stars.js"></script>
+    
+    <link rel="icon" href="../../img/icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: transform 0.3s, opacity 0.2s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
+        .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
+
+        /* Markdown Styles */
+        .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
+        .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
+        .dark .prose h1, .dark .prose h2, .dark .prose h3 { color: #ffffff; }
+        .prose h1 { font-size: 2.25rem; margin-bottom: 1.5rem; margin-top: 2.5rem; }
+        .prose h2 { font-size: 1.5rem; margin-bottom: 1.25rem; margin-top: 2rem; border-bottom: 3px solid #FFD700; padding-bottom: 0.25rem; display: inline-block; }
+        .prose p { margin-bottom: 1.25rem; color: #374151; }
+        .dark .prose p { color: #D1D5DB; }
+        .prose ul { list-style-type: disc !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose ol { list-style-type: decimal !important; padding-left: 2rem !important; margin-bottom: 1.5rem !important; }
+        .prose li { margin-bottom: 0.5rem !important; }
+        .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #eb5757; }
+        .dark .prose code { background: #2d2d2d; color: #FFD700; }
+        .prose pre { background: #1a1a1a; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; border: 1px solid #333; box-shadow: 4px 4px 0px #000; }
+        .dark .prose pre { border-color: #444; box-shadow: 4px 4px 0px #FFD700; }
+        .prose img { max-width: 100%; height: auto; margin: 2.5rem auto; border-radius: 8px; filter: drop-shadow(6px 6px 0px #FFD700); }
+        .prose a { color: #2563EB; text-decoration: underline; }
+        .prose a:hover { color: #FFD700; background: #000; }
+        .dark .prose a { color: #FFD700; }
+        .prose blockquote { margin: 2rem 0; padding: 1rem 1.5rem; border: 2px solid #000; background: #fff; box-shadow: 4px 4px 0px #FFD700; }
+        .dark .prose blockquote { background: #111; border-color: #FFD700; color: #e5e7eb; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="../../index.html" class="nav-link font-bold text-sm">Home</a>
+                    <a href="../../download.html" class="nav-link font-bold text-sm">Download</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
+                            Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
+                            <a href="../../plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
+                            <a href="../../mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
+                            <a href="../../skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                        </div>
+                    </div>
+
+                    <a href="../../blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <a href="../zh/article-aimgz.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        中文
+                    </a>
+
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Expanded) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="../../index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
+            <a href="../../download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
+            <div class="bg-gray-50 dark:bg-gray-900/50">
+                <a href="../../plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Plugins</a>
+                <a href="../../mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ MCP</a>
+                <a href="../../skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Skills</a>
+            </div>
+            <a href="../../blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            <a href="../zh/article-aimgz.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">Switch to 中文</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
+        <!-- Back Link -->
+        <div class="mb-4 text-sm font-mono">
+            <a href="../../blog.html" class="hover:text-geekYellow hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i> <span>Back to Blog</span>
+            </a>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Left: Article -->
+            <div class="flex-grow lg:w-3/4">
+                <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
+                    <div class="mb-8 border-b border-dashed border-gray-400 dark:border-gray-600 pb-6">
+                        <div id="meta-tags" class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">AI Magazine</span><span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">AI Podcast</span><span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">RSS</span>
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-black mb-2 dark:text-white">An AI Magazine You Can Never Finish Reading! Let Your AI Companion Take You Through the Changes of the World!</h1>
+                        <div class="text-sm font-mono text-gray-500">
+                            <span>2026-01-19</span> | <span>aimgz.md</span>
+                        </div>
+                    </div>
+
+                    <div class="prose dark:prose-invert">
+                        <p><figure class="my-8"><img src="/img/aimgz/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>Introduction</h1>
+<p>In the era of information explosion, traditional reading methods often consume too much time and effort. Therefore, I added a new extension — <a href="https://github.com/heshengtao/sap-rss" target="_blank">sap-rss</a> — to the AI companion software — <a href="https://github.com/heshengtao/super-agent-party" target="_blank">Super Agent Party</a>. This extension helps us obtain updates through RSS subscriptions, automatically organizes them into a daily-updated AI magazine, and finally lets your AI companion read it aloud to you. Let’s take a look at how this is achieved!</p>
+<h1>Step One: Download Super Agent Party!</h1>
+<p>First, you need to download the free Super Agent Party! This is an open-source AI companion software. You can view its source code on <a href="https://github.com/heshengtao/super-agent-party" target="_blank">GitHub</a>.</p>
+<p>If you are a Chinese user, you can download it from the <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files" target="_blank">ModelScope Community</a>. Select the folder corresponding to the version number, then choose the version compatible with your operating system and click to download!</p>
+<p><figure class="my-8"><img src="/img/0yuan/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>If you are an overseas user, you can download it from <a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank">GitHub</a>. Select the version suitable for your operating system and click to download!</p>
+<p><figure class="my-8"><img src="/img/0yuan/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>If you are a tech-savvy geek, you can also choose the Docker version and check the usage instructions on <a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser" target="_blank">GitHub</a>.</p>
+<h1>Step Two: Install the RSS Extension</h1>
+<p>Open Super Agent Party, and you can see the installed extensions under the 【Developer】-&gt; 【Extensions】subpage. Click the 【Install New Extension】button and select 【sap-rss】to install.</p>
+<p><figure class="my-8"><img src="/img/aimgz/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>There are three ways to open the extension:</p>
+<ol>
+<li>Open via sidebar: Click 【sap-rss】in the sidebar interface to open the extension.</li>
+</ol>
+<p><figure class="my-8"><img src="/img/aimgz/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p><figure class="my-8"><img src="/img/aimgz/3.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>After opening, you will see the RSS extension interface. You can click the + button to add new RSS subscriptions.</p>
+<p><figure class="my-8"><img src="/img/aimgz/4.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="2">
+<li>Open via independent window: Click the small independent window button at the top right of 【sap-rss】in the sidebar interface.</li>
+</ol>
+<p><figure class="my-8"><img src="/img/aimgz/5.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>After opening, the RSS extension interface will appear as an independent window.</p>
+<p><figure class="my-8"><img src="/img/aimgz/6.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<ol start="3">
+<li>Open via browser window: Click the small browser window button at the top right of 【sap-rss】in the sidebar interface.</li>
+</ol>
+<p><figure class="my-8"><img src="/img/aimgz/7.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>After opening, the RSS extension interface will appear as a browser window.</p>
+<p><figure class="my-8"><img src="/img/aimgz/8.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>Step Three: Add RSS Subscriptions</h1>
+<p>In the RSS extension interface, you can click the + button to add new RSS subscriptions. You can enter the RSS URL and click the 【Add】button.</p>
+<p><figure class="my-8"><img src="/img/aimgz/9.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>You can click the network button to the left of the + button to add some pre-organized RSS subscriptions we have prepared.</p>
+<p><figure class="my-8"><img src="/img/aimgz/10.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>Step Four: Generate AI Translation, AI Summary, AI Podcast, AI Magazine</h1>
+<p>Click the buttons on the interface to generate AI translations, summaries, podcasts, and magazines based on your RSS subscriptions. Super Agent Party does not require you to pay for AI features; all AI computing power can be achieved through AI models you configure yourself. Therefore, you need to configure the corresponding LLM and TTS models in advance. How to use free computing power has already been introduced in the previous blog post — you can click <a href="https://www.agentparty.top/article.html?lang=zh&slug=0yuan" target="_blank">here</a> to view.</p>
+<p><figure class="my-8"><img src="/img/aimgz/11.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p><figure class="my-8"><img src="/img/aimgz/12.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p>You can click the table of contents on the AI magazine to jump to the chapter you want to read.</p>
+<p><figure class="my-8"><img src="/img/aimgz/13.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>Step Five: Let Your AI Companion Read It to You</h1>
+<p>Click the VRM pet button, then click the 【Play】button on the AI magazine to let your AI companion read it aloud to you.</p>
+<p><figure class="my-8"><img src="/img/aimgz/14.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<p><figure class="my-8"><img src="/img/aimgz/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
+<h1>Where to Find More RSS Subscriptions?</h1>
+<p>Although the RSS protocol is long-standing, it remains the most free and efficient way to access information on the internet today. Although many websites no longer prominently display the RSS icon, they are still available. To make your <strong>Super Agent Party</strong>-generated AI magazine content rich and diverse, here is a “Subscription Source Mining Guide” ranging from beginner to advanced, covering major global platforms.</p>
+<h2 id="heading-0">1. Essential Tool: Browser Detection Plugin (RSSHub Radar)</h2>
+<p>This is the simplest and most recommended method for all users. You don’t need to know coding — just install a “radar” in your browser.</p>
+<ul>
+<li><strong>RSSHub Radar</strong>: This is an open-source browser extension (supports Chrome/Edge/Firefox). When you visit a website, if the site has RSS support or can generate RSS via RSSHub, its icon will light up and display a number.<ul>
+<li><strong>Applicable Scenarios</strong>: Almost all web pages.</li>
+<li><strong>Acquisition Method</strong>: Search for <code>RSSHub Radar</code> on GitHub or directly download it from the Chrome Web Store.</li>
+<li><strong>Global Applicability</strong>: Can detect not only domestic platforms like Bilibili and Weibo, but also international platforms like YouTube channels and Reddit subreddits.</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-1">2. Everything Can Be RSS: Embrace the Open-Source Project RSSHub</h2>
+<p>If you find that a website you like (e.g., Twitter/X, Instagram, Zhihu, Douyin, etc.) does not officially support RSS, what should you do? At this point, you need to bring out the “Swiss Army Knife” of the RSS world — <strong>RSSHub</strong>.</p>
+<ul>
+<li><strong>What is RSSHub</strong>: It is an open-source, community-driven project that can convert almost any web page content into an RSS subscription source through specific rules.</li>
+<li><strong>How to Use</strong>:<ul>
+<li><strong>Official/Public Instances</strong>: RSSHub provides a public domain name. You only need to construct the URL according to the documentation (e.g., <code>https://rsshub.app/twitter/user/elonmusk</code>).</li>
+<li><strong>Self-Hosted Service (Recommended for Geeks)</strong>: To ensure a more stable experience and access specific regional content, it is strongly recommended to deploy an RSSHub locally or on a server using Docker, just like deploying Super Agent Party.</li>
+<li><strong>Docker Deployment</strong>: Just one command <code>docker pull diygod/rsshub</code>, combined with our <code>sap-rss</code> extension, the experience is simply amazing.</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-2">3. Native or Skill-Based Access to Major Global Platforms</h2>
+<p>Many international mainstream platforms actually have native RSS interfaces, though they are hidden deep within. Mastering these techniques allows you to easily subscribe to global news:</p>
+<ul>
+<li><strong>YouTube (Videos/Podcasts)</strong>:<ul>
+<li>No third-party tools needed. Open any channel page, view the source code to search for <code>channel_id</code>, then construct: <code>https://www.youtube.com/feeds/videos.xml?channel_id=yourID</code>.</li>
+<li>Combined with the AI companion’s summarization feature, you don’t even need to watch the video to know what the creator is talking about.</li>
+</ul>
+</li>
+<li><strong>Reddit (Community Discussions)</strong>:<ul>
+<li>Very user-friendly — simply add <code>.rss</code> to the URL. For example: <code>https://www.reddit.com/r/technology/.rss</code>.</li>
+</ul>
+</li>
+<li><strong>Medium (Technology/Writing)</strong>:<ul>
+<li>Add <code>/feed</code> to the end of the personal homepage URL. For example: <code>medium.com/feed/@username</code>.</li>
+</ul>
+</li>
+<li><strong>Substack (Newsletters)</strong>:<ul>
+<li>In this era of newsletter popularity, almost all Substack pages only require adding <code>/feed</code> after the domain to obtain the full RSS feed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-3">4. Aggregation Platforms and Search Engines (Aggregators)</h2>
+<p>If you don’t know what to read, you can browse these specialized RSS “yellow pages” websites, which usually categorize by topic, making it easy for you to import in bulk:</p>
+<ul>
+<li><strong>Feedly / Inoreader</strong>: These are the two largest RSS reader service providers globally. Although they are primarily readers, their “search bar” is a powerful RSS search engine. Enter keywords (e.g., &quot;AI News&quot; or &quot;SpaceX&quot;), and they will list the most popular relevant RSS sources across the web.</li>
+<li><strong>Follow.is</strong>: A next-generation subscription browser with a very modern interface. Its Discover page features many high-quality user-created subscription lists (Lists) covering cutting-edge fields such as technology, design, and programming.</li>
+<li><strong>Feedspot</strong>: A database containing tens of thousands of RSS Feeds worldwide, categorized by industry and country — ideal for finding professional information in specific fields.</li>
+</ul>
+<h2 id="heading-4">5. Awesome Lists on GitHub</h2>
+<p>For developers and tech-savvy users, GitHub itself is a massive resource repository. You can search for the following keywords to find community-maintained source lists (OPML files):</p>
+<ul>
+<li><code>ALL-about-RSS</code></li>
+<li><code>awesome-rss-feeds</code></li>
+<li><code>chinese-independent-blogs</code> (Chinese independent blog list)</li>
+<li><code>engineering-blogs</code> (Technical blogs from major global tech companies)</li>
+</ul>
+<p><strong>Tip</strong>: After obtaining the RSS link, don’t forget to test it in your browser first. If you see a screen full of code (XML format) or a download prompt, it means the link is valid — simply copy it into the <code>sap-rss</code> extension in <strong>Super Agent Party</strong>!</p>
+<h1>Conclusion</h1>
+<p>Through RSS subscriptions + AI companion, we can efficiently obtain updates, automatically organize them into a daily-updated AI magazine, and finally let your AI companion read it aloud to you. This way, we can access the latest news anytime and anywhere in our busy lives, while letting the AI companion help us organize and read these updates.If you have any questions, feel free to join:</p>
+<ul>
+<li>QQ Group: <code>931057213</code></li>
+<li>Discord: <a href="https://discord.gg/f2dsAKKr2V" target="_blank">Discord link</a></li>
+</ul>
+<blockquote>
+<p>© 2026 heshengtao, licensed under CC BY 4.0 International<br>Free to share, adapt, and use commercially, with attribution and a link to the original.</p>
+</blockquote>
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right: TOC -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">Table of Contents</h3>
+                    <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
+                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">1. Essential Tool: Browser Detection Plugin (RSSHub Radar)</a>
+<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">2. Everything Can Be RSS: Embrace the Open-Source Project RSSHub</a>
+<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">3. Native or Skill-Based Access to Major Global Platforms</a>
+<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">4. Aggregation Platforms and Search Engines (Aggregators)</a>
+<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">5. Awesome Lists on GitHub</a>
+
+                    </nav>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left text-gray-500 text-xs font-mono">
+            <p>© 2026 Super Agent Party. Open source under AGPL-3.0.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
+</body>
+</html>
