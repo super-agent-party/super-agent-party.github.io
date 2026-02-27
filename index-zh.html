@@ -70,12 +70,12 @@
         }
         .dark .scan-line { background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.03) 50%); }
         .terminal-card {
-            background: rgba(255, 255, 255, 0.95); border: 2px solid #000; box-shadow: 6px 6px 0px #000;
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: rgba(255, 255, 255, 0.95); border: 2px solid #000; box-shadow: 8px 8px 0px #000;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .dark .terminal-card { background: rgba(10, 10, 10, 0.9); border: 1px solid #333; box-shadow: 6px 6px 0px rgba(255, 215, 0, 0.4); }
-        .terminal-card:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px #000; }
-        .dark .terminal-card:hover { box-shadow: 10px 10px 0px #FFD700; border-color: #FFD700; }
+        .dark .terminal-card { background: rgba(10, 10, 10, 0.9); border: 2px solid #333; box-shadow: 8px 8px 0px rgba(255, 215, 0, 0.3); }
+        .terminal-card:hover { transform: translate(-4px, -4px); box-shadow: 16px 16px 0px #000; }
+        .dark .terminal-card:hover { box-shadow: 16px 16px 0px #FFD700; border-color: #FFD700; }
         .nav-link { position: relative; display: inline-block; }
         .nav-link::before { content: '['; margin-right: 5px; opacity: 0; transition: all 0.3s; color: #FFD700; transform: translateX(10px); }
         .nav-link::after { content: ']'; margin-left: 5px; opacity: 0; transition: all 0.3s; color: #FFD700; transform: translateX(-10px); }
@@ -187,7 +187,7 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="download.html" class="w-full sm:w-auto px-8 py-3 bg-black dark:bg-geekYellow text-white dark:text-black font-bold text-lg hover:scale-105 transition-transform shadow-[4px_4px_0px_rgba(128,128,128,0.5)] dark:shadow-[4px_4px_0px_#fff]">
+                    <a href="download-zh.html" class="w-full sm:w-auto px-8 py-3 bg-black dark:bg-geekYellow text-white dark:text-black font-bold text-lg hover:scale-105 transition-transform shadow-[4px_4px_0px_rgba(128,128,128,0.5)] dark:shadow-[4px_4px_0px_#fff]">
                         <i class="fas fa-download mr-2"></i> 立即开始
                     </a>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="w-full sm:w-auto px-8 py-3 border-2 border-black dark:border-white text-black dark:text-white font-bold text-lg hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
@@ -209,121 +209,191 @@
             </div>
         </section>
 
-        <!-- 核心特性 -->
-        <section class="fullscreen-section bg-gray-50/50 dark:bg-gray-900/30 border-y border-black dark:border-gray-800 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 mb-12 w-full">
-                <h2 class="text-3xl font-bold mb-2 dark:text-white">
-                    <span class="text-geekYellow">>></span> 核心特性
-                </h2>
-            </div>
+        <!-- 核心功能展示（重构放大版） -->
+        <section id="features" class="relative py-32 bg-white dark:bg-geekDark overflow-hidden">
+            <!-- 背景装饰线 -->
+            <div class="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800 ml-4 md:ml-12 lg:ml-20 z-0 hidden md:block"></div>
 
-            <!-- 第一行：向左滚动 -->
-            <div class="mb-12 transform -rotate-1 origin-center">
-                <div class="scroll-row" id="row-left">
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">全渠道部署</h3>
-                            <i class="fas fa-share-nodes text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">一键部署至桌面、QQ、飞书、Discord、Telegram 等多类终端。</p>
-                    </div>
-                    
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">生态工具集成</h3>
-                            <i class="fas fa-link text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">自由接入 Home Assistant, MCP, Dify 等标准化工作流与工具链。</p>
-                    </div>
-
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">无缝能力增强</h3>
-                            <i class="fas fa-microchip text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">内置联网搜索、永久记忆、RAG 知识库与视觉分析，无需代码改造。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 第二行：向右滚动 -->
-            <div class="transform rotate-1 origin-center">
-                <div class="scroll-row ml-auto justify-end" id="row-right">
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">扩展市场</h3>
-                            <i class="fas fa-puzzle-piece text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">丰富的社区插件市场，自由分享与下载各类智能体扩展功能。</p>
-                    </div>
-
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">开放标准接口</h3>
-                            <i class="fas fa-code text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">兼容 OpenAI API、MCP 协议，支持 VRM/VMC 协议驱动 3D 形象。</p>
-                    </div>
-
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">全平台适配</h3>
-                            <i class="fas fa-desktop text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">完美支持 Windows、macOS、Linux 原生运行及 Docker 部署。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 系统能力 -->
-        <section class="fullscreen-section px-4 relative">
-            <div class="max-w-7xl mx-auto w-full">
-                <div class="mb-8">
-                    <div class="inline-block px-2 py-1 bg-black text-white dark:bg-geekYellow dark:text-black text-xs font-bold mb-2">ROOT ACCESS GRANTED</div>
-                    <h2 class="text-3xl md:text-5xl font-black dark:text-white flex items-center gap-3">
-                        系统能力概览 <span class="animate-cursor w-4 h-8 bg-black dark:bg-white inline-block"></span>
+            <!-- 将 max-w-7xl 改为了 max-w-[100rem] 以提供更大的横向展示空间 -->
+            <div class="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
+                
+                <div class="mb-32 text-center md:text-left md:pl-24">
+                    <h2 class="text-5xl md:text-7xl lg:text-[6.5rem] font-black mb-8 uppercase tracking-tighter leading-none">
+                        核心<span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-geekYellow dark:to-white">功能</span>
                     </h2>
+                    <p class="text-gray-500 dark:text-gray-400 font-mono text-base md:text-xl max-w-3xl">
+                        // 正在加载核心模块...<br>
+                        // 系统状态：在线 | 渲染模式：极清重制版
+                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="capabilities-terminal">
-                    <div class="space-y-6">
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">模型服务支持</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">深度支持 OpenAI, Ollama, Dify 以及各类多模态大模型融合。</p>
+                <!-- 增加模块之间的垂直间距以适应更大的元素 -->
+                <div class="space-y-40 lg:space-y-56">
+
+                    <!-- Feature 01: VRM桌宠 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <!-- 超大号装饰序号 -->
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">01</div>
+                        
+                        <!-- 左侧文字 -->
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">VRM 桌面伴侣</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                支持上传自定义 <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">VRM 模型</span>。打破次元壁，让你的专属二次元角色活在桌面上，拥有丰富的动作与表情，打造独一无二的数字伴侣。
+                            </p>
+                            <ul class="text-sm md:text-base font-mono text-gray-500 dark:text-gray-400 space-y-3">
+                                <li><i class="fas fa-check mr-3 text-geekYellow text-xl"></i>自定义模型导入</li>
+                                <li><i class="fas fa-check mr-3 text-geekYellow text-xl"></i>全天候桌面陪伴</li>
+                            </ul>
                         </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">VRM 虚拟形象</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">支持 3D 形象交互、双向 VMC 协议，适用于虚拟主播推流。</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">社群机器人</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">支持 QQ、飞书、Telegram、Discord 及直播平台弹幕交互。</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">智能播报</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">支持长文本/ePub TTS 播报，集成多种数字人音色。</p>
+                        <!-- 右侧大图 -->
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/vrm.jpeg" alt="VRM桌宠展示" class="w-full h-auto object-cover grayscale-0 hover:grayscale-0 transition-all duration-700">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="space-y-6">
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">进阶 UI 工具</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">支持 Mermaid 图表、HTML 渲染及沙盒代码执行环境。</p>
+                    <!-- Feature 02: 任务中心 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">02</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">全能任务中心</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                赋予 AI 真正的行动力。智能体可以在后台执行高级任务，<span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">自动控制电脑</span> 帮你处理繁琐工作，从文件整理到复杂的工作流自动化。
+                            </p>
+                            <ul class="text-sm md:text-base font-mono text-gray-500 dark:text-gray-400 space-y-3">
+                                <li><i class="fas fa-terminal mr-3 text-geekYellow text-xl"></i>系统级控制权限</li>
+                                <li><i class="fas fa-terminal mr-3 text-geekYellow text-xl"></i>自动化工作流</li>
+                            </ul>
                         </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">角色扮演与记忆</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">支持酒馆角色卡、异色语音、基于向量库的长期记忆系统。</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">开发者友好</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">开放模拟 OpenAI 接口与 MCP 协议，完善的插件开发 SDK。</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">隐私与存储</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">所有数据本地化存储，支持 NAS 部署作为私有云存储。</p>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/task.jpeg" alt="任务中心展示" class="w-full h-auto object-cover">
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Feature 03: 多角色群聊 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">03</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">多角色群聊</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                支持导入酒馆(SillyTavern)角色卡，具备<span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">长期记忆</span>能力。你可以创建多个 AI 角色，在同一个房间内与她们同时聊天，观看角色间的互动。
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/group.jpeg" alt="多角色群聊展示" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 04: IM 机器人 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">04</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">即时通讯矩阵</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                一键将你的智能体部署到主流社交平台。无论是工作用的飞书/钉钉/Slack，还是社交用的 QQ/Telegram/Discord，随时随地保持连接。
+                            </p>
+                            <div class="flex gap-4 text-3xl text-gray-400">
+                                <i class="fab fa-qq hover:text-black dark:hover:text-white transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                                <i class="fab fa-discord hover:text-[#5865F2] transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                                <i class="fab fa-telegram hover:text-[#0088cc] transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                                <i class="fab fa-slack hover:text-[#E01E5A] transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/im.jpeg" alt="IM机器人展示" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 05: 直播机器人 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">05</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">虚拟主播系统</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                化身 AI Vtuber，一键连接 B站、YouTube、Twitch。智能体可自动读取弹幕并进行语音互动，实现 <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">7x24小时</span> 无人值守直播。
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/yt.jpeg" alt="直播机器人展示" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 06: AI 浏览器 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">06</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">AI 浏览器</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                赋予智能体“看”世界的能力。拥有独立的浏览器环境，AI 可以<span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">自动上网</span>查资料、阅读新闻、操作网页应用，成为你的超级网络助手。
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/browser.jpeg" alt="AI浏览器展示" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 07: 扩展系统 -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">07</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">无限扩展生态</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                强大的插件系统，支持一键安装扩展或自行开发。从玩 Galgame 到智能家居控制，功能的边界由你的想象力决定。
+                            </p>
+                            <a href="plugins-zh.html" class="inline-flex items-center text-base font-bold text-black dark:text-geekYellow hover:underline hover:translate-x-2 transition-transform">
+                                浏览插件市场 <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/ext.jpeg" alt="扩展系统展示" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Feature 08: 开发者 -->
+                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">08</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">开发者友好</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                极致开放。提供标准 OpenAI API 接口与 <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">MCP 协议</span>支持。你可以轻松将 SAP 的智能体能力转接到其他应用，或通过代码与其深度交互。
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/api.jpeg" alt="API接口展示" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -419,6 +489,23 @@
             });
         }, { threshold: 0.2 });
         if(document.getElementById('capabilities-terminal')) observer.observe(document.getElementById('capabilities-terminal'));
+        
+        // 通用滚动显现动画
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        // 给所有带 reveal-on-scroll 类的元素添加初始样式并观察
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
+            revealObserver.observe(el);
+        });
+    
     </script>
 </body>
 </html>

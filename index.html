@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO 关键标签 -->
+    <!-- SEO Meta Tags -->
     <title>Super Agent Party - Open Source AI Agent Framework | AI Desktop Companion & Virtual Streamer</title>
     <meta name="description" content="Super Agent Party (SAP) is an all-in-one open-source AI companion platform. It integrates AI desktop companions, virtual streamers, social bot, and smart home control. Build your personalized digital life today.">
     <meta name="keywords" content="AI Companion, AI Agent, Desktop Girlfriend, Virtual Streamer, Neuro-sama like, QQ Bot, Discord Bot, Open Source AI, MCP Protocol">
     
-    <!-- 语言关联 (告知搜索引擎中文版的存在) -->
+    <!-- Language Alternates -->
     <link rel="alternate" hreflang="en" href="https://www.agentparty.top/index.html" />
     <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/index-zh.html" />
     <link rel="canonical" href="https://www.agentparty.top/index.html" />
 
-    <!-- 依赖脚本 (去处 languages.js) -->
+    <!-- Dependencies -->
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
     
-    <!-- 字体与图标 -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -70,12 +70,12 @@
         }
         .dark .scan-line { background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.03) 50%); }
         .terminal-card {
-            background: rgba(255, 255, 255, 0.95); border: 2px solid #000; box-shadow: 6px 6px 0px #000;
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: rgba(255, 255, 255, 0.95); border: 2px solid #000; box-shadow: 8px 8px 0px #000;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .dark .terminal-card { background: rgba(10, 10, 10, 0.9); border: 1px solid #333; box-shadow: 6px 6px 0px rgba(255, 215, 0, 0.4); }
-        .terminal-card:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px #000; }
-        .dark .terminal-card:hover { box-shadow: 10px 10px 0px #FFD700; border-color: #FFD700; }
+        .dark .terminal-card { background: rgba(10, 10, 10, 0.9); border: 2px solid #333; box-shadow: 8px 8px 0px rgba(255, 215, 0, 0.3); }
+        .terminal-card:hover { transform: translate(-4px, -4px); box-shadow: 16px 16px 0px #000; }
+        .dark .terminal-card:hover { box-shadow: 16px 16px 0px #FFD700; border-color: #FFD700; }
         .nav-link { position: relative; display: inline-block; }
         .nav-link::before { content: '['; margin-right: 5px; opacity: 0; transition: all 0.3s; color: #FFD700; transform: translateX(10px); }
         .nav-link::after { content: ']'; margin-left: 5px; opacity: 0; transition: all 0.3s; color: #FFD700; transform: translateX(-10px); }
@@ -85,7 +85,6 @@
         .feature-item { opacity: 0; transform: translateX(-20px); transition: all 0.5s ease; }
         .feature-item.in-view { opacity: 1; transform: translateX(0); }
         .feature-item::before { content: '>'; color: #FFD700; margin-right: 10px; font-weight: bold; }
-        .glitch-text { position: relative; }
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300">
@@ -111,7 +110,7 @@
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
                             <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
-                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
+                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP Servers</a>
                             <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
                         </div>
                     </div>
@@ -125,7 +124,7 @@
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- 语言切换：硬链接到中文版 -->
+                    <!-- Language Switch: Hardcoded to Chinese Version -->
                     <a href="index-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         中文
                     </a>
@@ -146,7 +145,6 @@
             <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
             <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
             
-            <!-- 资源子项直接展开，并稍微缩进增加层次感 -->
             <div class="bg-gray-50 dark:bg-gray-900/50">
                 <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
                 <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
@@ -155,12 +153,12 @@
 
             <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
             
-            <!-- 语言切换 -->
+            <!-- Language Switch -->
             <a href="index-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
-                <i class="fas fa-language mr-2"></i>切换到中文
+                <i class="fas fa-language mr-2"></i>Switch to 中文
             </a>
             
-            <!-- GitHub 链接 -->
+            <!-- GitHub Link -->
             <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
                 <i class="fab fa-github mr-2"></i>GitHub
             </a>
@@ -176,13 +174,13 @@
                     <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full object-contain relative z-10 drop-shadow-2xl">
                 </div>
                 
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tighter dark:text-white uppercase glitch-text" data-text="SUPER AGENT PARTY">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tighter dark:text-white uppercase">
                     Super Agent Party
                 </h1>
                 
                 <div class="flex justify-center items-center mb-8">
                     <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl">
-                        An AI desktop companion with unlimited possibilities
+                        An AI desktop companion and agent framework with unlimited possibilities
                     </p>
                     <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-2 animate-cursor"></div>
                 </div>
@@ -210,121 +208,186 @@
             </div>
         </section>
 
-        <!-- Core Features -->
-        <section class="fullscreen-section bg-gray-50/50 dark:bg-gray-900/30 border-y border-black dark:border-gray-800 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 mb-12 w-full">
-                <h2 class="text-3xl font-bold mb-2 dark:text-white">
-                    <span class="text-geekYellow">>></span> Core Features
-                </h2>
-            </div>
+        <!-- Core Features Showcase -->
+        <section id="features" class="relative py-32 bg-white dark:bg-geekDark overflow-hidden">
+            <!-- Background Decorative Line -->
+            <div class="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800 ml-4 md:ml-12 lg:ml-20 z-0 hidden md:block"></div>
 
-            <!-- Row 1: Left Scroll -->
-            <div class="mb-12 transform -rotate-1 origin-center">
-                <div class="scroll-row" id="row-left">
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">Omnichannel</h3>
-                            <i class="fas fa-share-nodes text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Deployment to Desktop, QQ, Discord, Telegram, and more in minutes.</p>
-                    </div>
-                    
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">Ecosystem</h3>
-                            <i class="fas fa-link text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Integrate Home Assistant, MCP, Dify, and standard workflows seamlessly.</p>
-                    </div>
-
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">Enhancement</h3>
-                            <i class="fas fa-microchip text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Web access, Permanent Memory, RAG, and Vision without coding.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Row 2: Right Scroll -->
-            <div class="transform rotate-1 origin-center">
-                <div class="scroll-row ml-auto justify-end" id="row-right">
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">Extensions</h3>
-                            <i class="fas fa-puzzle-piece text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">A community marketplace to share and download new AI capabilities.</p>
-                    </div>
-
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">Interfaces</h3>
-                            <i class="fas fa-code text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">OpenAI API compatible, MCP support, VRM/VMC for 3D avatars.</p>
-                    </div>
-
-                    <div class="terminal-card p-6 w-[400px] shrink-0 group">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold dark:text-white group-hover:text-geekYellow transition-colors">Compatibility</h3>
-                            <i class="fas fa-desktop text-3xl text-gray-400"></i>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Native support for Windows, macOS, Linux, and Docker environments.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Capabilities -->
-        <section class="fullscreen-section px-4 relative">
-            <div class="max-w-7xl mx-auto w-full">
-                <div class="mb-8">
-                    <div class="inline-block px-2 py-1 bg-black text-white dark:bg-geekYellow dark:text-black text-xs font-bold mb-2">ROOT ACCESS GRANTED</div>
-                    <h2 class="text-3xl md:text-5xl font-black dark:text-white flex items-center gap-3">
-                        System Capabilities <span class="animate-cursor w-4 h-8 bg-black dark:bg-white inline-block"></span>
+            <div class="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
+                
+                <div class="mb-32 text-center md:text-left md:pl-24">
+                    <h2 class="text-5xl md:text-7xl lg:text-[6.5rem] font-black mb-8 uppercase tracking-tighter leading-none">
+                        Core <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-geekYellow dark:to-white">Features</span>
                     </h2>
+                    <p class="text-gray-500 dark:text-gray-400 font-mono text-base md:text-xl max-w-3xl">
+                        // Loading core modules...<br>
+                        // System Status: Online | Render Mode: Ultra HD Remaster
+                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="capabilities-terminal">
-                    <div class="space-y-6">
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Model Services</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Supports OpenAI, Ollama, Dify, and multi-modal models.</p>
+                <div class="space-y-40 lg:space-y-56">
+
+                    <!-- Feature 01: VRM Desktop Companion -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">01</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">VRM Desktop Companion</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Supports importing custom <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">VRM models</span>. Break the 4th wall and let your exclusive character live on your desktop with rich actions and expressions, creating a unique digital companion.
+                            </p>
+                            <ul class="text-sm md:text-base font-mono text-gray-500 dark:text-gray-400 space-y-3">
+                                <li><i class="fas fa-check mr-3 text-geekYellow text-xl"></i>Custom Model Import</li>
+                                <li><i class="fas fa-check mr-3 text-geekYellow text-xl"></i>24/7 Desktop Companionship</li>
+                            </ul>
                         </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">VRM Avatar Robot</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">3D avatars with VMC protocol support and voice interaction.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Social Bot Support</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Connect to QQ, Discord, Telegram, and Twitch live chat.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Broadcasting</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">TTS for long texts/ePubs with diverse character voices.</p>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/vrm.jpeg" alt="VRM Companion Showcase" class="w-full h-auto object-cover grayscale-0 hover:grayscale-0 transition-all duration-700">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="space-y-6">
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Advanced UI</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Mermaid, HTML rendering, and sandboxed code execution.</p>
+                    <!-- Feature 02: Task Center -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">02</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">Omnipotent Task Center</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Give AI true agency. Agents can execute advanced tasks in the background, <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">automatically controlling your PC</span> to handle tedious work, from file organization to complex workflow automation.
+                            </p>
+                            <ul class="text-sm md:text-base font-mono text-gray-500 dark:text-gray-400 space-y-3">
+                                <li><i class="fas fa-terminal mr-3 text-geekYellow text-xl"></i>System-Level Access</li>
+                                <li><i class="fas fa-terminal mr-3 text-geekYellow text-xl"></i>Automated Workflows</li>
+                            </ul>
                         </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Roleplay & Memory</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">SillyTavern card support and vector-based long-term memory.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Developer Ecosystem</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Simulated OpenAI APIs and easy-to-use plugin SDK.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4 class="font-bold text-lg dark:text-geekYellow mb-1">Privacy First</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Local data storage with optional NAS support.</p>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/task.jpeg" alt="Task Center Showcase" class="w-full h-auto object-cover">
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Feature 03: Multi-character Group Chat -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">03</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">Multi-character Chat</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Supports importing SillyTavern character cards equipped with <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">long-term memory</span>. You can create multiple AI characters, chat with them simultaneously in the same room, and watch them interact with each other.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/group.jpeg" alt="Group Chat Showcase" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 04: IM Matrix -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">04</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">IM Bot Matrix</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Deploy your agents to mainstream social platforms with one click. Stay connected anywhere, whether for work (Feishu/DingTalk/Slack) or social networking (QQ/Telegram/Discord).
+                            </p>
+                            <div class="flex gap-4 text-3xl text-gray-400">
+                                <i class="fab fa-qq hover:text-black dark:hover:text-white transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                                <i class="fab fa-discord hover:text-[#5865F2] transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                                <i class="fab fa-telegram hover:text-[#0088cc] transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                                <i class="fab fa-slack hover:text-[#E01E5A] transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/im.jpeg" alt="IM Bot Showcase" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 05: Streamer Bot -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">05</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">Virtual Streamer System</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Transform into an AI VTuber. Connect seamlessly to Bilibili, YouTube, and Twitch. The agent can automatically read live chat and interact via voice, enabling <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">24/7 unassisted streaming</span>.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/yt.jpeg" alt="Virtual Streamer Showcase" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 06: AI Browser -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">06</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">AI Browser</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Give agents the ability to "see" the web. With an independent browser environment, AI can <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">automatically surf the internet</span> to gather information, read news, and operate web apps, becoming your ultimate internet assistant.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/browser.jpeg" alt="AI Browser Showcase" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 07: Extension System -->
+                    <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">07</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">Infinite Ecosystem</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                A powerful plugin system supporting one-click installations or custom development. From playing visual novels to smart home control, the boundaries of its features are determined entirely by your imagination.
+                            </p>
+                            <a href="plugins.html" class="inline-flex items-center text-base font-bold text-black dark:text-geekYellow hover:underline hover:translate-x-2 transition-transform">
+                                Browse Plugin Market <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/ext.jpeg" alt="Extension System Showcase" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Feature 08: Developers -->
+                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
+                        <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">08</div>
+                        
+                        <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
+                            <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">Developer Friendly</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
+                                Extremely open architecture. Provides standard OpenAI API interfaces and <span class="font-bold border-b-2 border-geekYellow text-black dark:text-white">MCP protocol</span> support. Easily connect SAP's agent capabilities to other applications or interact deeply via code.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 z-10">
+                            <div class="terminal-card rounded-xl overflow-hidden transform transition-all duration-700 group-hover:-translate-y-3">
+                                <img src="img/zh/api.jpeg" alt="API Showcase" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -352,26 +415,26 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div class="col-span-1">
                     <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
-                    <p class="text-xs text-gray-500 font-mono">Open-source AI agent framework for personal companions and automation.</p>
+                    <p class="text-xs text-gray-500 font-mono">Open-source AI agent framework, build your personalized digital life.</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Product</h4>
                     <ul class="space-y-2 text-xs font-bold">
-                        <li><a href="download.html" class="hover:text-geekYellow">Download</a></li>
-                        <li><a href="plugins.html" class="hover:text-geekYellow">Plugins</a></li>
+                        <li><a href="download.html" class="hover:text-geekYellow">Download Client</a></li>
+                        <li><a href="plugins.html" class="hover:text-geekYellow">Plugin Market</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Developers</h4>
                     <ul class="space-y-2 text-xs font-bold">
                         <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">Documentation</a></li>
-                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">Issues</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">Submit Feedback</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Community</h4>
                     <div class="grid grid-cols-2 gap-3 text-[11px] font-bold">
-                        <a href="#" class="hover:text-geekYellow"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="https://discord.com/invite/f2dsAKKr2V" class="hover:text-geekYellow"><i class="fab fa-discord"></i> Discord</a>
                         <a href="https://x.com/AILM32442" class="hover:text-geekYellow"><i class="fab fa-twitter"></i> Twitter</a>
                     </div>
                 </div>
@@ -384,7 +447,7 @@
     </footer>
     
     <script>
-        // Theme Toggle
+        // Theme Toggle Logic
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
@@ -399,27 +462,22 @@
         document.getElementById('mobile-menu-button').onclick = () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-
-        // Feature Scroll Animation
-        const rowLeft = document.getElementById('row-left');
-        const rowRight = document.getElementById('row-right');
-        function updateScroll() {
-            const scrollY = window.scrollY;
-            if(rowLeft) rowLeft.style.transform = `translateX(${-200 + scrollY * 0.2}px)`; 
-            if(rowRight) rowRight.style.transform = `translateX(${200 - scrollY * 0.2}px)`;
-            requestAnimationFrame(updateScroll);
-        }
-        requestAnimationFrame(updateScroll);
-
-        // Capability Animation
-        const observer = new IntersectionObserver((entries) => {
+        
+        // Universal Scroll Reveal Animation
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.feature-item').forEach(item => item.classList.add('in-view'));
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
                 }
             });
-        }, { threshold: 0.2 });
-        observer.observe(document.getElementById('capabilities-terminal'));
+        }, { threshold: 0.15 });
+
+        // Add initial styles and observe all elements with 'reveal-on-scroll' class
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
+            revealObserver.observe(el);
+        });
     </script>
 </body>
 </html>
