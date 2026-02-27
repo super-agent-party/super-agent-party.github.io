@@ -93,11 +93,9 @@
                     <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="index.html" class="nav-link font-bold text-sm">Home</a>
                     <a href="download.html" class="nav-link font-bold text-sm">Download</a>
-                    
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
@@ -108,64 +106,54 @@
                             <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
                         </div>
                     </div>
-
                     <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
-                    
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
-                    
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
-
-                    <!-- 语言切换：硬链接到中文版 -->
-                    <a href="download-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
-                        中文
-                    </a>
-
+                    <a href="download-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">中文</a>
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
                         <i class="fab fa-github"></i>
                         <span class="github-stars">-</span>
                         <span>GitHub</span>
                     </a>
                 </div>
-
                 <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
             <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
-            
-            <!-- 资源子项直接展开，并稍微缩进增加层次感 -->
             <div class="bg-gray-50 dark:bg-gray-900/50">
                 <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
                 <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
                 <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
             </div>
-
             <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
-            
-            <!-- 语言切换 -->
-            <a href="download-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
-                <i class="fas fa-language mr-2"></i>切换到中文
-            </a>
-            
-            <!-- GitHub 链接 -->
-            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
-                <i class="fab fa-github mr-2"></i>GitHub
-            </a>
+            <a href="download-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900"><i class="fas fa-language mr-2"></i>切换到中文</a>
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold"><i class="fab fa-github mr-2"></i>GitHub</a>
         </div>
     </nav>
 
-    <main class="flex-grow pt-24 pb-12 px-4">
-        <div class="max-w-6xl mx-auto relative">
+    <main class="flex-grow pt-24 pb-16 px-4">
+        <div class="max-w-4xl mx-auto relative">
             
-            <div class="text-center mb-12">
-                <h1 class="text-3xl md:text-5xl font-bold dark:text-white mb-4 uppercase">Download Super Agent Party</h1>
-                <p class="text-gray-600 dark:text-geekYellow">Choose your platform and get started with AI automation in minutes</p>
+            <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-5xl font-bold dark:text-white mb-4 uppercase">Download</h1>
+                <p class="text-gray-600 dark:text-geekYellow">Get Super Agent Party for your platform</p>
+            </div>
+
+            <!-- SECURITY NOTICE (Crucial for Google Safe Browsing Appeal) -->
+            <div class="mb-10 max-w-3xl mx-auto bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-4 text-sm text-green-800 dark:text-green-400 terminal-card">
+                <div class="flex items-start">
+                    <i class="fas fa-shield-check text-xl mr-3 mt-0.5"></i>
+                    <div>
+                        <strong class="block mb-1">Security & Transparency Notice</strong>
+                        To ensure you always receive the safest, unmodified binaries, all software downloads have been permanently migrated to our official <strong>GitHub Releases</strong> page. We do not host executable files directly on this website.
+                    </div>
+                </div>
             </div>
 
             <!-- Auto Detect -->
@@ -182,154 +170,56 @@
                                 > <span id="detected-system">Detecting...</span><span class="animate-pulse">_</span>
                             </div>
                         </div>
-                        <button id="auto-download-btn" class="px-6 py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold hover:opacity-80 transition-opacity shadow-md">
-                            <i class="fas fa-download mr-2"></i> <span>One-Click Download</span>
+                        <button id="auto-download-btn" class="px-6 py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold hover:opacity-80 transition-opacity shadow-md flex items-center">
+                            <i class="fab fa-github mr-2"></i> <span>View on GitHub</span>
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- Download Mirrors -->
-            <section class="py-12">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- GitHub Releases -->
-                    <div class="terminal-card p-6 flex flex-col justify-between border-geekYellow">
-                        <div>
-                            <div class="flex items-center mb-4">
-                                <div class="w-10 h-10 bg-gray-800 rounded flex items-center justify-center mr-4 text-white">
-                                    <i class="fab fa-github"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-xl dark:text-white">GitHub Releases (Global / Recommended)</h3>
-                                    <p class="text-sm text-gray-500">Latest stable releases on GitHub</p>
-                                </div>
+            <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- GitHub Releases -->
+                <div class="terminal-card p-6 flex flex-col justify-between border-geekYellow">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gray-800 rounded flex items-center justify-center mr-4 text-white">
+                                <i class="fab fa-github text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg dark:text-white">GitHub Releases (Global)</h3>
+                                <p class="text-xs text-gray-500">Official, secure, and latest releases</p>
                             </div>
                         </div>
-                        <div class="mt-6">
-                            <a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank" class="block w-full text-center py-3 bg-black dark:bg-white text-white dark:text-black font-bold hover:opacity-80 transition-opacity">
-                                <span>Direct Download</span> <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
                     </div>
-
-                    <!-- ModelScope Mirror -->
-                    <div class="terminal-card p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center mb-4">
-                                <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center mr-4 text-white">
-                                    <i class="fas fa-rocket"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-xl dark:text-white">ModelScope (China Mirror)</h3>
-                                    <p class="text-sm text-gray-500">High-speed access for users in mainland China</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/tree/master/v0.3.8" target="_blank" class="block w-full text-center py-3 border-2 border-black dark:border-white text-black dark:text-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
-                                <span>Fast Download</span> <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Grid Layout 2x2 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Windows -->
-                <div class="terminal-card p-6 flex flex-col h-full hover:shadow-[8px_8px_0px_#000] dark:hover:shadow-[8px_8px_0px_#FFD700] transition-shadow download-group" 
-                     data-github="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/super-agent-party-win-v0.3.8.7z"
-                     data-modelscope="https://modelscope.cn/models/ailm32442/super-agent-party-portable/tree/master/v0.3.8">
-                    <div class="flex items-center mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
-                        <i class="fab fa-windows text-3xl mr-4"></i>
-                        <h2 class="text-2xl font-bold dark:text-white">Windows</h2>
-                    </div>
-                    <div class="space-y-6 flex-1">
-                        <div class="bg-gray-50 dark:bg-white/5 p-4 border border-gray-200 dark:border-gray-700 relative">
-                            <span class="absolute -top-3 right-4 bg-geekYellow text-black text-[10px] px-2 py-0.5 font-bold uppercase tracking-wider">Recommended</span>
-                            <h3 class="font-bold text-base mb-2 dark:text-white">Portable Package (7Z)</h3>
-                            <div class="btn-container flex flex-col gap-2">
-                                <!-- JS dynamic buttons -->
-                            </div>
-                        </div>
-                        <div class="px-4">
-                            <h3 class="font-bold text-base dark:text-white mb-2">Standard Installer (EXE)</h3>
-                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/Super-Agent-Party-Setup-0.3.8.exe" class="block w-full text-center py-3 bg-gray-100 dark:bg-gray-800 dark:text-white hover:bg-gray-200 transition-colors font-bold">
-                                Download .EXE
-                            </a>
-                        </div>
+                    <div class="mt-6">
+                        <a href="https://github.com/heshengtao/super-agent-party/releases/latest" target="_blank" class="block w-full text-center py-3 bg-black dark:bg-white text-white dark:text-black font-bold hover:opacity-80 transition-opacity text-sm">
+                            <span>Go to GitHub Releases</span> <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- macOS -->
-                <div class="terminal-card p-6 flex flex-col h-full hover:shadow-[8px_8px_0px_#000] dark:hover:shadow-[8px_8px_0px_#FFD700] transition-shadow download-group"
-                     data-github="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/super-agent-party-mac-v0.3.8.7z"
-                     data-modelscope="">
-                    <div class="flex items-center mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
-                        <i class="fab fa-apple text-3xl mr-4"></i>
-                        <h2 class="text-2xl font-bold dark:text-white">macOS</h2>
-                    </div>
-                    <div class="space-y-6 flex-1">
-                        <div class="bg-gray-50 dark:bg-white/5 p-4 border border-gray-200 dark:border-gray-700 relative">
-                            <span class="absolute -top-3 right-4 bg-geekYellow text-black text-[10px] px-2 py-0.5 font-bold uppercase tracking-wider">M-Chip / Intel</span>
-                            <h3 class="font-bold text-base mb-2 dark:text-white">Universal App (7Z)</h3>
-                            <div class="btn-container flex flex-col gap-2"></div>
-                        </div>
-                        <div class="px-4">
-                            <h3 class="font-bold text-base dark:text-white mb-2">Standard DMG</h3>
-                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/Super-Agent-Party-0.3.8-Mac.dmg" class="block w-full text-center py-3 bg-gray-100 dark:bg-gray-800 dark:text-white hover:bg-gray-200 transition-colors font-bold">
-                                Download .DMG
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Linux -->
-                <div class="terminal-card p-6 flex flex-col h-full hover:shadow-[8px_8px_0px_#000] dark:hover:shadow-[8px_8px_0px_#FFD700] transition-shadow">
-                    <div class="flex items-center mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
-                        <i class="fab fa-linux text-3xl mr-4"></i>
-                        <h2 class="text-2xl font-bold dark:text-white">Linux Desktop</h2>
-                    </div>
-                    <div class="space-y-6 flex-1">
-                        <div class="bg-gray-50 dark:bg-white/5 p-4 border border-gray-200 dark:border-gray-700">
-                            <h3 class="font-bold text-base dark:text-white mb-1">AppImage</h3>
-                            <p class="text-[10px] text-gray-500 mb-4">Universal Linux package. Download and run.</p>
-                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/Super-Agent-Party-0.3.8-Linux.AppImage" 
-                               class="flex items-center justify-center w-full py-3 border-2 border-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black font-bold transition-all">
-                               <i class="fas fa-download mr-2"></i> Download .AppImage
-                            </a>
-                        </div>
-                        <div class="px-4 border-t border-dashed border-gray-300 dark:border-gray-700 pt-4">
-                            <h3 class="font-bold text-base dark:text-white mb-3">DEB Package (Ubuntu/Debian)</h3>
-                            <a href="https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/Super-Agent-Party-0.3.8-Linux.deb" 
-                               class="block w-full text-center py-3 bg-gray-100 dark:bg-gray-800 dark:text-white font-bold">
-                               Download .DEB
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Docker -->
-                <div class="terminal-card p-6 flex flex-col h-full hover:shadow-[8px_8px_0px_#000] dark:hover:shadow-[8px_8px_0px_#FFD700] transition-shadow">
-                    <div class="flex items-center mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
-                        <i class="fab fa-docker text-3xl mr-4 text-blue-500"></i>
-                        <h2 class="text-2xl font-bold dark:text-white">Docker Server</h2>
-                    </div>
-                    <div class="space-y-6 flex-1 text-sm">
-                        <div>
-                            <h3 class="font-bold dark:text-white mb-2"><i class="fas fa-terminal mr-2 text-geekYellow"></i> Quick Run</h3>
-                            <code class="block bg-black text-geekYellow p-4 text-xs font-mono rounded overflow-x-auto whitespace-pre cursor-pointer" onclick="navigator.clipboard.writeText(this.innerText)">docker pull ailm32442/super-agent-party:latest
-docker run -d -p 3456:3456 ailm32442/super-agent-party:latest</code>
-                        </div>
-                        <div class="pt-4 border-t border-dashed border-gray-700">
-                            <h3 class="font-bold dark:text-white mb-2"><i class="fas fa-key mr-2 text-geekYellow"></i> Default Login</h3>
-                            <div class="bg-yellow-50 dark:bg-yellow-900/20 p-2 border-l-2 border-geekYellow text-xs font-mono">
-                                User: <span class="text-red-500">root</span> | Pass: <span class="text-red-500">pass</span>
+                <!-- ModelScope Mirror -->
+                <div class="terminal-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center mr-4 text-white">
+                                <i class="fas fa-rocket text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg dark:text-white">ModelScope (China)</h3>
+                                <p class="text-xs text-gray-500">High-speed repository mirror</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="mt-6">
+                        <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files" target="_blank" class="block w-full text-center py-3 border-2 border-black dark:border-white text-black dark:text-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-sm">
+                            <span>View on ModelScope</span> <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -388,38 +278,19 @@ docker run -d -p 3456:3456 ailm32442/super-agent-party:latest</code>
 
     <!-- Scripts -->
     <script>
-    function refreshDownloadButtons() {
-        const groups = document.querySelectorAll('.download-group');
-        groups.forEach(group => {
-            const githubUrl = group.getAttribute('data-github');
-            const modelscopeUrl = group.getAttribute('data-modelscope');
-            const container = group.querySelector('.btn-container');
-            if (!container) return;
-            container.innerHTML = '';
-
-            const githubBtn = `<a href="${githubUrl}" target="_blank" class="flex-1 text-center py-3 border-2 border-black dark:border-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-sm flex flex-col items-center justify-center bg-black text-white dark:bg-white dark:text-black"><span class="text-[10px] opacity-70 mb-1">[ Recommended ]</span><span>Global Release (GitHub)</span></a>`;
-            const modelscopeBtn = modelscopeUrl ? `<a href="${modelscopeUrl}" target="_blank" class="flex-1 text-center py-3 border-2 border-black dark:border-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-sm flex flex-col items-center justify-center text-black dark:text-white"><span class="text-[10px] opacity-70 mb-1">[ Mirror ]</span><span>China Mirror (ModelScope)</span></a>` : '';
-
-            // English version: GitHub always first
-            container.innerHTML = githubBtn + modelscopeBtn;
-        });
-    }
-
     function detectSystem() {
         const userAgent = navigator.userAgent.toLowerCase();
         const platform = navigator.platform.toLowerCase();
         let systemName = 'Unknown Device';
-        let downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases';
+        
+        let downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/latest';
 
         if (userAgent.includes('windows') || platform.includes('win')) {
             systemName = 'Windows Desktop';
-            downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/super-agent-party-win-v0.3.8.7z';
         } else if (userAgent.includes('mac') || platform.includes('mac')) {
             systemName = 'macOS (Intel/M-Chip)';
-            downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/super-agent-party-mac-v0.3.8.7z';
         } else if (userAgent.includes('linux') || platform.includes('linux')) {
             systemName = 'Linux Desktop';
-            downloadUrl = 'https://github.com/heshengtao/super-agent-party/releases/download/v0.3.8/Super-Agent-Party-0.3.8-Linux.AppImage';
         }
         
         document.getElementById('detected-system').textContent = systemName;
@@ -427,7 +298,6 @@ docker run -d -p 3456:3456 ailm32442/super-agent-party:latest</code>
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        refreshDownloadButtons();
         detectSystem();
         document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
     });
