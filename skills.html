@@ -285,11 +285,6 @@
                     </div>
 
                     <div class="mt-auto">
-                        <button onclick="handleInstallClick('${p.repository}')" 
-                                class="w-full mb-4 py-3 bg-geekYellow text-black text-center text-xs md:text-sm font-bold border-2 border-black dark:border-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">
-                            <i class="fa-solid fa-plus-circle mr-2"></i> 
-                            <span>Add to Agent Party</span>
-                        </button>
 
                         <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
                             <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
@@ -311,18 +306,6 @@
                 `;
                 pluginList.appendChild(el);
             });
-        }
-
-        function handleInstallClick(repoUrl) {
-            const protocolUrl = `sap://install?type=skill&repo=${encodeURIComponent(repoUrl)}`;
-            window.location.href = protocolUrl;
-            
-            const modal = document.getElementById('installModal');
-            modal.classList.remove('hidden');
-
-            document.getElementById('retryLink').onclick = function() {
-                window.location.href = protocolUrl;
-            };
         }
 
         function copyLink(url) {

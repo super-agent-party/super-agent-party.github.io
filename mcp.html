@@ -298,10 +298,6 @@
                     </div>
 
                     <div class="mt-auto">
-                        <button onclick="handleInstallClick('${mcpType}', '${encodedConfig}')" 
-                                class="w-full mb-4 py-3 bg-geekYellow text-black text-center hover:opacity-90 transition-all text-xs md:text-sm font-bold border-2 border-black dark:border-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff] active:translate-x-1 active:translate-y-1 active:shadow-none">
-                            <i class="fa-solid fa-plus-circle mr-2"></i> <span>Add to Agent Party</span>
-                        </button>
 
                         <div class="border-t border-gray-200 dark:border-gray-800 pt-4 grid grid-cols-2 gap-2">
                             <button onclick="copyConfig('${encodedConfig}')" class="py-2 border border-gray-400 dark:border-gray-600 text-[10px] font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
@@ -314,13 +310,6 @@
                     </div>`;
                 list.appendChild(el);
             });
-        }
-
-        function handleInstallClick(mcpType, encodedConfig) {
-            const protocolUrl = `sap://install?type=mcp&mcpType=${mcpType}&config=${encodedConfig}`;
-            window.location.href = protocolUrl;
-            document.getElementById('installModal').classList.remove('hidden');
-            document.getElementById('retryLink').onclick = function() { window.location.href = protocolUrl; };
         }
 
         function copyConfig(encodedConfig) {
