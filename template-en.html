@@ -69,36 +69,35 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    <a href="../../index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link font-bold text-sm">Home</a>
-                    <a href="download.html" class="nav-link font-bold text-sm">Download</a>
+                    <a href="../../index.html" class="nav-link font-bold text-sm">Home</a>
+                    <a href="../../download.html" class="nav-link font-bold text-sm">Download</a>
                     
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
-                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
-                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP Servers</a>
-                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                            <a href="../../plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
+                            <a href="../../mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
+                            <a href="../../skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
                         </div>
                     </div>
 
-                    <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    <a href="../../blog.html" class="nav-link font-bold text-sm">Blog</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
-                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- Language Switch: Hardcoded to Chinese Version -->
-                    <a href="index-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                    <!-- Language Switcher -->
+                    <a href="{{LANG_SWITCH_LINK}}" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         中文
                     </a>
 
@@ -113,28 +112,17 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu (Expanded) -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
-            <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
-            <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
-            
+            <a href="../../index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
+            <a href="../../download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
             <div class="bg-gray-50 dark:bg-gray-900/50">
-                <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
-                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
-                <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
+                <a href="../../plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Plugins</a>
+                <a href="../../mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ MCP</a>
+                <a href="../../skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Skills</a>
             </div>
-
-            <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
-            
-            <!-- Language Switch -->
-            <a href="index-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
-                <i class="fas fa-language mr-2"></i>Switch to 中文
-            </a>
-            
-            <!-- GitHub Link -->
-            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
-                <i class="fab fa-github mr-2"></i>GitHub
-            </a>
+            <a href="../../blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            <a href="{{LANG_SWITCH_LINK}}" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">Switch to 中文</a>
         </div>
     </nav>
 

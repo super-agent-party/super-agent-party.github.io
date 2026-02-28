@@ -69,36 +69,35 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    <a href="../../index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link font-bold text-sm">Home</a>
-                    <a href="download.html" class="nav-link font-bold text-sm">Download</a>
+                    <a href="../../index.html" class="nav-link font-bold text-sm">Home</a>
+                    <a href="../../download.html" class="nav-link font-bold text-sm">Download</a>
                     
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
-                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
-                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP Servers</a>
-                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                            <a href="../../plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
+                            <a href="../../mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
+                            <a href="../../skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
                         </div>
                     </div>
 
-                    <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    <a href="../../blog.html" class="nav-link font-bold text-sm">Blog</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
-                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- Language Switch: Hardcoded to Chinese Version -->
-                    <a href="index-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                    <!-- Language Switcher -->
+                    <a href="../zh/article-0yuan.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         中文
                     </a>
 
@@ -113,28 +112,17 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu (Expanded) -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
-            <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
-            <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
-            
+            <a href="../../index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
+            <a href="../../download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
             <div class="bg-gray-50 dark:bg-gray-900/50">
-                <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
-                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
-                <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
+                <a href="../../plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Plugins</a>
+                <a href="../../mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ MCP</a>
+                <a href="../../skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Skills</a>
             </div>
-
-            <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
-            
-            <!-- Language Switch -->
-            <a href="index-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
-                <i class="fas fa-language mr-2"></i>Switch to 中文
-            </a>
-            
-            <!-- GitHub Link -->
-            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
-                <i class="fab fa-github mr-2"></i>GitHub
-            </a>
+            <a href="../../blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            <a href="../zh/article-0yuan.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">Switch to 中文</a>
         </div>
     </nav>
 
@@ -162,22 +150,22 @@
 
                     <div class="prose dark:prose-invert">
                         <p><figure class="my-8"><img src="/img/0yuan/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>Introduction</h1>
+<h1 id="heading-0">Introduction</h1>
 <p>If you want an AI companion but don&#39;t want to spend a single cent, then this article is for you. Here, I will show you how to create an AI companion for free, allowing you to find companionship in the virtual world.</p>
-<h1>Step 1: Download the free Super Agent Party!</h1>
+<h1 id="heading-1">Step 1: Download the free Super Agent Party!</h1>
 <p>First, you need to download the free Super Agent Party! This is an open-source AI companion software. You can view its source code on <a href="https://github.com/heshengtao/super-agent-party" target="_blank">GitHub</a>.</p>
 <p>If you are a user in China, you can download it from the <a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files" target="_blank">ModelScope Community</a>. Select the folder corresponding to the version number, then choose the version that matches your operating system, and click download!</p>
 <p><figure class="my-8"><img src="/img/0yuan/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>If you are an overseas user, you can download it from <a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank">GitHub</a>. Select the version suitable for your operating system and click download!</p>
 <p><figure class="my-8"><img src="/img/0yuan/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>If you are a tinkering geek, you can also choose the Docker version. Check the usage instructions on <a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser" target="_blank">GitHub</a>.</p>
-<h1>Step 2: Enable Your AI Companion to Think</h1>
+<h1 id="heading-2">Step 2: Enable Your AI Companion to Think</h1>
 <p>You need a large language model, commonly referred to as an LLM. The LLM serves as the &quot;brain&quot; of your AI companion, determining its level of intelligence. There are many free LLM computing resources available on the market. Here, I recommend one that I frequently use: Ollama&#39;s cloud models. At least at the time I wrote this blog post, Ollama&#39;s cloud models are still free.</p>
-<h2 id="heading-0">Download Ollama from the Official Website</h2>
+<h2 id="heading-3">Download Ollama from the Official Website</h2>
 <p>Ollama official website: <a href="https://ollama.com/" target="_blank">https://ollama.com/</a></p>
 <p>In the top-right corner of the webpage, you&#39;ll see a &quot;Download&quot; button. Click it, select the version suitable for your operating system, and click download!</p>
 <p><figure class="my-8"><img src="/img/0yuan/3.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h2 id="heading-1">Free Ollama Cloud Models</h2>
+<h2 id="heading-4">Free Ollama Cloud Models</h2>
 <ol>
 <li><p>You need to register an account on the Ollama website. After registering, log into your account within the Ollama application, and you&#39;ll be able to use Ollama&#39;s cloud models.</p>
 </li>
@@ -189,7 +177,7 @@
 <li>You can choose a model you like, click on it, and copy the CLI command, for example, <code>ollama run deepseek-v3.1:671b-cloud</code>. Paste it into your terminal and press Enter to start using Ollama&#39;s cloud model. Important! Make sure the model has the <code>cloud</code> suffix.</li>
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/5.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h2 id="heading-2">Using Ollama Cloud Models in Super Agent Party</h2>
+<h2 id="heading-5">Using Ollama Cloud Models in Super Agent Party</h2>
 <ol>
 <li>Open Super Agent Party, go to the <code>Models</code> page, and under the <code>Model Providers</code> subpage, select <code>Add Provider</code>.</li>
 </ol>
@@ -210,10 +198,10 @@
 <li>Now, return to the chat interface, and you can happily chat with your AI for free!</li>
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/10.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>Step 3: Enable Your AI Companion to Hear</h1>
+<h1 id="heading-6">Step 3: Enable Your AI Companion to Hear</h1>
 <p>You need a speech recognition model, commonly referred to as ASR. ASR serves as the &quot;ears&quot; of your AI companion, determining whether it can understand what you say.</p>
 <p>Here are two free methods:</p>
-<h2 id="heading-3">Free Local Small Model</h2>
+<h2 id="heading-7">Free Local Small Model</h2>
 <p>Super Agent Party comes with a built-in free speech recognition model. Simply go to the <code>Models</code> page, select <code>Speech Recognition Model</code>, and then choose <code>Sherpa ONNX</code> to use the built-in speech recognition model. This model does not require GPU resources; it only uses CPU and memory, so it can run on an ordinary laptop without the need to invest in expensive hardware.</p>
 <ol>
 <li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Recognition Model</code> subpage, select <code>Sherpa ONNX</code>.</li>
@@ -221,17 +209,17 @@
 <li>Once the download is complete, you can enable speech recognition and start chatting with your AI using voice.</li>
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/11.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h2 id="heading-4">Free Browser Built-in Speech Recognition API</h2>
+<h2 id="heading-8">Free Browser Built-in Speech Recognition API</h2>
 <p>You can use the free speech recognition API built into browsers, known as the Web Speech API. You need to open a browser to serve as the &quot;ears&quot; of your AI companion and use the Web Speech API for speech recognition. This method is free but requires an internet connection.</p>
 <ol>
 <li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Recognition Model</code> subpage, select <code>Web Speech API</code>.</li>
 <li>Enable speech recognition. Super Agent Party will automatically open a browser, and now you can use the Web Speech API in the browser for speech recognition.</li>
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/12.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>Step 4: Enable Your AI Companion to Speak</h1>
+<h1 id="heading-9">Step 4: Enable Your AI Companion to Speak</h1>
 <p>You need a speech synthesis model, commonly referred to as TTS. TTS serves as the &quot;mouth&quot; of your AI companion, determining whether it can communicate with you using voice.</p>
 <p>Here are two free methods:</p>
-<h2 id="heading-5">Free System TTS</h2>
+<h2 id="heading-10">Free System TTS</h2>
 <p>Both Windows and macOS systems come with built-in speech synthesis models. The voice quality is average, but the speed is very fast, making it suitable for quick testing. For macOS, choose voices labeled with 【Siri/Premium】, such as <code>【Siri/Premium】Meijia</code>, which is the familiar Siri voice!</p>
 <ol>
 <li>Open Super Agent Party, click on the <code>Models</code> page, then in the <code>Speech Synthesis Model</code> subpage, select <code>System TTS</code>.</li>
@@ -239,7 +227,7 @@
 <li>Enable speech synthesis.</li>
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/13.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h2 id="heading-6">Free EdgeTTS</h2>
+<h2 id="heading-11">Free EdgeTTS</h2>
 <p>EdgeTTS is a free TTS interface provided by Microsoft, offering better voice quality but requiring an internet connection. It is important to note that Microsoft permits small-scale or personal classroom use, but commercial and profit-driven use is not allowed. You can find <a href="https://learn.microsoft.com/zh-cn/answers/questions/5640180/edge-tts" target="_blank">relevant explanations</a> on Microsoft&#39;s official website. For commercial use, please use Azure TTS.</p>
 <p><figure class="my-8"><img src="/img/0yuan/14.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <ol>
@@ -248,9 +236,9 @@
 <li>Enable speech synthesis.</li>
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/15.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>Step 5: Enable Your AI Companion to Be Seen</h1>
+<h1 id="heading-12">Step 5: Enable Your AI Companion to Be Seen</h1>
 <p>To make your AI companion appear as a 3D character on your desktop, you need to enable the VRM Desktop Pet Robot.</p>
-<h2 id="heading-7">Free VRM Models</h2>
+<h2 id="heading-13">Free VRM Models</h2>
 <p> If you want more free 3D models, you can download them from <a href="https://hub.vroid.com/en" target="_blank">vroidhub</a> or <a href="https://www.aplaybox.com/search?value=VRM" target="_blank">模之屋</a>.</p>
 <ol>
 <li>Open Super Agent Party, click on the <code>Robots</code> page, then in the <code>VRM Desktop Pet Robot</code> subpage, click to start!</li>
@@ -259,7 +247,7 @@
 </ol>
 <p><figure class="my-8"><img src="/img/0yuan/16.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>If you also want your AI companion to appear as a 2D character, you will need to install the Live2D extension. I will cover this in detail in the extensions section. Stay tuned and bookmark this blog series.</p>
-<h1>Conclusion</h1>
+<h1 id="heading-14">Conclusion</h1>
 <p>Finally! We&#39;ve completed an AI companion without spending a single penny! If you have any questions, feel free to join:</p>
 <ul>
 <li>QQ Group: <code>931057213</code></li>
@@ -278,14 +266,21 @@
                 <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
                     <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">Table of Contents</h3>
                     <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
-                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Download Ollama from the Official Website</a>
-<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Free Ollama Cloud Models</a>
-<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Using Ollama Cloud Models in Super Agent Party</a>
-<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Free Local Small Model</a>
-<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Free Browser Built-in Speech Recognition API</a>
-<a href="#heading-5" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Free System TTS</a>
-<a href="#heading-6" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Free EdgeTTS</a>
-<a href="#heading-7" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">Free VRM Models</a>
+                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Introduction</a>
+<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Step 1: Download the free Super Agent Party!</a>
+<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Step 2: Enable Your AI Companion to Think</a>
+<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Download Ollama from the Official Website</a>
+<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Free Ollama Cloud Models</a>
+<a href="#heading-5" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Using Ollama Cloud Models in Super Agent Party</a>
+<a href="#heading-6" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Step 3: Enable Your AI Companion to Hear</a>
+<a href="#heading-7" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Free Local Small Model</a>
+<a href="#heading-8" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Free Browser Built-in Speech Recognition API</a>
+<a href="#heading-9" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Step 4: Enable Your AI Companion to Speak</a>
+<a href="#heading-10" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Free System TTS</a>
+<a href="#heading-11" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Free EdgeTTS</a>
+<a href="#heading-12" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Step 5: Enable Your AI Companion to Be Seen</a>
+<a href="#heading-13" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">Free VRM Models</a>
+<a href="#heading-14" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">Conclusion</a>
 
                     </nav>
                 </div>

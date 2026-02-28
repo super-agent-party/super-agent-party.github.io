@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="img/icon.ico">
     
+    <!-- 核心：安全的 JSON 数据注入位点 -->
+    <script id="plugins-data" type="application/json">
+        [{"name":"sap-example","description":"This is the example plugin for Super Agent Party, demonstrating the plugin architecture and capabilities.","description_zh":"Super Agent Party 示例插件，用于展示插件架构与基本功能。","author":"heshengtao","version":"1.0.0","repository":"https://github.com/heshengtao/sap-example","backupRepository":"https://gitee.com/heshengtao/sap-example","category":"Example"},{"name":"sap-example-with-node","version":"1.0.0","description":"This is a chat frontend example with nodeJS environment","description_zh":"一个基于 NodeJS 环境的聊天前端示例插件。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-example-with-node","backupRepository":"https://gitee.com/heshengtao/sap-example-with-node","category":"Example"},{"name":"sap-web-preview","description":"A plugin that enables web previewing functionality for Super Agent Party.","description_zh":"为 Super Agent Party 提供网页预览功能的扩展插件。","author":"heshengtao","version":"1.0.0","repository":"https://github.com/heshengtao/sap-web-preview","backupRepository":"https://gitee.com/heshengtao/sap-web-preview","category":"Utility"},{"name":"sap-story-adventure","version":"1.0.0","description":"An interactive story adventure plugin that generates story content and options using AI","description_zh":"互动式故事冒险插件，利用 AI 动态生成故事情节和交互选项。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-story-adventure","backupRepository":"https://gitee.com/heshengtao/sap-story-adventure","category":"Game"},{"name":"sap-live2d","version":"1.0.0","description":"This is a Live 2D extension for the Super Agent Party","description_zh":"为 Super Agent Party 开发的 Live 2D 看板娘扩展模块。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-live2d","backupRepository":"https://gitee.com/heshengtao/sap-live2d","category":"Game"},{"name":"sap-aieditor","version":"1.0.0","description":"This is a AI Editor","description_zh":"一个集成了 AI 能力的文本编辑器。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-aieditor","backupRepository":"https://gitee.com/heshengtao/sap-aieditor","category":"Utility"},{"name":"sap-aigalgame","version":"1.0.0","description":"This is a AI galgame extension for the Super Agent Party","description_zh":"基于 AI 驱动的 Galgame（美少女游戏）扩展插件。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-aigalgame","backupRepository":"https://gitee.com/heshengtao/sap-aigalgame","category":"Game"},{"name":"sap-tarot","version":"1.0.0","description":"an AI tarot reader","description_zh":"AI 塔罗牌占卜插件，提供神秘学咨询体验。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-tarot","backupRepository":"https://gitee.com/heshengtao/sap-tarot","category":"Game"},{"name":"sap-ai-sheet","version":"1.0.0","author":"heshengtao","description":"SheetNext AI Excel Editor Plugin for Super Agent Party","description_zh":"SheetNext AI 表格/Excel 编辑器插件。","repository":"https://github.com/heshengtao/sap-ai-sheet","backupRepository":"https://gitee.com/heshengtao/sap-ai-sheet","category":"Utility"},{"name":"sap-ai-drawio","version":"1.0.0","description":"This is a drawio extension for the Super Agent Party","description_zh":"集成 Draw.io 功能的流程图与架构图编辑器插件。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-ai-drawio","backupRepository":"https://gitee.com/heshengtao/sap-ai-drawio","category":"Utility"},{"name":"sap-ai-mermaid","version":"1.0.0","description":"This is a mermaid editor extension for the Super Agent Party","description_zh":"Mermaid.js 语法支持的图表编辑器插件。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-ai-mermaid","backupRepository":"https://gitee.com/heshengtao/sap-ai-mermaid","category":"Utility"},{"name":"sap-rss","version":"1.0.0","description":"This is a RSS reader extension for the Super Agent Party","description_zh":"RSS 订阅与阅读器扩展插件。","author":"heshengtao","repository":"https://github.com/heshengtao/sap-rss","backupRepository":"https://gitee.com/heshengtao/sap-rss","category":"Utility"}]
+    </script>
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -53,7 +58,6 @@
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- Updated Navigation (English) -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -72,7 +76,7 @@
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
                             <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
-                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
+                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP Servers</a>
                             <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
                         </div>
                     </div>
@@ -86,7 +90,6 @@
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- Language Switch to Chinese -->
                     <a href="plugins-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         中文
                     </a>
@@ -102,15 +105,14 @@
             </div>
         </div>
         
-        <!-- Mobile Menu (Updated Layout) -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
             <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
             
-            <!-- Expanded Resources for Mobile -->
             <div class="bg-gray-50 dark:bg-gray-900/50">
                 <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
-                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
+                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP Servers</a>
                 <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
             </div>
 
@@ -141,12 +143,356 @@
                     <button id="clearSearch" class="hidden text-red-500 font-bold ml-2 px-2">X</button>
                     <div class="cursor-blink"></div>
                 </div>
-                <!-- Tags -->
-                <div id="tagContainer" class="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto pb-2"></div>
+                <!-- Tags: SSG Placeholder -->
+                <div id="tagContainer" class="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto pb-2">
+            <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm active" 
+                    onclick="setTag(this, 'All')">
+                [ All ]
+            </button>
+        
+            <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm " 
+                    onclick="setTag(this, 'Example')">
+                [ Example ]
+            </button>
+        
+            <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm " 
+                    onclick="setTag(this, 'Utility')">
+                [ Utility ]
+            </button>
+        
+            <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm " 
+                    onclick="setTag(this, 'Game')">
+                [ Game ]
+            </button>
+        </div>
             </div>
 
-            <!-- Plugin Grid -->
-            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"></div>
+            <!-- Plugin Grid: SSG Placeholder -->
+            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-example</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Example</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is the example plugin for Super Agent Party, demonstrating the plugin architecture and capabilities.</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-example')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-example" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-example-with-node</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Example</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a chat frontend example with nodeJS environment</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-example-with-node')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-example-with-node" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-web-preview</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Utility</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">A plugin that enables web previewing functionality for Super Agent Party.</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-web-preview')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-web-preview" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-story-adventure</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Game</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">An interactive story adventure plugin that generates story content and options using AI</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-story-adventure')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-story-adventure" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-live2d</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Game</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a Live 2D extension for the Super Agent Party</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-live2d')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-live2d" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-aieditor</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Utility</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a AI Editor</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-aieditor')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-aieditor" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-aigalgame</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Game</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a AI galgame extension for the Super Agent Party</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-aigalgame')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-aigalgame" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-tarot</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Game</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">an AI tarot reader</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-tarot')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-tarot" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-ai-sheet</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Utility</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">SheetNext AI Excel Editor Plugin for Super Agent Party</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-ai-sheet')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-ai-sheet" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-ai-drawio</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Utility</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a drawio extension for the Super Agent Party</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-ai-drawio')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-ai-drawio" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-ai-mermaid</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Utility</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a mermaid editor extension for the Super Agent Party</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-ai-mermaid')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-ai-mermaid" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">sap-rss</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">Utility</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">This is a RSS reader extension for the Super Agent Party</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v1.0.0</span>
+                                <span>BY: heshengtao</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('https://github.com/heshengtao/sap-rss')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="https://github.com/heshengtao/sap-rss" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
 
             <!-- Developer Info -->
             <div class="mt-16 border-2 border-dashed border-gray-400 dark:border-gray-700 p-6 md:p-8 bg-white dark:bg-geekDark/50 rounded-sm">
@@ -223,44 +569,28 @@
         </div>
     </footer>
 
-    <!-- Install Modal -->
-    <div id="installModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-        <div class="plugin-card max-w-md w-full p-6 md:p-8 bg-white dark:bg-geekDark relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-black dark:hover:text-geekYellow"><i class="fas fa-times text-xl"></i></button>
-            <div class="text-center">
-                <div class="inline-block p-4 rounded-full bg-yellow-100 dark:bg-yellow-900/30 mb-4">
-                    <i class="fas fa-rocket text-3xl text-geekYellow"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2 dark:text-white">Invoking Agent...</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-8 text-xs leading-relaxed">Attempting to open Super Agent Party client to install this plugin...</p>
-                <div class="space-y-3">
-                    <button id="retryLink" class="w-full py-3 border-2 border-black dark:border-white font-bold text-sm">Retry Launch</button>
-                    <a href="download.html" class="block w-full py-3 bg-black text-white dark:bg-geekYellow dark:text-black font-bold text-sm shadow-[4px_4px_0px_#ccc]">Download Client</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').onclick = function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
+        // 安全地从 DOM 解析 JSON 数据
         let rawPlugins = [];
+        try {
+            const dataStr = document.getElementById('plugins-data').textContent.trim();
+            if (dataStr && !dataStr.includes('{{PLUGINS_JSON}}')) {
+                rawPlugins = JSON.parse(dataStr);
+            }
+        } catch (e) {
+            console.error("Failed to parse plugin data:", e);
+        }
+
         let activeTag = 'All'; 
         const searchInput = document.getElementById('searchInput');
         const clearBtn = document.getElementById('clearSearch');
         const tagContainer = document.getElementById('tagContainer');
         const pluginList = document.getElementById('plugin-list');
-
-        // Fetch plugins
-        fetch('plugins.json')
-            .then(r => r.json())
-            .then(data => { rawPlugins = data; initFilter(); })
-            .catch(() => { initFilter(); }); 
-
-        function initFilter() { renderTags(); filterPlugins(); }
 
         function renderTags() {
             const categories = ['All', ...new Set(rawPlugins.map(p => p.category))];
@@ -301,7 +631,6 @@
             pluginList.innerHTML = '';
             
             data.forEach(p => {
-                // Always use English description
                 const displayDesc = p.description;
                 const el = document.createElement('div');
                 el.className = 'plugin-card p-5 md:p-6 flex flex-col justify-between h-full';
@@ -337,8 +666,6 @@
                 pluginList.appendChild(el);
             });
         }
-        function closeModal() { document.getElementById('installModal').classList.add('hidden'); }
-        document.getElementById('installModal').onclick = function(e) { if (e.target === this) closeModal(); }
 
         function copyLink(url) {
             navigator.clipboard.writeText(url).then(() => {

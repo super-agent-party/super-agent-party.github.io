@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugin Marketplace - Super Agent Party | Open Source AI Extensions</title>
+    <meta name="description" content="Explore the Super Agent Party Plugin Marketplace. Discover hundreds of AI agent extensions for desktop companions, virtual streamers, social bots, and browser automation. Open source and free to install.">
+    <meta name="keywords" content="AI Plugins, Agent Extensions, Desktop Companion Plugins, VTuber Plugins, Discord Bot Plugins, Browser Automation, SAP Marketplace">
+    
+    <!-- SEO Language Mapping -->
+    <link rel="alternate" hreflang="en" href="https://www.agentparty.top/plugins.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/plugins-zh.html" />
+    <link rel="canonical" href="https://www.agentparty.top/plugins.html" />
+
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="github-stars.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    
+    <!-- 核心：安全的 JSON 数据注入位点 -->
+    <script id="plugins-data" type="application/json">
+        {{PLUGINS_JSON}}
+    </script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .plugin-card { background: rgba(255,255,255,0.9); border: 2px solid #000; box-shadow: 4px 4px 0px #000; position: relative; transition: all 0.2s ease; }
+        .dark .plugin-card { background: rgba(10, 10, 10, 0.8); border: 2px solid #333; box-shadow: 4px 4px 0px #FFD700; }
+        .plugin-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000; }
+        .dark .plugin-card:hover { box-shadow: 6px 6px 0px #FFD700; border-color: #FFD700; }
+        .tag-bracket { transition: 0.2s; cursor: pointer; white-space: nowrap; }
+        .tag-bracket.active { background: #000; color: #fff; }
+        .dark .tag-bracket.active { background: #FFD700; color: #000; }
+        .cursor-blink { display: inline-block; width: 8px; height: 1.2em; background: #FFD700; animation: blink 1s step-end infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; }
+        .nav-link::after { content: ']'; margin-left: 5px; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm">Download</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
+                            Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
+                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
+                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP Servers</a>
+                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                        </div>
+                    </div>
+
+                    <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
+                    </button>
+
+                    <a href="plugins-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        中文
+                    </a>
+
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
+            <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
+            
+            <div class="bg-gray-50 dark:bg-gray-900/50">
+                <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
+                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP Servers</a>
+                <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
+            </div>
+
+            <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            
+            <a href="plugins-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
+                <i class="fas fa-language mr-2"></i>Switch to 中文
+            </a>
+            
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
+                <i class="fab fa-github mr-2"></i>GitHub
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-full overflow-x-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8 md:mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase tracking-tighter">Plugins</h1>
+                <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base px-4">Plugins that add new functionalities to Super Agent Party</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto mb-10">
+                <!-- Search Box -->
+                <div class="flex items-center bg-gray-50 dark:bg-black border-2 border-black dark:border-geekYellow px-3 py-2 md:p-4 mb-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold font-mono">></span>
+                    <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-sm md:text-base text-black dark:text-white placeholder-gray-400" placeholder="Search plugins...">
+                    <button id="clearSearch" class="hidden text-red-500 font-bold ml-2 px-2">X</button>
+                    <div class="cursor-blink"></div>
+                </div>
+                <!-- Tags: SSG Placeholder -->
+                <div id="tagContainer" class="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto pb-2">{{TAGS}}</div>
+            </div>
+
+            <!-- Plugin Grid: SSG Placeholder -->
+            <div id="plugin-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">{{PLUGINS_LIST}}</div>
+
+            <!-- Developer Info -->
+            <div class="mt-16 border-2 border-dashed border-gray-400 dark:border-gray-700 p-6 md:p-8 bg-white dark:bg-geekDark/50 rounded-sm">
+                <h2 class="text-xl md:text-2xl font-bold mb-4 dark:text-white">Adding Your Own Plugin</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-6 text-xs md:text-sm">Want to add your plugin to this list?</p>
+                <div class="bg-black text-geekYellow p-4 rounded-sm text-[10px] md:text-xs overflow-x-auto mb-6 border-l-4 border-geekYellow">
+                    <pre>// plugins.json structure
+[
+  {
+    "name": "Plugin Name",
+    "category": "Utility",
+    "repository": "https://github.com/..."
+  }
+]</pre>
+                </div>
+                <p class="text-xs md:text-sm">
+                    <span>Refer to documentation:</span>
+                    <a href="https://github.com/super-agent-party/super-agent-party.github.io" target="_blank" class="text-blue-600 dark:text-geekYellow hover:underline font-bold">Super Agent Party Docs</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 mb-10">
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank"
+            class="group flex flex-col sm:flex-row items-center justify-between gap-4 bg-black text-white dark:bg-white dark:text-black p-6 border-2 border-geekYellow shadow-[4px_4px_0px_#FFD700] hover:-translate-y-1 transition-all">
+                <div class="flex items-center gap-4">
+                    <i class="fab fa-github text-4xl"></i>
+                    <div>
+                        <div class="text-xs uppercase opacity-70 mb-1">Open Source · AGPL-3.0</div>
+                        <div class="text-lg font-bold">Star us on GitHub</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-800 dark:bg-gray-200 px-4 py-2 rounded-sm">
+                    <i class="fas fa-star text-geekYellow"></i>
+                    <span class="github-stars font-bold text-sm">-</span>
+                </div>
+            </a>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1">
+                    <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
+                    <p class="text-xs text-gray-500 font-mono">Open-source AI agent framework for personal companions and automation.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Product</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="download.html" class="hover:text-geekYellow">Download</a></li>
+                        <li><a href="plugins.html" class="hover:text-geekYellow">Plugins</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Developers</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">Documentation</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">Issues</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Community</h4>
+                    <div class="grid grid-cols-2 gap-3 text-[11px] font-bold">
+                        <a href="#" class="hover:text-geekYellow"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="https://x.com/AILM32442" class="hover:text-geekYellow"><i class="fab fa-twitter"></i> Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex justify-between items-center text-[10px] text-gray-500">
+                <p>© 2026 Super Agent Party. Open source under AGPL-3.0.</p>
+                <a href="https://github.com/heshengtao" class="hover:text-geekYellow underline">@heshengtao</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').onclick = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // 安全地从 DOM 解析 JSON 数据
+        let rawPlugins = [];
+        try {
+            const dataStr = document.getElementById('plugins-data').textContent.trim();
+            if (dataStr && !dataStr.includes('{{PLUGINS_JSON}}')) {
+                rawPlugins = JSON.parse(dataStr);
+            }
+        } catch (e) {
+            console.error("Failed to parse plugin data:", e);
+        }
+
+        let activeTag = 'All'; 
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearSearch');
+        const tagContainer = document.getElementById('tagContainer');
+        const pluginList = document.getElementById('plugin-list');
+
+        function renderTags() {
+            const categories = ['All', ...new Set(rawPlugins.map(p => p.category))];
+            tagContainer.innerHTML = categories.map(cat => {
+                return `
+                    <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm ${activeTag === cat ? 'active' : ''}" 
+                            onclick="setTag(this, '${cat}')">
+                        [ ${cat} ]
+                    </button>
+                `;
+            }).join('');
+        }
+        
+        window.setTag = function(btn, cat) {
+            activeTag = cat;
+            renderTags();
+            filterPlugins();
+        }
+
+        searchInput.addEventListener('input', () => {
+            clearBtn.style.display = searchInput.value ? 'inline' : 'none';
+            filterPlugins();
+        });
+        clearBtn.onclick = () => { searchInput.value = ''; clearBtn.style.display = 'none'; filterPlugins(); };
+
+        function filterPlugins() {
+            const kw = searchInput.value.toLowerCase();
+            const filtered = rawPlugins.filter(p => {
+                const hitTag = activeTag === 'All' || p.category === activeTag;
+                const hitKw = !kw || p.name.toLowerCase().includes(kw) || 
+                            (p.description && p.description.toLowerCase().includes(kw));
+                return hitTag && hitKw;
+            });
+            renderPlugins(filtered);
+        }
+
+        function renderPlugins(data) {
+            pluginList.innerHTML = '';
+            
+            data.forEach(p => {
+                const displayDesc = p.description;
+                const el = document.createElement('div');
+                el.className = 'plugin-card p-5 md:p-6 flex flex-col justify-between h-full';
+                
+                el.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4 gap-2">
+                            <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">${p.name}</h3>
+                            <span class="shrink-0 text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">${p.category}</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">${displayDesc}</p>
+                    </div>
+
+                    <div class="mt-auto">
+                        <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
+                                <span>v${p.version}</span>
+                                <span>BY: ${p.author}</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="copyLink('${p.repository}')" 
+                                        class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                                <a href="${p.repository}" target="_blank" 
+                                class="py-2 bg-black text-white dark:bg-gray-800 text-center text-[10px] font-bold">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                pluginList.appendChild(el);
+            });
+        }
+
+        function copyLink(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
+    </script>
+</body>
+</html>

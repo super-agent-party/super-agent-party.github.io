@@ -62,41 +62,40 @@
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
 
-    <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
-                <!-- 桌面端菜单 -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index-zh.html" class="nav-link font-bold text-sm">首页</a>
-                    <a href="download-zh.html" class="nav-link font-bold text-sm">下载</a>
+                    <!-- 回到根目录的链接 -->
+                    <a href="../../index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="../../download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
                     
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             资源生态 <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
                         </button>
                         <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
-                            <a href="plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
-                            <a href="mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
-                            <a href="skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
+                            <a href="../../plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
+                            <a href="../../mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
+                            <a href="../../skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
                         </div>
                     </div>
-
-                    <a href="blog-zh.html" class="nav-link font-bold text-sm">博客</a>
+                    
+                    <a href="../../blog-zh.html" class="nav-link font-bold text-sm">博客</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
-                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <!-- 语言切换：硬链接到英文版 -->
-                    <a href="index.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                    <a href="../en/article-aimgz.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         English
                     </a>
 
@@ -106,34 +105,14 @@
                         <span>GitHub</span>
                     </a>
                 </div>
-
                 <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
         
-        <!-- 移动端菜单 -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
-            <a href="index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
-            <a href="download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
-            
-            <!-- 资源子项直接展开，并稍微缩进增加层次感 -->
-            <div class="bg-gray-50 dark:bg-gray-900/50">
-                <a href="plugins-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
-                <a href="mcp-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
-                <a href="skills-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
-            </div>
-
-            <a href="blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
-            
-            <!-- 语言切换 -->
-            <a href="index.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
-                <i class="fas fa-language mr-2"></i>Switch to English
-            </a>
-            
-            <!-- GitHub 链接 -->
-            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
-                <i class="fab fa-github mr-2"></i>GitHub
-            </a>
+            <a href="../../index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
+            <a href="../../download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
+            <a href="../../blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
         </div>
     </nav>
 
@@ -160,16 +139,16 @@
 
                     <div class="prose dark:prose-invert">
                         <p><figure class="my-8"><img src="/img/aimgz/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>引言</h1>
+<h1 id="heading-0">引言</h1>
 <p>面对着信息爆炸的时代，传统的阅读方式往往耗时耗力。因此，我给AI伴侣软件——<a href="https://github.com/heshengtao/super-agent-party" target="_blank">Super Agent party</a>，增加了一个新的扩展：<a href="https://github.com/heshengtao/sap-rss" target="_blank">sap-rss</a>，它可以帮助我们通过RSS订阅获取消息，然后自动整理成一本每日都可以会更新的AI杂志，最后让你的AI伴侣念给你听。我们一起来看一下是怎么实现的吧！</p>
-<h1>第一步：下载super agent party！</h1>
+<h1 id="heading-1">第一步：下载super agent party！</h1>
 <p>首先，你需要下载一个免费的super agent party！这是一个开源的AI伴侣软件。你可以从<a href="https://github.com/heshengtao/super-agent-party" target="_blank">GitHub</a>看到他的源码。</p>
 <p>如果你是中国用户，你可以在<a href="https://modelscope.cn/models/ailm32442/super-agent-party-portable/files" target="_blank">魔搭社区</a>下载。选择对应版本号的文件夹，然后选择符合你的操作系统的版本，点击下载即可！</p>
 <p><figure class="my-8"><img src="/img/0yuan/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>如果你是海外用户，你可以在<a href="https://github.com/heshengtao/super-agent-party/releases" target="_blank">GitHub</a>下载。选择适合你的操作系统的版本，点击下载即可！</p>
 <p><figure class="my-8"><img src="/img/0yuan/2.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>如果你是一个爱折腾的极客，你也可以选择docker版本，在<a href="https://github.com/heshengtao/super-agent-party#docker-deployment-this-version-of-the-table-pet-can-only-be-viewed-through-the-browser" target="_blank">GitHub</a>查看使用方法。</p>
-<h1>第二步：安装RSS扩展</h1>
+<h1 id="heading-2">第二步：安装RSS扩展</h1>
 <p>打开super agent party，你可以在【开发者】-&gt; 【扩展】子页面中看到已经安装的扩展，你可以点击【安装新扩展】按钮，然后选择【sap-rss】进行安装。</p>
 <p><figure class="my-8"><img src="/img/aimgz/1.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>扩展有三种方式可以打开，分别是：</p>
@@ -192,24 +171,24 @@
 <p><figure class="my-8"><img src="/img/aimgz/7.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>打开之后，RSS扩展的界面会以浏览器窗口的形式打开。</p>
 <p><figure class="my-8"><img src="/img/aimgz/8.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>第三步：添加RSS订阅</h1>
+<h1 id="heading-3">第三步：添加RSS订阅</h1>
 <p>在RSS扩展的界面中，你可以点击+号来添加新的RSS订阅。你可以输入RSS的URL，然后点击【添加】按钮。</p>
 <p><figure class="my-8"><img src="/img/aimgz/9.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>你可以点击+号左边的网络按钮添加我们已经整理好的一些RSS订阅。</p>
 <p><figure class="my-8"><img src="/img/aimgz/10.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>第四步：生成AI翻译、AI总结、AI播客、AI杂志</h1>
+<h1 id="heading-4">第四步：生成AI翻译、AI总结、AI播客、AI杂志</h1>
 <p>点击界面上的以下按钮，可以实现对RSS订阅的翻译、总结、播客、杂志的生成。Super Agent party不会通过提供AI功能而要求你付费使用，所有的AI算力可以通过你自己配置的AI模型来实现。因此你需要提前配置好对应的LLM和TTS模型。关于如何使用免费的算力，在上一期博客中已经介绍过了，你可以点击<a href="https://www.agentparty.top/article.html?lang=zh&slug=0yuan" target="_blank">这里</a>查看。</p>
 <p><figure class="my-8"><img src="/img/aimgz/11.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p><figure class="my-8"><img src="/img/aimgz/12.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p>你可以点击AI杂志上的目录跳转到你想要看的章节。</p>
 <p><figure class="my-8"><img src="/img/aimgz/13.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>第五步：让AI伴侣念给你听</h1>
+<h1 id="heading-5">第五步：让AI伴侣念给你听</h1>
 <p>点击VRM桌宠按钮，然后点击AI杂志上的【播放】按钮，就可以让AI伴侣念给你听了。</p>
 <p><figure class="my-8"><img src="/img/aimgz/14.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <p><figure class="my-8"><img src="/img/aimgz/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
-<h1>更多RSS订阅去哪里找？</h1>
+<h1 id="heading-6">更多RSS订阅去哪里找？</h1>
 <p>RSS 协议虽然历史悠久，但它依然是当今互联网上信息获取最自由、最高效的方式。虽然现在很多网站不再把 RSS 图标挂在显眼位置，但它们其实一直都在。为了让你的 <strong>Super Agent Party</strong> 生成的 AI 杂志内容丰富多彩，这里为你整理了一套从入门到精通的“订阅源挖掘指南”，涵盖全球主流平台。</p>
-<h2 id="heading-0">1. 必备神器：浏览器探测插件 (RSSHub Radar)</h2>
+<h2 id="heading-7">1. 必备神器：浏览器探测插件 (RSSHub Radar)</h2>
 <p>这是最简单、最推荐给所有用户的方法。你不需要懂代码，只需要给浏览器装一个“雷达”。</p>
 <ul>
 <li><strong>RSSHub Radar</strong>: 这是一个开源的浏览器扩展（支持 Chrome/Edge/Firefox）。当你访问一个网站时，如果该网站自带 RSS，或者支持通过 RSSHub 生成 RSS，它的图标就会亮起并显示数字。<ul>
@@ -219,7 +198,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-1">2. 万物皆可 RSS：拥抱开源项目 RSSHub</h2>
+<h2 id="heading-8">2. 万物皆可 RSS：拥抱开源项目 RSSHub</h2>
 <p>如果你发现某个喜欢的网站（例如 Twitter/X、Instagram、知乎、抖音等）官方完全不支持 RSS，怎么办？这时候就需要请出 RSS 界的“瑞士军刀”—— <strong>RSSHub</strong>。</p>
 <ul>
 <li><strong>什么是 RSSHub</strong>：它是一个开源社区驱动的项目，可以通过特定的规则将几乎任何网页内容转换成 RSS 订阅源。</li>
@@ -230,7 +209,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-2">3. 全球主流平台的原生/技巧性获取</h2>
+<h2 id="heading-9">3. 全球主流平台的原生/技巧性获取</h2>
 <p>很多国际主流平台其实自带 RSS 接口，只是藏得比较深。掌握这些技巧，你可以轻松订阅全球资讯：</p>
 <ul>
 <li><strong>YouTube (视频/播客)</strong>：<ul>
@@ -251,14 +230,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-3">4. 聚合平台与搜索引擎 (Aggregators)</h2>
+<h2 id="heading-10">4. 聚合平台与搜索引擎 (Aggregators)</h2>
 <p>如果你不知道看什么，可以去这些专门收集 RSS 的“黄页”网站逛逛，它们通常按话题分类，方便你批量导入：</p>
 <ul>
 <li><strong>Feedly / Inoreader</strong>: 这两个是全球最大的 RSS 阅读器服务商。虽然它们主要是阅读器，但它们的“搜索框”是非常强大的 RSS 搜索引擎。输入关键词（如 &quot;AI News&quot; 或 &quot;SpaceX&quot;），它们会列出全网最热门的相关 RSS 源。</li>
 <li><strong>Follow.is</strong>: 新一代的订阅浏览器，界面非常现代化。它的发现页（Discover）有很多用户创建的高质量订阅列表（Lists），涵盖了科技、设计、编程等前沿领域。</li>
 <li><strong>Feedspot</strong>: 一个包含全球数十万个 RSS Feed 的数据库，按行业和国家分类，非常适合寻找特定领域的专业资讯。</li>
 </ul>
-<h2 id="heading-4">5. GitHub 上的 Awesome 列表</h2>
+<h2 id="heading-11">5. GitHub 上的 Awesome 列表</h2>
 <p>对于开发者和极客用户，GitHub 本身就是一个巨大的资源库。你可以搜索以下关键词找到由社区精心维护的源列表（OPML文件）：</p>
 <ul>
 <li><code>ALL-about-RSS</code></li>
@@ -267,7 +246,7 @@
 <li><code>engineering-blogs</code> (全球各大科技公司的技术博客)</li>
 </ul>
 <p><strong>小贴士</strong>：获取到 RSS 链接后，别忘了先在浏览器里打开测试一下，只要看到满屏的代码（XML 格式）或者下载提示，就说明这是一个有效的链接，直接复制进 <strong>Super Agent Party</strong> 的 <code>sap-rss</code> 扩展即可！</p>
-<h1>结语</h1>
+<h1 id="heading-12">结语</h1>
 <p>通过RSS订阅+AI伴侣，我们可以高效获取消息，然后自动整理成一本每日都可以会更新的AI杂志，最后让你的AI伴侣念给你听。这样，我们就可以在忙碌的生活中，随时随地的获取到最新的消息，并且让AI伴侣来帮助我们整理和阅读这些消息。如果你有任何问题，欢迎加入：</p>
 <ul>
 <li>QQ群：<code>931057213</code></li>
@@ -286,11 +265,19 @@
                 <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
                     <h3 class="text-lg font-black mb-4 uppercase tracking-tighter border-b-2 border-geekYellow inline-block">文章目录</h3>
                     <nav id="toc" class="space-y-2 text-sm overflow-y-auto max-h-[70vh]">
-                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">1. 必备神器：浏览器探测插件 (RSSHub Radar)</a>
-<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">2. 万物皆可 RSS：拥抱开源项目 RSSHub</a>
-<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">3. 全球主流平台的原生/技巧性获取</a>
-<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">4. 聚合平台与搜索引擎 (Aggregators)</a>
-<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 border-l-2 border-transparent pl-3 font-bold text-gray-900 dark:text-white">5. GitHub 上的 Awesome 列表</a>
+                        <a href="#heading-0" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">引言</a>
+<a href="#heading-1" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">第一步：下载super agent party！</a>
+<a href="#heading-2" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">第二步：安装RSS扩展</a>
+<a href="#heading-3" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">第三步：添加RSS订阅</a>
+<a href="#heading-4" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">第四步：生成AI翻译、AI总结、AI播客、AI杂志</a>
+<a href="#heading-5" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">第五步：让AI伴侣念给你听</a>
+<a href="#heading-6" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">更多RSS订阅去哪里找？</a>
+<a href="#heading-7" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">1. 必备神器：浏览器探测插件 (RSSHub Radar)</a>
+<a href="#heading-8" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">2. 万物皆可 RSS：拥抱开源项目 RSSHub</a>
+<a href="#heading-9" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">3. 全球主流平台的原生/技巧性获取</a>
+<a href="#heading-10" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">4. 聚合平台与搜索引擎 (Aggregators)</a>
+<a href="#heading-11" class="block transition-all duration-200 hover:text-geekYellow py-1 ml-3 font-bold text-gray-700 dark:text-gray-300 border-l-2 border-transparent hover:border-geekYellow pl-2">5. GitHub 上的 Awesome 列表</a>
+<a href="#heading-12" class="block transition-all duration-200 hover:text-geekYellow py-1 font-black text-gray-900 dark:text-white border-l-4 border-geekYellow pl-2">结语</a>
 
                     </nav>
                 </div>
