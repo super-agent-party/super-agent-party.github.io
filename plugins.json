@@ -20,6 +20,16 @@
     "category": "Example"
   },
   {
+    "name": "sap-live2d",
+    "version": "1.0.0",
+    "description": "This is a Live 2D extension for the Super Agent Party",
+    "description_zh": "为 Super Agent Party 开发的 Live 2D 看板娘扩展模块。",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-live2d",
+    "backupRepository": "https://gitee.com/heshengtao/sap-live2d",
+    "category": "Game"
+  },
+  {
     "name": "sap-web-preview",
     "description": "A plugin that enables web previewing functionality for Super Agent Party.",
     "description_zh": "为 Super Agent Party 提供网页预览功能的扩展插件。",
@@ -30,6 +40,16 @@
     "category": "Utility"
   },
   {
+    "name": "sap-remote",
+    "version": "1.0.0",
+    "description": "One-click expose Super Agent Party to the public internet",
+    "description_zh": "一键将 Super Agent Party 暴露到公网",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-remote",
+    "backupRepository": "https://gitee.com/heshengtao/sap-remote",
+    "category": "Utility"
+  },
+  {
     "name": "sap-story-adventure",
     "version": "1.0.0",
     "description": "An interactive story adventure plugin that generates story content and options using AI",
@@ -37,16 +57,6 @@
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-story-adventure",
     "backupRepository": "https://gitee.com/heshengtao/sap-story-adventure",
-    "category": "Game"
-  },
-  {
-    "name": "sap-live2d",
-    "version": "1.0.0",
-    "description": "This is a Live 2D extension for the Super Agent Party",
-    "description_zh": "为 Super Agent Party 开发的 Live 2D 看板娘扩展模块。",
-    "author": "heshengtao",
-    "repository": "https://github.com/heshengtao/sap-live2d",
-    "backupRepository": "https://gitee.com/heshengtao/sap-live2d",
     "category": "Game"
   },
   {

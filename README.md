@@ -48,3 +48,4 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | AI drawio      | heshengtao  | This is an AI drawio extension                 | https://github.com/heshengtao/sap-ai-drawio  |
 | AI mermaid      | heshengtao  | This is an AI mermaid editor extension                  | https://github.com/heshengtao/sap-ai-mermaid  |
 | AI RSS reader      | heshengtao  | This is an AI RSS reader extension for the Super Agent Party      | https://github.com/heshengtao/sap-rss  |
+| AI Remote      | heshengtao  | One-click expose Super Agent Party to the public internet             | https://github.com/heshengtao/sap-remote  |

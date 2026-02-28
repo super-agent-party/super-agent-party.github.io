@@ -48,3 +48,4 @@
 | AI drawio      | heshengtao  | 一款AI drawio插件。                   | https://github.com/heshengtao/sap-ai-drawio  |
 | AI mermaid      | heshengtao  | 一款AI mermaid编辑器插件                  | https://github.com/heshengtao/sap-ai-mermaid  |
 | AI RSS reader      | heshengtao  | 一款AI RSS阅读器插件                  | https://github.com/heshengtao/sap-rss  |
+| AI Remote      | heshengtao  | 一键将 Super Agent Party 暴露到公网             | https://github.com/heshengtao/sap-remote  |
