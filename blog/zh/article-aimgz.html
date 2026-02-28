@@ -62,28 +62,41 @@
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <!-- 回到根目录的链接 -->
-                    <a href="../../index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                    <a href="index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
                 
+                <!-- 桌面端菜单 -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <!-- 回到根目录的链接 -->
-                    <a href="../../index-zh.html" class="nav-link font-bold text-sm">首页</a>
-                    <a href="../../download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
-                    <a href="../../blog-zh.html" class="nav-link font-bold text-sm">博客</a>
+                    <a href="index-zh.html" class="nav-link font-bold text-sm">首页</a>
+                    <a href="download-zh.html" class="nav-link font-bold text-sm">下载</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
+                            资源生态 <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-40 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
+                            <a href="plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
+                            <a href="mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
+                            <a href="skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
+                        </div>
+                    </div>
+
+                    <a href="blog-zh.html" class="nav-link font-bold text-sm">博客</a>
                     
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
                     
-                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
 
-                    <a href="../en/article-aimgz.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                    <!-- 语言切换：硬链接到英文版 -->
+                    <a href="index.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         English
                     </a>
 
@@ -93,14 +106,34 @@
                         <span>GitHub</span>
                     </a>
                 </div>
+
                 <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
         
+        <!-- 移动端菜单 -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
-            <a href="../../index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
-            <a href="../../download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
-            <a href="../../blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
+            <a href="index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
+            <a href="download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
+            
+            <!-- 资源子项直接展开，并稍微缩进增加层次感 -->
+            <div class="bg-gray-50 dark:bg-gray-900/50">
+                <a href="plugins-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
+                <a href="mcp-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
+                <a href="skills-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
+            </div>
+
+            <a href="blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            
+            <!-- 语言切换 -->
+            <a href="index.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
+                <i class="fas fa-language mr-2"></i>Switch to English
+            </a>
+            
+            <!-- GitHub 链接 -->
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
+                <i class="fab fa-github mr-2"></i>GitHub
+            </a>
         </div>
     </nav>
 
