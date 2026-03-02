@@ -128,5 +128,15 @@
     "repository": "https://github.com/heshengtao/sap-rss",
     "backupRepository": "https://gitee.com/heshengtao/sap-rss",
     "category": "Utility"
+  },
+  {
+    "name": "sap-code-server",
+    "version": "1.0.0",
+    "description": "IDE extension for Super Agent Party!",
+    "description_zh": "为 Super Agent Party 提供的 IDE 扩展插件。",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-code-server",
+    "backupRepository": "https://gitee.com/heshengtao/sap-code-server",
+    "category": "Development"
   }
 ]
