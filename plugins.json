@@ -37,7 +37,7 @@
     "version": "1.0.0", 
     "repository": "https://github.com/heshengtao/sap-web-preview",
     "backupRepository": "https://gitee.com/heshengtao/sap-web-preview",
-    "category": "Utility"
+    "category": "Development"
   },
   {
     "name": "sap-remote",
