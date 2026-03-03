@@ -50,3 +50,4 @@
 | AI RSS reader      | heshengtao  | 一款AI RSS阅读器插件                  | https://github.com/heshengtao/sap-rss  |
 | Remote      | heshengtao  | 一键将 Super Agent Party 暴露到公网             | https://github.com/heshengtao/sap-remote  |
 | Code Server      | heshengtao  | 为 Super Agent Party 提供的 IDE 扩展插件           | https://github.com/heshengtao/sap-code-server  |
+| CLI      | heshengtao  | 为 Super Agent Party 提供的 CLI 扩展插件           | https://github.com/heshengtao/sap-cli  |
