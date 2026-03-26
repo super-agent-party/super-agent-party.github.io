@@ -142,8 +142,8 @@
   {
     "name": "sap-cli",
     "version": "1.0.0",
-    "description": "Agent Party CLI tool (sap)",
-    "description_zh":"Agent Party CLI工具（sap）",
+    "description": "Agent Party CLI tool (sap) with ACP support",
+    "description_zh":"Agent Party CLI工具（sap）, 支持ACP",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-cli",
     "backupRepository": "https://gitee.com/heshengtao/sap-cli",
