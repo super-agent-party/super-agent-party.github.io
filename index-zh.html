@@ -179,11 +179,11 @@
                     Super Agent Party
                 </h1>
                 
-                <div class="flex justify-center items-center mb-8">
-                    <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl">
-                        一款拥有无限可能的 AI 桌面伴侣与智能体框架
+                <div class="flex justify-center items-center mb-8 flex-wrap">
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl leading-relaxed text-center">
+                        在 <span id="typewriter-text" class="text-black dark:text-white border-b-2 border-geekYellow px-1 min-w-[3rem] inline-block text-center">桌面</span> 与你的 AI 伴侣一起游戏和办公！
                     </p>
-                    <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-2 animate-cursor"></div>
+                    <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-1 animate-cursor mt-1"></div>
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -530,6 +530,44 @@
             revealObserver.observe(el);
         });
     
+        // 宣传语打字机切换效果
+        const platforms = ["Windows 桌面", "MacOS 桌面", "Linux 桌面", "微信", "QQ", "飞书", "钉钉", "Discord", "Telegram", "Slack", "B站直播", "YouTube直播", "Twitch直播"];
+        let currentPlatformIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const typeElement = document.getElementById('typewriter-text');
+
+        function typeWriter() {
+            if (!typeElement) return;
+            const currentWord = platforms[currentPlatformIndex];
+            
+            if (isDeleting) {
+                currentCharIndex--;
+            } else {
+                currentCharIndex++;
+            }
+
+            typeElement.textContent = currentWord.substring(0, currentCharIndex);
+
+            // 打字速度 100ms，删除速度 40ms
+            let typeSpeed = isDeleting ? 40 : 100;
+
+            if (!isDeleting && currentCharIndex === currentWord.length) {
+                typeSpeed = 2000; // 完整显示后停顿 2 秒
+                isDeleting = true;
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPlatformIndex = (currentPlatformIndex + 1) % platforms.length;
+                typeSpeed = 400; // 删除完停顿 0.4 秒开始下一个
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeWriter, 1000); // 页面加载后 1 秒开始打字动画
+        });
+
     </script>
 </body>
 </html>

@@ -178,11 +178,11 @@
                     Super Agent Party
                 </h1>
                 
-                <div class="flex justify-center items-center mb-8">
-                    <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl">
-                        An AI desktop companion and agent framework with unlimited possibilities
+                <div class="flex justify-center items-center mb-8 flex-wrap">
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl leading-relaxed text-center">
+                        Game and work with your AI companion on <span id="typewriter-text" class="text-black dark:text-white border-b-2 border-geekYellow px-1 min-w-[5rem] inline-block text-center">Desktop</span>!
                     </p>
-                    <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-2 animate-cursor"></div>
+                    <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-1 animate-cursor mt-1"></div>
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -320,7 +320,7 @@
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">IM Bot Matrix</h3>
                             <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base lg:text-lg">
-                                Deploy your agents to mainstream social platforms with one click. Stay connected anywhere, whether for work (Feishu/DingTalk/Slack) or social networking (WeChat/QQ/Telegram/Discord).
+                                Deploy your agents to mainstream social platforms with one click. Stay connected anywhere, whether for work (Lark/DingTalk/Slack) or social networking (WeChat/QQ/Telegram/Discord).
                             </p>
                             <div class="flex gap-4 text-3xl text-gray-400">
                                 <i class="fab fa-qq hover:text-black dark:hover:text-white transition-colors hover:scale-110 transform duration-300 cursor-pointer"></i>
@@ -501,6 +501,44 @@
             el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
             revealObserver.observe(el);
         });
+
+        // Typewriter Effect for Hero Subtitle
+        const platforms = ["Windows Desktop", "MacOS Desktop", "Linux Desktop", "Discord", "Telegram", "Slack", "WeChat", "QQ", "Lark", "DingTalk", "YouTube Live", "Twitch Live", "Bilibili Live"];
+        let currentPlatformIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const typeElement = document.getElementById('typewriter-text');
+
+        function typeWriter() {
+            if (!typeElement) return;
+            const currentWord = platforms[currentPlatformIndex];
+            
+            if (isDeleting) {
+                currentCharIndex--;
+            } else {
+                currentCharIndex++;
+            }
+
+            typeElement.textContent = currentWord.substring(0, currentCharIndex);
+
+            let typeSpeed = isDeleting ? 40 : 100;
+
+            if (!isDeleting && currentCharIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause for 2s when word is fully typed
+                isDeleting = true;
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPlatformIndex = (currentPlatformIndex + 1) % platforms.length;
+                typeSpeed = 400; // Pause for 0.4s before typing new word
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeWriter, 1000); // Start 1s after load
+        });
+
     </script>
 </body>
 </html>
