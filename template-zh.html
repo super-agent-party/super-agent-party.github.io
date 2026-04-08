@@ -58,6 +58,51 @@
         .dark .prose a { color: #FFD700; }
         .prose blockquote { margin: 2rem 0; padding: 1rem 1.5rem; border: 2px solid #000; background: #fff; box-shadow: 4px 4px 0px #FFD700; }
         .dark .prose blockquote { background: #111; border-color: #FFD700; color: #e5e7eb; }
+        /* 1. Firefox 支持 */
+        #toc {
+            scrollbar-width: thin; /* 细滚动条 */
+            scrollbar-color: transparent transparent; /* 默认完全透明 */
+            transition: scrollbar-color 0.3s ease;
+        }
+        /* 鼠标悬停在 TOC 区域时才显示 */
+        #toc:hover {
+            scrollbar-color: rgba(156, 163, 175, 0.4) transparent; 
+        }
+        .dark #toc:hover {
+            scrollbar-color: rgba(107, 114, 128, 0.5) transparent;
+        }
+
+        /* 2. WebKit 支持 (Chrome, Edge, Safari) */
+        #toc::-webkit-scrollbar {
+            width: 3px; /* 非常细 */
+        }
+        
+        #toc::-webkit-scrollbar-track {
+            background: transparent; /* 轨道永久透明 */
+        }
+        
+        /* 滑块默认完全透明 (不出现) */
+        #toc::-webkit-scrollbar-thumb {
+            background-color: transparent; 
+            border-radius: 4px;
+        }
+        
+        /* 【关键】鼠标悬停在 TOC 容器上时，滑块才出现 */
+        #toc:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(156, 163, 175, 0.4); 
+        }
+        .dark #toc:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(107, 114, 128, 0.5);
+        }
+        
+        /* 鼠标精准悬停或拖拽滚动条滑块时，颜色加深 */
+        #toc::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(156, 163, 175, 0.8) !important;
+        }
+        .dark #toc::-webkit-scrollbar-thumb:hover {
+            /* 暗黑模式下拖拽时，用主题色 GeekYellow 微微点缀会显得非常高级 */
+            background-color: rgba(255, 215, 0, 0.6) !important; 
+        }
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
