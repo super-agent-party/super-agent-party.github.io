@@ -51,3 +51,4 @@
 | Remote      | heshengtao  | 一键将 Super Agent Party 暴露到公网             | https://github.com/heshengtao/sap-remote  |
 | Code Server      | heshengtao  | 为 Super Agent Party 提供的 IDE 扩展插件           | https://github.com/heshengtao/sap-code-server  |
 | CLI      | heshengtao  | 为 Super Agent Party 提供的 CLI 扩展插件           | https://github.com/heshengtao/sap-cli  |
+| LX-music      | heshengtao  | 将super agent party 连接到 LX Music API，让AI伴侣控制音乐播放！           | https://github.com/heshengtao/sap-lx-music  |

@@ -51,3 +51,4 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | Remote      | heshengtao  | One-click expose Super Agent Party to the public internet             | https://github.com/heshengtao/sap-remote  |
 | Code Server      | heshengtao  | IDE extension for Super Agent Party          | https://github.com/heshengtao/sap-code-server  |
 | CLI      | heshengtao  | Agent Party CLI tool (sap)          | https://github.com/heshengtao/sap-cli  |
+| LX-music      | heshengtao  | Connect the super agent party extension to the LX Music API,Let AI companion control music playback!           | https://github.com/heshengtao/sap-lx-music  |

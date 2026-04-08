@@ -148,5 +148,15 @@
     "repository": "https://github.com/heshengtao/sap-cli",
     "backupRepository": "https://gitee.com/heshengtao/sap-cli",
     "category": "Development"
+  },
+  {
+    "name": "sap-lx-music",
+    "version": "1.0.0",
+    "description": "Connect the super agent party extension to the LX Music API,Let AI companion control music playback!",
+    "description_zh": "将super agent party 连接到 LX Music API，让AI伴侣控制音乐播放！",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-lx-music",
+    "backupRepository": "https://gitee.com/heshengtao/sap-lx-music",
+    "category": "Utility"
   }
 ]
