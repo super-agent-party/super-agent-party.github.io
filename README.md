@@ -21,6 +21,39 @@ You can add new plugins in the [Plugin List File](/plugins.json) with the follow
   }  
 ```  
 
+## Add Your SKILLS
+
+You can add new SKILLS in the [plugin list file](/skills.json) with the following format:
+
+```json
+  {
+    "name": "Word Document Processor",
+    "description": "Create, edit, and analyze Word documents",
+    "description_zh": "创建、编辑和分析 Word 文档",
+    "author": "anthropics",
+    "category": "Office",
+    "repository": "https://github.com/anthropics/skills/tree/main/skills/docx"
+  }
+```
+
+## Add Your MCP
+
+You can add new MCP in the [plugin list file](/mcp.json) with the following format:
+
+```json
+  {
+    "name": "1MCP - One MCP Server for All",
+    "type": "streamablehttp",
+    "description": "Unified MCP server that aggregates multiple MCP servers into a single HTTP endpoint",
+    "description_zh": "统一的 MCP 服务器，将多个 MCP 服务聚合为单一 HTTP 入口",
+    "category": "Cloud",
+    "repository": "https://github.com/1mcp-app/agent",
+    "mcpConfig": {
+      "url": "http://127.0.0.1:3050/mcp"
+    }
+  }
+```
+
 ## Using Plugins  
 
 In the [super-agent-party](https://github.com/heshengtao/super-agent-party) project, you can use plugins in the following way:  

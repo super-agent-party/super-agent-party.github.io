@@ -21,6 +21,39 @@
   }
 ```
 
+## 添加你的SKILLS
+
+你可以在[插件列表文件](/skills.json)添加新的SKILLS，格式如下：
+
+```json
+  {
+    "name": "Word Document Processor",
+    "description": "Create, edit, and analyze Word documents",
+    "description_zh": "创建、编辑和分析 Word 文档",
+    "author": "anthropics",
+    "category": "Office",
+    "repository": "https://github.com/anthropics/skills/tree/main/skills/docx"
+  }
+```
+
+## 添加你的MCP
+
+你可以在[插件列表文件](/mcp.json)添加新的MCP，格式如下：
+
+```json
+  {
+    "name": "1MCP - One MCP Server for All",
+    "type": "streamablehttp",
+    "description": "Unified MCP server that aggregates multiple MCP servers into a single HTTP endpoint",
+    "description_zh": "统一的 MCP 服务器，将多个 MCP 服务聚合为单一 HTTP 入口",
+    "category": "Cloud",
+    "repository": "https://github.com/1mcp-app/agent",
+    "mcpConfig": {
+      "url": "http://127.0.0.1:3050/mcp"
+    }
+  }
+```
+
 ## 使用插件
 
 在[super-agent-party](https://github.com/heshengtao/super-agent-party)项目中，你可以通过以下方式使用插件：
