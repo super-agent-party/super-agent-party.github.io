@@ -6607,4 +6607,12 @@
     "category": "Office",
     "repository": "https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills/zapier-make-patterns"
   }
+  {
+    "name": "personal-wiki-kb",
+    "description": "A persistent, self-maintaining personal knowledge base system that compiles raw data (MD/JSON) into structured, interlinked Wiki documents. Core modules: ingest_source (write), query_knowledge (read), audit_wiki (maintain). Designed for long-term knowledge compounding. ",
+    "description_zh": "将知识管理从一次性的信息存储升级为持续的知识工程。系统像编译器一样工作：**Raw Sources (源文件) → Compiled Wiki (结构化知识网络)**",
+    "author": "YuHem",
+    "category": "Office",
+    "repository": "https://github.com/loveznkxa/personal-wiki-kb"
+  }
 ]
