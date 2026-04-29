@@ -158,5 +158,15 @@
     "repository": "https://github.com/heshengtao/sap-lx-music",
     "backupRepository": "https://gitee.com/heshengtao/sap-lx-music",
     "category": "Utility"
+  },
+  {
+    "name": "sap-ai-ppt",
+    "version": "1.0.0",
+    "description": "AI PPT extension for Super Agent Party",
+    "description_zh": "为 Super Agent Party 提供的 AI PPT 扩展插件",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-ai-ppt",
+    "backupRepository": "https://gitee.com/heshengtao/sap-ai-ppt",
+    "category": "Utility"
   }
 ]

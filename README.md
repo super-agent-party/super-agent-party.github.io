@@ -85,3 +85,4 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | Code Server      | heshengtao  | IDE extension for Super Agent Party          | https://github.com/heshengtao/sap-code-server  |
 | CLI      | heshengtao  | Agent Party CLI tool (sap)          | https://github.com/heshengtao/sap-cli  |
 | LX-music      | heshengtao  | Connect the super agent party extension to the LX Music API,Let AI companion control music playback!           | https://github.com/heshengtao/sap-lx-music  |
+| AI PPT      | heshengtao  | AI PPT extension for Super Agent Party           | https://github.com/heshengtao/sap-ai-ppt  |
