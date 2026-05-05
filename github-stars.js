@@ -1,5 +1,4 @@
 // GitHub stars functionality for Super Agent Party website
-
 /**
  * Fetches the number of stars for a GitHub repository
  * @param {string} owner - The repository owner
@@ -19,26 +18,21 @@ async function fetchGitHubStars(owner, repo) {
     return null;
   }
 }
-
 /**
  * Updates GitHub star count elements on the page
  */
 async function updateStarCount() {
   const owner = 'heshengtao';
   const repo = 'super-agent-party';
-  
   const starCount = await fetchGitHubStars(owner, repo);
-  
   // If we couldn't fetch the star count, don't update the UI
   if (starCount === null) return;
-  
   // Find all GitHub star count elements and update them
   const starCountElements = document.querySelectorAll('.github-stars');
   starCountElements.forEach(element => {
     element.textContent = starCount;
   });
 }
-
 // Initialize star count when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   updateStarCount();

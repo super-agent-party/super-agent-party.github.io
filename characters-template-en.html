@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Cards - Super Agent Party | AI Character Hub</title>
+    <meta name="description" content="Browse the Super Agent Party Character Card Library. Discover AI character cards compatible with SillyTavern V3 format. Import your favorite characters and bring them to life.">
+    <meta name="keywords" content="AI Characters, Character Cards, SillyTavern, V3 Character Format, AI Companion, Virtual Characters, Tavern Cards">
+    <!-- SEO Language Mapping -->
+    <link rel="alternate" hreflang="en" href="https://www.agentparty.top/characters.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/characters-zh.html" />
+    <link rel="canonical" href="https://www.agentparty.top/characters.html" />
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="github-stars.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    <!-- Core: Safe JSON data injection point -->
+    <script id="characters-data" type="application/json">
+        {{CHARACTERS_JSON}}
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['"JetBrains Mono"', 'monospace'] },
+                    colors: { geekYellow: '#FFD700', geekDark: '#050505' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
+        .matrix-bg { background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; }
+        .dark .matrix-bg { background-color: #050505; background-image: radial-gradient(#222 1px, transparent 1px); }
+        .plugin-card { background: rgba(255,255,255,0.9); border: 2px solid #000; box-shadow: 4px 4px 0px #000; position: relative; transition: all 0.2s ease; }
+        .dark .plugin-card { background: rgba(10, 10, 10, 0.8); border: 2px solid #333; box-shadow: 4px 4px 0px #FFD700; }
+        .plugin-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000; }
+        .dark .plugin-card:hover { box-shadow: 6px 6px 0px #FFD700; border-color: #FFD700; }
+        .tag-bracket { transition: 0.2s; cursor: pointer; white-space: nowrap; }
+        .tag-bracket.active { background: #000; color: #fff; }
+        .dark .tag-bracket.active { background: #FFD700; color: #000; }
+        .cursor-blink { display: inline-block; width: 8px; height: 1.2em; background: #FFD700; animation: blink 1s step-end infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .nav-link { position: relative; display: inline-block; }
+        .nav-link::before, .nav-link::after { display: inline-block; opacity: 0; transition: 0.3s; color: #FFD700; }
+        .nav-link::before { content: '['; margin-right: 5px; }
+        .nav-link::after { content: ']'; margin-left: 5px; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+        .avatar-img { width: 64px; height: 64px; object-fit: cover; border: 2px solid #000; flex-shrink: 0; }
+        .dark .avatar-img { border-color: #FFD700; }
+        .spec-badge { font-size: 9px; border: 1px solid #000; padding: 1px 4px; }
+        .dark .spec-badge { border-color: #FFD700; color: #FFD700; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 100; justify-content: center; align-items: flex-start; padding-top: 5vh; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: #fff; border: 2px solid #000; box-shadow: 6px 6px 0px #000; max-width: 820px; width: 95%; max-height: 85vh; overflow-y: auto; position: relative; border-radius: 4px; scrollbar-width: thin; scrollbar-color: #c1c1c1 transparent; }
+        .dark .modal-content { background: #1a1a1a; border-color: #FFD700; box-shadow: 6px 6px 0px #FFD700; scrollbar-color: #444 transparent; }
+        .modal-content::-webkit-scrollbar { width: 5px; }
+        .modal-content::-webkit-scrollbar-track { background: transparent; }
+        .modal-content::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 10px; }
+        .modal-content::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
+        .dark .modal-content::-webkit-scrollbar-thumb { background: #444; }
+        .dark .modal-content::-webkit-scrollbar-thumb:hover { background: #666; }
+        .preview-header { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 2px dashed #e5e5e5; }
+        .dark .preview-header { border-color: #333; }
+        .preview-avatar-lg { width: 80px; height: 80px; object-fit: cover; border: 2px solid #000; flex-shrink: 0; border-radius: 4px; }
+        .dark .preview-avatar-lg { border-color: #FFD700; }
+        .preview-section { margin-bottom: 1.25rem; }
+        .preview-section-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #FFD700; margin-bottom: 0.4rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; }
+        .preview-section-title::after { content: ''; flex: 1; height: 1px; background: #ddd; }
+        .dark .preview-section-title::after { background: #333; }
+        .preview-section p { font-size: 13px; line-height: 1.65; color: #444; white-space: pre-wrap; }
+        .dark .preview-section p { color: #bbb; }
+        .preview-quote { border-left: 3px solid #FFD700; padding: 0.6rem 1rem; background: #fafafa; margin: 0.5rem 0; font-size: 13px; line-height: 1.6; color: #555; white-space: pre-wrap; font-style: italic; }
+        .dark .preview-quote { background: #111; color: #aaa; }
+        .preview-greeting-item { padding: 0.35rem 0; font-size: 12px; border-bottom: 1px dashed #eee; display: flex; align-items: flex-start; gap: 0.5rem; }
+        .dark .preview-greeting-item { border-color: #2a2a2a; }
+        .preview-greeting-item::before { content: '▸'; color: #FFD700; font-weight: bold; flex-shrink: 0; }
+        .preview-book-entry { background: #f9f9f9; border: 1px solid #e5e5e5; padding: 0.5rem 0.75rem; margin-bottom: 0.4rem; border-radius: 2px; }
+        .dark .preview-book-entry { background: #1a1a1a; border-color: #2a2a2a; }
+        .preview-book-entry .book-keys { color: #FFD700; font-weight: 700; font-size: 11px; margin-bottom: 0.2rem; }
+        .preview-book-entry .book-content { font-size: 11px; color: #666; line-height: 1.5; }
+        .dark .preview-book-entry .book-content { color: #999; }
+        .preview-mes-exchange { margin-bottom: 0.35rem; font-size: 12px; line-height: 1.5; }
+        .preview-mes-exchange .mes-user { color: #2563eb; }
+        .dark .preview-mes-exchange .mes-user { color: #60a5fa; }
+        .preview-mes-exchange .mes-char { color: #9333ea; }
+        .dark .preview-mes-exchange .mes-char { color: #c084fc; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link font-bold text-sm">Home</a>
+                    <a href="download.html" class="nav-link font-bold text-sm">Download</a>
+                    <div class="relative group">
+                        <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
+                            Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-44 bg-white dark:bg-geekDark border-2 border-black dark:border-gray-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700] hidden group-hover:block">
+                            <a href="plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
+                            <a href="mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP Servers</a>
+                            <a href="skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                            <a href="characters.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Characters</a>
+                        </div>
+                    </div>
+                    <a href="blog.html" class="nav-link font-bold text-sm">Blog</a>
+                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
+                        <i class="fas fa-sun block dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
+                    </button>
+                    <a href="characters-zh.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
+                        中文
+                    </a>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
+                        <i class="fab fa-github"></i>
+                        <span class="github-stars">-</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
+            <a href="index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
+            <a href="download.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
+            <div class="bg-gray-50 dark:bg-gray-900/50">
+                <a href="plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
+                <a href="mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP Servers</a>
+                <a href="skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
+                <a href="characters.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Characters</a>
+            </div>
+            <a href="blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
+            <a href="characters-zh.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
+                <i class="fas fa-language mr-2"></i>Switch to 中文
+            </a>
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
+                <i class="fab fa-github mr-2"></i>GitHub
+            </a>
+        </div>
+    </nav>
+    <main class="flex-grow pt-24 pb-12 px-4 max-w-full overflow-x-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8 md:mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 dark:text-white uppercase tracking-tighter">Character Cards</h1>
+                <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base px-4">AI character cards compatible with SillyTavern V3 format</p>
+            </div>
+            <div class="max-w-4xl mx-auto mb-10">
+                <!-- Search Box -->
+                <div class="flex items-center bg-gray-50 dark:bg-black border-2 border-black dark:border-geekYellow px-3 py-2 md:p-4 mb-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
+                    <span class="text-yellow-600 dark:text-geekYellow mr-2 font-bold font-mono">></span>
+                    <input id="searchInput" type="text" class="bg-transparent border-none outline-none flex-1 text-sm md:text-base text-black dark:text-white placeholder-gray-400" placeholder="Search characters...">
+                    <button id="clearSearch" class="hidden text-red-500 font-bold ml-2 px-2">X</button>
+                    <div class="cursor-blink"></div>
+                </div>
+            </div>
+            <!-- Character Grid: SSG Placeholder -->
+            <div id="character-list" class="grid grid-cols-1 gap-6 md:gap-8">{{CHARACTERS_LIST}}</div>
+            <!-- Info Card -->
+            <div class="mt-16 border-2 border-dashed border-gray-400 dark:border-gray-700 p-6 md:p-8 bg-white dark:bg-geekDark/50 rounded-sm">
+                <h2 class="text-xl md:text-2xl font-bold mb-4 dark:text-white">About Character Cards</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-6 text-xs md:text-sm">These character cards use the SillyTavern V3 (chara_card_v3) format. You can download the JSON file and import it directly into Super Agent Party or any compatible AI chat application.</p>
+                <div class="bg-black text-geekYellow p-4 rounded-sm text-[10px] md:text-xs overflow-x-auto mb-6 border-l-4 border-geekYellow">
+                    <pre>// chara_card_v3 format
+{
+  "spec": "chara_card_v3",
+  "spec_version": "3.0",
+  "name": "Character Name",
+  "description": "Character description",
+  "avatar": "url or empty",
+  "personality": "...",
+  "first_mes": "First greeting message",
+  "mes_example": "Example dialogues",
+  "system_prompt": "System prompt",
+  "alternate_greetings": [...],
+  "character_book": { ... }
+}</pre>
+                </div>
+                <p class="text-xs md:text-sm">
+                    <span>Characters folder:</span>
+                    <code class="bg-gray-200 dark:bg-gray-800 px-2 py-0.5 text-[10px]">characters/</code>
+                    <span> and </span>
+                    <code class="bg-gray-200 dark:bg-gray-800 px-2 py-0.5 text-[10px]">characters-zh/</code>
+                </p>
+            </div>
+        </div>
+    </main>
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal-overlay" onclick="closePreview(event)">
+        <div class="modal-content p-5 md:p-8" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="previewTitle" class="text-lg font-bold text-black dark:text-white">Character Preview</h3>
+                <div class="flex items-center gap-3">
+                    <button id="previewDownloadBtn" class="text-[10px] font-bold bg-geekYellow text-black px-3 py-1 rounded-sm hover:opacity-80">
+                        <i class="fas fa-download mr-1"></i> Download
+                    </button>
+                    <button onclick="document.getElementById('previewModal').classList.remove('active')" class="text-xl font-bold hover:text-red-500 leading-none">&times;</button>
+                </div>
+            </div>
+            <div id="previewBody"></div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 mb-10">
+            <a href="https://github.com/heshengtao/super-agent-party" target="_blank"
+            class="group flex flex-col sm:flex-row items-center justify-between gap-4 bg-black text-white dark:bg-white dark:text-black p-6 border-2 border-geekYellow shadow-[4px_4px_0px_#FFD700] hover:-translate-y-1 transition-all">
+                <div class="flex items-center gap-4">
+                    <i class="fab fa-github text-4xl"></i>
+                    <div>
+                        <div class="text-xs uppercase opacity-70 mb-1">Open Source · AGPL-3.0</div>
+                        <div class="text-lg font-bold">Star us on GitHub</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-800 dark:bg-gray-200 px-4 py-2 rounded-sm">
+                    <i class="fas fa-star text-geekYellow"></i>
+                    <span class="github-stars font-bold text-sm">-</span>
+                </div>
+            </a>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1">
+                    <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
+                    <p class="text-xs text-gray-500 font-mono">Open-source AI agent framework for personal companions and automation.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Product</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="download.html" class="hover:text-geekYellow">Download</a></li>
+                        <li><a href="plugins.html" class="hover:text-geekYellow">Plugins</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Developers</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">Documentation</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">Issues</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Community</h4>
+                    <div class="grid grid-cols-2 gap-3 text-[11px] font-bold">
+                        <a href="#" class="hover:text-geekYellow"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="https://x.com/AILM32442" class="hover:text-geekYellow"><i class="fab fa-twitter"></i> Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex justify-between items-center text-[10px] text-gray-500">
+                <p>© 2026 Super Agent Party. Open source under AGPL-3.0.</p>
+                <a href="https://github.com/heshengtao" class="hover:text-geekYellow underline">@heshengtao</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').onclick = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+        // Safely parse JSON data from DOM
+        let rawCharacters = [];
+        try {
+            const dataStr = document.getElementById('characters-data').textContent.trim();
+            if (dataStr && !dataStr.includes('{{CHARACTERS_JSON}}')) {
+                rawCharacters = JSON.parse(dataStr);
+            }
+        } catch (e) {
+            console.error("Failed to parse character data:", e);
+        }
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearSearch');
+        const characterList = document.getElementById('character-list');
+        searchInput.addEventListener('input', () => {
+            clearBtn.style.display = searchInput.value ? 'inline' : 'none';
+            filterCharacters();
+        });
+        clearBtn.onclick = () => { searchInput.value = ''; clearBtn.style.display = 'none'; filterCharacters(); };
+        function filterCharacters() {
+            const kw = searchInput.value.toLowerCase();
+            const filtered = rawCharacters.filter(c => {
+                const hitKw = !kw || c.name.toLowerCase().includes(kw) || 
+                            (c.description && c.description.toLowerCase().includes(kw)) ||
+                            (c.personality && c.personality.toLowerCase().includes(kw));
+                return hitKw;
+            });
+            renderCharacters(filtered);
+        }
+        function getAvatarUrl(c) {
+            if (c.avatar && c.avatar.trim() !== '') {
+                return c.avatar;
+            }
+            return 'img/Avatar.png';
+        }
+        function renderCharacters(data) {
+            characterList.innerHTML = '';
+            data.forEach(c => {
+                const avatarUrl = getAvatarUrl(c);
+                const desc = c.description || 'No description';
+                const personality = c.personality || 'N/A';
+                const spec = c.spec || 'chara_card_v3';
+                const specVer = c.spec_version || '3.0';
+                const fname = c.fileName.replace('.json', '').replace(/^.*[\\/]/, '');
+                const el = document.createElement('div');
+                el.className = 'plugin-card p-5 md:p-6';
+                el.innerHTML = `
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="${avatarUrl}" alt="${c.name}" class="avatar-img rounded-sm" 
+                             onerror="this.src='img/Avatar-thumb.webp'"
+                             loading="lazy">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">${c.name}</h3>
+                                <span class="spec-badge text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">${spec} v${specVer}</span>
+                            </div>
+                            <p class="text-gray-500 dark:text-gray-400 text-xs">${personality.substring(0, 100)}${personality.length > 100 ? '...' : ''}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-4 leading-relaxed line-clamp-3">${desc}</p>
+                    <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="downloadCharacter('${c.fileName}')"
+                                    class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-[10px] font-bold text-center block w-full">
+                                <i class="fas fa-download mr-1"></i> Download JSON
+                            </button>
+                            <button onclick="previewCharacter('${c.fileName}')" 
+                                    class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white transition-colors text-[10px] font-bold">
+                                <i class="fas fa-eye mr-1"></i> Preview
+                            </button>
+                        </div>
+                    </div>
+                `;
+                characterList.appendChild(el);
+            });
+        }
+        function downloadCharacter(fileName) {
+            fetch(fileName).then(r => r.json()).then(data => {
+                // 获取当前页面的基础 URL，例如 http://127.0.0.1:5500/ 或 https://www.agentparty.top/
+                const baseUrl = location.href.replace(/\/[^/]*$/, '/');
+                
+                // 如果头像存在且不是外部 HTTP 链接，则转换为本站的绝对 URL
+                if (data.avatar && !data.avatar.startsWith('http')) {
+                    // 从当前页面的缓存列表中找到对应的角色信息
+                    const charInfo = rawCharacters.find(c => c.fileName === fileName);
+                    
+                    if (charInfo && charInfo.avatar) {
+                        // charInfo.avatar 即为预处理出来的 "avatars-webp/xxx-thumb.webp"
+                        // 提示：如果你希望下载的卡片头像是 256x256 高清版，可以将 charInfo.avatar 改为 charInfo.avatarFull
+                        data.avatar = new URL(charInfo.avatar, baseUrl).href;
+                    } else {
+                        // 降级处理：如果没有在缓存中找到，尝试手动替换后缀
+                        const fileNameOnly = data.avatar.split('/').pop().replace(/\.[^/.]+$/, "");
+                        if (fileNameOnly) {
+                            data.avatar = new URL(`avatars-webp/${fileNameOnly}-thumb.webp`, baseUrl).href;
+                        } else {
+                            data.avatar = new URL(data.avatar, baseUrl).href;
+                        }
+                    }
+                }
+
+                // 将处理后的数据转换为 JSON Blob 下载
+                const jsonStr = JSON.stringify(data, null, 2);
+                const blob = new Blob([jsonStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName.replace(/^.*[\\/]/, '');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }).catch(() => alert("Download failed."));
+        }
+        function downloadCharacterJson(fileName) {
+            downloadCharacter(fileName);
+        }
+        function previewCharacter(fileName) {
+            fetch(fileName).then(r => r.json()).then(data => {
+                document.getElementById('previewTitle').textContent = data.name || 'Character';
+                document.getElementById('previewDownloadBtn').onclick = () => downloadCharacter(fileName);
+                const p = escapeHtml;
+                const avatarUrl = (data.avatar && data.avatar.trim() !== '') ? data.avatar : 'img/Avatar.png';
+                const spec = data.spec || 'chara_card_v3';
+                const specVer = data.spec_version || '3.0';
+                let altGreetingsHtml = '';
+                if (data.alternate_greetings && data.alternate_greetings.length > 0) {
+                    altGreetingsHtml = data.alternate_greetings.map(g =>
+                        `<div class="preview-greeting-item">${p(g)}</div>`
+                    ).join('');
+                }
+                let mesExampleHtml = '';
+                if (data.mes_example) {
+                    const lines = data.mes_example.split('\n');
+                    mesExampleHtml = lines.map(line => {
+                        const trimmed = line.trim();
+                        if (!trimmed) return '';
+                        if (trimmed.startsWith('用户:') || trimmed.startsWith('User:')) {
+                            return `<div class="preview-mes-exchange"><span class="mes-user">${p(trimmed)}</span></div>`;
+                        } else if (trimmed.startsWith('角色:') || trimmed.startsWith('Character:')) {
+                            return `<div class="preview-mes-exchange"><span class="mes-char">${p(trimmed)}</span></div>`;
+                        }
+                        return `<div class="preview-mes-exchange">${p(trimmed)}</div>`;
+                    }).join('');
+                }
+                let bookHtml = '';
+                if (data.character_book && data.character_book.entries && data.character_book.entries.length > 0) {
+                    const entries = data.character_book.entries.map(e =>
+                        `<div class="preview-book-entry">
+                            <div class="book-keys">[ ${(e.keys || []).map(k => p(k)).join(', ')} ]</div>
+                            <div class="book-content">${p(e.content || '')}</div>
+                        </div>`
+                    ).join('');
+                    bookHtml = `
+                        <div class="preview-section">
+                            <div class="preview-section-title"><i class="fas fa-book"></i> Character Book (${data.character_book.entries.length} entries)</div>
+                            ${entries}
+                        </div>`;
+                }
+                document.getElementById('previewBody').innerHTML = `
+                    <div class="preview-header">
+                        <img src="${avatarUrl}" alt="${p(data.name || '')}" class="preview-avatar-lg" onerror="this.src='img/Avatar.webp'">
+                        <div class="min-w-0">
+                            <h4 class="text-xl font-bold text-black dark:text-white mb-1">${p(data.name || '')}</h4>
+                            <span class="spec-badge text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">${p(spec)} v${p(specVer)}</span>
+                            ${data.personality ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-1.5 italic">${p(data.personality)}</p>` : ''}
+                        </div>
+                    </div>
+                    <div class="preview-section">
+                        <div class="preview-section-title"><i class="fas fa-align-left"></i> Description</div>
+                        <p>${p(data.description || 'No description')}</p>
+                    </div>
+                    ${data.system_prompt ? `
+                    <div class="preview-section">
+                        <div class="preview-section-title"><i class="fas fa-robot"></i> System Prompt</div>
+                        <div class="preview-quote">${p(data.system_prompt)}</div>
+                    </div>` : ''}
+                    ${data.first_mes ? `
+                    <div class="preview-section">
+                        <div class="preview-section-title"><i class="fas fa-comment-dots"></i> First Message</div>
+                        <div class="preview-quote">${p(data.first_mes)}</div>
+                    </div>` : ''}
+                    ${mesExampleHtml ? `
+                    <div class="preview-section">
+                        <div class="preview-section-title"><i class="fas fa-comments"></i> Example Dialogues</div>
+                        ${mesExampleHtml}
+                    </div>` : ''}
+                    ${altGreetingsHtml ? `
+                    <div class="preview-section">
+                        <div class="preview-section-title"><i class="fas fa-list-ul"></i> Alternate Greetings (${data.alternate_greetings.length})</div>
+                        ${altGreetingsHtml}
+                    </div>` : ''}
+                    ${bookHtml}
+                `;
+                document.getElementById('previewModal').classList.add('active');
+            }).catch(() => alert("Failed to load character JSON."));
+        }
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+        // Initial render
+        renderCharacters(rawCharacters);
+    </script>
+</body>
+</html>

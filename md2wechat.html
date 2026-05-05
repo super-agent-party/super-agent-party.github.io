@@ -24,32 +24,25 @@
     </style>
 </head>
 <body>
-
 <header>
     <h1>SMART_AGENT_WRITER</h1>
     <button onclick="copyToClipboard()">COPY_TO_WECHAT</button>
 </header>
-
 <div class="container">
     <!-- 1. Markdown 输入区 -->
     <div class="column">
         <div class="col-header">Input.md</div>
         <textarea id="md-editor" oninput="render()">
 # 极客风格标题
-
 这是一段正文文本。Super Agent Party 风格的核心在于**硬朗的线条**和**高对比度**的色彩。
-
 ## 二级标题样式
 这里展示了列表和代码块的效果：
-
 - 列表项 01：模块化组件
 - 列表项 02：极简主义设计
-
 > 这是一个引用块。
 > 这种风格通常带有厚重的边框和阴影。
         </textarea>
     </div>
-
     <!-- 2. CSS 编辑区 -->
     <div class="column">
         <div class="col-header">Style.css (With Drop-Shadow)</div>
@@ -57,7 +50,6 @@
 /* 
   === Super Agent Party 风格 (图片轮廓阴影版) === 
 */
-
 .wechat-content {
   font-family: Consolas, "Courier New", monospace;
   font-size: 15px;
@@ -66,7 +58,6 @@
   text-align: justify;
   background-color: #fff;
 }
-
 /* 
   ★ 核心修改：图片样式 
   使用 filter: drop-shadow 替代 box-shadow
@@ -76,24 +67,18 @@
   max-width: 100%;
   height: auto;
   margin: 30px auto;
-  
   /* 1. 必须去除边框，否则阴影会沿着边框生成 */
   border: none;
-  
   /* 2. 关键属性：轮廓投影 */
   /* 格式: X偏移 Y偏移 模糊半径 颜色 */
   /* 设置为 0px 模糊半径可获得像素风硬阴影 */
   filter: drop-shadow(6px 6px 0px #FFD700);
-  
   /* 3. 兼容性：确保背景透明 */
   background: transparent;
-  
   /* 4. 可选：给图片本身加一点圆角，阴影也会跟着变圆 */
   border-radius: 6px;
 }
-
 /* --- 其他样式保持不变 --- */
-
 .wechat-content h1 {
   font-size: 24px;
   font-weight: 900;
@@ -103,7 +88,6 @@
   border-left: 8px solid #000;
   padding-left: 15px;
 }
-
 .wechat-content h2 {
   font-size: 18px;
   font-weight: bold;
@@ -114,12 +98,10 @@
   display: inline-block;
   padding-bottom: 4px;
 }
-
 .wechat-content p {
   margin-bottom: 20px;
   letter-spacing: 0.05em;
 }
-
 .wechat-content blockquote {
   margin: 25px 0;
   padding: 15px 20px;
@@ -129,7 +111,6 @@
   color: #333;
   font-size: 14px;
 }
-
 .wechat-content pre {
   background: #1a1a1a;
   color: #fff;
@@ -145,7 +126,6 @@
   padding: 0;
   color: #fff;
 }
-
 .wechat-content a {
   color: #000;
   text-decoration: underline;
@@ -154,7 +134,6 @@
 }
         </textarea>
     </div>
-
     <!-- 3. 预览区 -->
     <div class="column">
         <div class="col-header">Preview</div>
@@ -163,24 +142,19 @@
         </div>
     </div>
 </div>
-
 <style id="dynamic-style"></style>
-
 <script>
     const mdEditor = document.getElementById('md-editor');
     const cssEditor = document.getElementById('css-editor');
     const previewBox = document.getElementById('preview-box');
     const dynamicStyle = document.getElementById('dynamic-style');
-
     // 1. 配置 marked 自定义渲染器
     const renderer = new marked.Renderer();
-
     // ★★★ 修复核心：兼容新旧版本的 Link 解析 ★★★
     renderer.link = function(token, title, text) {
         let finalHref = "";
         let finalTitle = "";
         let finalText = "";
-
         // 判断：如果第一个参数是对象，说明是新版 marked
         if (typeof token === 'object' && token !== null) {
             finalHref = token.href || "";
@@ -192,15 +166,11 @@
             finalTitle = title || "";
             finalText = text || "";
         }
-        
         // 安全检查：确保是字符串
         finalHref = String(finalHref);
-
         // --- 业务逻辑开始 ---
-
         // 判断是否为微信内部链接
         const isWeChatLink = finalHref.includes('mp.weixin.qq.com');
-
         if (isWeChatLink) {
             // 微信文章链接：保持可点击
             return `<a href="${finalHref}" title="${finalTitle}">${finalText}</a>`;
@@ -213,12 +183,9 @@
             `;
         }
     };
-
     // 应用渲染器
     marked.use({ renderer: renderer });
-
     window.onload = render;
-
     function render() {
         try {
             const mdText = mdEditor.value;
@@ -231,18 +198,15 @@
             console.error("Render Error:", e);
         }
     }
-
     function copyToClipboard() {
         const clone = previewBox.cloneNode(true);
         const sheet = Array.from(document.styleSheets).find(s => s.ownerNode === dynamicStyle);
-        
         if (sheet && sheet.cssRules) {
             Array.from(sheet.cssRules).forEach(rule => {
                 try {
                     if (rule.type === 1) { 
                         const selector = rule.selectorText;
                         const style = rule.style;
-                        
                         let elements = [];
                         if (selector.includes('.wechat-content')) {
                             if (selector.trim() === '.wechat-content') {
@@ -254,7 +218,6 @@
                         } else {
                             elements = clone.querySelectorAll(selector);
                         }
-
                         elements.forEach(el => {
                             for (let i = 0; i < style.length; i++) {
                                 const propName = style[i];
@@ -266,13 +229,11 @@
                 } catch (e) { console.warn('Skipping rule:', rule); }
             });
         }
-
         const tempDiv = document.createElement('div');
         tempDiv.appendChild(clone);
         tempDiv.style.position = 'absolute';
         tempDiv.style.left = '-9999px';
         document.body.appendChild(tempDiv);
-
         const selection = window.getSelection();
         const range = document.createRange();
         range.selectNodeContents(tempDiv);
@@ -281,10 +242,8 @@
         document.execCommand('copy');
         document.body.removeChild(tempDiv);
         selection.removeAllRanges();
-
         alert('已复制！\n\n外部链接已自动处理为文本显示。');
     }
 </script>
-
 </body>
 </html>

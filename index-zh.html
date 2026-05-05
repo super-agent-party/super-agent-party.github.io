@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- SEO 关键标签 -->
     <title>Super Agent Party - 全能AI伴侣！超级智能体派对 = 自托管neuro sama + openclaw | 桌面女友 & 虚拟主播 & MCP & Skills</title>
     <meta name="description" content="Super Agent Party (SAP) 是一款开源的全能型 AI 伴侣与智能体平台。集成 AI 桌面女友、虚拟主播、IM 机器人、AI 浏览器助手及智能家居控制。立即打造属于你的个性化数字生命。">
     <meta name="keywords" content="AI伴侣, AI Agent, 开源智能体, 桌面女友, 虚拟主播, 虚拟偶像, 微信机器人, QQ机器人, 飞书机器人, 钉钉机器人, MCP协议, 智能家居控制, AI控制电脑, Agent skills">
-    
     <!-- 语言关联 (告知搜索引擎英文版的存在) -->
     <link rel="alternate" hreflang="en" href="https://www.agentparty.top/index.html" />
     <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/index-zh.html" />
     <link rel="canonical" href="https://www.agentparty.top/index-zh.html" />
-
     <!-- 依赖脚本 -->
     <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
-    
     <!-- 字体与图标 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="img/icon.ico">
-    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -51,7 +46,6 @@
             }
         }
     </script>
-
     <style>
         body { font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace; overflow-x: hidden; }
         .matrix-bg {
@@ -88,9 +82,7 @@
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 transition-colors duration-300">
-
     <div class="scan-line"></div>
-
     <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,12 +90,10 @@
                 <div class="flex items-center">
                     <a href="index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
-                
                 <!-- 桌面端菜单 -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="index-zh.html" class="nav-link font-bold text-sm">首页</a>
                     <a href="download-zh.html" class="nav-link font-bold text-sm">下载</a>
-                    
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             资源生态 <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
@@ -112,60 +102,50 @@
                             <a href="plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
                             <a href="mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
                             <a href="skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
+                            <a href="characters-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">角色卡</a>
                         </div>
                     </div>
-
                     <a href="blog-zh.html" class="nav-link font-bold text-sm">博客</a>
-                    
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
-                    
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
-
                     <!-- 语言切换：硬链接到英文版 -->
                     <a href="index.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         English
                     </a>
-
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
                         <i class="fab fa-github"></i>
                         <span class="github-stars">-</span>
                         <span>GitHub</span>
                     </a>
                 </div>
-
                 <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        
         <!-- 移动端菜单 -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
             <a href="download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Download</a>
-            
             <!-- 资源子项直接展开，并稍微缩进增加层次感 -->
             <div class="bg-gray-50 dark:bg-gray-900/50">
                 <a href="plugins-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Plugins</a>
                 <a href="mcp-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ MCP</a>
+                <a href="characters-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ 角色卡</a>
                 <a href="skills-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400">└ Skills</a>
             </div>
-
             <a href="blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
-            
             <!-- 语言切换 -->
             <a href="index.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">
                 <i class="fas fa-language mr-2"></i>Switch to English
             </a>
-            
             <!-- GitHub 链接 -->
             <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="block px-4 py-3 font-bold">
                 <i class="fab fa-github mr-2"></i>GitHub
             </a>
         </div>
     </nav>
-
     <main>
         <!-- Hero 区域 -->
         <section class="relative overflow-hidden flex items-center justify-center bg-white dark:bg-geekDark" style="min-height: 85vh;">
@@ -174,18 +154,15 @@
                     <div class="absolute inset-0 bg-geekYellow opacity-20 blur-3xl rounded-full scale-125"></div>
                     <img src="img/logo.png" alt="Super Agent Party Logo" class="w-full h-full object-contain relative z-10 drop-shadow-2xl">
                 </div>
-                
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tighter dark:text-white uppercase">
                     Super Agent Party
                 </h1>
-                
                 <div class="flex justify-center items-center mb-8 flex-wrap">
                     <p class="text-lg md:text-xl text-gray-600 dark:text-geekYellow font-bold max-w-3xl leading-relaxed text-center">
                         在 <span id="typewriter-text" class="text-black dark:text-white border-b-2 border-geekYellow px-1 min-w-[3rem] inline-block text-center">桌面</span> 与你的 AI 伴侣一起游戏和办公！
                     </p>
                     <div class="w-3 h-6 bg-black dark:bg-geekYellow ml-1 animate-cursor mt-1"></div>
                 </div>
-
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="download-zh.html" class="w-full sm:w-auto px-8 py-3 bg-black dark:bg-geekYellow text-white dark:text-black font-bold text-lg hover:scale-105 transition-transform shadow-[4px_4px_0px_rgba(128,128,128,0.5)] dark:shadow-[4px_4px_0px_#fff]">
                         <i class="fas fa-download mr-2"></i> 立即开始
@@ -196,7 +173,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 软件截图 -->
         <section class="relative px-4 pb-20 bg-white dark:bg-geekDark">
             <div class="max-w-6xl mx-auto px-4 w-full">
@@ -209,15 +185,12 @@
                 </div>
             </div>
         </section>
-
         <!-- 核心功能展示（重构放大版） -->
         <section id="features" class="relative py-32 bg-white dark:bg-geekDark overflow-hidden">
             <!-- 背景装饰线 -->
             <div class="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800 ml-4 md:ml-12 lg:ml-20 z-0 hidden md:block"></div>
-
             <!-- 将 max-w-7xl 改为了 max-w-[100rem] 以提供更大的横向展示空间 -->
             <div class="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
-                
                 <div class="mb-32 text-center md:text-left md:pl-24">
                     <h2 class="text-5xl md:text-7xl lg:text-[6.5rem] font-black mb-8 uppercase tracking-tighter leading-none">
                         核心<span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-geekYellow dark:to-white">功能</span>
@@ -227,15 +200,12 @@
                         // 系统状态：在线 | 渲染模式：极清重制版
                     </p>
                 </div>
-
                 <!-- 增加模块之间的垂直间距以适应更大的元素 -->
                 <div class="space-y-40 lg:space-y-56">
-
                     <!-- Feature 01: VRM桌宠 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <!-- 超大号装饰序号 -->
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">01</div>
-                        
                         <!-- 左侧文字 -->
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
@@ -255,11 +225,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 02: 任务中心 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">02</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">全能任务中心</h3>
@@ -277,11 +245,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 03: 电脑原生控制 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">03</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">电脑原生控制</h3>
@@ -300,11 +266,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 03: 多角色群聊 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">04</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">多角色群聊</h3>
@@ -318,11 +282,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 04: IM 机器人 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">05</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">即时通讯矩阵</h3>
@@ -342,11 +304,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 05: 直播机器人 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">06</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">虚拟主播系统</h3>
@@ -360,11 +320,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 06: AI 浏览器 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">07</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">AI 浏览器</h3>
@@ -378,11 +336,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Feature 07: 扩展系统 -->
                     <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">08</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">无限扩展生态</h3>
@@ -399,11 +355,9 @@
                             </div>
                         </div>
                     </div>
-
                      <!-- Feature 08: 开发者 -->
                      <div class="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center reveal-on-scroll">
                         <div class="absolute -left-4 md:-left-12 lg:-left-8 -top-12 text-[8rem] md:text-[14rem] font-black text-gray-100 dark:text-gray-900/60 select-none -z-10 transition-colors group-hover:text-gray-200 dark:group-hover:text-gray-800 leading-none tracking-tighter">09</div>
-                        
                         <div class="lg:col-span-4 md:pl-16 lg:pl-20 flex flex-col justify-center z-10">
                             <div class="w-16 h-2 bg-black dark:bg-geekYellow mb-8"></div>
                             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight">开发者友好</h3>
@@ -417,12 +371,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
     </main>
-
     <!-- 页脚 -->
     <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
         <div class="max-w-7xl mx-auto px-4 mb-10">
@@ -475,24 +427,20 @@
             </div>
         </div>
     </footer>
-    
     <script>
         // 主题切换逻辑
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
         }
-
         // 初始化主题
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         }
-
         // 移动端菜单
         document.getElementById('mobile-menu-button').onclick = () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-
         // 横向滚动动画
         const rowLeft = document.getElementById('row-left');
         const rowRight = document.getElementById('row-right');
@@ -503,7 +451,6 @@
             requestAnimationFrame(updateScroll);
         }
         requestAnimationFrame(updateScroll);
-
         // 能力项入场动画
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -513,7 +460,6 @@
             });
         }, { threshold: 0.2 });
         if(document.getElementById('capabilities-terminal')) observer.observe(document.getElementById('capabilities-terminal'));
-        
         // 通用滚动显现动画
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -523,35 +469,28 @@
                 }
             });
         }, { threshold: 0.15 });
-
         // 给所有带 reveal-on-scroll 类的元素添加初始样式并观察
         document.querySelectorAll('.reveal-on-scroll').forEach(el => {
             el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
             revealObserver.observe(el);
         });
-    
         // 宣传语打字机切换效果
         const platforms = ["Windows 桌面", "MacOS 桌面", "Linux 桌面", "微信", "QQ", "飞书", "钉钉", "Discord", "Telegram", "Slack", "B站直播", "YouTube直播", "Twitch直播"];
         let currentPlatformIndex = 0;
         let currentCharIndex = 0;
         let isDeleting = false;
         const typeElement = document.getElementById('typewriter-text');
-
         function typeWriter() {
             if (!typeElement) return;
             const currentWord = platforms[currentPlatformIndex];
-            
             if (isDeleting) {
                 currentCharIndex--;
             } else {
                 currentCharIndex++;
             }
-
             typeElement.textContent = currentWord.substring(0, currentCharIndex);
-
             // 打字速度 100ms，删除速度 40ms
             let typeSpeed = isDeleting ? 40 : 100;
-
             if (!isDeleting && currentCharIndex === currentWord.length) {
                 typeSpeed = 2000; // 完整显示后停顿 2 秒
                 isDeleting = true;
@@ -560,14 +499,11 @@
                 currentPlatformIndex = (currentPlatformIndex + 1) % platforms.length;
                 typeSpeed = 400; // 删除完停顿 0.4 秒开始下一个
             }
-
             setTimeout(typeWriter, typeSpeed);
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(typeWriter, 1000); // 页面加载后 1 秒开始打字动画
         });
-
     </script>
 </body>
 </html>

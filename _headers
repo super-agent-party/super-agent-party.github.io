@@ -1,0 +1,44 @@
+# Cloudflare Pages Headers — Cache Strategy
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# === Avatars (WebP thumbnails) — rarely change, cache for 1 year ===
+/avatars-webp/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# === Original PNG avatars — also cache long (1 year) ===
+/avatars/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# === Static images (logo, cover, icons) — 1 year ===
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# === JSON data files (character cards, plugins, skills, mcp) — 1 week ===
+/characters/*.json
+  Cache-Control: public, max-age=604800
+/characters-zh/*.json
+  Cache-Control: public, max-age=604800
+/plugins.json
+  Cache-Control: public, max-age=604800
+/skills.json
+  Cache-Control: public, max-age=604800
+/mcp.json
+  Cache-Control: public, max-age=604800
+
+# === HTML pages — 1 hour (content may update) ===
+/*.html
+  Cache-Control: public, max-age=3600
+
+# === RSS feeds — 1 hour ===
+/posts/*.xml
+  Cache-Control: public, max-age=3600
+
+# === Sitemap — 1 day ===
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+# === JS / CSS — 1 week (hashed or infrequently changed) ===
+/*.js
+  Cache-Control: public, max-age=604800
+/*.css
+  Cache-Control: public, max-age=604800

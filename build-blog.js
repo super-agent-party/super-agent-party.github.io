@@ -3,13 +3,12 @@ const path = require('path');
 const matter = require('gray-matter');
 const xml = require('xml');
 const { marked } = require('marked');
-
+const sharp = require('sharp');
 // ================= 配置区域 =================
 const BASE_URL = 'https://www.agentparty.top'; 
 const POSTS_DIR = path.join(__dirname, 'posts');
 const BLOG_DIR = path.join(__dirname, 'blog'); // 博客输出主目录
 const SITEMAP_OUTPUT_FILE = path.join(__dirname, 'sitemap.xml'); // Sitemap输出路径
-
 // 扫描根目录时，需要排除生成的或遗留的动态模板文件
 const EXCLUDE_HTML_FILES = [
     'template-en.html', 
@@ -21,10 +20,11 @@ const EXCLUDE_HTML_FILES = [
     'mcp-template-en.html',
     'mcp-template-zh.html',
     'skills-template-en.html',
-    'skills-template-zh.html'
+    'skills-template-zh.html',
+    'characters-template-en.html',
+    'characters-template-zh.html'
 ];
 // ============================================
-
 // 确保所需的文件夹全部存在
 const folders = [
     POSTS_DIR, 
@@ -37,7 +37,6 @@ const folders = [
 folders.forEach(f => {
     if (!fs.existsSync(f)) fs.mkdirSync(f, { recursive: true });
 });
-
 // 读取博客静态模板
 let templateEn = '';
 let templateZh = '';
@@ -47,18 +46,14 @@ try {
 } catch (e) {
     console.warn("⚠️ Warning: Blog HTML templates not found.");
 }
-
 // 提取和解析所有 Markdown 文章数据
 function getPosts(lang) {
     const dir = path.join(POSTS_DIR, lang);
     if (!fs.existsSync(dir)) return [];
-    
     const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-    
     return files.map(filename => {
         const fileContent = fs.readFileSync(path.join(dir, filename), 'utf-8');
         const { data, content } = matter(fileContent);
-        
         let cover = data.cover || null;
         if (!cover) {
             const mdMatch = content.match(/!\[.*?\]\((.*?)(?:\s+".*?")?\)/);
@@ -77,7 +72,6 @@ function getPosts(lang) {
                 }
             }
         }
-
         const rssRenderer = new marked.Renderer();
         const postDirUrl = `${BASE_URL}/posts/${lang}/`;
         rssRenderer.image = function(obj) {
@@ -92,21 +86,17 @@ function getPosts(lang) {
             return `<img src="${finalSrc}" alt="${text || ''}" title="${title || ''}" />`;
         };
         const contentRSS = marked.parse(content, { renderer: rssRenderer });
-
         const pageRenderer = new marked.Renderer();
         const localDirRootUrl = `/posts/${lang}/`; 
         let tocHtml = '';
         let headingCount = 0;
-
         // --- 核心修改：支持 H1, H2, H3 作为导航 ---
         pageRenderer.heading = function(obj) {
             const text = typeof obj === 'object' ? obj.text : arguments[0];
             const level = typeof obj === 'object' ? obj.depth : arguments[1];
-            
             // 只要是 H1, H2, H3 都生成锚点
             if (level >= 1 && level <= 3) {
                 const id = `heading-${headingCount++}`;
-                
                 // 根据层级定义 Tailwind 样式
                 let linkClass = '';
                 if (level === 1) {
@@ -119,14 +109,12 @@ function getPosts(lang) {
                     // 三级标题：更多缩进，小字，灰色
                     linkClass = 'ml-6 text-gray-500 dark:text-gray-400 text-xs border-l border-transparent hover:border-geekYellow pl-2';
                 }
-
                 tocHtml += `<a href="#${id}" class="block transition-all duration-200 hover:text-geekYellow py-1 ${linkClass}">${text}</a>\n`;
                 return `<h${level} id="${id}">${text}</h${level}>\n`;
             }
             return `<h${level}>${text}</h${level}>\n`;
         };
         // ----------------------------------------
-
         pageRenderer.image = function(obj) {
             const href = typeof obj === 'object' ? obj.href : arguments[0];
             const text = typeof obj === 'object' ? obj.text : arguments[2] || '';
@@ -149,7 +137,6 @@ function getPosts(lang) {
             return `<a href="${finalHref}" target="_blank">${text}</a>`;
         };
         const contentPage = marked.parse(content, { renderer: pageRenderer });
-
         return {
             id: filename.replace('.md', ''),
             title: data.title || 'No Title',
@@ -164,7 +151,6 @@ function getPosts(lang) {
         };
     }).sort((a, b) => new Date(b.date) - new Date(a.date));
 }
-
 // ------------------------------------------------------------------
 // 生成静态 HTML 页面 (博客)
 // ------------------------------------------------------------------
@@ -172,12 +158,10 @@ function generateHtmlPages(posts, lang, template) {
     if (!template) return;
     const outputDir = path.join(BLOG_DIR, lang);
     const targetLang = lang === 'en' ? 'zh' : 'en';
-
     posts.forEach(post => {
         const tagsHtml = post.tags.map(t => `<span class="text-[10px] font-bold bg-geekYellow text-black px-2 py-0.5 rounded-sm">${t}</span>`).join('');
         const outputFilename = `article-${post.id}.html`; 
         const langSwitchLink = `../${targetLang}/article-${post.id}.html`;
-
         let finalHtml = template
             .replace(/{{TITLE}}/g, post.title)
             .replace(/{{DESC}}/g, post.description)
@@ -187,12 +171,10 @@ function generateHtmlPages(posts, lang, template) {
             .replace(/{{CONTENT}}/g, post.contentPage)
             .replace(/{{TOC}}/g, post.tocHtml)
             .replace(/{{LANG_SWITCH_LINK}}/g, langSwitchLink);
-
         fs.writeFileSync(path.join(outputDir, outputFilename), finalHtml);
     });
     console.log(`✨ Generated ${posts.length} static HTML pages for [${lang.toUpperCase()}] in /blog/${lang}/`);
 }
-
 // ------------------------------------------------------------------
 // 生成静态插件市场页面 (Plugins)
 // ------------------------------------------------------------------
@@ -204,13 +186,11 @@ function generateStaticPlugins() {
         return;
     }
     const pluginsData = JSON.parse(fs.readFileSync(pluginsJsonPath, 'utf-8'));
-
     const buildHtml = (lang) => {
         const isZh = lang === 'zh';
         const allTag = isZh ? '全部' : 'All';
         const authorPrefix = isZh ? '作者:' : 'BY:';
         const copyText = isZh ? '复制链接' : 'Copy';
-
         const categories = [allTag, ...new Set(pluginsData.map(p => p.category))];
         const tagsHtml = categories.map(cat => `
             <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm ${cat === allTag ? 'active' : ''}" 
@@ -218,7 +198,6 @@ function generateStaticPlugins() {
                 [ ${cat} ]
             </button>
         `).join('');
-
         const cardsHtml = pluginsData.map(p => {
             const displayDesc = isZh ? (p.description_zh || p.description) : p.description;
             return `
@@ -252,7 +231,6 @@ function generateStaticPlugins() {
         }).join('');
         return { tagsHtml, cardsHtml };
     };
-
     const processTemplate = (templateFile, outputFile, lang) => {
         const tmplPath = path.join(__dirname, templateFile);
         if (!fs.existsSync(tmplPath)) return;
@@ -267,7 +245,6 @@ function generateStaticPlugins() {
     processTemplate('plugins-template-en.html', 'plugins.html', 'en');
     processTemplate('plugins-template-zh.html', 'plugins-zh.html', 'zh');
 }
-
 // ------------------------------------------------------------------
 // 生成静态 MCP 页面
 // ------------------------------------------------------------------
@@ -279,12 +256,10 @@ function generateStaticMCP() {
         return;
     }
     const mcpData = JSON.parse(fs.readFileSync(mcpJsonPath, 'utf-8'));
-
     const buildHtml = (lang) => {
         const isZh = lang === 'zh';
         const allTag = isZh ? '全部' : 'All';
         const copyConfigText = isZh ? '复制配置' : 'Copy Config';
-
         const categories = [allTag, ...new Set(mcpData.map(p => p.category).filter(Boolean))];
         const tagsHtml = categories.map(cat => `
             <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm ${cat === allTag ? 'active' : ''}" 
@@ -292,12 +267,10 @@ function generateStaticMCP() {
                 [ ${cat} ]
             </button>
         `).join('');
-
         const cardsHtml = mcpData.map(p => {
             const displayDesc = isZh ? (p.description_zh || p.description) : p.description;
             const configStr = JSON.stringify(p.mcpConfig || {}, null, 2);
             const encodedConfig = encodeURIComponent(configStr);
-
             return `
                 <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
                     <div>
@@ -307,7 +280,6 @@ function generateStaticMCP() {
                         </div>
                         <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">${displayDesc}</p>
                     </div>
-
                     <div class="mt-auto">
                         <div class="border-t border-gray-200 dark:border-gray-800 pt-4 grid grid-cols-2 gap-2">
                             <button onclick="copyConfig('${encodedConfig}')" class="py-2 border border-gray-400 dark:border-gray-600 text-[10px] font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
@@ -322,25 +294,20 @@ function generateStaticMCP() {
         }).join('');
         return { tagsHtml, cardsHtml };
     };
-
     const processTemplate = (templateFile, outputFile, lang) => {
         const tmplPath = path.join(__dirname, templateFile);
         if (!fs.existsSync(tmplPath)) return;
         let html = fs.readFileSync(tmplPath, 'utf-8');
         const { tagsHtml, cardsHtml } = buildHtml(lang);
-        
         html = html.replace('{{TAGS}}', tagsHtml)
                    .replace('{{MCP_LIST}}', cardsHtml)
                    .replace('{{MCP_JSON}}', JSON.stringify(mcpData));
-        
         fs.writeFileSync(path.join(__dirname, outputFile), html);
         console.log(`✅ 成功生成静态页面: ${outputFile}`);
     };
-
     processTemplate('mcp-template-en.html', 'mcp.html', 'en');
     processTemplate('mcp-template-zh.html', 'mcp-zh.html', 'zh');
 }
-
 // ------------------------------------------------------------------
 // 生成静态 Skills 技能库页面
 // ------------------------------------------------------------------
@@ -352,14 +319,12 @@ function generateStaticSkills() {
         return;
     }
     const skillsData = JSON.parse(fs.readFileSync(skillsJsonPath, 'utf-8'));
-
     const buildHtml = (lang) => {
         const isZh = lang === 'zh';
         const allTag = isZh ? '全部' : 'All';
         const authorPrefix = isZh ? '作者:' : 'Author:';
         const copyText = isZh ? '复制链接' : 'Copy';
         const repoText = isZh ? '开源代码' : 'GitHub';
-
         const categories = [allTag, ...new Set(skillsData.map(p => p.category))];
         const tagsHtml = categories.map(cat => `
             <button class="tag-bracket px-3 py-1 border border-gray-400 dark:border-gray-600 text-[11px] md:text-sm ${cat === allTag ? 'active' : ''}" 
@@ -367,10 +332,8 @@ function generateStaticSkills() {
                 [ ${cat} ]
             </button>
         `).join('');
-
         const cardsHtml = skillsData.map(p => {
             const displayDesc = isZh ? (p.description_zh || p.description) : p.description;
-            
             return `
                 <div class="plugin-card p-5 md:p-6 flex flex-col justify-between h-full">
                     <div>
@@ -380,7 +343,6 @@ function generateStaticSkills() {
                         </div>
                         <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">${displayDesc}</p>
                     </div>
-
                     <div class="mt-auto">
                         <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
                             <div class="flex justify-between items-center text-[10px] mb-3 text-gray-500 font-mono">
@@ -403,7 +365,6 @@ function generateStaticSkills() {
         }).join('');
         return { tagsHtml, cardsHtml };
     };
-
     const processTemplate = (templateFile, outputFile, lang) => {
         const tmplPath = path.join(__dirname, templateFile);
         if (!fs.existsSync(tmplPath)) {
@@ -412,19 +373,190 @@ function generateStaticSkills() {
         }
         let html = fs.readFileSync(tmplPath, 'utf-8');
         const { tagsHtml, cardsHtml } = buildHtml(lang);
-        
         html = html.replace('{{TAGS}}', tagsHtml)
                    .replace('{{SKILLS_LIST}}', cardsHtml)
                    .replace('{{SKILLS_JSON}}', JSON.stringify(skillsData));
-        
         fs.writeFileSync(path.join(__dirname, outputFile), html);
         console.log(`✅ 成功生成静态页面: ${outputFile}`);
     };
-
     processTemplate('skills-template-en.html', 'skills.html', 'en');
     processTemplate('skills-template-zh.html', 'skills-zh.html', 'zh');
 }
-
+// ------------------------------------------------------------------
+// 图片压缩：将 avatars/*.png 和 img/Avatar.png 转为 WebP 缩略图
+// ------------------------------------------------------------------
+function compressAvatars() {
+    console.log('🖼️  开始压缩头像图片为 WebP...');
+    const avatarsDir = path.join(__dirname, 'avatars');
+    const webpDir = path.join(__dirname, 'avatars-webp');
+    if (!fs.existsSync(webpDir)) fs.mkdirSync(webpDir, { recursive: true });
+    const avatarMap = {};  // stem -> originalPngPath
+    if (fs.existsSync(avatarsDir)) {
+        const pngFiles = fs.readdirSync(avatarsDir).filter(f => f.endsWith('.png'));
+        pngFiles.forEach(pngFile => {
+            const stem = pngFile.replace(/\.png$/i, '');
+            avatarMap[stem] = path.join(avatarsDir, pngFile);
+        });
+    }
+    const tasks = [];
+    Object.entries(avatarMap).forEach(([stem, pngPath]) => {
+        // 256px WebP for preview (quality 82)
+        const webpOut = path.join(webpDir, `${stem}.webp`);
+        tasks.push(
+            sharp(pngPath)
+                .resize(256, 256, { fit: 'cover', position: sharp.strategy.attention })
+                .webp({ quality: 82 })
+                .toFile(webpOut)
+                .then(() => console.log(`  ✅ ${stem}.webp`))
+                .catch(e => console.warn(`  ⚠️ Failed: ${stem}.webp — ${e.message}`))
+        );
+        // 64px WebP thumb for card list (quality 70)
+        const thumbOut = path.join(webpDir, `${stem}-thumb.webp`);
+        tasks.push(
+            sharp(pngPath)
+                .resize(64, 64, { fit: 'cover', position: sharp.strategy.attention })
+                .webp({ quality: 70 })
+                .toFile(thumbOut)
+                .then(() => console.log(`  ✅ ${stem}-thumb.webp`))
+                .catch(e => console.warn(`  ⚠️ Failed: ${stem}-thumb.webp — ${e.message}`))
+        );
+    });
+    // 默认头像也压缩
+    const defaultPng = path.join(__dirname, 'img', 'Avatar.png');
+    if (fs.existsSync(defaultPng)) {
+        const defaultWebp = path.join(__dirname, 'img', 'Avatar.webp');
+        const defaultThumb = path.join(__dirname, 'img', 'Avatar-thumb.webp');
+        tasks.push(
+            sharp(defaultPng)
+                .resize(256, 256, { fit: 'cover', position: sharp.strategy.attention })
+                .webp({ quality: 82 })
+                .toFile(defaultWebp)
+                .then(() => console.log('  ✅ img/Avatar.webp'))
+                .catch(e => console.warn(`  ⚠️ Failed: Avatar.webp — ${e.message}`))
+        );
+        tasks.push(
+            sharp(defaultPng)
+                .resize(64, 64, { fit: 'cover', position: sharp.strategy.attention })
+                .webp({ quality: 70 })
+                .toFile(defaultThumb)
+                .then(() => console.log('  ✅ img/Avatar-thumb.webp'))
+                .catch(e => console.warn(`  ⚠️ Failed: Avatar-thumb.webp — ${e.message}`))
+        );
+    }
+    return Promise.all(tasks).then(() => {
+        console.log('✨ WebP 压缩完成！');
+    });
+}
+// 辅助：根据 avatar 字段解析出对应的 WebP URL
+function resolveAvatarUrls(avatarField) {
+    if (!avatarField || avatarField.trim() === '') {
+        return { thumb: 'img/Avatar-thumb.webp', full: 'img/Avatar.webp' };
+    }
+    const base = path.basename(avatarField);
+    const stem = base.replace(/\.(png|jpg|jpeg|gif|webp)$/i, '');
+    return {
+        thumb: `avatars-webp/${stem}-thumb.webp`,
+        full: `avatars-webp/${stem}.webp`
+    };
+}
+// ------------------------------------------------------------------
+// 生成静态 Characters 角色卡页面
+// ------------------------------------------------------------------
+function generateStaticCharacters() {
+    console.log('🚀 开始生成静态化 Characters 角色卡页面...');
+    const charactersDirEn = path.join(__dirname, 'characters');
+    const charactersDirZh = path.join(__dirname, 'characters-zh');
+    const readCharacterCards = (dir) => {
+        if (!fs.existsSync(dir)) return [];
+        const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+        return files.map(filename => {
+            const filePath = path.join(dir, filename);
+            const raw = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+            return {
+                ...raw,
+                fileName: dir === charactersDirEn ? `characters/${filename}` : `characters-zh/${filename}`,
+                _spec: raw.spec || 'chara_card_v3',
+                _spec_version: raw.spec_version || '3.0'
+            };
+        });
+    };
+    const charactersEn = readCharacterCards(charactersDirEn);
+    const charactersZh = readCharacterCards(charactersDirZh);
+    const buildHtml = (lang) => {
+        const data = lang === 'zh' ? charactersZh : charactersEn;
+        const cardsData = data.length > 0 ? data : (lang === 'zh' ? charactersZh : charactersEn);
+        if (cardsData.length === 0) {
+            return { cardsHtml: '<p class="text-gray-500 text-center py-10">No character cards found.</p>' };
+        }
+        const cardsHtml = cardsData.map(c => {
+            const urls = resolveAvatarUrls(c.avatar);  // WebP URLs!
+            const desc = c.description || (lang === 'zh' ? '暂无描述' : 'No description');
+            const personality = c.personality || (lang === 'zh' ? '未知' : 'N/A');
+            const spec = c._spec || 'chara_card_v3';
+            const specVer = c._spec_version || '3.0';
+            return `
+                <div class="plugin-card p-5 md:p-6">
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="${urls.thumb}" alt="${c.name}" class="avatar-img rounded-sm" 
+                             onerror="this.src='img/Avatar-thumb.webp'"
+                             loading="lazy">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="text-lg md:text-xl font-bold text-black dark:text-white break-words">${c.name}</h3>
+                                <span class="text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 text-black dark:text-geekYellow font-bold">${spec} v${specVer}</span>
+                            </div>
+                            <p class="text-gray-500 dark:text-gray-400 text-xs">${personality.substring(0, 100)}${personality.length > 100 ? '...' : ''}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-4 leading-relaxed line-clamp-3">${desc}</p>
+                    <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="downloadCharacterJson('${c.fileName}')"
+                               class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-[10px] font-bold text-center block w-full">
+                                <i class="fas fa-download mr-1"></i> ${lang === 'zh' ? '下载 JSON' : 'Download JSON'}
+                            </button>
+                            <button onclick="previewCharacter('${c.fileName}')" 
+                                    class="py-2 border border-gray-400 dark:border-gray-600 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-[10px] font-bold">
+                                <i class="fas fa-eye mr-1"></i> ${lang === 'zh' ? '预览' : 'Preview'}
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+        }).join('');
+        return { cardsHtml };
+    };
+    const processTemplate = (templateFile, outputFile, lang) => {
+        const tmplPath = path.join(__dirname, templateFile);
+        if (!fs.existsSync(tmplPath)) {
+            console.warn(`⚠️ 模板未找到: ${templateFile}`);
+            return;
+        }
+        let html = fs.readFileSync(tmplPath, 'utf-8');
+        const data = lang === 'zh' ? charactersZh : charactersEn;
+        const cardsData = data.length > 0 ? data : (lang === 'zh' ? charactersZh : charactersEn);
+        const { cardsHtml } = buildHtml(lang);
+        // JSON data — avatar=thumb, avatarFull=big preview
+        const jsonData = cardsData.map(c => {
+            const urls = resolveAvatarUrls(c.avatar);
+            return {
+                name: c.name,
+                description: c.description || '',
+                personality: c.personality || '',
+                fileName: c.fileName,
+                avatar: urls.thumb,
+                avatarFull: urls.full,
+                spec: c._spec,
+                spec_version: c._spec_version
+            };
+        });
+        html = html.replace('{{CHARACTERS_LIST}}', cardsHtml)
+                   .replace('{{CHARACTERS_JSON}}', JSON.stringify(jsonData));
+        fs.writeFileSync(path.join(__dirname, outputFile), html);
+        console.log(`✅ 成功生成静态页面: ${outputFile}`);
+    };
+    processTemplate('characters-template-en.html', 'characters.html', 'en');
+    processTemplate('characters-template-zh.html', 'characters-zh.html', 'zh');
+}
 // ------------------------------------------------------------------
 // 生成 RSS
 // ------------------------------------------------------------------
@@ -458,7 +590,6 @@ function generateRSS(posts, lang) {
     };
     return xml(feedObj, { declaration: true, indent: '  ' });
 }
-
 // ------------------------------------------------------------------
 // 生成站点地图 (Sitemap)
 // ------------------------------------------------------------------
@@ -466,15 +597,12 @@ function generateSitemap(postsEn, postsZh) {
     console.log('🚀 开始生成 Sitemap...');
     const currentDate = new Date().toISOString().split('T')[0];
     let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
-
     // 1. 扫描根目录的静态核心页面
     const rootFiles = fs.readdirSync(__dirname); 
     rootFiles.forEach(file => {
         if (!file.endsWith('.html')) return;
         if (EXCLUDE_HTML_FILES.includes(file)) return;
-
         let urlPath = file === 'index.html' ? '' : `/${file}`;
-        
         sitemapXml += `
   <url>
     <loc>${BASE_URL}${urlPath}</loc>
@@ -483,7 +611,6 @@ function generateSitemap(postsEn, postsZh) {
     <priority>${file.includes('index') ? '1.0' : '0.8'}</priority>
   </url>`;
     });
-
     // 2. 插入博客静态页面链接
     const appendPostsToSitemap = (posts, lang) => {
         posts.forEach(post => {
@@ -499,17 +626,14 @@ function generateSitemap(postsEn, postsZh) {
     };
     appendPostsToSitemap(postsEn, 'en');
     appendPostsToSitemap(postsZh, 'zh');
-
     sitemapXml += `\n</urlset>`;
     fs.writeFileSync(SITEMAP_OUTPUT_FILE, sitemapXml);
     console.log(`✅ Sitemap 成功生成: ${SITEMAP_OUTPUT_FILE}`);
 }
-
 // ================= 执行区 =================
 console.log('🏗️ Building Blog Data...');
 const postsEn = getPosts('en');
 const postsZh = getPosts('zh');
-
 // 1. JSON 缓存 (博客)
 const mapSimple = ({contentRSS, contentPage, tocHtml, ...rest}) => rest;
 fs.writeFileSync(path.join(POSTS_DIR, 'blog.json'), JSON.stringify({ 
@@ -517,22 +641,23 @@ fs.writeFileSync(path.join(POSTS_DIR, 'blog.json'), JSON.stringify({
     zh: postsZh.map(mapSimple) 
 }, null, 2));
 console.log('✨ blog.json updated!');
-
 // 2. 静态 HTML (博客)
 generateHtmlPages(postsEn, 'en', templateEn);
 generateHtmlPages(postsZh, 'zh', templateZh);
-
-// 3. 静态 HTML (插件市场、MCP、Skills)
-generateStaticPlugins();
-generateStaticMCP();
-generateStaticSkills();
-
-// 4. RSS
-fs.writeFileSync(path.join(POSTS_DIR, 'feed.xml'), generateRSS(postsEn, 'en'));
-fs.writeFileSync(path.join(POSTS_DIR, 'feed-zh.xml'), generateRSS(postsZh, 'zh'));
-console.log('✨ RSS generated!');
-
-// 5. Sitemap
-generateSitemap(postsEn, postsZh);
-
-console.log('🎉 所有构建任务完成!');
+// 3. 图片压缩 (WebP) → 角色卡等静态页面依赖 WebP 输出
+compressAvatars().then(() => {
+    generateStaticPlugins();
+    generateStaticMCP();
+    generateStaticSkills();
+    generateStaticCharacters();
+    // 4. RSS
+    fs.writeFileSync(path.join(POSTS_DIR, 'feed.xml'), generateRSS(postsEn, 'en'));
+    fs.writeFileSync(path.join(POSTS_DIR, 'feed-zh.xml'), generateRSS(postsZh, 'zh'));
+    console.log('✨ RSS generated!');
+    // 5. Sitemap
+    generateSitemap(postsEn, postsZh);
+    console.log('🎉 所有构建任务完成!');
+}).catch(err => {
+    console.error('❌ 图片压缩失败，终止构建:', err);
+    process.exit(1);
+});

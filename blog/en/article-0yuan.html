@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge: Create an AI Companion for $0, Can I Succeed? - Super Agent Party</title>
     <meta name="description" content="A step-by-step guide on how to build an AI companion without spending any money">
-    
     <!-- SEO Language Mapping -->
     <link rel="alternate" hreflang="zh-Hans" href="../zh/article-0yuan.html" />
-
     <!-- 依赖脚本 (注意 ../../ 返回根目录获取资源) -->
     <script src="../../theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../../github-stars.js"></script>
-    
     <link rel="icon" href="../../img/icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -38,7 +34,6 @@
         .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
         .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
         .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
-
         /* Markdown Styles */
         .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
         .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
@@ -73,22 +68,18 @@
         .dark #toc:hover {
             scrollbar-color: rgba(107, 114, 128, 0.5) transparent;
         }
-
         /* 2. WebKit 支持 (Chrome, Edge, Safari) */
         #toc::-webkit-scrollbar {
             width: 3px; /* 非常细 */
         }
-        
         #toc::-webkit-scrollbar-track {
             background: transparent; /* 轨道永久透明 */
         }
-        
         /* 滑块默认完全透明 (不出现) */
         #toc::-webkit-scrollbar-thumb {
             background-color: transparent; 
             border-radius: 4px;
         }
-        
         /* 【关键】鼠标悬停在 TOC 容器上时，滑块才出现 */
         #toc:hover::-webkit-scrollbar-thumb {
             background-color: rgba(156, 163, 175, 0.4); 
@@ -96,7 +87,6 @@
         .dark #toc:hover::-webkit-scrollbar-thumb {
             background-color: rgba(107, 114, 128, 0.5);
         }
-        
         /* 鼠标精准悬停或拖拽滚动条滑块时，颜色加深 */
         #toc::-webkit-scrollbar-thumb:hover {
             background-color: rgba(156, 163, 175, 0.8) !important;
@@ -108,7 +98,6 @@
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
-
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,11 +105,9 @@
                 <div class="flex items-center">
                     <a href="../../index.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
-                
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="../../index.html" class="nav-link font-bold text-sm">Home</a>
                     <a href="../../download.html" class="nav-link font-bold text-sm">Download</a>
-                    
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             Resources <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
@@ -129,34 +116,28 @@
                             <a href="../../plugins.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Plugins</a>
                             <a href="../../mcp.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP</a>
                             <a href="../../skills.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Skills</a>
+                            <a href="../../characters.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">Characters</a>
                         </div>
                     </div>
-
                     <a href="../../blog.html" class="nav-link font-bold text-sm">Blog</a>
-                    
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
-                    
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
-
                     <!-- Language Switcher -->
                     <a href="../zh/article-0yuan.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         中文
                     </a>
-
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
                         <i class="fab fa-github"></i>
                         <span class="github-stars">-</span>
                         <span>GitHub</span>
                     </a>
                 </div>
-
                 <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        
         <!-- Mobile Menu (Expanded) -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="../../index.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Home</a>
@@ -165,12 +146,12 @@
                 <a href="../../plugins.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Plugins</a>
                 <a href="../../mcp.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ MCP</a>
                 <a href="../../skills.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Skills</a>
+                <a href="../../characters.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ Characters</a>
             </div>
             <a href="../../blog.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">Blog</a>
             <a href="../zh/article-0yuan.html" class="block px-4 py-3 font-bold text-geekYellow border-b border-gray-100 dark:border-gray-900">Switch to 中文</a>
         </div>
     </nav>
-
     <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
         <!-- Back Link -->
         <div class="mb-4 text-sm font-mono">
@@ -178,7 +159,6 @@
                 <i class="fas fa-arrow-left mr-1"></i> <span>Back to Blog</span>
             </a>
         </div>
-
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Left: Article -->
             <div class="flex-grow lg:w-3/4">
@@ -192,7 +172,6 @@
                             <span>2026-01-16</span> | <span>0yuan.md</span>
                         </div>
                     </div>
-
                     <div class="prose dark:prose-invert">
                         <p><figure class="my-8"><img src="/img/0yuan/0.jpeg" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <h1 id="heading-0">Introduction</h1>
@@ -305,7 +284,6 @@
                     </div>
                 </article>
             </div>
-
             <!-- Right: TOC -->
             <aside class="hidden lg:block lg:w-1/4">
                 <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
@@ -332,13 +310,11 @@
             </aside>
         </div>
     </main>
-
     <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
         <div class="max-w-7xl mx-auto px-4 text-center md:text-left text-gray-500 text-xs font-mono">
             <p>© 2026 Super Agent Party. Open source under AGPL-3.0.</p>
         </div>
     </footer>
-
     <script>
         document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
     </script>

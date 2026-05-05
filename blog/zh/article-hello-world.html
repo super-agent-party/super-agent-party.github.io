@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>欢迎来到 Super Agent Party 博客 - Super Agent Party</title>
     <meta name="description" content="这里是第一篇Super Agent Party 博客">
-    
     <link rel="alternate" hreflang="en" href="../en/article-hello-world.html" />
-    
     <!-- 注意这些 js 和图片引入前面加了 ../../ -->
     <script src="../../theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../../github-stars.js"></script>
-    
     <link rel="icon" href="../../img/icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -37,7 +33,6 @@
         .nav-link::before { content: '['; margin-right: 5px; transform: translateX(10px); }
         .nav-link::after { content: ']'; margin-left: 5px; transform: translateX(-10px); }
         .nav-link:hover::before, .nav-link:hover::after { opacity: 1; transform: translateX(0); }
-
         .prose { max-width: 100%; font-size: 1rem; line-height: 1.75; }
         .prose h1, .prose h2, .prose h3 { scroll-margin-top: 5rem; color: #111827; font-weight: 800; }
         .dark .prose h1, .dark .prose h2, .dark .prose h3 { color: #ffffff; }
@@ -71,22 +66,18 @@
         .dark #toc:hover {
             scrollbar-color: rgba(107, 114, 128, 0.5) transparent;
         }
-
         /* 2. WebKit 支持 (Chrome, Edge, Safari) */
         #toc::-webkit-scrollbar {
             width: 3px; /* 非常细 */
         }
-        
         #toc::-webkit-scrollbar-track {
             background: transparent; /* 轨道永久透明 */
         }
-        
         /* 滑块默认完全透明 (不出现) */
         #toc::-webkit-scrollbar-thumb {
             background-color: transparent; 
             border-radius: 4px;
         }
-        
         /* 【关键】鼠标悬停在 TOC 容器上时，滑块才出现 */
         #toc:hover::-webkit-scrollbar-thumb {
             background-color: rgba(156, 163, 175, 0.4); 
@@ -94,7 +85,6 @@
         .dark #toc:hover::-webkit-scrollbar-thumb {
             background-color: rgba(107, 114, 128, 0.5);
         }
-        
         /* 鼠标精准悬停或拖拽滚动条滑块时，颜色加深 */
         #toc::-webkit-scrollbar-thumb:hover {
             background-color: rgba(156, 163, 175, 0.8) !important;
@@ -106,7 +96,6 @@
     </style>
 </head>
 <body class="matrix-bg text-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
-
     <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b-2 border-black dark:border-gray-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -114,12 +103,10 @@
                     <!-- 回到根目录的链接 -->
                     <a href="../../index-zh.html" class="text-lg font-bold tracking-tighter border-2 border-transparent hover:border-black dark:hover:border-geekYellow px-2 py-1 transition-all">Super Agent Party</a>
                 </div>
-                
                 <div class="hidden md:flex items-center space-x-6">
                     <!-- 回到根目录的链接 -->
                     <a href="../../index-zh.html" class="nav-link font-bold text-sm">首页</a>
                     <a href="../../download-zh.html" class="nav-link font-bold text-sm">下载中心</a>
-                    
                     <div class="relative group">
                         <button class="nav-link font-bold text-sm flex items-center gap-1 py-4">
                             资源生态 <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
@@ -128,22 +115,18 @@
                             <a href="../../plugins-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">插件市场</a>
                             <a href="../../mcp-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">MCP服务器</a>
                             <a href="../../skills-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">技能库</a>
+                            <a href="../../characters-zh.html" class="block px-4 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black">角色卡</a>
                         </div>
                     </div>
-                    
                     <a href="../../blog-zh.html" class="nav-link font-bold text-sm">博客</a>
-                    
                     <div class="h-4 w-px bg-gray-400 dark:bg-gray-700 mx-2"></div>
-                    
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-sm transition-colors">
                         <i class="fas fa-sun block dark:hidden"></i>
                         <i class="fas fa-moon hidden dark:block text-geekYellow"></i>
                     </button>
-
                     <a href="../en/article-hello-world.html" class="text-xs border border-gray-300 dark:border-gray-700 px-3 py-1 rounded-sm hover:bg-black hover:text-white dark:hover:bg-geekYellow dark:hover:text-black transition-colors font-bold">
                         English
                     </a>
-
                     <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="flex items-center space-x-2 bg-black text-white dark:bg-white dark:text-black px-3 py-1 text-xs font-bold hover:opacity-80 transition-opacity">
                         <i class="fab fa-github"></i>
                         <span class="github-stars">-</span>
@@ -153,14 +136,18 @@
                 <button id="mobile-menu-button" class="md:hidden p-2 text-xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        
         <div id="mobile-menu" class="hidden md:hidden border-t border-black dark:border-gray-800 bg-white dark:bg-geekDark">
             <a href="../../index-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">首页</a>
             <a href="../../download-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">下载中心</a>
+            <div class="bg-gray-50 dark:bg-gray-900/50">
+                <a href="../../plugins-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ 插件市场</a>
+                <a href="../../mcp-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ MCP</a>
+                <a href="../../skills-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ 技能库</a>
+                <a href="../../characters-zh.html" class="block px-8 py-2 text-sm font-bold border-b border-gray-100 dark:border-gray-900">└ 角色卡</a>
+            </div>
             <a href="../../blog-zh.html" class="block px-4 py-3 font-bold border-b border-gray-100 dark:border-gray-900">项目博客</a>
         </div>
     </nav>
-
     <main class="flex-grow pt-24 pb-12 px-4 max-w-6xl mx-auto w-full">
         <div class="mb-4 text-sm font-mono">
             <!-- 回到根目录的博客列表页 -->
@@ -168,7 +155,6 @@
                 <i class="fas fa-arrow-left mr-1"></i> <span>返回博客列表</span>
             </a>
         </div>
-
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="flex-grow lg:w-3/4">
                 <article class="bg-white/90 dark:bg-geekDark/90 p-8 md:p-12 border border-black dark:border-gray-700 shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#FFD700]">
@@ -181,7 +167,6 @@
                             <span>2026-01-14</span> | <span>hello-world.md</span>
                         </div>
                     </div>
-
                     <div class="prose dark:prose-invert">
                         <p><figure class="my-8"><img src="https://www.agentparty.top/img/cover.png" alt="img" class="mx-auto" loading="lazy"></figure></p>
 <h1 id="heading-0">欢迎加入派对！</h1>
@@ -204,7 +189,6 @@
                     </div>
                 </article>
             </div>
-
             <!-- 右侧目录 -->
             <aside class="hidden lg:block lg:w-1/4">
                 <div class="sticky top-24 border border-black dark:border-gray-700 bg-white dark:bg-geekDark p-6 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#FFD700]">
@@ -220,13 +204,11 @@
             </aside>
         </div>
     </main>
-
     <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
         <div class="max-w-7xl mx-auto px-4 text-center md:text-left text-gray-500 text-xs font-mono">
             <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
         </div>
     </footer>
-
     <script>
         document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
     </script>
