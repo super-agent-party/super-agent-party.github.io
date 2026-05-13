@@ -714,7 +714,14 @@
                 document.getElementById('previewTitle').textContent = data.name || '角色卡';
                 document.getElementById('previewDownloadBtn').onclick = () => downloadCharacter(fileName);
                 const p = escapeHtml;
-                const avatarUrl = (data.avatar && data.avatar.trim() !== '') ? data.avatar : 'img/Avatar.png';
+                let avatarUrl = 'img/Avatar.webp';
+                const charInfo = rawCharacters.find(c => c.fileName === fileName);
+                if (charInfo && charInfo.avatarFull) {
+                    avatarUrl = charInfo.avatarFull; // 指向 avatars-webp/xxx.webp
+                } else if (data.avatar && data.avatar.trim() !== '') {
+                    avatarUrl = data.avatar; // 降级：如果没找到缓存，则使用原始路径
+                }
+
                 const spec = data.spec || 'chara_card_v3';
                 const specVer = data.spec_version || '3.0';
                 let altGreetingsHtml = '';
