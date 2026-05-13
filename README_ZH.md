@@ -16,8 +16,7 @@
     "author": "heshengtao",
     "version": "1.0.0",
     "category": "Example",
-    "repository": "https://github.com/heshengtao/sap-example",
-    "backupRepository": "https://gitee.com/heshengtao/sap-example",
+    "repository": "https://github.com/heshengtao/sap-example"
   }
 ```
 

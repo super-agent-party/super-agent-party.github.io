@@ -6,7 +6,6 @@
     "author": "heshengtao",
     "version": "1.0.0",
     "repository": "https://github.com/heshengtao/sap-example",
-    "backupRepository": "https://gitee.com/heshengtao/sap-example",
     "category": "Example"
   },
   {
@@ -16,7 +15,6 @@
     "description_zh": "一个基于 NodeJS 环境的聊天前端示例插件。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-example-with-node",
-    "backupRepository": "https://gitee.com/heshengtao/sap-example-with-node",
     "category": "Example"
   },
   {
@@ -26,7 +24,6 @@
     "description_zh": "为 Super Agent Party 开发的 Live 2D 看板娘扩展模块。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-live2d",
-    "backupRepository": "https://gitee.com/heshengtao/sap-live2d",
     "category": "Game"
   },
   {
@@ -36,7 +33,6 @@
     "author": "heshengtao",
     "version": "1.0.0", 
     "repository": "https://github.com/heshengtao/sap-web-preview",
-    "backupRepository": "https://gitee.com/heshengtao/sap-web-preview",
     "category": "Development"
   },
   {
@@ -46,7 +42,6 @@
     "description_zh": "一键将 Super Agent Party 暴露到公网",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-remote",
-    "backupRepository": "https://gitee.com/heshengtao/sap-remote",
     "category": "Utility"
   },
   {
@@ -56,7 +51,6 @@
     "description_zh": "互动式故事冒险插件，利用 AI 动态生成故事情节和交互选项。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-story-adventure",
-    "backupRepository": "https://gitee.com/heshengtao/sap-story-adventure",
     "category": "Game"
   },
   {
@@ -66,7 +60,6 @@
     "description_zh": "一个集成了 AI 能力的文本编辑器。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-aieditor",
-    "backupRepository": "https://gitee.com/heshengtao/sap-aieditor",
     "category": "Utility"
   },
   {
@@ -76,7 +69,6 @@
     "description_zh": "基于 AI 驱动的 Galgame（美少女游戏）扩展插件。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-aigalgame",
-    "backupRepository": "https://gitee.com/heshengtao/sap-aigalgame",
     "category": "Game"
   },
   {
@@ -86,7 +78,6 @@
     "description_zh": "AI 塔罗牌占卜插件，提供神秘学咨询体验。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-tarot",
-    "backupRepository": "https://gitee.com/heshengtao/sap-tarot",
     "category": "Game"
   },
   {
@@ -96,7 +87,6 @@
     "description": "SheetNext AI Excel Editor Plugin for Super Agent Party",
     "description_zh": "SheetNext AI 表格/Excel 编辑器插件。",
     "repository": "https://github.com/heshengtao/sap-ai-sheet",
-    "backupRepository": "https://gitee.com/heshengtao/sap-ai-sheet",
     "category": "Utility"
   },
   {
@@ -106,7 +96,6 @@
     "description_zh": "集成 Draw.io 功能的流程图与架构图编辑器插件。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-ai-drawio",
-    "backupRepository": "https://gitee.com/heshengtao/sap-ai-drawio",
     "category": "Utility"
   },
   {
@@ -116,7 +105,6 @@
     "description_zh": "Mermaid.js 语法支持的图表编辑器插件。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-ai-mermaid",
-    "backupRepository": "https://gitee.com/heshengtao/sap-ai-mermaid",
     "category": "Utility"
   },
   {
@@ -126,7 +114,6 @@
     "description_zh": "RSS 订阅与阅读器扩展插件。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-rss",
-    "backupRepository": "https://gitee.com/heshengtao/sap-rss",
     "category": "Utility"
   },
   {
@@ -136,7 +123,6 @@
     "description_zh": "为 Super Agent Party 提供的 IDE 扩展插件。",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-code-server",
-    "backupRepository": "https://gitee.com/heshengtao/sap-code-server",
     "category": "Development"
   },
   {
@@ -146,7 +132,6 @@
     "description_zh":"Agent Party CLI工具（sap）, 支持ACP",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-cli",
-    "backupRepository": "https://gitee.com/heshengtao/sap-cli",
     "category": "Development"
   },
   {
@@ -156,7 +141,6 @@
     "description_zh": "将super agent party 连接到 LX Music API，让AI伴侣控制音乐播放！",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-lx-music",
-    "backupRepository": "https://gitee.com/heshengtao/sap-lx-music",
     "category": "Utility"
   },
   {
@@ -166,7 +150,6 @@
     "description_zh": "为 Super Agent Party 提供的 AI PPT 扩展插件",
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-ai-ppt",
-    "backupRepository": "https://gitee.com/heshengtao/sap-ai-ppt",
     "category": "Utility"
   }
 ]
