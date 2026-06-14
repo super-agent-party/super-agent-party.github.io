@@ -85,3 +85,4 @@ In the [super-agent-party](https://github.com/heshengtao/super-agent-party) proj
 | CLI      | heshengtao  | Agent Party CLI tool (sap)          | https://github.com/heshengtao/sap-cli  |
 | LX-music      | heshengtao  | Connect the super agent party extension to the LX Music API,Let AI companion control music playback!           | https://github.com/heshengtao/sap-lx-music  |
 | AI PPT      | heshengtao  | AI PPT extension for Super Agent Party           | https://github.com/heshengtao/sap-ai-ppt  |
+| Lyra 星莱      | heshengtao  | Starlight mage character extension — one-click installs character card, THA model, stickers, and chat background           | https://github.com/heshengtao/sap-lyra-extension  |

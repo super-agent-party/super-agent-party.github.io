@@ -85,3 +85,4 @@
 | CLI      | heshengtao  | 为 Super Agent Party 提供的 CLI 扩展插件           | https://github.com/heshengtao/sap-cli  |
 | LX-music      | heshengtao  | 将super agent party 连接到 LX Music API，让AI伴侣控制音乐播放！           | https://github.com/heshengtao/sap-lx-music  |
 | AI PPT      | heshengtao  | 为 Super Agent Party 提供的 AI PPT 扩展插件           | https://github.com/heshengtao/sap-ai-ppt  |
+| 星莱 Lyra      | heshengtao  | 星空魔法使星莱角色扩展——一键安装角色卡、THA模型、表情包和聊天背景           | https://github.com/heshengtao/sap-lyra-extension  |

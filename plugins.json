@@ -151,5 +151,14 @@
     "author": "heshengtao",
     "repository": "https://github.com/heshengtao/sap-ai-ppt",
     "category": "Utility"
+  },
+  {
+    "name": "sap-lyra-extension",
+    "version": "1.0.0",
+    "description": "A starlight mage character extension for Super Agent Party — Lyra, master of classical and modern astrology, creator of \"Digital Astrology\". One-click installs character card, THA model, sticker pack, and chat background.",
+    "description_zh": "星空魔法使星莱角色扩展——精通古典与现代占星学、独创\"数字占星学\"。一键安装角色卡、THA 桌面宠物模型、表情包和聊天背景。",
+    "author": "heshengtao",
+    "repository": "https://github.com/heshengtao/sap-lyra-extension",
+    "category": "Character"
   }
 ]
