@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 - Super Agent Party</title>
+    <meta name="description" content="Super Agent Party 隐私政策。了解我们如何处理您的数据、收集哪些信息以及您在 GDPR 下的权利。">
+    <meta name="keywords" content="隐私政策, GDPR, 数据保护, Super Agent Party">
+    <link rel="alternate" hreflang="en" href="https://www.agentparty.top/privacy-policy.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/privacy-policy-zh.html" />
+    <link rel="canonical" href="https://www.agentparty.top/privacy-policy-zh.html" />
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="github-stars.js"></script>
+    <script src="cookie-banner.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        geekYellow: '#FFD700',
+                        geekDark: '#050505',
+                        geekGray: '#1a1a1a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .matrix-bg { background-color: #ffffff; }
+        .dark .matrix-bg { background-color: #050505; }
+        .scan-line { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255, 215, 0, 0.15); z-index: 9998; pointer-events: none; }
+        body { font-family: 'JetBrains Mono', monospace; }
+        .nav-link::before { content: '['; margin-right: 2px; opacity: 0; transition: opacity 0.2s; }
+        .nav-link::after { content: ']'; margin-left: 2px; opacity: 0; transition: opacity 0.2s; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+        .policy-content h2 { font-size: 1.25rem; font-weight: 800; margin-top: 2rem; margin-bottom: 0.75rem; color: #111; }
+        .dark .policy-content h2 { color: #FFD700; }
+        .policy-content p, .policy-content li { font-size: 0.875rem; line-height: 1.8; color: #444; }
+        .dark .policy-content p, .dark .policy-content li { color: #aaa; }
+        .policy-content ul { list-style: disc; padding-left: 1.5rem; margin: 0.5rem 0 1rem; }
+        .policy-content a { color: #FFD700; text-decoration: underline; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200">
+    <div class="scan-line"></div>
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index-zh.html" class="text-xl md:text-2xl font-black tracking-tighter text-black dark:text-white hover:text-geekYellow transition-colors">Super Agent Party</a>
+                <div class="hidden lg:flex items-center space-x-8 text-[11px] md:text-xs font-bold">
+                    <a href="index-zh.html" class="nav-link text-black dark:text-white hover:text-geekYellow transition-colors">首页</a>
+                    <a href="download-zh.html" class="nav-link text-black dark:text-white hover:text-geekYellow transition-colors">下载</a>
+                    <div class="relative group">
+                        <span class="nav-link text-black dark:text-white cursor-pointer">资源</span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="bg-white dark:bg-geekDark border-2 border-black dark:border-geekYellow p-4 rounded-sm min-w-[180px] shadow-[4px_4px_0px_#FFD700]">
+                                <a href="plugins.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">插件市场</a>
+                                <a href="mcp.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">MCP</a>
+                                <a href="skills.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">技能库</a>
+                                <a href="characters.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">角色卡</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="blog-zh.html" class="nav-link text-black dark:text-white hover:text-geekYellow transition-colors">博客</a>
+                    <button onclick="toggleTheme()" class="text-black dark:text-geekYellow"><i class="fas fa-sun dark:hidden"></i><i class="fas fa-moon hidden dark:inline"></i></button>
+                    <a href="index.html" class="text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 font-bold text-black dark:text-geekYellow">EN</a>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="bg-black text-white dark:bg-gray-800 px-4 py-2 font-bold flex items-center gap-2"><i class="fab fa-github"></i> <span class="github-stars">-</span></a>
+                </div>
+                <button id="mobile-menu-button" class="lg:hidden text-2xl text-black dark:text-white"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-geekDark border-t border-gray-200 dark:border-gray-800 px-4 py-4 space-y-3 text-xs font-bold">
+            <a href="index-zh.html" class="block py-2 text-black dark:text-white">首页</a>
+            <a href="download-zh.html" class="block py-2 text-black dark:text-white">下载</a>
+            <a href="plugins.html" class="block py-2 text-black dark:text-white">插件市场</a>
+            <a href="mcp.html" class="block py-2 text-black dark:text-white">MCP</a>
+            <a href="skills.html" class="block py-2 text-black dark:text-white">技能库</a>
+            <a href="characters.html" class="block py-2 text-black dark:text-white">角色卡</a>
+            <a href="blog-zh.html" class="block py-2 text-black dark:text-white">博客</a>
+            <a href="index.html" class="block py-2 text-geekYellow">English</a>
+        </div>
+    </nav>
+    <!-- 主要内容 -->
+    <main class="pt-24 pb-16">
+        <div class="max-w-3xl mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-black tracking-tighter mb-2 text-black dark:text-white">隐私政策</h1>
+            <p class="text-xs text-gray-500 mb-10">最后更新：2026年6月19日</p>
+            <div class="policy-content">
+                <h2>1. 引言</h2>
+                <p>Super Agent Party（以下简称"我们"）运营网站 <a href="https://www.agentparty.top">www.agentparty.top</a>（以下简称"网站"）。我们致力于保护您的隐私并确保数据处理的透明度。本隐私政策说明了我们收集哪些信息、如何使用这些信息，以及您在适用的数据保护法律（包括欧盟《通用数据保护条例》GDPR）下的权利。</p>
+
+                <h2>2. 数据控制者</h2>
+                <p>本网站的数据控制者为 Super Agent Party 项目，可通过以下方式联系：</p>
+                <ul>
+                    <li>GitHub：<a href="https://github.com/heshengtao/super-agent-party">github.com/heshengtao/super-agent-party</a></li>
+                    <li>电子邮件：可通过 GitHub Issues 索取</li>
+                </ul>
+
+                <h2>3. 我们收集的数据</h2>
+                <p><strong>我们不主动收集个人数据。</strong>我们的网站是纯静态网站，没有用户账户、无表单、无分析追踪器、无广告。但以下数据可能被自动处理：</p>
+                <ul>
+                    <li><strong>服务器日志（Cloudflare CDN）：</strong>本网站托管于 Cloudflare Pages。Cloudflare 会自动记录技术数据，例如您的 IP 地址、浏览器类型、引荐来源网址和访问时间戳。这些日志仅用于安全、性能和滥用防护目的。Cloudflare 作为我们的数据处理者。详情请参阅 <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare 隐私政策</a>。</li>
+                    <li><strong>本地存储：</strong>我们将您的主题偏好（浅色/深色模式）存储在浏览器的 localStorage 中。此数据不会离开您的设备，我们也无法访问。</li>
+                    <li><strong>GitHub API（Star 数量）：</strong>网站显示我们开源项目的 GitHub Star 数量。这是从公开的 GitHub API 客户端加载的，由您的浏览器直接请求 GitHub，遵循 GitHub 的隐私政策。</li>
+                </ul>
+
+                <h2>4. Cookie 及类似技术</h2>
+                <p><strong>本网站不使用追踪类 Cookie。</strong>我们不设置任何用于分析、广告或用户追踪目的的 Cookie。我们仅使用 localStorage 记住您的主题偏好，这属于为您提供预期功能的严格必要项，依据 ePrivacy Directive 第 5(3) 条无需获得同意。Cloudflare CDN 可能设置用于机器人管理和安全的严格必要技术性 Cookie（如 <code>__cf_bm</code>）。</p>
+
+                <h2>5. 处理目的与法律依据</h2>
+                <p>任何个人数据（如服务器日志中的 IP 地址）的处理基于我们的合法利益（GDPR 第 6(1)(f) 条），具体包括：</p>
+                <ul>
+                    <li>确保网站的安全性和稳定性</li>
+                    <li>防止滥用和网络攻击</li>
+                    <li>通过 CDN 高效地提供网站内容</li>
+                </ul>
+
+                <h2>6. 数据保留</h2>
+                <p>Cloudflare CDN 日志的保留期限受 Cloudflare 的数据保留政策约束。我们无法访问原始服务器日志。localStorage 主题偏好存储在您的设备上，您可以随时通过浏览器设置清除。</p>
+
+                <h2>7. 第三方服务</h2>
+                <p>我们使用以下可能代表我们或独立处理数据的第三方服务：</p>
+                <ul>
+                    <li><strong>Cloudflare（CDN 和托管）：</strong>处理 IP 地址和技术数据进行内容分发和安全保障。<a href="https://www.cloudflare.com/privacypolicy/" target="_blank">隐私政策</a></li>
+                    <li><strong>Google Fonts：</strong>我们从 Google Fonts CDN 加载字体。Google 可能会记录请求。<a href="https://policies.google.com/privacy" target="_blank">隐私政策</a></li>
+                    <li><strong>Font Awesome：</strong>我们从 cdnjs Cloudflare CDN 加载图标资源。<a href="https://www.cloudflare.com/privacypolicy/" target="_blank">隐私政策</a></li>
+                    <li><strong>GitHub：</strong>GitHub Star 数量组件向 api.github.com 发起 API 请求。<a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">隐私政策</a></li>
+                    <li><strong>Tailwind CSS（CDN）：</strong>我们从 cdn.tailwindcss.com CDN 加载 Tailwind CSS。除标准 HTTP 请求外，不会向此 CDN 发送任何用户数据。</li>
+                </ul>
+
+                <h2>8. GDPR 赋予您的权利</h2>
+                <p>如果您位于欧洲经济区（EEA），您根据 GDPR 享有以下权利：</p>
+                <ul>
+                    <li><strong>访问权（第 15 条）：</strong>请求确认我们是否处理您的个人数据，并访问该数据。</li>
+                    <li><strong>更正权（第 16 条）：</strong>请求更正不准确的个人数据。</li>
+                    <li><strong>删除权（第 17 条）：</strong>请求删除您的个人数据（"被遗忘权"）。</li>
+                    <li><strong>限制处理权（第 18 条）：</strong>在特定情况下请求限制处理。</li>
+                    <li><strong>数据可携权（第 20 条）：</strong>以结构化、机器可读的格式接收您的数据。</li>
+                    <li><strong>反对权（第 21 条）：</strong>反对基于合法利益的处理。</li>
+                    <li><strong>撤回同意权（第 7 条）：</strong>随时撤回同意（但我们不依赖同意进行处理）。</li>
+                    <li><strong>投诉权（第 77 条）：</strong>向您所在的欧盟成员国的监管机构提出投诉。</li>
+                </ul>
+                <p>由于我们不主动收集个人数据，上述大部分权利可以通过清除浏览器的 localStorage 或联系我们来实现。如有任何隐私相关疑问，请在我们的 <a href="https://github.com/heshengtao/super-agent-party/issues">GitHub 仓库</a> 提交 Issue。</p>
+
+                <h2>9. 儿童隐私</h2>
+                <p>本网站不面向 16 岁以下的儿童。我们不会明知地收集儿童的个人数据。</p>
+
+                <h2>10. 本政策的变更</h2>
+                <p>我们可能会不时更新本隐私政策。变更内容将发布在此页面并更新"最后更新"日期。我们建议您定期查看此页面。</p>
+
+                <h2>11. 联系方式</h2>
+                <p>如对本隐私政策有任何疑问，请通过以下方式联系我们：</p>
+                <ul>
+                    <li>GitHub Issues：<a href="https://github.com/heshengtao/super-agent-party/issues">github.com/heshengtao/super-agent-party/issues</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- 页脚 -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1">
+                    <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
+                    <p class="text-xs text-gray-500 font-mono">开源全能 AI 智能体框架，打造您的专属数字生命。</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">产品</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="download-zh.html" class="hover:text-geekYellow">客户端下载</a></li>
+                        <li><a href="plugins.html" class="hover:text-geekYellow">插件市场</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">开发者</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">项目文档</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">提交反馈</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">法律</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="privacy-policy-zh.html" class="hover:text-geekYellow">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex justify-between items-center text-[10px] text-gray-500">
+                <p>© 2026 Super Agent Party. 基于 AGPL-3.0 协议开源。</p>
+                <a href="https://github.com/heshengtao" class="hover:text-geekYellow underline">@heshengtao</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
+</body>
+</html>

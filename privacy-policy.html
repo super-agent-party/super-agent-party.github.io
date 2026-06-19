@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Super Agent Party</title>
+    <meta name="description" content="Super Agent Party Privacy Policy. Learn how we handle your data, what information is collected, and your rights under GDPR.">
+    <meta name="keywords" content="Privacy Policy, GDPR, Data Protection, Super Agent Party">
+    <link rel="alternate" hreflang="en" href="https://www.agentparty.top/privacy-policy.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/privacy-policy-zh.html" />
+    <link rel="canonical" href="https://www.agentparty.top/privacy-policy.html" />
+    <script src="theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="github-stars.js"></script>
+    <script src="cookie-banner.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/icon.ico">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        geekYellow: '#FFD700',
+                        geekDark: '#050505',
+                        geekGray: '#1a1a1a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .matrix-bg { background-color: #ffffff; }
+        .dark .matrix-bg { background-color: #050505; }
+        .scan-line { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255, 215, 0, 0.15); z-index: 9998; pointer-events: none; }
+        body { font-family: 'JetBrains Mono', monospace; }
+        .nav-link::before { content: '['; margin-right: 2px; opacity: 0; transition: opacity 0.2s; }
+        .nav-link::after { content: ']'; margin-left: 2px; opacity: 0; transition: opacity 0.2s; }
+        .nav-link:hover::before, .nav-link:hover::after { opacity: 1; }
+        .policy-content h2 { font-size: 1.25rem; font-weight: 800; margin-top: 2rem; margin-bottom: 0.75rem; color: #111; }
+        .dark .policy-content h2 { color: #FFD700; }
+        .policy-content p, .policy-content li { font-size: 0.875rem; line-height: 1.8; color: #444; }
+        .dark .policy-content p, .dark .policy-content li { color: #aaa; }
+        .policy-content ul { list-style: disc; padding-left: 1.5rem; margin: 0.5rem 0 1rem; }
+        .policy-content a { color: #FFD700; text-decoration: underline; }
+    </style>
+</head>
+<body class="matrix-bg text-gray-900 dark:text-gray-200">
+    <div class="scan-line"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-geekDark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-xl md:text-2xl font-black tracking-tighter text-black dark:text-white hover:text-geekYellow transition-colors">Super Agent Party</a>
+                <div class="hidden lg:flex items-center space-x-8 text-[11px] md:text-xs font-bold">
+                    <a href="index.html" class="nav-link text-black dark:text-white hover:text-geekYellow transition-colors">Home</a>
+                    <a href="download.html" class="nav-link text-black dark:text-white hover:text-geekYellow transition-colors">Download</a>
+                    <div class="relative group">
+                        <span class="nav-link text-black dark:text-white cursor-pointer">Resources</span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="bg-white dark:bg-geekDark border-2 border-black dark:border-geekYellow p-4 rounded-sm min-w-[180px] shadow-[4px_4px_0px_#FFD700]">
+                                <a href="plugins.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">Plugins</a>
+                                <a href="mcp.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">MCP</a>
+                                <a href="skills.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">Skills</a>
+                                <a href="characters.html" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-geekGray text-black dark:text-white font-bold">Characters</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="blog.html" class="nav-link text-black dark:text-white hover:text-geekYellow transition-colors">Blog</a>
+                    <button onclick="toggleTheme()" class="text-black dark:text-geekYellow"><i class="fas fa-sun dark:hidden"></i><i class="fas fa-moon hidden dark:inline"></i></button>
+                    <a href="index-zh.html" class="text-[10px] border border-black dark:border-geekYellow px-2 py-0.5 font-bold text-black dark:text-geekYellow">中文</a>
+                    <a href="https://github.com/heshengtao/super-agent-party" target="_blank" class="bg-black text-white dark:bg-gray-800 px-4 py-2 font-bold flex items-center gap-2"><i class="fab fa-github"></i> <span class="github-stars">-</span></a>
+                </div>
+                <button id="mobile-menu-button" class="lg:hidden text-2xl text-black dark:text-white"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-geekDark border-t border-gray-200 dark:border-gray-800 px-4 py-4 space-y-3 text-xs font-bold">
+            <a href="index.html" class="block py-2 text-black dark:text-white">Home</a>
+            <a href="download.html" class="block py-2 text-black dark:text-white">Download</a>
+            <a href="plugins.html" class="block py-2 text-black dark:text-white">Plugins</a>
+            <a href="mcp.html" class="block py-2 text-black dark:text-white">MCP</a>
+            <a href="skills.html" class="block py-2 text-black dark:text-white">Skills</a>
+            <a href="characters.html" class="block py-2 text-black dark:text-white">Characters</a>
+            <a href="blog.html" class="block py-2 text-black dark:text-white">Blog</a>
+            <a href="index-zh.html" class="block py-2 text-geekYellow">中文</a>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <div class="max-w-3xl mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-black tracking-tighter mb-2 text-black dark:text-white">Privacy Policy</h1>
+            <p class="text-xs text-gray-500 mb-10">Last updated: June 19, 2026</p>
+            <div class="policy-content">
+                <h2>1. Introduction</h2>
+                <p>Super Agent Party ("we", "our", or "us") operates the website <a href="https://www.agentparty.top">www.agentparty.top</a> (the "Site"). We are committed to protecting your privacy and ensuring transparency about how your data is handled. This Privacy Policy explains what information we collect, how we use it, and your rights under applicable data protection laws, including the EU General Data Protection Regulation (GDPR).</p>
+
+                <h2>2. Data Controller</h2>
+                <p>The data controller responsible for this website is the Super Agent Party project, reachable via:</p>
+                <ul>
+                    <li>GitHub: <a href="https://github.com/heshengtao/super-agent-party">github.com/heshengtao/super-agent-party</a></li>
+                    <li>Email: Available upon request via GitHub Issues</li>
+                </ul>
+
+                <h2>3. What Data We Collect</h2>
+                <p><strong>We do not actively collect personal data.</strong> Our website is a static site with no user accounts, no forms, no analytics trackers, and no advertising. However, certain data may be processed automatically:</p>
+                <ul>
+                    <li><strong>Server Logs (Cloudflare CDN):</strong> Our Site is hosted on Cloudflare Pages. Cloudflare automatically logs technical data such as your IP address, browser type, referring URL, and access timestamps. These logs are used solely for security, performance, and abuse prevention purposes. Cloudflare acts as our data processor. Refer to <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare's Privacy Policy</a> for details.</li>
+                    <li><strong>Local Storage:</strong> We store your theme preference (light/dark mode) in your browser's localStorage. This data never leaves your device and is not accessible by us.</li>
+                    <li><strong>GitHub API (Star Count):</strong> The Site displays the GitHub star count for our open-source project. This is fetched client-side from the public GitHub API when you load the page. Your browser makes this request directly to GitHub, and GitHub's privacy policy applies.</li>
+                </ul>
+
+                <h2>4. Cookies and Similar Technologies</h2>
+                <p><strong>This website does not use tracking cookies.</strong> We do not set any cookies for analytics, advertising, or user tracking purposes. We only use localStorage to remember your theme preference, which is strictly necessary for providing the functionality you expect and is exempt from consent requirements under the ePrivacy Directive (Article 5(3)). Cloudflare's CDN may set strictly necessary technical cookies (such as <code>__cf_bm</code>) for bot management and security purposes.</p>
+
+                <h2>5. Purpose and Legal Basis for Processing</h2>
+                <p>Any processing of personal data (such as IP addresses in server logs) is based on our legitimate interest (GDPR Art. 6(1)(f)) in:</p>
+                <ul>
+                    <li>Ensuring the security and stability of our website</li>
+                    <li>Preventing abuse and cyberattacks</li>
+                    <li>Delivering website content efficiently via CDN</li>
+                </ul>
+
+                <h2>6. Data Retention</h2>
+                <p>Cloudflare CDN logs are retained for a limited period as governed by Cloudflare's data retention policies. We do not have access to raw server logs. LocalStorage theme preferences are stored on your device and can be cleared by you at any time via your browser settings.</p>
+
+                <h2>7. Third-Party Services</h2>
+                <p>We use the following third-party services that may process data on our behalf or independently:</p>
+                <ul>
+                    <li><strong>Cloudflare (CDN & Hosting):</strong> Processes IP addresses and technical data for content delivery and security. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Privacy Policy</a></li>
+                    <li><strong>Google Fonts:</strong> We load fonts from Google Fonts CDN. Google may log the request. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
+                    <li><strong>Font Awesome:</strong> We load icon assets from cdnjs Cloudflare CDN. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Privacy Policy</a></li>
+                    <li><strong>GitHub:</strong> The GitHub star count widget makes API requests to api.github.com. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">Privacy Policy</a></li>
+                    <li><strong>Tailwind CSS (CDN):</strong> We load Tailwind CSS from the cdn.tailwindcss.com CDN. No user data is sent to this CDN beyond the standard HTTP request.</li>
+                </ul>
+
+                <h2>8. Your Rights Under GDPR</h2>
+                <p>If you are located in the European Economic Area (EEA), you have the following rights under the GDPR:</p>
+                <ul>
+                    <li><strong>Right of Access (Art. 15):</strong> Request confirmation of whether we process your personal data and access to that data.</li>
+                    <li><strong>Right to Rectification (Art. 16):</strong> Request correction of inaccurate personal data.</li>
+                    <li><strong>Right to Erasure (Art. 17):</strong> Request deletion of your personal data ("right to be forgotten").</li>
+                    <li><strong>Right to Restriction (Art. 18):</strong> Request restriction of processing under certain circumstances.</li>
+                    <li><strong>Right to Data Portability (Art. 20):</strong> Receive your data in a structured, machine-readable format.</li>
+                    <li><strong>Right to Object (Art. 21):</strong> Object to processing based on legitimate interests.</li>
+                    <li><strong>Right to Withdraw Consent (Art. 7):</strong> Withdraw consent at any time (though we do not rely on consent for processing).</li>
+                    <li><strong>Right to Lodge a Complaint (Art. 77):</strong> File a complaint with a supervisory authority in your EU member state.</li>
+                </ul>
+                <p>Since we do not actively collect personal data, most of these rights can be exercised by clearing your browser's localStorage or contacting us. For any privacy-related inquiries, please open an issue on our <a href="https://github.com/heshengtao/super-agent-party/issues">GitHub repository</a>.</p>
+
+                <h2>9. Children's Privacy</h2>
+                <p>Our Site is not directed at children under the age of 16. We do not knowingly collect personal data from children.</p>
+
+                <h2>10. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this page periodically.</p>
+
+                <h2>11. Contact</h2>
+                <p>For questions about this Privacy Policy, please contact us via:</p>
+                <ul>
+                    <li>GitHub Issues: <a href="https://github.com/heshengtao/super-agent-party/issues">github.com/heshengtao/super-agent-party/issues</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="border-t-2 border-black dark:border-gray-800 pt-12 pb-8 bg-white dark:bg-geekDark">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1">
+                    <div class="text-xl font-bold mb-4 tracking-tighter">Super Agent Party</div>
+                    <p class="text-xs text-gray-500 font-mono">Open-source AI agent framework for personal companions and automation.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Product</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="download.html" class="hover:text-geekYellow">Download</a></li>
+                        <li><a href="plugins.html" class="hover:text-geekYellow">Plugins</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Developers</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="https://github.com/heshengtao/super-agent-party" class="hover:text-geekYellow">Documentation</a></li>
+                        <li><a href="https://github.com/heshengtao/super-agent-party/issues" class="hover:text-geekYellow">Issues</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4 uppercase text-geekYellow">Legal</h4>
+                    <ul class="space-y-2 text-xs font-bold">
+                        <li><a href="privacy-policy.html" class="hover:text-geekYellow">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex justify-between items-center text-[10px] text-gray-500">
+                <p>© 2026 Super Agent Party. Open source under AGPL-3.0.</p>
+                <a href="https://github.com/heshengtao" class="hover:text-geekYellow underline">@heshengtao</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('mobile-menu-button').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
+</body>
+</html>
