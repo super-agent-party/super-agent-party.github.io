@@ -1,5 +1,5 @@
 // Cookie Consent Banner for Super Agent Party website
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
     if (localStorage.getItem('cookieConsent') === 'accepted') return;
     var banner = document.createElement('div');
     banner.id = 'cookie-banner';
@@ -9,4 +9,4 @@
         localStorage.setItem('cookieConsent', 'accepted');
         banner.remove();
     });
-})();
+});
