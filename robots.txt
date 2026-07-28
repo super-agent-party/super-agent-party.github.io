@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.agentparty.top/sitemap.xml
+
+# AI search crawlers — allowed for citation/discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Copilot uses Bingbot — already covered by *
+
+# Training-only crawler — block if you want to prevent AI training
+User-agent: CCBot
+Disallow: /

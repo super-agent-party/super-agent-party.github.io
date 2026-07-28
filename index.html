@@ -7,12 +7,119 @@
     <title>Super Agent Party - All-in-one AI companion! Super Agent Party = Self hosted neuro sama + openclaw | AI Desktop Companion & Virtual Streamer & MCP & Skills</title>
     <meta name="description" content="Super Agent Party (SAP) is an all-in-one open-source AI companion platform. It integrates AI desktop companions, virtual streamers, IM bot, and smart home control. Build your personalized digital life today.">
     <meta name="keywords" content="AI Companion, AI Agent, Desktop Girlfriend, Virtual Streamer, Neuro-sama like, Discord Bot, Telegram Bot, Discord Bot, Slack Bot, Open Source AI, MCP Protocol, Computer Use, Agent skills">
+    <meta name="revised" content="Super Agent Party, 2026-07-28" />
     <!-- Language Alternates -->
     <link rel="alternate" hreflang="en" href="https://www.agentparty.top/index.html" />
     <link rel="alternate" hreflang="zh-Hans" href="https://www.agentparty.top/index-zh.html" />
     <link rel="canonical" href="https://www.agentparty.top/index.html" />
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Super Agent Party",
+      "url": "https://www.agentparty.top",
+      "logo": "https://www.agentparty.top/img/logo.png",
+      "description": "Open-source all-in-one AI companion platform integrating desktop companions, virtual streamers, IM bots, and smart home control.",
+      "sameAs": [
+        "https://github.com/heshengtao/super-agent-party",
+        "https://discord.com/invite/f2dsAKKr2V",
+        "https://x.com/AILM32442"
+      ],
+      "foundingDate": "2025",
+      "slogan": "Game and work with your AI companion on Desktop!"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Super Agent Party",
+      "applicationCategory": "AIApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "description": "Open-source all-in-one AI companion platform with desktop companion, virtual streamer, IM bots, and smart home control.",
+      "url": "https://www.agentparty.top",
+      "downloadUrl": "https://www.agentparty.top/download.html",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "heshengtao",
+        "url": "https://github.com/heshengtao"
+      },
+      "license": "https://opensource.org/license/agpl-v3",
+      "featureList": [
+        "VRM/THA Desktop Companion",
+        "AI Task Automation with PC Control",
+        "Multi-character Group Chat",
+        "IM Bot Matrix (Discord, Telegram, Slack, WeChat, QQ)",
+        "Virtual Streamer System (Bilibili, YouTube, Twitch)",
+        "AI Browser with Autonomous Web Navigation",
+        "Plugin Ecosystem with MCP Protocol Support"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Super Agent Party?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Super Agent Party (SAP) is an open-source, all-in-one AI companion platform licensed under AGPL-3.0. It integrates AI desktop companions using custom VRM/THA models, virtual streamers for live platforms, IM bots for social platforms, and smart home control into a single extensible framework."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Super Agent Party free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Super Agent Party is completely free and open source under the AGPL-3.0 license. You self-host the application and bring your own API keys for LLM providers like OpenAI, Anthropic, or Google Gemini. All features are included."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which platforms does Super Agent Party support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Super Agent Party runs on Windows, macOS, and Linux. The AI companion can also be deployed as bots on Discord, Telegram, Slack, WeChat, QQ, Lark, and DingTalk. For streaming, it supports Bilibili, YouTube, and Twitch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can Super Agent Party do on my computer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SAP gives AI agents real agency on your PC. Using desktop vision and a full toolchain for mouse, keyboard, and terminal control, agents can see your screen and operate applications just like a human — organizing files, automating workflows, browsing the web, and playing games."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Super Agent Party compare to other AI companions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike single-purpose desktop pets or chatbot-only tools, SAP combines desktop companionship, PC automation, multi-platform IM bots, virtual streaming, and a plugin ecosystem in one open-source package with custom VRM/Live2D models, SillyTavern character cards, and MCP protocol support."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the MCP protocol and why does SAP support it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Model Context Protocol (MCP) is an open standard for connecting AI agents to external tools and data sources. SAP supports MCP so developers can extend agent capabilities — connecting to databases, APIs, file systems, and other services through a standardized interface."
+          }
+        }
+      ]
+    }
+    </script>
     <!-- Dependencies -->
-    <script src="theme.js"></script>
+        <script src="theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="github-stars.js"></script>
     <script src="cookie-banner.js"></script>
@@ -364,6 +471,41 @@
                                 <img src="img/zh/api.jpeg" alt="API Showcase" class="w-full h-auto object-cover">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section id="faq" class="relative py-24 bg-gray-50 dark:bg-gray-950">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Frequently Asked Questions</h2>
+                    <p class="text-gray-500 dark:text-gray-400 font-mono text-sm">// Everything you need to know about Super Agent Party</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="terminal-card p-6">
+                        <h3 class="text-lg font-bold mb-3">What is Super Agent Party?</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Super Agent Party (SAP) is an open-source, all-in-one AI companion platform licensed under AGPL-3.0. It integrates AI desktop companions using custom VRM/THA models, virtual streamers for live platforms, IM bots for social platforms, and smart home control into a single extensible framework. Think of it as a self-hosted Neuro-sama — a desktop AI companion that can chat, stream, automate tasks, and control your PC.</p>
+                    </div>
+                    <div class="terminal-card p-6">
+                        <h3 class="text-lg font-bold mb-3">Is Super Agent Party free?</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Yes. Super Agent Party is completely free and open source under the AGPL-3.0 license. You self-host the application and bring your own API keys for LLM providers like OpenAI, Anthropic, or Google Gemini. There are no hidden fees or premium tiers — all features are included.</p>
+                    </div>
+                    <div class="terminal-card p-6">
+                        <h3 class="text-lg font-bold mb-3">Which platforms does Super Agent Party support?</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Super Agent Party runs on Windows, macOS, and Linux. The AI companion can also be deployed as bots on Discord, Telegram, Slack, WeChat, QQ, Lark, and DingTalk. For streaming, it supports Bilibili, YouTube, and Twitch.</p>
+                    </div>
+                    <div class="terminal-card p-6">
+                        <h3 class="text-lg font-bold mb-3">What can Super Agent Party do on my computer?</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">SAP gives AI agents real agency on your PC. Using desktop vision and a full toolchain for mouse, keyboard, and terminal control, agents can see your screen and operate applications just like a human. They can organize files, automate workflows, browse the web autonomously, and even play games.</p>
+                    </div>
+                    <div class="terminal-card p-6">
+                        <h3 class="text-lg font-bold mb-3">How does Super Agent Party compare to other AI companions?</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Unlike single-purpose desktop pets or chatbot-only tools, SAP combines desktop companionship, PC automation, multi-platform IM bots, virtual streaming, and a plugin ecosystem in one open-source package. It supports custom VRM and Live2D models, SillyTavern character cards with long-term memory, and the MCP protocol for developer extensibility — making it the most comprehensive self-hosted AI agent platform available.</p>
+                    </div>
+                    <div class="terminal-card p-6">
+                        <h3 class="text-lg font-bold mb-3">What is the MCP protocol and why does SAP support it?</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">The Model Context Protocol (MCP) is an open standard for connecting AI agents to external tools and data sources. SAP supports MCP so developers can easily extend the agent's capabilities — connecting to databases, APIs, file systems, and other services through a standardized interface.</p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,32 @@
+# Super Agent Party (SAP)
+
+Super Agent Party is an open-source, all-in-one AI companion platform. It integrates AI desktop companions (VRM/THA models), virtual streamers, IM bots, and smart home control into a single framework. Licensed under AGPL-3.0.
+
+## What it does
+- VRM/THA desktop companion with custom 3D/2D models
+- AI task automation with desktop vision and PC control
+- Multi-character group chat with SillyTavern card support
+- IM bot matrix (Discord, Telegram, Slack, WeChat, QQ, Lark, DingTalk)
+- Virtual streamer system (Bilibili, YouTube, Twitch)
+- AI browser with autonomous web navigation
+- Plugin ecosystem with MCP protocol support
+- OpenAI-compatible API for developers
+
+## Key pages
+- Home: https://www.agentparty.top/
+- Download: https://www.agentparty.top/download.html
+- Plugins: https://www.agentparty.top/plugins.html
+- MCP Servers: https://www.agentparty.top/mcp.html
+- Skills: https://www.agentparty.top/skills.html
+- Characters: https://www.agentparty.top/characters.html
+- Blog: https://www.agentparty.top/blog.html
+
+## Pricing
+- Free and open source (AGPL-3.0)
+- Self-hosted; bring your own API keys for LLM providers
+- See pricing.md for details
+
+## Links
+- GitHub: https://github.com/heshengtao/super-agent-party
+- Discord: https://discord.com/invite/f2dsAKKr2V
+- Pricing: https://www.agentparty.top/pricing.md
