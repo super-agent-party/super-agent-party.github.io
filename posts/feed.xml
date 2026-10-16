@@ -234,7 +234,7 @@
 <li>If you want to record a digital human video with a transparent background or capture the desktop pet during a live stream, add <code>http://127.0.0.1:3456/vrm.html</code> as a video source in the browser source of your recording software.</li>
 </ol>
 <p><img src="https://www.agentparty.top/img/0yuan/16.jpeg" alt="img" title="" /></p>
-<p>If you also want your AI companion to appear as a 2D character, you will need to install the Live2D extension. I will cover this in detail in the extensions section. Stay tuned and bookmark this blog series.</p>
+<p>If you also want your AI companion to appear as a 2D character, use the VTube Studio (VTS) integration — it lets Super Agent Party control a Live2D model running in VTube Studio. See the VTS bot section for details.</p>
 <h1>Conclusion</h1>
 <p>Finally! We&#39;ve completed an AI companion without spending a single penny! If you have any questions, feel free to join:</p>
 <ul>

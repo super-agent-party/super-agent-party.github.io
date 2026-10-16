@@ -137,7 +137,7 @@ EdgeTTS是微软提供的一个免费的TTS接口，语音效果比较好，但�
 
 ![img](/img/0yuan/16.jpeg)
 
-如果你还想让你的AI伴侣以2D形象出现，那么你需要安装live2D扩展，我将在扩展篇中仔细介绍，欢迎继续关注和收藏本博客专栏。
+如果你还想让你的AI伴侣以2D形象出现，可以使用VTube Studio（VTS）联动——让 Super Agent Party 控制运行在 VTube Studio 中的 Live2D 模型。具体做法请参考VTS机器人部分。
 
 # 结语
 

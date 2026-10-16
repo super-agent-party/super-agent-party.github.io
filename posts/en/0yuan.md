@@ -137,7 +137,7 @@ To make your AI companion appear as a 3D character on your desktop, you need to 
 
 ![img](/img/0yuan/16.jpeg)
 
-If you also want your AI companion to appear as a 2D character, you will need to install the Live2D extension. I will cover this in detail in the extensions section. Stay tuned and bookmark this blog series.
+If you also want your AI companion to appear as a 2D character, use the VTube Studio (VTS) integration — it lets Super Agent Party control a Live2D model running in VTube Studio. See the VTS bot section for details.
 
 # Conclusion
 
